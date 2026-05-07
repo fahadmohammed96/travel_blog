@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <title>Oops I Roamed — Design System & Prototipo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Design system, UI kit e prototipo cliccabile per Oops I Roamed — il blog di viaggio che racconta storie, non itinerari." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F8F4EC;
+      --paper-2: #F1EADC;
+      --ink: #1F2A22;
+      --ink-soft: #4A5650;
+      --terracotta: #E87B5A;
+      --mustard: #F5C547;
+      --sage: #7A9B6E;
+      --rule: #D9CFBE;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter Tight', system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 56px 32px 96px; }
+
+    .stamp {
+      display: inline-block;
+      transform: rotate(-3deg);
+      border: 2px solid var(--ink);
+      padding: 6px 14px;
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      background: var(--mustard);
+      margin-bottom: 28px;
+    }
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: clamp(44px, 7vw, 84px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      margin: 0 0 20px;
+      text-wrap: pretty;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+    .lede {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.5;
+      max-width: 640px;
+      color: var(--ink-soft);
+      margin: 0 0 48px;
+      text-wrap: pretty;
+    }
+    .lede em { font-style: italic; }
+
+    .scribble {
+      display: block;
+      width: 180px;
+      height: 14px;
+      margin: 0 0 40px;
+      color: var(--terracotta);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 56px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 28px 26px 24px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--ink);
+      border-color: var(--ink);
+    }
+    .card .num {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+    }
+    .card h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 1.1;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+    .card h2 em { font-style: italic; color: var(--terracotta); }
+    .card p {
+      font-size: 15px;
+      color: var(--ink-soft);
+      margin: 0;
+      line-height: 1.5;
+    }
+    .card .arrow {
+      margin-top: 8px;
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--ink);
+    }
+    .card.feature {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+      grid-column: span 2;
+    }
+    @media (max-width: 720px) {
+      .card.feature { grid-column: span 1; }
+    }
+    .card.feature h2 em { color: var(--mustard); }
+    .card.feature p { color: rgba(248, 244, 236, 0.78); }
+    .card.feature .arrow { color: var(--mustard); }
+    .card.feature .num { color: rgba(248, 244, 236, 0.6); }
+
+    .pin {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.2);
+    }
+    .card.feature .pin { background: var(--mustard); }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--ink-soft);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .meta {
+      margin-top: 64px;
+      padding-top: 28px;
+      border-top: 1px dashed var(--rule);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+    .meta strong {
+      display: block;
+      font-family: 'Fraunces', serif;
+      font-weight: 500;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+    .meta a { color: var(--terracotta); text-decoration: none; border-bottom: 1px solid currentColor; }
+
+    .footer {
+      margin-top: 48px;
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+    .footer span { color: var(--terracotta); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="stamp">Travel Diary · 2026</div>
+    <h1>Oops <em>I Roamed</em> — design diary &amp; clickable prototipo.</h1>
+    <p class="lede">Un blog di viaggio che racconta <em>storie, non itinerari</em>. Qui dentro trovi il design system completo, l'UI kit e un prototipo cliccabile in italiano.</p>
+    <svg class="scribble" viewBox="0 0 180 14" fill="none">
+      <path d="M 4 8 Q 20 2, 36 8 T 68 8 T 100 8 T 132 8 T 164 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+
+    <div class="section-title">Esplora</div>
+    <div class="grid">
+      <a class="card feature" href="prototipo/">
+        <span class="pin"></span>
+        <span class="num">01 — il pezzo forte</span>
+        <h2>Prototipo <em>cliccabile</em></h2>
+        <p>Quattro flow completi: leggi un articolo, prenota un trip, costruisci il tuo bespoke, condividi il diario. Mappe vere, polaroid, field notes manoscritti.</p>
+        <span class="arrow">apri il prototipo →</span>
+      </a>
+
+      <a class="card" href="ui_kits/website/">
+        <span class="pin"></span>
+        <span class="num">02 — UI kit</span>
+        <h2>UI Kit <em>website</em></h2>
+        <p>Tutte le schermate principali con componenti, layout e stati pronti da riutilizzare.</p>
+        <span class="arrow">sfoglia →</span>
+      </a>
+
+      <a class="card" href="preview/colors-primary.html">
+        <span class="pin"></span>
+        <span class="num">03 — design system</span>
+        <h2>Token &amp; <em>componenti</em></h2>
+        <p>Colori, tipografia, spaziature, bottoni, badge, card, form. Le fondamenta del brand.</p>
+        <span class="arrow">esplora →</span>
+      </a>
+    </div>
+
+    <div class="section-title">Design tokens</div>
+    <div class="grid">
+      <a class="card" href="preview/colors-primary.html"><span class="num">colore</span><h2>Palette primaria</h2><p>Carta, inchiostro, terracotta, senape, salvia.</p><span class="arrow">→</span></a>
+      <a class="card" href="preview/type-display.html"><span class="num">tipografia</span><h2>Display &amp; titoli</h2><p>Fraunces in italic per il calore narrativo.</p><span class="arrow">→</span></a>
+      <a class="card" href="preview/components-buttons.html"><span class="num">componenti</span><h2>Bottoni</h2><p>Primary, secondary, ghost, stamp.</p><span class="arrow">→</span></a>
+      <a class="card" href="preview/components-card.html"><span class="num">componenti</span><h2>Card</h2><p>Articolo, destinazione, trip, polaroid.</p><span class="arrow">→</span></a>
+      <a class="card" href="preview/brand-icons.html"><span class="num">brand</span><h2>Iconografia</h2><p>Set di icone manoscritte e timbri.</p><span class="arrow">→</span></a>
+      <a class="card" href="preview/spacing-scale.html"><span class="num">layout</span><h2>Spaziature &amp; raggi</h2><p>Scale geometriche e radi morbidi.</p><span class="arrow">→</span></a>
+    </div>
+
+    <div class="meta">
+      <div>
+        <strong>Stack</strong>
+        HTML statico + React via Babel. Nessun build step. Si apre in un browser qualsiasi.
+      </div>
+      <div>
+        <strong>Lingua</strong>
+        Tutti i contenuti sono in italiano, voce calda e leggermente ironica.
+      </div>
+      <div>
+        <strong>Repo</strong>
+        <a href="https://github.com/fahadmohammed96/travel_blog">github.com/fahadmohammed96/travel_blog</a>
+      </div>
+    </div>
+
+    <div class="footer">— fatto con <span>♥</span> e qualche detour non programmato.</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+MODIFICHE SUGGERITE
+
+Stile:
+- cambio colore tasti quando eseguito hover (il botton si colora del color pallet dominante e si ingrandisce leggermente)
