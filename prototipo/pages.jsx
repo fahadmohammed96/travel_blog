@@ -44,7 +44,7 @@ const CountriesPage = () => {
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }}>
           {COUNTRIES.map((c, i) => (
-            <article key={c.id} className="card cardlink rise" style={{ animationDelay: `${i * 60}ms`, cursor: 'pointer', position: 'relative' }} onClick={() => go('diary')}>
+            <article key={c.id} className="card cardlink rise" style={{ animationDelay: `${i * 60}ms`, cursor: 'pointer', position: 'relative' }} onClick={() => go('diary', { country: c.name })}>
               <div className="card-img" style={{ aspectRatio: '3/4' }}><img src={c.image} alt={c.name} /></div>
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 50%, rgba(15,26,20,0.7))' }}></div>
               <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '20px 22px', color: 'var(--cream-50)' }}>
@@ -76,7 +76,7 @@ const SeasonsPage = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
           {SEASONS.map((s, i) => (
             <article key={s.id} className="rise cardlink" style={{ animationDelay: `${i * 80}ms`, background: s.bg, borderRadius: 'var(--r-lg)', padding: '40px 36px', minHeight: 280, position: 'relative', overflow: 'hidden', cursor: 'pointer', transition: 'transform 320ms var(--ease-out)' }}
-              onClick={() => go('diary')}>
+              onClick={() => go('diary', { season: s.id })}>
               <div style={{ position: 'absolute', top: 24, right: 24, color: s.color, opacity: 0.85 }}>
                 <Icon name={s.icon} size={56} />
               </div>
@@ -349,7 +349,7 @@ const FaqPage = () => {
 };
 
 /* ============ Guide pratiche per viaggiatori inesperti ============ */
-const GUIDES = [
+const PRACTICAL_GUIDES = [
   { id: 'valigia', icon: 'luggage', title: 'Come fare la valigia (e poi rifarla)', dek: 'La regola del 5-4-3-2-1 e perché alla terza piega va bene così.', read: '8 min', cat: 'PRIMA DI PARTIRE' },
   { id: 'documenti', icon: 'passport', title: 'Documenti, visti, scartoffie', dek: 'Cosa serve davvero, cosa ti dicono e basta, e dove tenere le copie.', read: '6 min', cat: 'PRIMA DI PARTIRE' },
   { id: 'budget-base', icon: 'wallet', title: 'Costruire un budget realistico', dek: 'Quanto costa un giorno medio in Europa, Asia, Sud America.', read: '10 min', cat: 'SOLDI' },
@@ -361,7 +361,7 @@ const GUIDES = [
   { id: 'foto', icon: 'camera', title: 'Foto che varrà la pena rivedere', dek: 'Meno scatti, più memoria. La regola dei tre piani.', read: '7 min', cat: 'RICORDI' },
 ];
 const GuidePage = () => {
-  const cats = [...new Set(GUIDES.map(g => g.cat))];
+  const cats = [...new Set(PRACTICAL_GUIDES.map(g => g.cat))];
   return (
     <div className="page-enter" style={{ padding: '64px 0 96px' }}>
       <div className="container">
@@ -376,10 +376,10 @@ const GuidePage = () => {
           <section key={cat} style={{ marginBottom: 72 }}>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 24, paddingBottom: 12, borderBottom: '1px solid var(--border-soft)' }}>
               <Eyebrow>{cat}</Eyebrow>
-              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--fg-3)' }}>{GUIDES.filter(g => g.cat === cat).length} guide</span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--fg-3)' }}>{PRACTICAL_GUIDES.filter(g => g.cat === cat).length} guide</span>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
-              {GUIDES.filter(g => g.cat === cat).map((g, i) => (
+              {PRACTICAL_GUIDES.filter(g => g.cat === cat).map((g, i) => (
                 <article key={g.id} className="card cardlink rise" style={{ padding: 28, cursor: 'pointer', animationDelay: `${i * 50}ms` }}>
                   <div style={{ width: 48, height: 48, borderRadius: 12, background: 'var(--bg-sunken)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--clay-700)', marginBottom: 20 }}>
                     <Icon name={g.icon} size={22} />

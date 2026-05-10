@@ -224,7 +224,16 @@ const Footer = () => {
         <a href="#" aria-label="Facebook"><Icon name="facebook" size={20} /></a>
       </div>
     </div>
-    <div className="container ftr-bot"><div>© 2025 Oops I Roamed · Lisboa, Portogallo</div><div>Privacy · Termini · Cookie</div></div>
+    <div className="container" style={{ display: 'flex', gap: 32, alignItems: 'center', flexWrap: 'wrap', padding: '32px 0 12px', borderTop: '1px solid rgba(255,255,255,.12)', marginTop: 32, fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'rgba(248,244,236,.55)' }}>
+      <span>★ 4.9 / 5 · 287 RECENSIONI</span>
+      <span style={{ opacity: .4 }}>·</span>
+      <span style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontStyle: 'italic', textTransform: 'none', letterSpacing: 0, color: 'rgba(248,244,236,.7)' }}>"Capisce davvero la lentezza" — Vogue Italia</span>
+      <span style={{ opacity: .4 }}>·</span>
+      <span>LICENZA TUR. PT-2024-0847</span>
+      <span style={{ opacity: .4 }}>·</span>
+      <span>ASSICURAZIONE INCLUSA</span>
+    </div>
+    <div className="container ftr-bot"><div>© 2025 Oops I Roamed · Lisboa, Portogallo</div><div style={{ display: 'flex', gap: 18 }}><a onClick={() => go('privacy')} style={{ cursor: 'pointer' }}>Privacy</a><a onClick={() => go('terms')} style={{ cursor: 'pointer' }}>Termini</a><a onClick={() => go('cookie')} style={{ cursor: 'pointer' }}>Cookie</a></div></div>
   </footer>
   );
 };
@@ -576,6 +585,426 @@ function RealMap({ tripId, height = 420 }) {
       </div>
       <div style={{ position: 'absolute', bottom: 8, right: 12, fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--fg-3)', opacity: 0.7 }}>
         © OpenStreetMap · Carto
+      </div>
+    </div>
+  );
+}
+
+
+/* ============ NEW: SPOTS REMAINING (visual) ============ */
+function SpotsRemaining({ spots, totalSpots = 10, compact = false }) {
+  const filled = totalSpots - spots;
+  const tone = spots === 0 ? 'var(--clay-700)' : spots <= 3 ? 'var(--clay-700)' : spots <= 5 ? 'var(--clay-500)' : 'var(--forest-700)';
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: compact ? 8 : 12 }}>
+      <div style={{ display: 'flex', gap: 4 }}>
+        {Array.from({ length: totalSpots }).map((_, i) => (
+          <div key={i} style={{
+            width: compact ? 8 : 10, height: compact ? 8 : 10, borderRadius: 999,
+            background: i < filled ? 'var(--fg-3)' : tone,
+            opacity: i < filled ? 0.25 : 1,
+          }}></div>
+        ))}
+      </div>
+      <span style={{ fontFamily: 'var(--font-mono)', fontSize: compact ? 10 : 11, letterSpacing: '0.06em', color: tone, fontWeight: 600 }}>
+        {spots === 0 ? 'TUTTO ESAURITO' : `${spots} POSTI / ${totalSpots}`}
+      </span>
+    </div>
+  );
+}
+
+/* ============ NEW: TESTIMONIAL CARD ============ */
+function TestimonialCard({ t, variant = 'default' }) {
+  return (
+    <article style={{
+      background: 'var(--cream-50)',
+      border: '1px solid var(--border)',
+      borderRadius: 'var(--r-lg)',
+      padding: 28,
+      display: 'flex', flexDirection: 'column', gap: 16,
+      position: 'relative',
+    }}>
+      <div style={{ position: 'absolute', top: 16, right: 20, fontFamily: 'var(--font-display)', fontSize: 64, lineHeight: 0.6, color: 'var(--clay-300)', opacity: 0.4, fontWeight: 300 }}>"</div>
+      <div style={{ display: 'flex', gap: 4, color: 'var(--clay-500)' }}>
+        {Array.from({ length: t.rating }).map((_, i) => <Icon key={i} name="star" size={14} />)}
+        {Array.from({ length: 5 - t.rating }).map((_, i) => <Icon key={i} name="star" size={14} style={{ opacity: 0.2 }} />)}
+      </div>
+      <p style={{ fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: 19, lineHeight: 1.45, color: 'var(--fg-1)', margin: 0, fontStyle: 'italic' }}>
+        "{t.quote}"
+      </p>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 'auto', paddingTop: 12, borderTop: '1px dashed var(--border)' }}>
+        <img src={t.photo} alt="" style={{ width: 44, height: 44, borderRadius: 999, objectFit: 'cover', filter: 'sepia(0.1)' }} />
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ fontFamily: 'var(--font-display)', fontSize: 16, color: 'var(--fg-1)' }}>{t.author}</div>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+            {t.city} · {t.age} anni · ED. {t.edition}
+          </div>
+        </div>
+      </div>
+      {t.highlight && (
+        <div style={{ display: 'inline-flex', alignSelf: 'flex-start', padding: '4px 10px', background: 'var(--forest-100)', color: 'var(--forest-700)', fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.06em', textTransform: 'uppercase', borderRadius: 999, marginTop: -6 }}>
+          ★ {t.highlight}
+        </div>
+      )}
+    </article>
+  );
+}
+
+/* ============ NEW: TESTIMONIAL SECTION ============ */
+function TestimonialSection({ tripId, title = 'Cosa dicono i viaggiatori', subtitle, rating, count }) {
+  const list = (window.TESTIMONIALS && window.TESTIMONIALS[tripId]) || [];
+  if (!list.length) return null;
+  return (
+    <div style={{ marginTop: 72 }}>
+      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16, marginBottom: 28 }}>
+        <div>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 36, margin: '0 0 6px' }}>{title}</h2>
+          {subtitle && <p style={{ color: 'var(--fg-3)', fontSize: 13, fontFamily: 'var(--font-mono)', letterSpacing: '0.04em', textTransform: 'uppercase', margin: 0 }}>{subtitle}</p>}
+        </div>
+        {rating && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 16px', background: 'var(--cream-100)', borderRadius: 'var(--r-md)' }}>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: 32, lineHeight: 1, color: 'var(--clay-700)' }}>{rating.toFixed(1)}</div>
+            <div>
+              <div style={{ display: 'flex', gap: 2, color: 'var(--clay-500)' }}>{Array.from({ length: 5 }).map((_, i) => <Icon key={i} name="star" size={12} />)}</div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>{count} recensioni · verificate</div>
+            </div>
+          </div>
+        )}
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(list.length, 3)}, 1fr)`, gap: 20 }}>
+        {list.slice(0, 3).map((t, i) => <TestimonialCard key={i} t={t} />)}
+      </div>
+    </div>
+  );
+}
+
+/* ============ NEW: GUIDE CARD ============ */
+function GuideCard({ guideId, compact = false }) {
+  const g = window.GUIDES && window.GUIDES[guideId];
+  if (!g) return null;
+  if (compact) {
+    return (
+      <div style={{ display: 'flex', gap: 14, alignItems: 'center', padding: 14, background: 'var(--cream-100)', borderRadius: 'var(--r-md)' }}>
+        <img src={g.photo} alt="" style={{ width: 48, height: 48, borderRadius: 999, objectFit: 'cover' }} />
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ fontFamily: 'var(--font-display)', fontSize: 16, color: 'var(--fg-1)' }}>{g.name}</div>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>{g.role}</div>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div style={{ background: 'var(--cream-50)', border: '1px solid var(--border)', borderRadius: 'var(--r-lg)', padding: 28, display: 'grid', gridTemplateColumns: '120px 1fr', gap: 24, alignItems: 'flex-start' }}>
+      <div style={{ position: 'relative' }}>
+        <img src={g.photo} alt={g.name} style={{ width: 120, height: 120, borderRadius: 999, objectFit: 'cover' }} />
+        <div style={{ position: 'absolute', bottom: -4, right: -4, background: 'var(--forest-700)', color: 'var(--cream-50)', borderRadius: 999, padding: '4px 10px', fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.06em' }}>★ {g.trips}</div>
+      </div>
+      <div>
+        <Eyebrow>LA TUA GUIDA · {g.city}</Eyebrow>
+        <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 400, margin: '6px 0 4px' }}>{g.name}</h3>
+        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.04em', textTransform: 'uppercase', marginBottom: 14 }}>{g.role}</div>
+        <p style={{ fontSize: 14, lineHeight: 1.55, color: 'var(--fg-2)', margin: '0 0 16px' }}>{g.bio}</p>
+        <div style={{ display: 'flex', gap: 20, fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+          <div><strong style={{ color: 'var(--fg-1)', fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 400 }}>{g.years}</strong> anni con noi</div>
+          <div><strong style={{ color: 'var(--fg-1)', fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 400 }}>{g.trips}</strong> viaggi guidati</div>
+          <div><strong style={{ color: 'var(--fg-1)', fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 400 }}>{g.langs.length}</strong> lingue: {g.langs.join(', ')}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ============ NEW: INCLUDED / EXCLUDED ============ */
+function IncludedExcluded({ tripId }) {
+  const inc = (window.INCLUSIONS && (window.INCLUSIONS[tripId] || window.INCLUSIONS.default)) || { included: [], excluded: [] };
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+      <div style={{ background: 'var(--forest-100)', borderRadius: 'var(--r-lg)', padding: 24 }}>
+        <Eyebrow style={{ color: 'var(--forest-700)' }}>★ COSA È INCLUSO</Eyebrow>
+        <ul style={{ listStyle: 'none', padding: 0, margin: '14px 0 0', display: 'flex', flexDirection: 'column', gap: 12 }}>
+          {inc.included.map((it, i) => (
+            <li key={i} style={{ display: 'grid', gridTemplateColumns: '24px 1fr', gap: 12, fontSize: 14, lineHeight: 1.45, color: 'var(--fg-1)' }}>
+              <Icon name={it.icon} size={18} style={{ color: 'var(--forest-700)', marginTop: 1 }} />
+              <span>{it.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div style={{ background: 'var(--cream-100)', borderRadius: 'var(--r-lg)', padding: 24, border: '1px dashed var(--border)' }}>
+        <Eyebrow style={{ color: 'var(--fg-3)' }}>NON INCLUSO (PER ONESTÀ)</Eyebrow>
+        <ul style={{ listStyle: 'none', padding: 0, margin: '14px 0 0', display: 'flex', flexDirection: 'column', gap: 12 }}>
+          {inc.excluded.map((it, i) => (
+            <li key={i} style={{ display: 'grid', gridTemplateColumns: '24px 1fr', gap: 12, fontSize: 14, lineHeight: 1.45, color: 'var(--fg-2)' }}>
+              <Icon name={it.icon} size={18} style={{ color: 'var(--fg-3)', marginTop: 1 }} />
+              <span>{it.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+/* ============ NEW: COMPARATOR Roamed / Bespoke / Solo ============ */
+function ComparatorCard({ onPickRoamed, onPickBespoke }) {
+  const cols = [
+    {
+      tag: 'OPZIONE 1', title: 'Roamed Trip', sub: 'Date fisse, max 10',
+      points: [
+        { ok: true, t: 'Tutto pianificato e prenotato' },
+        { ok: true, t: 'Guida locale con voi tutto il tempo' },
+        { ok: true, t: 'Conoscete altre 9 persone' },
+        { ok: false, t: 'Date e itinerario fissi' },
+      ],
+      price: 'da €890', pricesub: 'a persona',
+      cta: 'Vedi i viaggi', action: onPickRoamed, primary: true,
+      bg: 'var(--forest-700)', fg: 'var(--cream-50)',
+    },
+    {
+      tag: 'OPZIONE 2', title: 'Su misura', sub: 'Solo per voi, qualsiasi data',
+      points: [
+        { ok: true, t: 'Itinerario disegnato per voi' },
+        { ok: true, t: 'Date, durata, ritmo a vostra scelta' },
+        { ok: true, t: 'Coppia, famiglia o piccolo gruppo' },
+        { ok: false, t: 'Costa di più, prep più lunga (3 sett.)' },
+      ],
+      price: 'da €1.200', pricesub: 'a persona',
+      cta: 'Raccontaci dove', action: onPickBespoke, primary: false,
+      bg: 'var(--cream-50)', fg: 'var(--fg-1)',
+    },
+    {
+      tag: 'OPZIONE 3', title: 'Da soli', sub: 'Con il diario in mano',
+      points: [
+        { ok: true, t: 'Gratis, ovviamente' },
+        { ok: true, t: 'Ritmo e budget vostro al 100%' },
+        { ok: false, t: 'Pianificate, prenotate, gestite tutto voi' },
+        { ok: false, t: 'Niente garanzia, nessuna assistenza' },
+      ],
+      price: 'GRATIS', pricesub: 'fai-da-te con i nostri consigli',
+      cta: 'Leggi il diario', action: () => window.dispatchEvent(new CustomEvent('go', { detail: { route: 'diario' } })), primary: false,
+      bg: 'var(--bg-elevated)', fg: 'var(--fg-1)', dashed: true,
+    },
+  ];
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+      {cols.map((col, i) => (
+        <div key={i} style={{
+          background: col.bg, color: col.fg,
+          border: col.dashed ? '1.5px dashed var(--border)' : '1px solid var(--border)',
+          borderRadius: 'var(--r-lg)', padding: 28, display: 'flex', flexDirection: 'column', gap: 16,
+          transform: col.primary ? 'translateY(-8px)' : 'none',
+          boxShadow: col.primary ? 'var(--shadow-2)' : 'none',
+        }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.1em', opacity: 0.7 }}>{col.tag}</div>
+            {col.primary && <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.1em', padding: '3px 8px', background: 'var(--clay-500)', color: 'var(--cream-50)', borderRadius: 999 }}>PIÙ SCELTO</div>}
+          </div>
+          <div>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 32, fontWeight: 400, margin: '0 0 4px' }}>{col.title}</h3>
+            <div style={{ fontSize: 13, opacity: 0.7 }}>{col.sub}</div>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: '12px 0', borderTop: '1px solid currentColor', borderBottom: '1px solid currentColor', opacity: 0.95 }}>
+            {col.points.map((p, j) => (
+              <div key={j} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', fontSize: 14, opacity: p.ok ? 1 : 0.55 }}>
+                <span style={{ marginTop: 1, fontWeight: 700, fontSize: 13 }}>{p.ok ? '✓' : '×'}</span>
+                <span>{p.t}</span>
+              </div>
+            ))}
+          </div>
+          <div>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 400 }}>{col.price}</div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.06em', opacity: 0.6, textTransform: 'uppercase' }}>{col.pricesub}</div>
+          </div>
+          <button onClick={col.action} className={`btn ${col.primary ? 'btn-primary' : 'btn-secondary'} btn-block`} style={col.primary ? { background: 'var(--cream-50)', color: 'var(--forest-700)' } : {}}>
+            {col.cta} <Icon name="arrow-right" size={14} />
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ============ NEW: TRUST STRIP ============ */
+function TrustStrip({ variant = 'inline' }) {
+  const s = window.BRAND_STATS || {};
+  const items = [
+    { big: s.travelersCount + '+', small: 'viaggiatori dal 2021' },
+    { big: s.avgRating?.toFixed(1), small: `★ ${s.reviewsCount} recensioni verificate` },
+    { big: s.tripsCount, small: 'viaggi organizzati' },
+    { big: s.countriesCount, small: 'paesi nel diario' },
+  ];
+  if (variant === 'inline') {
+    return (
+      <div style={{ display: 'flex', gap: 32, justifyContent: 'center', alignItems: 'center', padding: '20px 0', flexWrap: 'wrap' }}>
+        {items.map((it, i) => (
+          <React.Fragment key={i}>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 400, color: 'var(--clay-700)', lineHeight: 1 }}>{it.big}</div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 4 }}>{it.small}</div>
+            </div>
+            {i < items.length - 1 && <div style={{ width: 1, height: 28, background: 'var(--border)' }}></div>}
+          </React.Fragment>
+        ))}
+      </div>
+    );
+  }
+  return null;
+}
+
+/* ============ NEW: STICKY MOBILE CTA ============ */
+function StickyMobileCTA({ trip, onBook, onSave, isSaved }) {
+  return (
+    <div className="sticky-mobile-cta" style={{
+      position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 90,
+      background: 'var(--cream-50)',
+      borderTop: '1px solid var(--border)',
+      padding: '12px 16px',
+      display: 'none',
+      gap: 12, alignItems: 'center',
+      boxShadow: '0 -8px 24px rgba(15,26,20,0.08)',
+    }}>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, lineHeight: 1, color: 'var(--fg-1)' }}>€{trip.price.toLocaleString('it-IT')}</div>
+        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--fg-3)', letterSpacing: '0.06em', textTransform: 'uppercase', marginTop: 2 }}>
+          {trip.spots > 0 ? `${trip.spots} POSTI · ${trip.dates}` : 'TUTTO ESAURITO'}
+        </div>
+      </div>
+      <button onClick={onSave} aria-label="Salva" style={{
+        width: 44, height: 44, borderRadius: 999, border: '1px solid var(--border)', background: isSaved ? 'var(--clay-100)' : 'var(--cream-50)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: isSaved ? 'var(--clay-700)' : 'var(--fg-2)',
+      }}><Icon name="heart" size={18} /></button>
+      {trip.soldOut ? (
+        <button disabled className="btn btn-secondary" style={{ minHeight: 44, opacity: 0.5 }}>Esaurito</button>
+      ) : (
+        <button onClick={onBook} className="btn btn-primary" style={{ minHeight: 44 }}>Prenota <Icon name="arrow-right" size={14} /></button>
+      )}
+    </div>
+  );
+}
+
+/* ============ NEW: NEWSLETTER PREVIEW ============ */
+function NewsletterPreview() {
+  return (
+    <div style={{
+      background: 'var(--cream-50)',
+      border: '1px solid var(--border)',
+      borderRadius: 'var(--r-lg)',
+      padding: 0,
+      overflow: 'hidden',
+      boxShadow: 'var(--shadow-2)',
+      transform: 'rotate(-1.2deg)',
+      maxWidth: 360,
+    }}>
+      <div style={{ padding: '12px 18px', borderBottom: '1px solid var(--border)', background: 'var(--cream-100)', display: 'flex', alignItems: 'center', gap: 8, fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+        <div style={{ display: 'flex', gap: 4 }}>
+          <div style={{ width: 8, height: 8, borderRadius: 999, background: '#ff5f56' }}></div>
+          <div style={{ width: 8, height: 8, borderRadius: 999, background: '#ffbd2e' }}></div>
+          <div style={{ width: 8, height: 8, borderRadius: 999, background: '#27c93f' }}></div>
+        </div>
+        <span style={{ marginLeft: 'auto' }}>15 GEN · 19:14</span>
+      </div>
+      <div style={{ padding: '20px 22px' }}>
+        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 4 }}>Da: ciao@oopsiroamed.com</div>
+        <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 400, color: 'var(--fg-1)', margin: '8px 0 12px', lineHeight: 1.2 }}>
+          Una cosa che ho imparato a Lisbona stamattina
+        </div>
+        <p style={{ fontSize: 13, lineHeight: 1.5, color: 'var(--fg-2)', margin: 0 }}>
+          Ho passato l'intera mattinata in una piccola tasca di città dove tutti chiedono il caffè in un modo specifico. La signora dietro il bancone…
+        </p>
+        <div style={{ marginTop: 16, paddingTop: 14, borderTop: '1px dashed var(--border)', fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--fg-3)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+          Ogni mercoledì · 600+ iscritti · Niente spam mai
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ============ NEW: BOOKING TRUST BADGES ============ */
+function BookingTrustBadges() {
+  const items = [
+    { icon: 'lock', t: 'Pagamento sicuro Stripe' },
+    { icon: 'shield', t: 'Cancellazione gratuita ≥60 giorni' },
+    { icon: 'users', t: 'Sotto 4 iscritti rimborso 100%' },
+    { icon: 'phone', t: 'WhatsApp dedicato post-acquisto' },
+  ];
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: 16, background: 'var(--forest-100)', borderRadius: 'var(--r-md)' }}>
+      {items.map((it, i) => (
+        <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'center', fontSize: 12, color: 'var(--forest-700)' }}>
+          <Icon name={it.icon} size={14} />
+          <span style={{ color: 'var(--fg-1)' }}>{it.t}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ============ NEW: PRE-BUY FAQ ACCORDION ============ */
+function PreBuyFAQ() {
+  const list = window.PREBUY_FAQ || [];
+  const [open, setOpen] = React.useState(0);
+  return (
+    <div style={{ marginTop: 32 }}>
+      <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 24, fontWeight: 400, margin: '0 0 16px' }}>Le domande che ci fate prima di prenotare</h3>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {list.map((f, i) => (
+          <details key={i} open={open === i} onClick={(e) => { e.preventDefault(); setOpen(open === i ? -1 : i); }} style={{ background: 'var(--cream-50)', border: '1px solid var(--border)', borderRadius: 'var(--r-md)', padding: '14px 18px', cursor: 'pointer' }}>
+            <summary style={{ listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-display)', fontSize: 16, color: 'var(--fg-1)' }}>
+              <span>{f.q}</span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 18, color: 'var(--fg-3)', transform: open === i ? 'rotate(45deg)' : 'rotate(0)', transition: 'transform 200ms', display: 'inline-block' }}>+</span>
+            </summary>
+            {open === i && <p style={{ marginTop: 10, fontSize: 14, lineHeight: 1.55, color: 'var(--fg-2)' }}>{f.a}</p>}
+          </details>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ============ NEW: PROMO INLINE (per articoli) ============ */
+function ArticlePromoBox({ tripId, onGo }) {
+  const trip = (window.TRIPS || []).find(t => t.id === tripId);
+  if (!trip) return null;
+  return (
+    <aside style={{
+      margin: '40px -20px',
+      padding: 24,
+      background: 'var(--clay-100)',
+      borderRadius: 'var(--r-lg)',
+      border: '1px solid var(--clay-300)',
+      display: 'grid', gridTemplateColumns: '120px 1fr auto', gap: 20, alignItems: 'center',
+    }}>
+      <img src={trip.image} alt="" style={{ width: 120, height: 120, borderRadius: 'var(--r-md)', objectFit: 'cover' }} />
+      <div>
+        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--clay-700)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 6 }}>★ TI È PIACIUTO QUESTO PEZZO?</div>
+        <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 400, color: 'var(--fg-1)', margin: '0 0 6px', lineHeight: 1.2 }}>Vivilo davvero: <em>"{trip.title}"</em></div>
+        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.06em' }}>{trip.dates} · {trip.spots} posti rimasti · da €{trip.price.toLocaleString('it-IT')}</div>
+      </div>
+      <button onClick={() => onGo && onGo('trip', { id: trip.id })} className="btn btn-primary">Vedi viaggio <Icon name="arrow-right" size={14} /></button>
+    </aside>
+  );
+}
+
+/* ============ NEW: LEGAL PAGE RENDERER ============ */
+function LegalPage({ pageKey }) {
+  const data = window.LEGAL && window.LEGAL[pageKey];
+  if (!data) return null;
+  return (
+    <div className="page-enter" style={{ padding: '64px 0 96px' }}>
+      <div className="container" style={{ maxWidth: 760 }}>
+        <Eyebrow>LEGALI · AGGIORNATO {data.updated.toUpperCase()}</Eyebrow>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(48px, 6vw, 72px)', fontWeight: 400, lineHeight: 1.05, margin: '12px 0 16px', letterSpacing: '-0.02em' }}>{data.title}</h1>
+        <p style={{ fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: 22, color: 'var(--fg-2)', lineHeight: 1.4, margin: 0 }}>{data.intro}</p>
+        <hr className="divider" />
+        {data.sections.map((s, i) => (
+          <section key={i} style={{ marginBottom: 36 }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 24, fontWeight: 400, margin: '0 0 8px', color: 'var(--fg-1)' }}>{s.h}</h2>
+            <p style={{ fontSize: 15, lineHeight: 1.65, color: 'var(--fg-2)', margin: 0 }}>{s.p}</p>
+          </section>
+        ))}
+        <div style={{ marginTop: 48, padding: '16px 20px', background: 'var(--bg-sunken)', borderRadius: 'var(--r-md)', fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.04em' }}>
+          Per qualsiasi domanda: <a href="mailto:privacy@oopsiroamed.com" style={{ color: 'var(--clay-700)' }}>privacy@oopsiroamed.com</a> · Risposta entro 30 giorni (di solito molto prima).
+        </div>
       </div>
     </div>
   );

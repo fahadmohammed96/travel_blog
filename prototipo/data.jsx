@@ -4,22 +4,27 @@ const TRIPS = [
   { id: 'porto', kind: 'ROAMED TRIP', country: 'PORTOGALLO', title: 'Tre giorni persi a Porto',
     dek: 'Un weekend lungo tra vino di Porto, azulejos e le strade più ripide che le tue ginocchia incontreranno.',
     nights: 3, dates: '22–25 SET 2025', month: 'Settembre 2025',
-    price: 890, status: { kind: 'b-new', label: 'NUOVO' }, spots: 6, soldOut: false,
+    price: 890, status: { kind: 'b-new', label: 'NUOVO' }, spots: 6, totalSpots: 10, edition: 4, rating: 4.9, reviewCount: 23, soldOut: false,
+    guideId: 'sofia',
     image: 'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1400&q=80' },
   { id: 'puglia', kind: 'ROAMED TRIP', country: 'ITALIA', title: 'La strada lenta in Puglia',
     dek: 'Trulli, orecchiette, luce di mare. Sei giorni da Bari fino a Lecce, con sosta per le mandorle.',
     nights: 6, dates: '14–20 OTT 2025', month: 'Ottobre 2025',
-    price: 1890, status: { kind: 'b-soft', label: '4 posti rimasti' }, spots: 4, soldOut: false,
+    price: 1890, status: { kind: 'b-soft', label: '4 posti rimasti' }, spots: 4, totalSpots: 10, edition: 3, rating: 4.8, reviewCount: 19, soldOut: false,
+    guideId: 'marco',
     image: 'https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=1400&q=80' },
   { id: 'hokkaido', kind: 'ROAMED TRIP', country: 'GIAPPONE', title: 'Hokkaido a febbraio (sì, davvero)',
     dek: 'Neve farinosa, onsen e le izakaya più silenziose in cui ti sia mai seduto.',
     nights: 8, dates: '08–16 FEB 2026', month: 'Febbraio 2026',
-    price: 3240, status: { kind: 'b-soldout', label: 'TUTTO ESAURITO' }, spots: 0, soldOut: true,
+    price: 3240, status: { kind: 'b-soldout', label: 'TUTTO ESAURITO' }, spots: 0, totalSpots: 10, edition: 2, rating: 5.0, reviewCount: 14, soldOut: true,
+    nextEdition: 'FEB 2027',
+    guideId: 'aya',
     image: 'https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=1400&q=80' },
   { id: 'oaxaca', kind: 'ROAMED TRIP', country: 'MESSICO', title: 'Una settimana di mole a Oaxaca',
     dek: 'Mercati all\'alba, mezcal al tramonto, tessitura nel mezzo. Gruppo piccolo, si mangia tanto.',
     nights: 7, dates: '04–11 NOV 2025', month: 'Novembre 2025',
-    price: 2180, status: { kind: 'b-soft', label: 'Si riempie in fretta' }, spots: 3, soldOut: false,
+    price: 2180, status: { kind: 'b-soft', label: 'Si riempie in fretta' }, spots: 3, totalSpots: 10, edition: 2, rating: 4.9, reviewCount: 11, soldOut: false,
+    guideId: 'sofia',
     image: 'https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?w=1400&q=80' },
 ];
 
@@ -171,4 +176,120 @@ const TRIP_POLAROIDS = {
   ],
 };
 
-Object.assign(window, { TRIPS, ARTICLES, ITINERARY_PORTO, ROUTES, TRIP_POLAROIDS });
+/* Profili guide locali (placeholder) */
+const GUIDES = {
+  sofia: { name: 'Sofia Marchetti', role: 'Founder · accompagna anche', city: 'Lisbona, PT', langs: ['IT', 'EN', 'PT'], trips: 38, years: 4, photo: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80', bio: 'Vivo a Lisbona da quattro anni, scrivo da sempre. Ho fondato Oops I Roamed perché qualcuno doveva pure rispondere a tutte quelle email su "come ricreare quel viaggio".' },
+  marco: { name: 'Marco D\'Angelo', role: 'Logistica · guida in Italia', city: 'Bari, IT', langs: ['IT', 'EN', 'FR'], trips: 24, years: 3, photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80', bio: 'Pugliese di nascita, romano per scelta. Conosco le strade secondarie e i ristoranti senza insegna meglio di Google Maps.' },
+  aya: { name: 'Aya Tanaka', role: 'Fotografa · guida in Asia', city: 'Kyoto, JP', langs: ['IT', 'EN', 'JP'], trips: 16, years: 3, photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80', bio: 'Cresciuta tra Roma e Tokyo. Le foto del diario asiatico sono quasi tutte mie. Sui viaggi parlo poco e indico molto.' },
+};
+
+/* Testimonianze viaggiatori (placeholder credibili) */
+const TESTIMONIALS = {
+  porto: [
+    { author: 'Anna B.', city: 'Milano', age: 34, edition: '2024', rating: 5, photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80', quote: 'Sono partita da sola e sono tornata con sei amici e cinque chili in più. Sofia ha la rara dote di farti sentire sempre nel posto giusto.', highlight: 'Da sola → tornata con sei amici' },
+    { author: 'Luca R.', city: 'Bologna', age: 41, edition: '2024', rating: 5, photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80', quote: 'Avevo prenotato a malincuore — di solito viaggio per conto mio. La differenza tra essere turisti e essere portati per mano si vede al secondo giorno.', highlight: 'Solo traveler convertito' },
+    { author: 'Giulia & Tommy', city: 'Torino', age: 29, edition: '2023', rating: 5, photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80', quote: 'Scelti i posti dove mangiare e dormire come l\'avremmo fatto noi, ma meglio. Zero stress, zero "trappole turistiche". Torneremo di sicuro su un altro viaggio.', highlight: 'Coppia 30 anni' },
+  ],
+  puglia: [
+    { author: 'Chiara M.', city: 'Roma', age: 38, edition: '2024', rating: 5, photo: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80', quote: 'In sei giorni ho mangiato meglio che in un anno. Ma soprattutto: ho imparato a fare le orecchiette da una signora di 78 anni che non parla italiano standard.', highlight: 'Foodie, ne valeva ogni euro' },
+    { author: 'Andrea P.', city: 'Verona', age: 52, edition: '2024', rating: 5, photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80', quote: 'Mio padre dopo l\'infarto aveva bisogno di un viaggio facile ma vero. Marco ha calibrato passo, soste e cibo. Roba da agenzia di lusso, prezzi normali.', highlight: 'Viaggio multi-generazionale' },
+    { author: 'Elena T.', city: 'Genova', age: 45, edition: '2023', rating: 4, photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80', quote: 'Una stella in meno solo perché un giorno ha piovuto e non era colpa loro. Tutto il resto: perfetto.', highlight: '4 stelle (per onestà)' },
+  ],
+  hokkaido: [
+    { author: 'Federico L.', city: 'Milano', age: 36, edition: '2024', rating: 5, photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80', quote: 'Avevo paura del Giappone "vero" senza menù in inglese. Aya ti porta in posti dove non saresti mai entrato e dopo due giorni ordini come un local.', highlight: 'Prima volta in Asia' },
+    { author: 'Beatrice S.', city: 'Padova', age: 31, edition: '2025', rating: 5, photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80', quote: 'Onsen, neve farinosa, ramen alle 23. Per chi pensa che il Giappone sia solo Tokyo e Kyoto, questo viaggio cambia idea in tre giorni.', highlight: '"Non sapevo che esistesse"' },
+  ],
+  oaxaca: [
+    { author: 'Marta C.', city: 'Firenze', age: 47, edition: '2024', rating: 5, photo: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80', quote: 'Il viaggio più colorato che abbia fatto. E la guida ci ha portato in un mercato che non c\'è su nessuna guida — solo per quello pagherei due volte.', highlight: 'Off the beaten path vero' },
+    { author: 'Davide & Sara', city: 'Napoli', age: 33, edition: '2024', rating: 5, photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80', quote: 'Luna di miele alternativa. Niente resort, tutto vero. Sofia ha aggiunto due notti di calma a metà viaggio quando ha capito che ne avevamo bisogno.', highlight: 'Luna di miele non-convenzionale' },
+  ],
+};
+
+/* Cosa è incluso / escluso per ogni Roamed Trip */
+const INCLUSIONS = {
+  default: {
+    included: [
+      { icon: 'bed', text: 'Tutti gli alloggi (case curate, mai catene)' },
+      { icon: 'utensils-crossed', text: 'Cene di gruppo + colazioni' },
+      { icon: 'user-round', text: 'Guida locale 24/7 con noi' },
+      { icon: 'compass', text: 'Tutte le esperienze guidate dell\'itinerario' },
+      { icon: 'bus', text: 'Trasferimenti interni durante il viaggio' },
+      { icon: 'phone', text: 'Numero WhatsApp dedicato anche post-viaggio' },
+    ],
+    excluded: [
+      { icon: 'plane', text: 'Voli internazionali andata/ritorno' },
+      { icon: 'utensils', text: 'Pranzi liberi (consigliamo dove andare)' },
+      { icon: 'wallet', text: 'Mance e spese personali' },
+      { icon: 'shield', text: 'Assicurazione viaggio (consigliata, ti aiutiamo)' },
+    ],
+  },
+};
+
+/* Statistiche brand globali */
+const BRAND_STATS = {
+  travelersCount: 247,
+  tripsCount: 22,
+  countriesCount: 8,
+  avgRating: 4.9,
+  reviewsCount: 67,
+  yearsActive: 4,
+};
+
+/* Quote stampa per footer / hero (riassunte da PressPage) */
+const PRESS_QUOTES_SHORT = [
+  { src: 'Vogue Italia', short: '"Capisce davvero la lentezza"' },
+  { src: 'Il Post',      short: '"Una persona reale che ti racconta un viaggio"' },
+  { src: 'Domus',        short: '"Una nuova generazione di travel writing"' },
+];
+
+/* FAQ pre-vendita rapide nel TripDetail */
+const PREBUY_FAQ = [
+  { q: 'Posso partire da solo/a?', a: 'Sì, circa metà dei viaggiatori parte single. La singola non ha supplemento punitivo — pagamento equo, non penalizzante.' },
+  { q: 'Cosa succede se devo cancellare?', a: 'Cancellazione gratuita fino a 60 giorni prima. Tra 60 e 30 rimborsiamo il 50%. Sotto i 30 puoi trovare un sostituto.' },
+  { q: 'Quante persone in totale?', a: 'Massimo 10 viaggiatori, sempre. La guida è in più. Sotto i 4 iscritti il viaggio non parte e rimborsiamo tutto.' },
+  { q: 'Devo essere "in forma"?', a: 'Specificato per ogni trip — Porto richiede gambe per le salite, Hokkaido sci base. Hai dubbi? Scrivici prima.' },
+];
+
+/* Pagine legali — versioni placeholder credibili */
+const LEGAL = {
+  privacy: {
+    title: 'Privacy & dati',
+    intro: 'Cosa raccogliamo, perché, e come ti tuteliamo. Senza giri di parole.',
+    sections: [
+      { h: 'Chi siamo', p: 'Oops I Roamed S.r.l. — sede legale Lisbona, NIF PT517XXXXXX. Titolare del trattamento: Sofia Marchetti, ciao@oopsiroamed.com.' },
+      { h: 'Cosa raccogliamo', p: 'Solo i dati necessari: nome, email, città di partenza per le prenotazioni; preferenze per gli itinerari su misura. Niente tracking pubblicitario di terze parti.' },
+      { h: 'Perché', p: 'Per organizzare il tuo viaggio, mandarti la newsletter (solo se l\'hai chiesta), e rispondere ai tuoi messaggi. Niente profilazione, niente vendita a terzi.' },
+      { h: 'Cookie', p: 'Solo i tecnici necessari. Per le statistiche aggregate usiamo Plausible (no cookie, no IP). Vedi la pagina Cookie per dettagli.' },
+      { h: 'I tuoi diritti', p: 'GDPR pieno. Puoi chiedere accesso, rettifica, cancellazione, portabilità in qualsiasi momento scrivendo a privacy@oopsiroamed.com. Rispondiamo entro 30 giorni (di solito molto prima).' },
+      { h: 'Conservazione', p: 'Dati di prenotazione: 10 anni (obblighi fiscali). Newsletter: finché sei iscritta. Richieste bespoke non confermate: 24 mesi.' },
+    ],
+    updated: '01 gennaio 2026',
+  },
+  terms: {
+    title: 'Termini & condizioni',
+    intro: 'Le regole del gioco, scritte per essere lette davvero.',
+    sections: [
+      { h: 'Prenotazioni', p: 'La conferma del Roamed Trip è valida solo dopo il pagamento dell\'acconto del 30%. Saldo dovuto 60 giorni prima della partenza. Tutti i prezzi includono l\'IVA.' },
+      { h: 'Cancellazioni viaggiatore', p: 'Gratuita fino a 60gg dalla partenza. 60–30gg: 50% di rimborso. Meno di 30gg: nessun rimborso, ma puoi cedere il posto a un sostituto pagando solo €40 di pratica.' },
+      { h: 'Cancellazione da parte nostra', p: 'Se sotto i 4 iscritti annulliamo il viaggio entro 45gg dalla partenza e rimborsiamo il 100%. Se forza maggiore (eventi naturali, restrizioni), rimborso integrale o credito a tua scelta.' },
+      { h: 'Cosa è incluso', p: 'Vedi pagina di ogni viaggio. Voli internazionali e assicurazione viaggio non sono mai inclusi (ti aiutiamo a sceglierli).' },
+      { h: 'Itinerari su misura', p: 'La proposta è gratuita e senza impegno. Diventa vincolante solo dopo conferma scritta + acconto.' },
+      { h: 'Responsabilità', p: 'Siamo organizzatori di viaggio coperti da polizza RC ai sensi del D.Lgs 79/2011. Numero IATA in fase di registrazione.' },
+      { h: 'Foro', p: 'Foro competente: Lisbona, PT. Le controversie con consumatori UE possono essere risolte tramite la piattaforma ODR della Commissione Europea.' },
+    ],
+    updated: '01 gennaio 2026',
+  },
+  cookie: {
+    title: 'Cookie',
+    intro: 'Pochissimi, dichiarati, mai pubblicitari.',
+    sections: [
+      { h: 'Cookie tecnici', p: 'Necessari al funzionamento del sito (login, carrello, preferenze). Non puoi disattivarli senza rompere qualcosa. Durata: sessione o 1 anno max.' },
+      { h: 'Statistiche', p: 'Usiamo Plausible Analytics, ospitato in UE. Non usa cookie, non traccia IP, non profila. Numeri aggregati per capire cosa vi piace leggere.' },
+      { h: 'Niente terze parti pubblicitarie', p: 'No Google Ads, no Meta Pixel, no remarketing. Quando linkiamo prodotti su Amazon (Shop) il cookie è di Amazon — non lo controlliamo, ma puoi bloccarlo nel browser.' },
+      { h: 'Embed', p: 'Le mappe usano OpenStreetMap (no cookie). I video YouTube vengono caricati solo dopo il tuo click esplicito.' },
+    ],
+    updated: '01 gennaio 2026',
+  },
+};
+
+Object.assign(window, { TRIPS, ARTICLES, ITINERARY_PORTO, ROUTES, TRIP_POLAROIDS, GUIDES, TESTIMONIALS, INCLUSIONS, BRAND_STATS, PRESS_QUOTES_SHORT, PREBUY_FAQ, LEGAL });

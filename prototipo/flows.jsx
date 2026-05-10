@@ -18,9 +18,17 @@ const Home = () => {
           <p className="rise rise-3" style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontWeight: 300, fontSize: 22, marginTop: 32, maxWidth: 540, color: 'var(--cream-100)' }}>
             Un diario di viaggio che ogni tanto ti vende un biglietto aereo. Storie lunghe, viaggi in piccoli gruppi, e itinerari costruiti uno alla volta.
           </p>
-          <div className="rise rise-4" style={{ display: 'flex', gap: 12, marginTop: 36 }}>
-            <Button variant="accent" size="lg" onClick={() => go('trips')} icon="arrow-right">Vedi i viaggi</Button>
-            <button className="btn btn-lg" style={{ background: 'rgba(250,246,236,0.12)', borderColor: 'rgba(250,246,236,0.3)', color: 'var(--cream-50)', border: '1px solid' }} onClick={() => go('diary')}>Leggi il diario</button>
+          <div className="rise rise-4" style={{ display: 'flex', gap: 12, marginTop: 36, flexWrap: 'wrap' }}>
+            <Button variant="accent" size="lg" onClick={() => go('trips')} icon="arrow-right">Prenota un viaggio</Button>
+            <button className="btn btn-lg" style={{ background: 'transparent', borderColor: 'rgba(250,246,236,0.4)', color: 'var(--cream-50)', border: '1px solid' }} onClick={() => go('bespoke')}>Costruiscine uno tuo</button>
+            <button onClick={() => go('diary')} style={{ background: 'transparent', border: 'none', color: 'var(--cream-100)', fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 17, cursor: 'pointer', textDecoration: 'underline', textDecorationStyle: 'dotted', textUnderlineOffset: '6px', padding: '0 12px' }}>o leggi prima il diario →</button>
+          </div>
+          <div className="rise rise-4" style={{ display: 'flex', gap: 24, marginTop: 36, alignItems: 'center', fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--cream-200)', letterSpacing: '0.06em', textTransform: 'uppercase', flexWrap: 'wrap' }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}><span style={{ color: 'var(--clay-300)', fontFamily: 'var(--font-display)', fontSize: 16, textTransform: 'none' }}>★ 4.9</span> · 67 recensioni</span>
+            <span style={{ width: 4, height: 4, background: 'var(--cream-200)', borderRadius: 999, opacity: 0.5 }}></span>
+            <span>247 viaggiatori dal 2021</span>
+            <span style={{ width: 4, height: 4, background: 'var(--cream-200)', borderRadius: 999, opacity: 0.5 }}></span>
+            <span>Max 10 per gruppo</span>
           </div>
         </div>
       </section>
@@ -66,6 +74,22 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Comparatore tre modi */}
+      <section style={{ padding: '96px 0', background: 'var(--bg-default)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: 56 }}>
+            <Eyebrow>TRE MODI DI VIAGGIARE CON NOI</Eyebrow>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 56, lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px auto 14px', maxWidth: 720 }}>
+              Quanto vuoi che decidiamo per te?
+            </h2>
+            <p style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontWeight: 300, fontSize: 20, color: 'var(--fg-2)', maxWidth: 540, margin: '0 auto' }}>
+              Niente è giusto o sbagliato. Dipende dal viaggio che hai in testa.
+            </p>
+          </div>
+          <ComparatorCard onPickRoamed={() => go('trips')} onPickBespoke={() => go('bespoke')} />
+        </div>
+      </section>
+
       <section style={{ background: 'var(--forest-900)', color: 'var(--cream-50)', padding: '128px 0', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: 60, right: 80, opacity: 0.5 }}><Stamp size={140} rotate={12} /></div>
         <div className="container" style={{ maxWidth: 880, textAlign: 'center', position: 'relative' }}>
@@ -101,11 +125,19 @@ const NewsletterSection = () => {
     <section style={{ padding: '96px 0' }}>
       <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
         <div>
-          <Eyebrow>IL DISPACCIO</Eyebrow>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 56, lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px 0 18px' }}>Una mail al mese. Niente offerte, niente urgenza.</h2>
-          <p style={{ fontSize: 17, lineHeight: 1.7, color: 'var(--fg-2)', maxWidth: 480 }}>
+          <Eyebrow>IL DISPACCIO · OGNI MERCOLEDÌ</Eyebrow>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 56, lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px 0 18px' }}>Una mail a settimana. Niente offerte, niente urgenza.</h2>
+          <p style={{ fontSize: 17, lineHeight: 1.7, color: 'var(--fg-2)', maxWidth: 480, marginBottom: 24 }}>
             Una nuova storia dal diario, un viaggio appena aperto, e l'unica panetteria per cui vale la pena fare una deviazione. Tutto qui. — la fondatrice
           </p>
+          <div style={{ display: 'flex', gap: 24, fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+            <div><strong style={{ color: 'var(--fg-1)', fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 400, display: 'block' }}>600+</strong> iscritti</div>
+            <div><strong style={{ color: 'var(--fg-1)', fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 400, display: 'block' }}>62%</strong> tasso di apertura</div>
+            <div><strong style={{ color: 'var(--fg-1)', fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 400, display: 'block' }}>0</strong> partner pubblicitari</div>
+          </div>
+          <div style={{ marginTop: 28, display: 'flex', justifyContent: 'flex-start' }}>
+            <NewsletterPreview />
+          </div>
         </div>
         {isSubscribed ? (
           <div className="rise" style={{ background: 'var(--forest-100)', padding: 28, borderRadius: 'var(--r-lg)', display: 'flex', alignItems: 'center', gap: 16, color: 'var(--forest-800)' }}>
@@ -226,6 +258,20 @@ const TripDetail = ({ params }) => {
               </div>
             </div>
 
+            {/* Cosa è incluso / escluso */}
+            <div style={{ marginTop: 72 }}>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 36, margin: '0 0 20px' }}>Cosa c'è dentro il prezzo (e cosa no).</h2>
+              <IncludedExcluded tripId={trip.id} />
+            </div>
+
+            {/* La tua guida */}
+            {trip.guideId && (
+              <div style={{ marginTop: 72 }}>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 36, margin: '0 0 20px' }}>Chi vi accompagna.</h2>
+                <GuideCard guideId={trip.guideId} />
+              </div>
+            )}
+
             {/* Polaroid wall — foto dei viaggiatori */}
             <div style={{ marginTop: 72 }}>
               <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 36, margin: '0 0 6px' }}>Chi c'è già stato.</h2>
@@ -236,13 +282,36 @@ const TripDetail = ({ params }) => {
                 <PolaroidWall photos={polaroids} />
               </div>
             </div>
+
+            {/* Testimonianze */}
+            <TestimonialSection tripId={trip.id} title="Cosa dicono i viaggiatori" subtitle={`Ed. ${trip.edition || 1} · feedback verificati`} rating={trip.rating} count={trip.reviewCount} />
+
+            {/* FAQ pre-vendita */}
+            <PreBuyFAQ />
           </div>
 
-          <aside style={{ position: 'sticky', top: 100 }}>
+          <aside className="trip-aside" style={{ position: 'sticky', top: 100, display: 'flex', flexDirection: 'column', gap: 16 }}>
             <div className="card" style={{ padding: 28 }}>
               {trip.status && <Badge kind={trip.status.kind}>{trip.status.label}</Badge>}
-              <div style={{ fontFamily: 'var(--font-display)', fontSize: 44, marginTop: 16 }}>€{trip.price.toLocaleString('it-IT')}</div>
-              <Meta style={{ marginTop: 4 }}>A PERSONA · {trip.dates}</Meta>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginTop: 16 }}>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 44, lineHeight: 1 }}>€{trip.price.toLocaleString('it-IT')}</div>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.04em' }}>/ persona</span>
+              </div>
+              <Meta style={{ marginTop: 4 }}>{trip.dates} · {trip.nights} NOTTI</Meta>
+
+              {!trip.soldOut && (
+                <div style={{ marginTop: 16, padding: '10px 12px', background: trip.spots <= 4 ? 'var(--clay-100)' : 'var(--bg-sunken)', borderRadius: 'var(--r-sm)' }}>
+                  <SpotsRemaining spots={trip.spots} totalSpots={trip.totalSpots || 10} />
+                </div>
+              )}
+
+              {trip.rating && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 12, fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--fg-2)' }}>
+                  <span style={{ color: 'var(--clay-700)', fontFamily: 'var(--font-display)', fontSize: 16 }}>★ {trip.rating.toFixed(1)}</span>
+                  <span style={{ letterSpacing: '0.04em' }}>· {trip.reviewCount} recensioni · ed. {trip.edition}</span>
+                </div>
+              )}
+
               <hr className="divider" />
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10, fontSize: 14, color: 'var(--fg-2)' }}>
                 <li style={{ display: 'flex', gap: 10 }}><Icon name="users" size={16} /> Massimo 10 viaggiatori</li>
@@ -252,17 +321,36 @@ const TripDetail = ({ params }) => {
               </ul>
               <hr className="divider" />
               {trip.soldOut ? (
-                <Button variant="secondary" block disabled>Tutto esaurito</Button>
+                <>
+                  <Button variant="secondary" block disabled>Tutto esaurito</Button>
+                  {trip.nextEdition && (
+                    <div style={{ marginTop: 10, padding: '10px 12px', background: 'var(--bg-sunken)', borderRadius: 'var(--r-sm)', fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--fg-2)', letterSpacing: '0.04em', textAlign: 'center' }}>
+                      Prossima edizione: <strong style={{ color: 'var(--fg-1)' }}>{trip.nextEdition}</strong>
+                    </div>
+                  )}
+                  <button className="btn btn-ghost btn-block" style={{ marginTop: 10 }} onClick={() => go('signup')}>
+                    <Icon name="bell" size={14} /> Avvisami quando riapre
+                  </button>
+                </>
               ) : (
                 <Button variant="primary" block size="lg" icon="arrow-right" onClick={() => go('book', { id: trip.id, step: 1 })}>Prenota questo viaggio</Button>
               )}
               <button className="btn btn-ghost btn-block" style={{ marginTop: 8 }} onClick={() => toggleSave('trips', trip.id)}>
                 <Icon name="heart" size={16} /> {saved.trips.has(trip.id) ? 'Salvato' : 'Salva per dopo'}
               </button>
+              <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px dashed var(--border)', fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.04em', textAlign: 'center' }}>
+                ACCONTO 30% · SALDO 60GG PRIMA<br />Cancellazione gratuita ≥60 giorni
+              </div>
             </div>
+
+            <BookingTrustBadges />
+
+            {trip.guideId && <GuideCard guideId={trip.guideId} compact />}
           </aside>
         </div>
       </section>
+
+      <StickyMobileCTA trip={trip} onBook={() => go('book', { id: trip.id, step: 1 })} onSave={() => toggleSave('trips', trip.id)} isSaved={saved.trips.has(trip.id)} />
     </div>
   );
 };
@@ -381,7 +469,11 @@ const Booking = ({ params }) => {
           )}
 
           {step === 2 && (
-            <div className="page-enter" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+            <div className="page-enter">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20, padding: '10px 14px', background: 'var(--forest-100)', borderRadius: 'var(--r-md)', color: 'var(--forest-700)', fontSize: 13 }}>
+                <Icon name="lock" size={16} /> <span>Pagamento crittografato · Stripe · Nessuna carta salvata sui nostri server</span>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
               {paymentError && (
                 <div style={{ gridColumn: 'span 2', background: 'rgba(181,70,46,.08)', border: '1px solid var(--danger)', color: 'var(--danger)', padding: '12px 16px', borderRadius: 'var(--r-md)', display: 'flex', alignItems: 'center', gap: 10, fontSize: 14 }}>
                   <Icon name="alert-circle" size={18} /> Carta rifiutata. Prova un'altra. (suggerimento: CVC 000 = errore)
@@ -397,7 +489,14 @@ const Booking = ({ params }) => {
               </div>
               <div style={{ gridColumn: 'span 2', display: 'flex', gap: 8, marginTop: 16 }}>
                 <Button variant="secondary" onClick={() => setStep(1)}>Indietro</Button>
-                <Button variant="primary" size="lg" onClick={handlePay} loading={loading}>Paga €{total.toLocaleString('it-IT')}</Button>
+                <Button variant="primary" size="lg" onClick={handlePay} loading={loading} icon="lock">Paga acconto €{Math.round(total * 0.3).toLocaleString('it-IT')}</Button>
+              </div>
+              <div style={{ gridColumn: 'span 2', marginTop: 8, fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.04em' }}>
+                Oggi paghi solo il 30%. Saldo automatico 60 giorni prima della partenza. Cancella entro 60gg → rimborso 100%.
+              </div>
+              </div>
+              <div style={{ marginTop: 28 }}>
+                <BookingTrustBadges />
               </div>
             </div>
           )}
@@ -410,10 +509,15 @@ const Booking = ({ params }) => {
               <Eyebrow>IL TUO ORDINE</Eyebrow>
               <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 24, fontWeight: 400, margin: '8px 0 12px' }}>{trip.title}</h3>
               <Meta>{trip.dates} · {trip.nights} NOTTI</Meta>
+              {trip.spots > 0 && (
+                <div style={{ marginTop: 12, padding: '8px 12px', background: trip.spots <= 4 ? 'var(--clay-100)' : 'var(--bg-sunken)', borderRadius: 'var(--r-sm)' }}>
+                  <SpotsRemaining spots={trip.spots} totalSpots={trip.totalSpots || 10} compact />
+                </div>
+              )}
               <hr className="divider" />
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: 14 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: 'var(--fg-2)' }}>€{trip.price.toLocaleString('it-IT')} × {travelers}</span><span>€{subtotal.toLocaleString('it-IT')}</span></div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: 'var(--fg-2)' }}>Commissioni</span><span>€0</span></div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ color: 'var(--fg-2)' }}>Commissioni</span><span style={{ color: 'var(--success)' }}>€0</span></div>
                 {earlyBird > 0 && <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--success)' }}><span>Sconto early-bird</span><span>−€{earlyBird}</span></div>}
               </div>
               <hr className="divider" />
@@ -421,8 +525,13 @@ const Booking = ({ params }) => {
                 <span style={{ fontWeight: 600 }}>Totale</span>
                 <span style={{ fontFamily: 'var(--font-display)', fontSize: 32 }}>€{total.toLocaleString('it-IT')}</span>
               </div>
+              <div style={{ marginTop: 8, padding: '10px 12px', background: 'var(--bg-sunken)', borderRadius: 'var(--r-sm)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--fg-2)', letterSpacing: '0.04em' }}>
+                <span>OGGI PAGHI</span>
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: 18, color: 'var(--fg-1)' }}>€{Math.round(total * 0.3).toLocaleString('it-IT')}</span>
+              </div>
             </div>
           </div>
+          {trip.guideId && <div style={{ marginTop: 16 }}><GuideCard guideId={trip.guideId} compact /></div>}
         </aside>
       </div>
     </div>
@@ -454,11 +563,25 @@ const REGIONS = [
 ];
 const _regionOf = (a) => REGION_BY_EYEBROW[a.eyebrow]?.region || 'europa';
 const _countryOf = (a) => REGION_BY_EYEBROW[a.eyebrow]?.country || a.eyebrow.replace('DIARIO · ', '');
+const SEASONS_LABELS = { spring: 'Primavera', summer: 'Estate', autumn: 'Autunno', winter: 'Inverno' };
 
 const DiaryList = ({ params = {} }) => {
   const { go, saved, toggleSave } = useApp();
   const [tab, setTab] = React.useState(params.tab === 'world' ? 'world' : 'recent');
+  const [countryFilter, setCountryFilter] = React.useState(params.country || null);
+  const [regionFilter, setRegionFilter] = React.useState(params.region || null);
+  const [seasonFilter, setSeasonFilter] = React.useState(params.season || null);
   React.useEffect(() => { if (params.tab) setTab(params.tab === 'world' ? 'world' : 'recent'); }, [params.tab]);
+  React.useEffect(() => { setCountryFilter(params.country || null); setRegionFilter(params.region || null); setSeasonFilter(params.season || null); }, [params.country, params.region, params.season]);
+  const SEASON_MONTHS = { spring: ['MAR','APR','MAG'], summer: ['GIU','LUG','AGO'], autumn: ['SET','OTT','NOV'], winter: ['DIC','GEN','FEB'] };
+  let filtered = ARTICLES;
+  if (countryFilter) filtered = filtered.filter(a => _countryOf(a).toLowerCase() === countryFilter.toLowerCase());
+  if (regionFilter) filtered = filtered.filter(a => _regionOf(a) === regionFilter);
+  if (seasonFilter) {
+    const months = SEASON_MONTHS[seasonFilter] || [];
+    filtered = filtered.filter(a => months.some(m => (a.date || '').toUpperCase().includes(m)));
+  }
+  const activeFilter = countryFilter || regionFilter || (seasonFilter && SEASONS_LABELS[seasonFilter]);
   return (
     <div className="page-enter" style={{ padding: '64px 0 96px' }}>
       <div className="container">
@@ -473,14 +596,28 @@ const DiaryList = ({ params = {} }) => {
           <button onClick={() => setTab('recent')} style={{ padding: '10px 22px', borderRadius: 999, border: 'none', cursor: 'pointer', background: tab === 'recent' ? 'var(--clay-600)' : 'transparent', color: tab === 'recent' ? 'white' : 'var(--fg-2)', fontSize: 13, fontWeight: 500 }}>Viaggi recenti</button>
           <button onClick={() => setTab('world')} style={{ padding: '10px 22px', borderRadius: 999, border: 'none', cursor: 'pointer', background: tab === 'world' ? 'var(--clay-600)' : 'transparent', color: tab === 'world' ? 'white' : 'var(--fg-2)', fontSize: 13, fontWeight: 500 }}>Mete per il mondo</button>
         </div>
-        {tab === 'recent' && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
-            {ARTICLES.map((a, i) => (
-              <div key={a.id} className="rise" style={{ animationDelay: `${i * 60}ms` }}>
-                <ArticleCard article={a} onOpen={() => go('article', { id: a.id })} saved={saved.articles.has(a.id)} onSave={() => toggleSave('articles', a.id)} />
-              </div>
-            ))}
+        {activeFilter && (
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '8px 14px 8px 16px', background: 'var(--clay-100)', border: '1px solid var(--clay-300)', borderRadius: 999, marginBottom: 24, fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.06em', color: 'var(--clay-700)', textTransform: 'uppercase' }}>
+            FILTRO: <strong style={{ fontFamily: 'var(--font-display)', fontSize: 14, textTransform: 'none', letterSpacing: 0, color: 'var(--fg-1)' }}>{activeFilter}</strong>
+            <button onClick={() => { setCountryFilter(null); setRegionFilter(null); setSeasonFilter(null); }} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--clay-700)', fontSize: 16, marginLeft: 4, lineHeight: 1 }} aria-label="Rimuovi filtro">×</button>
+            <span style={{ marginLeft: 6, color: 'var(--fg-3)' }}>· {filtered.length} {filtered.length === 1 ? 'STORIA' : 'STORIE'}</span>
           </div>
+        )}
+        {tab === 'recent' && (
+          filtered.length > 0 ? (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+              {filtered.map((a, i) => (
+                <div key={a.id} className="rise" style={{ animationDelay: `${i * 60}ms` }}>
+                  <ArticleCard article={a} onOpen={() => go('article', { id: a.id })} saved={saved.articles.has(a.id)} onSave={() => toggleSave('articles', a.id)} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div style={{ padding: 60, textAlign: 'center', background: 'var(--bg-sunken)', borderRadius: 'var(--r-lg)' }}>
+              <p style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 22, color: 'var(--fg-2)', margin: '0 0 16px' }}>Nessuna storia per questo filtro — ancora.</p>
+              <button onClick={() => { setCountryFilter(null); setRegionFilter(null); setSeasonFilter(null); }} className="btn btn-secondary">Mostra tutte le storie</button>
+            </div>
+          )
         )}
         {tab === 'world' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 56 }}>
@@ -559,6 +696,16 @@ const Article = ({ params }) => {
           <p>La francesinha esiste davvero, le leggende sono accurate, e noi non siamo costruiti per affrontarla. Al secondo giorno siamo passati alle bifanas — panini di maiale grandi come un libro tascabile — e non ci siamo più ripresi.</p>
         </div>
         <blockquote>Il posto migliore in cui abbiamo mangiato era una tasca di cui non abbiamo mai imparato il nome. Due tavoli. Una nonna. €11 per tutto.</blockquote>
+        <aside style={{ margin: '40px -20px', padding: '28px 32px', background: 'var(--cream-100)', border: '1px solid var(--clay-300)', borderRadius: 'var(--r-md)', display: 'grid', gridTemplateColumns: '80px 1fr auto', gap: 24, alignItems: 'center', position: 'relative' }}>
+          <div style={{ width: 80, height: 80, borderRadius: 'var(--r-sm)', overflow: 'hidden', flexShrink: 0 }}>
+            <img src={a.image} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          </div>
+          <div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--clay-700)', marginBottom: 6 }}>↳ VIAGGIO COLLEGATO · 7 GIORNI · DA €1.480</div>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, lineHeight: 1.2, color: 'var(--fg-1)' }}>Vuoi vivere {a.title.split(',')[0].toLowerCase()} di persona?</div>
+          </div>
+          <Button variant="secondary" size="md" onClick={() => go('trip', { id: 'porto' })} icon="arrow-right">Vedi viaggio</Button>
+        </aside>
         <div style={{ position: 'relative' }}>
           <MarginNote side="right" rotate={2} top={10} color="var(--clay-800)">
             martedì 16:00 →<br />trucco confermato 🍷
@@ -661,12 +808,24 @@ const Bespoke = () => {
         {step === 1 && (
           <div className="page-enter">
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 44, fontWeight: 400, margin: '0 0 8px', letterSpacing: '-0.02em' }}>Dove e quando?</h2>
-            <p style={{ color: 'var(--fg-2)', marginBottom: 28 }}>Anche solo "Giappone in primavera" va bene. Si raffina insieme.</p>
+            <p style={{ color: 'var(--fg-2)', marginBottom: 24 }}>Anche solo "Giappone in primavera" va bene. Si raffina insieme.</p>
+            <div style={{ background: 'var(--forest-100)', border: '1px solid var(--forest-300, #c7d4cb)', borderRadius: 'var(--r-md)', padding: '16px 18px', marginBottom: 28 }}>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--forest-700)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 10 }}>★ PRIMA DI INIZIARE — SAPPI CHE</div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, fontSize: 13, color: 'var(--fg-1)' }}>
+                <li style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}><Icon name="check" size={14} style={{ color: 'var(--forest-700)', marginTop: 2 }} /> <span>Risposta entro <strong>3 giorni</strong> con itinerario</span></li>
+                <li style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}><Icon name="check" size={14} style={{ color: 'var(--forest-700)', marginTop: 2 }} /> <span><strong>Gratis e zero impegno</strong> fino a conferma</span></li>
+                <li style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}><Icon name="check" size={14} style={{ color: 'var(--forest-700)', marginTop: 2 }} /> <span>Ti scrive <strong>una persona vera</strong>, non un bot</span></li>
+                <li style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}><Icon name="check" size={14} style={{ color: 'var(--forest-700)', marginTop: 2 }} /> <span><strong>Zero email pubblicitarie</strong>, mai</span></li>
+              </ul>
+            </div>
             <div style={{ display: 'grid', gap: 16 }}>
               <Field label="Dove vorresti andare" placeholder="Giappone, Portogallo, ovunque ci siano montagne…" value={data.where} onChange={e => setData({ ...data, where: e.target.value })} error={errors.where} />
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
                 <Field label="Più o meno quando?" placeholder="Primavera 2026" value={data.when} onChange={e => setData({ ...data, when: e.target.value })} error={errors.when} />
                 <Field label="In quanti?" type="number" min="1" max="12" value={data.people} onChange={e => setData({ ...data, people: e.target.value })} />
+              </div>
+              <div style={{ marginTop: 4, padding: '10px 14px', background: 'var(--bg-sunken)', borderRadius: 'var(--r-sm)', fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.04em' }}>
+                I prossimi 3 step (vibe, interessi, budget) sono <strong style={{ color: 'var(--fg-2)' }}>opzionali</strong> — puoi saltarli e ti facciamo qualche domanda nella prima email.
               </div>
             </div>
           </div>
@@ -745,12 +904,29 @@ const Bespoke = () => {
         {step === 5 && (
           <div className="page-enter">
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 44, fontWeight: 400, margin: '0 0 8px', letterSpacing: '-0.02em' }}>Dove ti scriviamo?</h2>
-            <p style={{ color: 'var(--fg-2)', marginBottom: 28 }}>Ti rispondiamo entro tre giorni lavorativi.</p>
+            <p style={{ color: 'var(--fg-2)', marginBottom: 28 }}>Ti rispondiamo entro tre giorni lavorativi. Da una persona vera.</p>
             <div style={{ display: 'grid', gap: 16 }}>
               <Field label="Nome" placeholder="Anna Rossi" value={data.name} onChange={e => setData({ ...data, name: e.target.value })} error={errors.name} />
               <Field label="Email" type="email" placeholder="anna@esempio.it" value={data.email} onChange={e => setData({ ...data, email: e.target.value })} error={errors.email} />
             </div>
-            <div style={{ marginTop: 28, padding: 20, background: 'var(--bg-sunken)', borderRadius: 'var(--r-md)', fontSize: 14, color: 'var(--fg-2)' }}>
+            <div style={{ marginTop: 24, padding: 20, background: 'var(--cream-100)', borderRadius: 'var(--r-md)' }}>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 14 }}>★ COSA SUCCEDE ADESSO</div>
+              <div style={{ display: 'grid', gap: 14 }}>
+                {[
+                  { n: '01', d: 'Oggi', t: 'Riceviamo la tua richiesta. Niente conferme automatiche fastidiose.' },
+                  { n: '02', d: 'Entro 24h', t: 'Ti scriviamo a mano per chiarire 2-3 cose.' },
+                  { n: '03', d: 'Entro 3 giorni', t: 'Itinerario di prova con prezzi reali e tempi.' },
+                  { n: '04', d: 'Quando vuoi', t: 'Conferma con acconto 30% o chiedi modifiche. Zero pressione.' },
+                ].map((s, i) => (
+                  <div key={i} style={{ display: 'grid', gridTemplateColumns: '32px 90px 1fr', gap: 12, alignItems: 'flex-start' }}>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--clay-700)', letterSpacing: '0.04em' }}>{s.n}</div>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.06em', textTransform: 'uppercase', paddingTop: 2 }}>{s.d}</div>
+                    <div style={{ fontSize: 13, color: 'var(--fg-1)', lineHeight: 1.5 }}>{s.t}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div style={{ marginTop: 20, padding: 20, background: 'var(--bg-sunken)', borderRadius: 'var(--r-md)', fontSize: 14, color: 'var(--fg-2)' }}>
               <Meta>RIEPILOGO</Meta>
               <div style={{ marginTop: 8 }}><strong>{data.where || '—'}</strong> · {data.when || '—'} · {data.people} persone</div>
               {data.vibes.size > 0 && <div style={{ marginTop: 4 }}>Vibe: {Array.from(data.vibes).join(', ')}</div>}
@@ -760,10 +936,20 @@ const Bespoke = () => {
           </div>
         )}
 
-        <div style={{ display: 'flex', gap: 8, marginTop: 36 }}>
-          <Button variant="primary" size="lg" onClick={next} loading={loading} icon="arrow-right">{step === total ? 'Invia richiesta' : 'Continua'}</Button>
+        <div style={{ display: 'flex', gap: 8, marginTop: 36, flexWrap: 'wrap', alignItems: 'center' }}>
+          <Button variant="primary" size="lg" onClick={next} loading={loading} icon="arrow-right">{step === total ? 'Invia richiesta gratuita' : 'Continua'}</Button>
           {step < total && <Button variant="ghost" size="lg" onClick={() => setStep(step + 1)}>Salta</Button>}
+          {step > 1 && step < total && (
+            <button onClick={() => setStep(total)} style={{ marginLeft: 'auto', background: 'transparent', border: 'none', fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 15, color: 'var(--clay-700)', cursor: 'pointer', textDecoration: 'underline', textDecorationStyle: 'dotted', textUnderlineOffset: '4px' }}>
+              Vai direttamente all'invio →
+            </button>
+          )}
         </div>
+        {step === total && (
+          <div style={{ marginTop: 14, fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--fg-3)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+            ★ GRATIS · NESSUN IMPEGNO · NESSUNA EMAIL PROMOZIONALE
+          </div>
+        )}
       </div>
     </div>
   );

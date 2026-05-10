@@ -100,6 +100,9 @@
         case 'types': page = <TripTypesPage />; break;
         case 'shop': page = <ShopPage />; break;
         case 'share': page = <Share params={route.params} />; break;
+        case 'privacy': page = <LegalPage pageKey="privacy" />; break;
+        case 'terms': page = <LegalPage pageKey="terms" />; break;
+        case 'cookie': page = <LegalPage pageKey="cookie" />; break;
         default: page = <Home />;
       }
 
