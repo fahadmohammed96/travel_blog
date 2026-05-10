@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <title>Oops I Roamed — Vista mobile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; min-height: 100vh; background: #1F2A22; font-family: -apple-system, system-ui, sans-serif; }
+    body {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 24px; padding: 32px 16px;
+      background:
+        radial-gradient(ellipse at top, #2a3a30 0%, #1F2A22 60%);
+      color: #F8F4EC;
+    }
+    .header {
+      text-align: center; max-width: 480px;
+    }
+    .header h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic; font-weight: 400;
+      font-size: 28px; margin: 0 0 8px;
+      color: #F8F4EC;
+    }
+    .header p {
+      font-size: 14px; color: rgba(248,244,236,0.7); margin: 0;
+      line-height: 1.5;
+    }
+    .header strong { color: #F5C547; font-weight: 600; }
+
+    .frame-wrap {
+      position: relative;
+      transform-origin: center center;
+    }
+
+    /* iPhone bezel */
+    .iphone {
+      width: 390px; height: 844px;
+      border-radius: 54px;
+      background: #0a0a0a;
+      padding: 12px;
+      box-shadow:
+        0 0 0 2px #2a2a2a,
+        0 0 0 3px #0a0a0a,
+        0 50px 100px rgba(0,0,0,0.5),
+        0 20px 40px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .iphone-screen {
+      width: 100%; height: 100%;
+      border-radius: 42px;
+      overflow: hidden;
+      background: #F8F4EC;
+      position: relative;
+    }
+    .dynamic-island {
+      position: absolute;
+      top: 22px; left: 50%; transform: translateX(-50%);
+      width: 120px; height: 35px;
+      background: #000; border-radius: 20px;
+      z-index: 100;
+    }
+    .home-indicator {
+      position: absolute;
+      bottom: 20px; left: 50%; transform: translateX(-50%);
+      width: 134px; height: 5px;
+      background: rgba(0,0,0,0.4); border-radius: 100px;
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    /* Side buttons */
+    .iphone::before {
+      content: '';
+      position: absolute;
+      left: -3px; top: 180px;
+      width: 4px; height: 90px;
+      background: #1a1a1a;
+      border-radius: 2px 0 0 2px;
+    }
+    .iphone::after {
+      content: '';
+      position: absolute;
+      right: -3px; top: 180px;
+      width: 4px; height: 60px;
+      background: #1a1a1a;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* The iframe — scaled so 1280px desktop fits in 390px wide screen */
+    iframe {
+      border: 0;
+      width: 1280px;
+      height: 2770px; /* 1280 / 390 * 844 ≈ 2770 */
+      transform: scale(0.305); /* 390 / 1280 = 0.305 */
+      transform-origin: top left;
+      display: block;
+    }
+
+    .footer {
+      text-align: center; max-width: 480px;
+      font-size: 13px; color: rgba(248,244,236,0.5);
+      line-height: 1.6;
+    }
+    .footer code {
+      background: rgba(245,197,71,0.15);
+      color: #F5C547;
+      padding: 2px 6px; border-radius: 4px;
+      font-size: 12px;
+    }
+
+    /* Mobile-friendly: scale down whole device on small screens */
+    @media (max-width: 460px) {
+      .frame-wrap { transform: scale(0.85); }
+    }
+    @media (max-width: 400px) {
+      .frame-wrap { transform: scale(0.75); }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Vista mobile — <strong>caveat</strong></h1>
+    <p>Il prototipo è progettato per <strong>desktop a 1280px</strong>. Qui lo vedi <em>scalato</em> dentro un iPhone — utile per giudicare la composizione, ma il design <strong>non è ottimizzato per mobile</strong>. Per una vera versione mobile servirebbe un layout dedicato.</p>
+  </div>
+
+  <div class="frame-wrap">
+    <div class="iphone">
+      <div class="iphone-screen">
+        <div class="dynamic-island"></div>
+        <iframe src="index.html" title="Prototipo Oops I Roamed"></iframe>
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Per costruire una versione mobile dedicata (header collapsato, hero a colonna singola, navigazione a tab in basso, card stack…) chiedimi di farla.
+  </div>
+</body>
+</html>

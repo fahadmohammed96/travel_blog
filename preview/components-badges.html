@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;padding:24px;background:var(--bg);display:flex;flex-direction:column;gap:10px;}
+  .b{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:var(--r-pill);font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.04em;width:fit-content;}
+  .diary{background:var(--forest-100);color:var(--forest-800);}
+  .trip{background:var(--clay-100);color:var(--clay-900);}
+  .new{background:var(--primary);color:var(--fg-on-dark);}
+  .soldout{background:var(--ink-1000);color:var(--cream-50);}
+  .row{display:flex;gap:8px;flex-wrap:wrap;}
+  .dot{width:6px;height:6px;border-radius:50%;background:currentColor;}
+</style></head>
+<body>
+<div class="row">
+  <span class="b diary">DIARY</span>
+  <span class="b trip">ROAMED TRIP</span>
+  <span class="b new">NEW</span>
+  <span class="b soldout">SOLD OUT</span>
+</div>
+<div class="row" style="margin-top:6px">
+  <span class="b" style="background:var(--bg-elevated);border:1px solid var(--border)"><span class="dot" style="background:var(--success)"></span>4 spots left</span>
+  <span class="b" style="background:var(--bg-elevated);border:1px solid var(--border)"><span class="dot" style="background:var(--warning)"></span>Filling fast</span>
+  <span class="b" style="background:var(--bg-elevated);border:1px solid var(--border);color:var(--fg-2)">€1,890 / person</span>
+</div>
+</body></html>
