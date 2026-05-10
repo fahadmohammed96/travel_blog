@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<title>Home — 3 varianti tonali</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;600&display=swap" />
+<style>
+  /* ==== ARTBOARD COMMON ==== */
+  body { margin: 0; background: #2a2a2a; font-family: 'Inter Tight', sans-serif; color: #eee; }
+  .canvas { padding: 48px; display: flex; flex-direction: column; gap: 96px; }
+  .row { display: flex; gap: 48px; align-items: flex-start; }
+  .ab-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #999; margin-bottom: 12px; display: flex; gap: 16px; align-items: baseline; }
+  .ab-label strong { color: #fff; font-weight: 500; letter-spacing: 0.08em; }
+  .ab-frame { width: 1280px; height: 900px; overflow: hidden; border-radius: 12px; box-shadow: 0 24px 60px rgba(0,0,0,0.4); position: relative; }
+
+  /* ==== VARIANT A — "warmer-current": sobrio, solo più caldo ==== */
+  .vA { 
+    --vA-cream-50: #FBF8F2;
+    --vA-cream-100: #F5EFE3;
+    --vA-cream-200: #ECE3CE;
+    --vA-clay: #D67D3E;        /* più squillante del clay attuale */
+    --vA-clay-soft: #F4DDC8;
+    --vA-forest: #2D5A3D;
+    --vA-ink: #1F2A22;
+    --vA-ink-2: #5A645A;
+    background: var(--vA-cream-100); color: var(--vA-ink);
+    font-family: 'Inter Tight', sans-serif;
+  }
+  .vA .hdr { display: flex; align-items: center; justify-content: space-between; padding: 24px 48px; background: rgba(245,239,227,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(15,26,20,0.06); position: relative; z-index: 5; }
+  .vA .brand { display: flex; align-items: center; gap: 10px; }
+  .vA .brand-mark { width: 32px; height: 32px; border-radius: 999px; background: var(--vA-clay); display: flex; align-items: center; justify-content: center; color: white; font-family: 'Fraunces'; font-size: 18px; font-style: italic; }
+  .vA .brand-name { font-family: 'Fraunces'; font-weight: 400; font-size: 17px; letter-spacing: -0.01em; }
+  .vA .nav { display: flex; gap: 28px; font-size: 14px; }
+  .vA .nav a { color: var(--vA-ink); text-decoration: none; }
+  .vA .btn-pill { padding: 10px 18px; border-radius: 999px; border: 1px solid rgba(15,26,20,0.2); font-size: 13px; cursor: pointer; background: transparent; color: var(--vA-ink); }
+  
+  .vA .hero { padding: 64px 48px 80px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+  .vA .hero-eyebrow { font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--vA-clay); margin-bottom: 24px; display: flex; gap: 12px; align-items: center; }
+  .vA .hero-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--vA-clay); }
+  .vA .hero-h1 { font-family: 'Fraunces'; font-weight: 300; font-size: 88px; line-height: 1.02; letter-spacing: -0.025em; margin: 0 0 28px; font-variation-settings: "opsz" 144, "SOFT" 60; }
+  .vA .hero-h1 em { font-style: italic; font-weight: 300; color: var(--vA-clay); }
+  .vA .hero-p { font-size: 19px; line-height: 1.55; color: var(--vA-ink-2); max-width: 460px; margin: 0 0 32px; }
+  .vA .hero-ctas { display: flex; gap: 12px; align-items: center; }
+  .vA .btn-primary { background: var(--vA-clay); color: white; padding: 14px 24px; border-radius: 999px; border: none; font-size: 15px; font-weight: 500; cursor: pointer; }
+  .vA .btn-ghost { background: transparent; color: var(--vA-ink); padding: 14px 16px; border: none; font-size: 15px; font-weight: 500; cursor: pointer; }
+  .vA .hero-img { aspect-ratio: 4/5; border-radius: 12px; overflow: hidden; position: relative; }
+  .vA .hero-img img { width: 100%; height: 100%; object-fit: cover; }
+  .vA .hero-stamp { position: absolute; top: 24px; right: 24px; background: white; padding: 10px 14px; border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.1em; transform: rotate(4deg); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+  
+  .vA .strip { display: flex; gap: 48px; padding: 0 48px 48px; align-items: center; }
+  .vA .strip-item { font-family: 'Fraunces'; font-style: italic; font-weight: 300; font-size: 22px; color: var(--vA-ink-2); }
+  .vA .strip-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--vA-clay); }
+
+  /* ==== VARIANT B — "joyful": più colore, più aria, copy giocoso ==== */
+  .vB {
+    --vB-bg: #F8F4EC;          /* cream base */
+    --vB-sky: #C9DDF0;         /* azzurro vacanziero */
+    --vB-sun: #F5C547;         /* giallo sole */
+    --vB-coral: #E87B5A;       /* corallo amico */
+    --vB-mint: #B4D4BA;        /* verdino fresco */
+    --vB-ink: #1F2A22;
+    --vB-ink-2: #5A645A;
+    background: var(--vB-bg); color: var(--vB-ink);
+  }
+  .vB .hdr { display: flex; align-items: center; justify-content: space-between; padding: 24px 48px; background: var(--vB-bg); position: sticky; top: 0; z-index: 5; }
+  .vB .brand { display: flex; align-items: center; gap: 10px; font-family: 'Fraunces'; font-style: italic; font-size: 22px; }
+  .vB .brand-dot { width: 14px; height: 14px; border-radius: 999px; background: var(--vB-sun); display: inline-block; box-shadow: 0 0 0 4px rgba(245,197,71,0.25); }
+  .vB .nav { display: flex; gap: 32px; font-size: 14px; font-weight: 500; }
+  .vB .nav a { color: var(--vB-ink); text-decoration: none; }
+  .vB .btn-cta { padding: 12px 22px; border-radius: 999px; background: var(--vB-ink); color: var(--vB-bg); font-size: 14px; font-weight: 500; border: none; cursor: pointer; }
+
+  .vB .hero { padding: 32px 48px 64px; position: relative; }
+  .vB .sun { position: absolute; top: 40px; right: 64px; width: 140px; height: 140px; border-radius: 999px; background: var(--vB-sun); opacity: 0.5; filter: blur(2px); }
+  .vB .hero-eyebrow { font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--vB-coral); margin-bottom: 28px; }
+  .vB .hero-h1 { font-family: 'Fraunces'; font-weight: 300; font-size: 124px; line-height: 0.95; letter-spacing: -0.035em; margin: 0 0 32px; max-width: 1000px; font-variation-settings: "opsz" 144, "SOFT" 100; }
+  .vB .hero-h1 em { font-style: italic; font-weight: 300; }
+  .vB .hero-h1 .underline-coral { background: linear-gradient(transparent 70%, var(--vB-coral) 70%, var(--vB-coral) 92%, transparent 92%); }
+  .vB .hero-h1 .badge-mint { background: var(--vB-mint); padding: 0 16px; border-radius: 12px; font-style: italic; font-weight: 300; display: inline-block; transform: rotate(-1.5deg); }
+  .vB .hero-row { display: flex; gap: 40px; align-items: flex-end; margin-top: 40px; max-width: 1000px; }
+  .vB .hero-p { font-size: 21px; line-height: 1.5; color: var(--vB-ink-2); max-width: 480px; margin: 0; flex: 1; }
+  .vB .hero-cta { display: flex; gap: 12px; }
+  .vB .btn-big { padding: 18px 28px; border-radius: 999px; background: var(--vB-coral); color: white; font-size: 16px; font-weight: 500; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; }
+  .vB .btn-big-ghost { padding: 18px 24px; border-radius: 999px; background: white; color: var(--vB-ink); border: 1px solid rgba(15,26,20,0.12); font-size: 16px; font-weight: 500; cursor: pointer; }
+
+  .vB .vibes { display: flex; gap: 16px; padding: 0 48px 48px; flex-wrap: wrap; }
+  .vB .vibe { padding: 8px 16px; border-radius: 999px; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; }
+  .vB .vibe-1 { background: var(--vB-sky); }
+  .vB .vibe-2 { background: var(--vB-mint); }
+  .vB .vibe-3 { background: var(--vB-sun); }
+  .vB .vibe-4 { background: var(--vB-coral); color: white; }
+  .vB .vibe-5 { background: white; border: 1px dashed rgba(15,26,20,0.3); }
+
+  /* ==== VARIANT C — "playful": brand allegro, pop, quasi giocattolo ==== */
+  .vC {
+    --vC-bg: #FFF6E9;
+    --vC-pink: #F5B7C9;
+    --vC-yellow: #FFD24C;
+    --vC-blue: #6FA8D6;
+    --vC-mint: #9ED9B8;
+    --vC-orange: #F08456;
+    --vC-ink: #2B1F1A;
+    --vC-ink-2: #6B5C52;
+    background: var(--vC-bg); color: var(--vC-ink);
+  }
+  .vC .hdr { display: flex; align-items: center; justify-content: space-between; padding: 24px 40px; }
+  .vC .brand-blob { display: flex; align-items: center; gap: 8px; background: var(--vC-ink); color: var(--vC-bg); padding: 8px 18px 8px 12px; border-radius: 999px; font-family: 'Fraunces'; font-style: italic; font-size: 18px; }
+  .vC .brand-emoji { width: 26px; height: 26px; border-radius: 999px; background: var(--vC-yellow); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .vC .nav-pills { display: flex; gap: 8px; }
+  .vC .nav-pill { padding: 8px 16px; border-radius: 999px; background: white; font-size: 13px; font-weight: 500; border: 1px solid rgba(15,26,20,0.08); cursor: pointer; }
+  .vC .nav-pill.on { background: var(--vC-ink); color: var(--vC-bg); border-color: transparent; }
+  .vC .btn-go { padding: 10px 18px; border-radius: 999px; background: var(--vC-orange); color: white; font-size: 14px; font-weight: 600; border: none; cursor: pointer; box-shadow: 0 4px 0 rgba(0,0,0,0.1); }
+
+  .vC .hero { padding: 48px 40px 64px; position: relative; }
+  .vC .blob-1 { position: absolute; top: 10px; left: 200px; width: 80px; height: 80px; border-radius: 999px; background: var(--vC-pink); }
+  .vC .blob-2 { position: absolute; top: 50%; right: 80px; width: 120px; height: 120px; border-radius: 999px; background: var(--vC-yellow); }
+  .vC .blob-3 { position: absolute; bottom: 30px; left: 60px; width: 60px; height: 60px; border-radius: 999px; background: var(--vC-mint); }
+  .vC .hero-row { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; position: relative; z-index: 2; }
+  .vC .hero-eyebrow { display: inline-flex; padding: 6px 14px; border-radius: 999px; background: var(--vC-yellow); font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px; }
+  .vC .hero-h1 { font-family: 'Fraunces'; font-weight: 400; font-size: 96px; line-height: 0.98; letter-spacing: -0.03em; margin: 0 0 24px; font-variation-settings: "opsz" 144, "SOFT" 100; }
+  .vC .hero-h1 em { font-style: italic; }
+  .vC .hero-h1 .pop-1 { color: var(--vC-orange); }
+  .vC .hero-h1 .pop-2 { color: var(--vC-blue); }
+  .vC .hero-p { font-size: 18px; line-height: 1.55; color: var(--vC-ink-2); max-width: 440px; margin: 0 0 24px; }
+  .vC .hero-ctas { display: flex; gap: 10px; }
+  .vC .btn-bouncy { padding: 16px 28px; border-radius: 999px; background: var(--vC-ink); color: var(--vC-bg); font-size: 16px; font-weight: 500; border: none; cursor: pointer; box-shadow: 0 6px 0 rgba(0,0,0,0.15); }
+  .vC .btn-soft { padding: 16px 24px; border-radius: 999px; background: white; color: var(--vC-ink); font-size: 16px; font-weight: 500; border: 1.5px solid var(--vC-ink); cursor: pointer; }
+  .vC .stack-imgs { position: relative; aspect-ratio: 1; }
+  .vC .stack-imgs img { position: absolute; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+  .vC .stack-imgs .img-1 { top: 10%; left: 5%; width: 60%; aspect-ratio: 4/5; transform: rotate(-4deg); object-fit: cover; }
+  .vC .stack-imgs .img-2 { top: 5%; right: 0; width: 50%; aspect-ratio: 1; transform: rotate(5deg); object-fit: cover; }
+  .vC .stack-imgs .img-3 { bottom: 0; left: 25%; width: 55%; aspect-ratio: 4/3; transform: rotate(2deg); object-fit: cover; }
+
+  .vC .footer-strip { display: flex; gap: 24px; padding: 0 40px 40px; align-items: center; flex-wrap: wrap; }
+  .vC .footer-strip span { font-family: 'Fraunces'; font-style: italic; font-size: 18px; color: var(--vC-ink-2); }
+  .vC .badge-stamp { padding: 4px 10px; border-radius: 4px; font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.08em; transform: rotate(-2deg); display: inline-block; }
+  .vC .stamp-y { background: var(--vC-yellow); }
+  .vC .stamp-p { background: var(--vC-pink); }
+  .vC .stamp-m { background: var(--vC-mint); }
+
+  /* ==== Notes panel ==== */
+  .note { width: 320px; flex-shrink: 0; padding-top: 60px; color: #ddd; font-size: 13px; line-height: 1.65; }
+  .note h3 { font-family: 'Fraunces'; font-weight: 400; font-size: 22px; color: white; margin: 0 0 14px; letter-spacing: -0.01em; }
+  .note .pal { display: flex; gap: 6px; margin: 14px 0; }
+  .note .pal i { width: 24px; height: 24px; border-radius: 999px; display: block; }
+  .note p { margin: 0 0 12px; color: #bbb; }
+  .note .key { font-family: 'JetBrains Mono'; font-size: 11px; color: #999; letter-spacing: 0.05em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <!-- HEADER -->
+  <div style="max-width: 1700px; margin: 0 auto 0;">
+    <h1 style="font-family: 'Fraunces'; font-weight: 300; font-size: 56px; margin: 0 0 12px; color: white; letter-spacing: -0.02em;">Tre direzioni per il tono.</h1>
+    <p style="font-size: 16px; color: #999; max-width: 720px; margin: 0 0 8px; line-height: 1.6;">Stessi valori — spensieratezza e felicità — interpretati con tre intensità diverse. Da sinistra a destra: meno cambiamento → più cambiamento. Scegli quella che ti sembra "te" e la propago a tutto il sito.</p>
+    <p style="font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.1em; color: #777; text-transform: uppercase; margin-top: 16px;">Le immagini sono placeholder — le sostituirai tu.</p>
+  </div>
+
+  <!-- ==== ROW 1: VARIANTE A ==== -->
+  <div class="row">
+    <div>
+      <div class="ab-label"><strong>A · Warmer current</strong> · stessa famiglia, più calda e ariosa</div>
+      <div class="ab-frame vA">
+        <div class="hdr">
+          <div class="brand">
+            <div class="brand-mark"><em>O</em></div>
+            <div class="brand-name">Oops I Roamed</div>
+          </div>
+          <div class="nav">
+            <a>Viaggi</a><a>Diario</a><a>Su misura</a><a>Chi siamo</a>
+          </div>
+          <button class="btn-pill">Accedi</button>
+        </div>
+        <div class="hero">
+          <div>
+            <div class="hero-eyebrow">Vai dove ti tira</div>
+            <h1 class="hero-h1">Va a finire<br/><em>che torni felice.</em></h1>
+            <p class="hero-p">Viaggi piccoli, in piccoli gruppi, dove la giornata non è un'agenda ma una scusa per perdersi. Tu metti la voglia, noi mettiamo le indicazioni — quelle vere.</p>
+            <div class="hero-ctas">
+              <button class="btn-primary">Guarda i viaggi →</button>
+              <button class="btn-ghost">Come funziona</button>
+            </div>
+          </div>
+          <div class="hero-img">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80" alt="" />
+            <div class="hero-stamp">PORTO · APR 2025</div>
+          </div>
+        </div>
+        <div class="strip">
+          <div class="strip-item"><em>piccoli gruppi</em></div>
+          <div class="strip-dot"></div>
+          <div class="strip-item"><em>guide locali</em></div>
+          <div class="strip-dot"></div>
+          <div class="strip-item"><em>zero rigidità</em></div>
+          <div class="strip-dot"></div>
+          <div class="strip-item"><em>un sacco di soste gelato</em></div>
+        </div>
+      </div>
+    </div>
+    <div class="note">
+      <h3>A · "Aggiusta dentro lo stile"</h3>
+      <span class="key">PALETTE</span>
+      <div class="pal">
+        <i style="background:#F5EFE3"></i>
+        <i style="background:#FBF8F2"></i>
+        <i style="background:#D67D3E"></i>
+        <i style="background:#2D5A3D"></i>
+        <i style="background:#1F2A22"></i>
+      </div>
+      <p>Cream più cremoso, clay più squillante (D67D3E vs C97B3A attuale). Forest in ritirata, usato solo come accento profondo.</p>
+      <p><strong>Cambia poco:</strong> chi conosce il sito attuale lo riconosce. <strong>Cosa è leggero:</strong> headline più aerea, italico per la promessa felice, "stamp" diaristici sulle foto, microcopy sorridente ("un sacco di soste gelato").</p>
+      <p><strong>Quando vince:</strong> se vuoi continuità, se temi un riposizionamento brusco, se la base utenti attuale è affezionata.</p>
+    </div>
+  </div>
+
+  <!-- ==== ROW 2: VARIANTE B ==== -->
+  <div class="row">
+    <div>
+      <div class="ab-label"><strong>B · Joyful move</strong> · più colore, più aria, copy giocoso (ma elegante)</div>
+      <div class="ab-frame vB">
+        <div class="hdr">
+          <div class="brand">
+            <span class="brand-dot"></span>
+            <span>Oops I Roamed</span>
+          </div>
+          <div class="nav">
+            <a>Viaggi</a><a>Diario</a><a>Su misura</a><a>Chi siamo</a>
+          </div>
+          <button class="btn-cta">Comincia →</button>
+        </div>
+        <div class="hero">
+          <div class="sun"></div>
+          <div class="hero-eyebrow">— Agenzia di viaggio leggera, dal 2021</div>
+          <h1 class="hero-h1"><em>Vai,</em><br/>che torni <span class="underline-coral">leggera.</span><br/><span class="badge-mint">Promesso.</span></h1>
+          <div class="hero-row">
+            <p class="hero-p">Niente itinerari da incubo, niente sveglie alle 6, niente foto-ricordo davanti alla cattedrale. Viaggi pensati per farti rilassare il cervello — non per riempirti l'agenda.</p>
+            <div class="hero-cta">
+              <button class="btn-big">Scegli un viaggio →</button>
+              <button class="btn-big-ghost">Vediamo</button>
+            </div>
+          </div>
+        </div>
+        <div class="vibes">
+          <span class="vibe vibe-1">☁ piccoli gruppi</span>
+          <span class="vibe vibe-2">✿ ritmo lento</span>
+          <span class="vibe vibe-3">☀ guide del posto</span>
+          <span class="vibe vibe-4">♥ niente fretta</span>
+          <span class="vibe vibe-5">✎ tante pause caffè</span>
+        </div>
+      </div>
+    </div>
+    <div class="note">
+      <h3>B · "Mossa decisa"</h3>
+      <span class="key">PALETTE — cieli e mari</span>
+      <div class="pal">
+        <i style="background:#F8F4EC"></i>
+        <i style="background:#C9DDF0"></i>
+        <i style="background:#F5C547"></i>
+        <i style="background:#E87B5A"></i>
+        <i style="background:#B4D4BA"></i>
+      </div>
+      <p>Cream + azzurro cielo + giallo sole + corallo amico + verdino menta. Vacanziera senza essere tropicale.</p>
+      <p><strong>Quattro cose nuove:</strong> headline gigante con "highlight" colorato, copy con ironia ("niente sveglie alle 6"), pillole-vibe colorate al posto della classica feature list, sole sullo sfondo.</p>
+      <p><strong>Quando vince:</strong> se vuoi distinguerti chiaramente da agenzie istituzionali, se il pubblico è 28-45, se "leggerezza" è la promessa centrale.</p>
+    </div>
+  </div>
+
+  <!-- ==== ROW 3: VARIANTE C ==== -->
+  <div class="row">
+    <div>
+      <div class="ab-label"><strong>C · Reset forte</strong> · pop, allegro, distintivo (rischioso)</div>
+      <div class="ab-frame vC">
+        <div class="hdr">
+          <div class="brand-blob">
+            <span class="brand-emoji">○</span>
+            <span>oops i roamed</span>
+          </div>
+          <div class="nav-pills">
+            <button class="nav-pill on">Home</button>
+            <button class="nav-pill">Viaggi</button>
+            <button class="nav-pill">Diario</button>
+            <button class="nav-pill">Roam your way</button>
+          </div>
+          <button class="btn-go">Vai!</button>
+        </div>
+        <div class="hero">
+          <div class="blob-1"></div>
+          <div class="blob-2"></div>
+          <div class="blob-3"></div>
+          <div class="hero-row">
+            <div>
+              <div class="hero-eyebrow">★ una piccola agenzia felice</div>
+              <h1 class="hero-h1">Viaggia <em class="pop-1">leggera.</em><br/>Torna <em class="pop-2">felice.</em><br/>Ripeti.</h1>
+              <p class="hero-p">Facciamo viaggi piccoli, in posti veri, con persone che ridono. Niente "esperienze immersive". Promesso.</p>
+              <div class="hero-ctas">
+                <button class="btn-bouncy">Dove andiamo →</button>
+                <button class="btn-soft">Cinque minuti, raccontami</button>
+              </div>
+            </div>
+            <div class="stack-imgs">
+              <img class="img-1" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="" />
+              <img class="img-2" src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?w=400&q=80" alt="" />
+              <img class="img-3" src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&q=80" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="footer-strip">
+          <span class="badge-stamp stamp-y">Dal 2021</span>
+          <span>↳ siamo in 4</span>
+          <span class="badge-stamp stamp-p">Italia · Portogallo · Marocco</span>
+          <span>↳ e tu sei il quinto</span>
+          <span class="badge-stamp stamp-m">Niente fretta</span>
+        </div>
+      </div>
+    </div>
+    <div class="note">
+      <h3>C · "Reset forte"</h3>
+      <span class="key">PALETTE — sorbetti</span>
+      <div class="pal">
+        <i style="background:#FFF6E9"></i>
+        <i style="background:#F5B7C9"></i>
+        <i style="background:#FFD24C"></i>
+        <i style="background:#9ED9B8"></i>
+        <i style="background:#F08456"></i>
+      </div>
+      <p>Pastello rosa-giallo-mint-corallo. Bottoni con ombra "fumetto" per leggerezza. Logo a "blob" colorato. Headline con pop colorati nelle parole-chiave.</p>
+      <p><strong>Cambia molto:</strong> brand-blob al posto del logo, nav a pillole, header senza linea di separazione, stack di foto ruotate stile cartolina, stampini colorati.</p>
+      <p><strong>Quando vince:</strong> se vuoi essere riconoscibile in un colpo d'occhio in feed Instagram, se il pubblico target è 25-38 e disposto a un brand "non da agenzia", se hai contenuti foto belli e spontanei.</p>
+      <p><strong>Rischio:</strong> alcuni potrebbero leggere "infantile" invece che "spensierato". Vediamo dal vivo.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

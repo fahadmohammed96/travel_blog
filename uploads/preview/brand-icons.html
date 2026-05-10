@@ -1,0 +1,30 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+  body{margin:0;padding:24px;background:var(--bg);}
+  .grid{display:grid;grid-template-columns:repeat(8,1fr);gap:18px 12px;color:var(--fg-1);}
+  .cell{display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--font-mono);font-size:9px;color:var(--fg-3);}
+  .cell svg{width:22px;height:22px;stroke-width:1.75;}
+</style></head>
+<body>
+<div class="grid">
+  <div class="cell"><i data-lucide="map"></i>map</div>
+  <div class="cell"><i data-lucide="compass"></i>compass</div>
+  <div class="cell"><i data-lucide="plane"></i>plane</div>
+  <div class="cell"><i data-lucide="train"></i>train</div>
+  <div class="cell"><i data-lucide="bed"></i>bed</div>
+  <div class="cell"><i data-lucide="coffee"></i>coffee</div>
+  <div class="cell"><i data-lucide="camera"></i>camera</div>
+  <div class="cell"><i data-lucide="bookmark"></i>bookmark</div>
+  <div class="cell"><i data-lucide="search"></i>search</div>
+  <div class="cell"><i data-lucide="heart"></i>heart</div>
+  <div class="cell"><i data-lucide="calendar"></i>calendar</div>
+  <div class="cell"><i data-lucide="users"></i>users</div>
+  <div class="cell"><i data-lucide="arrow-right"></i>arrow</div>
+  <div class="cell"><i data-lucide="chevron-down"></i>chevron</div>
+  <div class="cell"><i data-lucide="menu"></i>menu</div>
+  <div class="cell"><i data-lucide="mail"></i>mail</div>
+</div>
+<script>lucide.createIcons();</script>
+</body></html>

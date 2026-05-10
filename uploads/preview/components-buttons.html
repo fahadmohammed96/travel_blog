@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;padding:28px;background:var(--bg);}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px;}
+  .btn{font-family:var(--font-body);font-weight:500;font-size:14px;border-radius:var(--r-pill);padding:10px 20px;cursor:pointer;border:1px solid transparent;transition:all 220ms cubic-bezier(.22,1,.36,1);}
+  .primary{background:var(--primary);color:var(--fg-on-dark);}
+  .primary:hover{background:var(--primary-hover);}
+  .secondary{background:transparent;color:var(--fg-1);border-color:var(--border-strong);}
+  .secondary:hover{background:rgba(15,26,20,.04);}
+  .accent{background:var(--accent);color:var(--fg-on-accent);}
+  .accent:hover{background:var(--accent-hover);}
+  .ghost{background:transparent;color:var(--primary);}
+  .ghost:hover{background:var(--primary-soft);}
+  .lg{padding:14px 28px;font-size:15px;}
+  .sm{padding:6px 14px;font-size:12px;}
+  .lbl{font-family:var(--font-mono);font-size:10px;color:var(--fg-3);width:80px;}
+</style></head>
+<body>
+<div class="row"><div class="lbl">PRIMARY</div><button class="btn primary">Book this trip</button><button class="btn primary lg">Book this trip</button><button class="btn primary sm">Book</button></div>
+<div class="row"><div class="lbl">SECONDARY</div><button class="btn secondary">Read the diary</button><button class="btn ghost">Plan my own →</button></div>
+<div class="row"><div class="lbl">ACCENT</div><button class="btn accent">Roam your way</button></div>
+</body></html>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80" preserveAspectRatio="none">
+  <defs>
+    <pattern id="perf" x="0" y="0" width="12" height="80" patternUnits="userSpaceOnUse">
+      <circle cx="6" cy="40" r="2.5" fill="#F2EDE4"></circle>
+    </pattern>
+  </defs>
+  <rect width="320" height="80" fill="#FAF6EC" stroke="#0F1A14" stroke-opacity="0.12" stroke-width="1"></rect>
+  <rect x="155" y="0" width="10" height="80" fill="url(#perf)"></rect>
+  <line x1="160" y1="4" x2="160" y2="76" stroke="#0F1A14" stroke-opacity="0.2" stroke-dasharray="2 4"></line>
+</svg>

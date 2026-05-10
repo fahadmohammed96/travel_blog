@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 56" width="240" height="56">
+  
+  <g>
+    <circle cx="22" cy="28" r="18" fill="none" stroke="#2D5A3D" stroke-width="1.5"></circle>
+    <path d="M 12 28 Q 22 12 32 28 Q 22 44 12 28 Z" fill="none" stroke="#C97B3A" stroke-width="1.5"></path>
+    <circle cx="22" cy="28" r="2.5" fill="#C97B3A"></circle>
+  </g>
+  <text x="50" y="26" class="wm" font-size="22">Oops I</text>
+  <text x="50" y="46" class="wm" font-size="22">Roamed</text>
+</svg>
