@@ -120,10 +120,70 @@ const NavMenu = ({ label, active, items, onNav }) => {
   );
 };
 
+const MobileDrawer = ({ open, onClose, onNav, active, user }) => {
+  const [section, setSection] = React.useState(null); // null | 'viaggi' | 'diario' | 'chi'
+  React.useEffect(() => { if (!open) setSection(null); }, [open]);
+  const go = (route, params) => { onClose(); setTimeout(() => onNav(route, params), 50); };
+  return (
+    <div className={'mob-drawer' + (open ? ' open' : '')} aria-hidden={!open}>
+      <div className="mob-drawer-scrim" onClick={onClose}></div>
+      <div className="mob-drawer-panel">
+        <div className="mob-drawer-head">
+          <Logo height={26} />
+          <button onClick={onClose} style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: 8 }}><Icon name="x" size={22} /></button>
+        </div>
+        <div className="mob-drawer-list">
+          {!section && <>
+            <button className="mob-drawer-item" onClick={() => go('home')}>Home</button>
+            <button className="mob-drawer-item" onClick={() => setSection('viaggi')}>Viaggi <Icon name="chevron-right" size={18} /></button>
+            <button className="mob-drawer-item" onClick={() => setSection('diario')}>Diario <Icon name="chevron-right" size={18} /></button>
+            <button className="mob-drawer-item" onClick={() => go('itineraries')}>Itinerari gratuiti</button>
+            <button className="mob-drawer-item" onClick={() => go('guide')}>Guide</button>
+            <button className="mob-drawer-item" onClick={() => go('types')}>Tipi di viaggio</button>
+            <button className="mob-drawer-item" onClick={() => go('shop')}>Shop</button>
+            <button className="mob-drawer-item" onClick={() => setSection('chi')}>Chi siamo <Icon name="chevron-right" size={18} /></button>
+          </>}
+          {section === 'viaggi' && <>
+            <button className="mob-drawer-item" onClick={() => setSection(null)}><Icon name="arrow-left" size={18} /> Viaggi</button>
+            <div className="mob-drawer-section">Parti con noi</div>
+            <button className="mob-drawer-sub" onClick={() => go('trips')}>Prenota un viaggio</button>
+            <button className="mob-drawer-sub" onClick={() => go('gift', { mode: 'trip' })}>Regala un viaggio</button>
+            <div className="mob-drawer-section">Richiedi un itinerario</div>
+            <button className="mob-drawer-sub" onClick={() => go('bespoke')}>Crea il tuo itinerario</button>
+            <button className="mob-drawer-sub" onClick={() => go('gift', { mode: 'itinerary' })}>Regala un itinerario</button>
+            <div className="mob-drawer-section">Altro</div>
+            <button className="mob-drawer-sub" onClick={() => go('groups')}>Gruppi privati</button>
+          </>}
+          {section === 'diario' && <>
+            <button className="mob-drawer-item" onClick={() => setSection(null)}><Icon name="arrow-left" size={18} /> Diario</button>
+            <button className="mob-drawer-sub" onClick={() => go('diary', { tab: 'recent' })}>Viaggi recenti</button>
+            <button className="mob-drawer-sub" onClick={() => go('diary', { tab: 'world' })}>Tutte le mete</button>
+            <button className="mob-drawer-sub" onClick={() => go('countries')}>Per paese</button>
+            <button className="mob-drawer-sub" onClick={() => go('seasons')}>Per stagione</button>
+          </>}
+          {section === 'chi' && <>
+            <button className="mob-drawer-item" onClick={() => setSection(null)}><Icon name="arrow-left" size={18} /> Chi siamo</button>
+            <button className="mob-drawer-sub" onClick={() => go('story')}>La nostra storia</button>
+            <button className="mob-drawer-sub" onClick={() => go('press')}>Stampa</button>
+          </>}
+        </div>
+        <div className="mob-drawer-foot">
+          {user ? (
+            <Button variant="secondary" block onClick={() => go('account')}>Il mio account</Button>
+          ) : (
+            <Button variant="primary" block onClick={() => go('signup')}>Accedi</Button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Header = ({ active, onNav, user }) => {
   const inViaggi = ['trips', 'bespoke', 'groups', 'gift'].includes(active);
   const inDiario = ['diary', 'article', 'countries', 'seasons'].includes(active);
   const inChi = ['story', 'press', 'contact', 'faq'].includes(active);
+  const [mobOpen, setMobOpen] = React.useState(false);
   return (
   <header className="hdr">
     <div className="container hdr-in">
@@ -150,6 +210,7 @@ const Header = ({ active, onNav, user }) => {
             { route: 'seasons', label: 'Per stagione', dek: 'Quando partire e perché' },
           ]},
         ]} />
+        <a className={['itineraries','itinerary'].includes(active) ? 'on' : ''} onClick={() => onNav('itineraries')}>Itinerari</a>
         <a className={active === 'guide' ? 'on' : ''} onClick={() => onNav('guide')}>Guide</a>
         <a className={active === 'types' ? 'on' : ''} onClick={() => onNav('types')}>Tipi di viaggio</a>
         <a className={active === 'shop' ? 'on' : ''} onClick={() => onNav('shop')}>Shop</a>
@@ -167,8 +228,10 @@ const Header = ({ active, onNav, user }) => {
             </div>
           : <Button variant="secondary" size="sm" onClick={() => onNav('signup')}>Accedi</Button>
         }
+        <button className="hdr-burger" onClick={() => setMobOpen(true)} aria-label="Menu"><Icon name="menu" size={20} /></button>
       </div>
     </div>
+    <MobileDrawer open={mobOpen} onClose={() => setMobOpen(false)} onNav={onNav} active={active} user={user} />
   </header>
   );
 };
@@ -773,20 +836,20 @@ function ComparatorCard({ onPickRoamed, onPickBespoke }) {
       bg: 'var(--cream-50)', fg: 'var(--fg-1)',
     },
     {
-      tag: 'OPZIONE 3', title: 'Da soli', sub: 'Con il diario in mano',
+      tag: 'OPZIONE 3', title: 'Itinerario fai-da-te', sub: 'Gratis, con la nostra guida',
       points: [
-        { ok: true, t: 'Gratis, ovviamente' },
-        { ok: true, t: 'Ritmo e budget vostro al 100%' },
-        { ok: false, t: 'Pianificate, prenotate, gestite tutto voi' },
+        { ok: true, t: '15+ itinerari pronti, PDF gratis' },
+        { ok: true, t: 'Indirizzi, prezzi, mappe, tutto dentro' },
+        { ok: false, t: 'Pianificate e prenotate voi' },
         { ok: false, t: 'Niente garanzia, nessuna assistenza' },
       ],
-      price: 'GRATIS', pricesub: 'fai-da-te con i nostri consigli',
-      cta: 'Leggi il diario', action: () => window.dispatchEvent(new CustomEvent('go', { detail: { route: 'diario' } })), primary: false,
+      price: 'GRATIS', pricesub: 'scarica e parti',
+      cta: 'Vedi gli itinerari', action: () => window.dispatchEvent(new CustomEvent('go', { detail: { route: 'itineraries' } })), primary: false,
       bg: 'var(--bg-elevated)', fg: 'var(--fg-1)', dashed: true,
     },
   ];
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+    <div className="cmp-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
       {cols.map((col, i) => (
         <div key={i} style={{
           background: col.bg, color: col.fg,

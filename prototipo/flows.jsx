@@ -90,6 +90,29 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Itinerari gratuiti — lead magnet */}
+      <section style={{ padding: '96px 0', background: 'var(--bg-sunken)' }}>
+        <div className="container">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 16, marginBottom: 48 }}>
+            <div style={{ maxWidth: 640 }}>
+              <Eyebrow>ITINERARI GRATUITI · {window.ITINERARIES?.length || 15} DISPONIBILI</Eyebrow>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(36px, 5vw, 56px)', lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px 0 14px' }}>
+                Parti da soli, ma non da zero.
+              </h2>
+              <p style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 'clamp(18px, 2.2vw, 22px)', color: 'var(--fg-2)', margin: 0 }}>
+                Quindici viaggi che abbiamo fatto e scritto bene. PDF gratis, senza email obbligatoria.
+              </p>
+            </div>
+            <Button variant="ghost" icon="arrow-right" onClick={() => go('itineraries')}>Vedi tutti</Button>
+          </div>
+          <div className="itin-grid">
+            {(window.ITINERARIES || []).slice(0, 3).map((it, i) => (
+              <ItineraryCard key={it.id} it={it} i={i} onOpen={() => go('itinerary', { id: it.id })} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section style={{ background: 'var(--forest-900)', color: 'var(--cream-50)', padding: '128px 0', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: 60, right: 80, opacity: 0.5 }}><Stamp size={140} rotate={12} /></div>
         <div className="container" style={{ maxWidth: 880, textAlign: 'center', position: 'relative' }}>
@@ -201,6 +224,9 @@ const TripDetail = ({ params }) => {
       <section style={{ position: 'relative', height: 520, overflow: 'hidden' }}>
         <img src={trip.image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(15,26,20,0) 50%, rgba(15,26,20,.6) 100%)' }}></div>
+        <button onClick={() => go('trips')} style={{ position: 'absolute', top: 24, left: 24, background: 'rgba(255,255,255,.18)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,.25)', color: 'var(--cream-50)', padding: '8px 14px', borderRadius: 999, font: 'inherit', fontSize: 13, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+          <Icon name="arrow-left" size={14} /> Tutti i viaggi
+        </button>
         <button className={`save-btn ${saved.trips.has(trip.id) ? 'saved' : ''}`} style={{ position: 'absolute', top: 24, right: 24 }} onClick={() => toggleSave('trips', trip.id)}><Icon name="heart" size={20} /></button>
         <div style={{ position: 'absolute', bottom: 48, left: 0, right: 0, color: 'var(--cream-50)' }}>
           <div className="container">
@@ -211,7 +237,7 @@ const TripDetail = ({ params }) => {
       </section>
 
       <section style={{ padding: '64px 0' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 64, alignItems: 'flex-start' }}>
+        <div className="container mob-1col" style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 64, alignItems: 'flex-start' }}>
           <div>
             <p style={{ fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: 26, color: 'var(--fg-1)', lineHeight: 1.4, marginTop: 0 }}>{trip.dek}</p>
             <hr className="divider" />
@@ -1058,7 +1084,7 @@ const Account = () => {
   return (
     <div className="page-enter" style={{ padding: '48px 0 128px' }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 32, paddingBottom: 32, borderBottom: '1px solid var(--border)', alignItems: 'flex-start' }}>
+        <div className="mob-1col" style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 32, paddingBottom: 32, borderBottom: '1px solid var(--border)', alignItems: 'flex-start' }}>
           <div style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
             <div style={{ width: 96, height: 96, borderRadius: 999, background: 'linear-gradient(135deg, var(--clay-300), var(--forest-500))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-display)', fontSize: 36, color: 'var(--cream-50)' }}>{user.initials}</div>
             <div style={{ flex: 1 }}>

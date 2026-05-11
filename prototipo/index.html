@@ -11,7 +11,7 @@
       <text x="100" y="180" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="18" fill="#1F2A22">Oops I Roamed</text>
     </svg>
   </template>
-  <meta name="viewport" content="width=1280" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +29,7 @@
   <script type="text/babel" src="components.jsx"></script>
   <script type="text/babel" src="flows.jsx"></script>
   <script type="text/babel" src="pages.jsx"></script>
+  <script type="text/babel" src="itineraries.jsx"></script>
   <script type="text/babel" src="share.jsx"></script>
   <script type="text/babel">
     const { useState, useEffect, useCallback, useMemo } = React;
@@ -98,6 +99,8 @@
         case 'faq': page = <FaqPage />; break;
         case 'guide': page = <GuidePage />; break;
         case 'types': page = <TripTypesPage />; break;
+        case 'itineraries': page = <ItinerariesPage params={route.params} />; break;
+        case 'itinerary': page = <ItineraryDetail params={route.params} />; break;
         case 'shop': page = <ShopPage />; break;
         case 'share': page = <Share params={route.params} />; break;
         case 'privacy': page = <LegalPage pageKey="privacy" />; break;

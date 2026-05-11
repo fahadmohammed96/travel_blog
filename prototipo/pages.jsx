@@ -408,7 +408,9 @@ const TRIP_TYPES = [
   { id: 'gastro', icon: 'utensils-crossed', title: 'Gastronomico', dek: 'Mangiare dove si mangia bene davvero. La mappa non mente.', count: 10, color: '#7a4a1a', bg: 'linear-gradient(135deg, #f0d4a8, #c8893d)' },
   { id: 'workation', icon: 'laptop', title: 'Workation', dek: 'Co-working con vista. Wi-fi serio, fuso orario gestibile.', count: 6, color: '#3d4a6a', bg: 'linear-gradient(135deg, #cfd6e8, #6a7ab0)' },
 ];
-const TripTypesPage = () => (
+const TripTypesPage = () => {
+  const { go } = useApp();
+  return (
   <div className="page-enter" style={{ padding: '64px 0 96px' }}>
     <div className="container">
       <Eyebrow>TIPI DI VIAGGIO</Eyebrow>
@@ -418,9 +420,10 @@ const TripTypesPage = () => (
       <p className="rise rise-1" style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 22, color: 'var(--fg-2)', maxWidth: 580, marginBottom: 56 }}>
         Otto modi diversi di intendere un viaggio. Filtra storie, itinerari e guide per il tuo.
       </p>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }}>
+      <div className="triptype-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }}>
         {TRIP_TYPES.map((t, i) => (
-          <article key={t.id} className="rise" style={{ background: t.bg, borderRadius: 'var(--r-lg)', padding: 28, cursor: 'pointer', minHeight: 280, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', color: 'white', position: 'relative', overflow: 'hidden', animationDelay: `${i * 50}ms`, transition: 'transform 240ms var(--ease-out)' }}
+          <article key={t.id} className="triptype-card rise" style={{ background: t.bg, borderRadius: 'var(--r-lg)', padding: 28, cursor: 'pointer', minHeight: 280, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', color: 'white', position: 'relative', overflow: 'hidden', animationDelay: `${i * 50}ms`, transition: 'transform 240ms var(--ease-out)' }}
+            onClick={() => go('diary', { tab: 'recent', tripType: t.id })}
             onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-4px)'}
             onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}>
             <div style={{ width: 56, height: 56, borderRadius: 16, background: 'rgba(255,255,255,.22)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -436,7 +439,8 @@ const TripTypesPage = () => (
       </div>
     </div>
   </div>
-);
+  );
+};
 
 /* ============ Shop (affiliate) ============ */
 const SHOP_CATS = [
