@@ -2,3 +2,20 @@ MODIFICHE SUGGERITE
 
 Stile:
 - cambio colore tasti quando eseguito hover (il botton si colora del color pallet dominante e si ingrandisce leggermente)
+
+
+01. FUNZIONALITA' E TASTI
+- "Lente di ingrandimento per la ricerca" non funzionante
+- Tasto "ACCEDI" ti riporta ad una pagina per registrarti e non per accedere
+- Pagina di registrazione/accedi c'è bisogno di una freccetta per tornare indietro 
+- Tipi di viaggio -> Gastronomico -> Sistemare in "Viaggiare dove si mangia bene"
+- Chi siamo -> "Stampa" lo cambierei con "Cosa dicono di noi"
+
+02. DIARIO
+- Su Diario -> Mete per il mondo -> "Per paese" lo sostituirei con "Per continente" e all'interno farei una mappa interattiva dove puoi selezionare il continente e quando clicchi il continente ti riporta alla lista di paesi di quel continente. 
+
+03. Itinerari
+- Infondo alla pagina su "vuoi un itinerario adattato a te" Toglierei la parola "gratis" (bisogna fatturare phra)
+- Nel filtro in alto, nella sezione dei Paesi, anche li lo suddividerei per continente e in base al continente che apri ti apre un altro filtro con i paesi. Poi si può pensare ad un filtro che li ordini in ordine alfabetico. 
+- Aggiungerei da qualche parte l'idea di poter fare un itinerario solo per due stati vicini
+
