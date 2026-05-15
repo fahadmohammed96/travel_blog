@@ -24,7 +24,9 @@ img { display: block; max-width: 100%; }
 .btn-accent:hover { background: var(--accent-hover); }
 .btn-ghost { background: transparent; color: var(--primary); padding: 12px 14px; }
 .btn-ghost:hover { background: var(--primary-soft); }
-.btn-lg { padding: 15px 30px; font-size: 15px; }
+.btn-outline-light { background: transparent; color: var(--cream-50); border-color: rgba(250,246,236,0.4); }
+.btn-outline-light:hover { background: var(--cream-50); color: var(--accent); border-color: var(--cream-50); }
+.btn-lg { padding: 19px 38px; font-size: 19px; letter-spacing: 0.005em; }
 .btn-sm { padding: 7px 14px; font-size: 12px; }
 .btn-block { width: 100%; justify-content: center; }
 .btn:disabled { opacity: .5; cursor: not-allowed; }
@@ -241,6 +243,104 @@ img { display: block; max-width: 100%; }
   border-radius: 999px; animation: spin 700ms linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* ============ TAKEOFF BUTTON — "Prenota un viaggio" CTA ============ */
+/* Text is flex-centered; the airplane badge sits inline beside it (no longer absolute).
+   Badge is sized to fit inside the button's natural height — does NOT enlarge the button. */
+.btn-takeoff { position: relative; justify-content: center; overflow: hidden; isolation: isolate; gap: 8px; }
+.takeoff-badge {
+  position: relative;
+  width: 22px; height: 22px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #ffffff;
+  overflow: visible;
+  flex: none;
+  pointer-events: none;
+}
+.btn-lg .takeoff-badge { width: 26px; height: 26px; }
+
+.takeoff-plane {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%) rotate(-20deg);
+  width: 32px; height: 32px;
+  color: #ffffff;
+  animation: planeTakeoff 4.2s cubic-bezier(.55,.05,.45,.95) infinite;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.18));
+}
+.btn-lg .takeoff-plane { width: 38px; height: 38px; }
+
+/* White trail behind the plane during takeoff */
+.takeoff-badge::after {
+  content: '';
+  position: absolute;
+  right: 50%; top: 50%;
+  width: 20px; height: 2px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.9) 80%);
+  transform: translateY(-50%) rotate(-22deg);
+  transform-origin: right center;
+  border-radius: 999px;
+  opacity: 0;
+  animation: planeTrail 4.2s cubic-bezier(.55,.05,.45,.95) infinite;
+}
+
+@keyframes planeTakeoff {
+  /* taxi on runway (bottom-left of badge) */
+  0%   { transform: translate(-180%, 130%) rotate(-22deg); opacity: 0; }
+  10%  { transform: translate(-130%, 95%)  rotate(-22deg); opacity: 1; }
+  /* nose up — start climb */
+  28%  { transform: translate(-75%, 55%)   rotate(-22deg); opacity: 1; }
+  48%  { transform: translate(-25%, 10%)   rotate(-22deg); opacity: 1; }
+  /* climbing through the badge */
+  72%  { transform: translate(55%, -55%)   rotate(-10deg); opacity: 1; }
+  /* exit top-right, fades into the sky */
+  92%  { transform: translate(160%, -160%) rotate(0deg);   opacity: 0; }
+  100% { transform: translate(160%, -160%) rotate(0deg);   opacity: 0; }
+}
+@keyframes planeTrail {
+  0%, 18% { opacity: 0; width: 0; }
+  35% { opacity: 0.6; width: 14px; }
+  60% { opacity: 0.85; width: 24px; }
+  85% { opacity: 0; width: 6px; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .takeoff-plane { animation: none; transform: translate(-50%, -50%) rotate(-20deg); }
+  .takeoff-badge::after { animation: none; opacity: 0; }
+}
+
+/* ============ MOBILE / DESKTOP TOGGLERS ============ */
+.mob-only, .mob-carousel { display: none !important; }
+@media (max-width: 900px) {
+  /* Carousel hand-built (bypasses inline grid-template-columns) */
+  .mob-carousel {
+    display: flex !important;
+    grid-template-columns: none !important;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 20px 12px;
+    margin-left: -20px;
+    margin-right: -20px;
+    gap: 16px !important;
+  }
+  .mob-carousel::-webkit-scrollbar { display: none; height: 0; }
+  .mob-carousel > * {
+    flex: 0 0 86%;
+    max-width: 86%;
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+  .mob-carousel::after { content: ''; flex: 0 0 8px; }
+}
+@media (max-width: 600px) {
+  .mob-carousel { padding-left: 16px; padding-right: 16px; margin-left: -16px; margin-right: -16px; scroll-padding-left: 16px; }
+}
+
 /* Hero text reveal */
 .h-display-it {
   font-family: var(--font-display); font-weight: 400;
@@ -258,12 +358,11 @@ img { display: block; max-width: 100%; }
 
 /* ============ Hamburger / mobile nav ============ */
 .hdr-burger { display: none; background: transparent; border: 1px solid var(--border-strong); border-radius: 999px; width: 40px; height: 40px; align-items: center; justify-content: center; color: var(--fg-1); cursor: pointer; }
-.mob-drawer { position: fixed; inset: 0; z-index: 100; pointer-events: none; }
-.mob-drawer.open { pointer-events: auto; }
-.mob-drawer-scrim { position: absolute; inset: 0; background: rgba(15,26,20,.5); opacity: 0; transition: opacity 280ms var(--ease-out); }
-.mob-drawer.open .mob-drawer-scrim { opacity: 1; }
-.mob-drawer-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(360px, 88vw); background: var(--bg); transform: translateX(100%); transition: transform 320ms var(--ease-out); display: flex; flex-direction: column; overflow-y: auto; }
-.mob-drawer.open .mob-drawer-panel { transform: translateX(0); }
+/* Drawer — display toggle, no transition (transitions/animations get stuck in iframed-in-scaled-bezel contexts) */
+.mob-drawer { position: fixed; inset: 0; z-index: 100; display: none; }
+.mob-drawer.open { display: block; }
+.mob-drawer-scrim { position: absolute; inset: 0; background: rgba(15,26,20,.5); }
+.mob-drawer-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(360px, 88vw); background: var(--bg); display: flex; flex-direction: column; overflow-y: auto; box-shadow: -16px 0 40px rgba(15,26,20,0.18); }
 .mob-drawer-head { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; border-bottom: 1px solid var(--border-soft); }
 .mob-drawer-list { flex: 1; padding: 12px 0; display: flex; flex-direction: column; }
 .mob-drawer-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 22px; font-size: 16px; color: var(--fg-1); cursor: pointer; border: none; background: transparent; text-align: left; font: inherit; width: 100%; font-weight: 500; }
@@ -287,63 +386,115 @@ img { display: block; max-width: 100%; }
   .hdr-in > div:last-child > div { display: none; }
 
   /* Typography */
-  .h-display-it { font-size: clamp(36px, 9vw, 56px); }
+  .h-display-it { font-size: clamp(40px, 11vw, 64px); line-height: 1.05; }
   .prose { font-size: 16px; }
   .prose h2 { font-size: 28px; margin: 40px 0 12px; }
   .prose blockquote { font-size: 22px; padding-left: 18px; margin: 28px 0; }
 
   /* Hero */
-  .hero { min-height: 520px; padding: 40px 0 56px; }
+  .hero { min-height: 480px; padding: 32px 0 56px; }
+  .hero-content { padding: 0 20px; }
 
-  /* Generic grid collapses */
+  /* ----- FORMS / FOOTER / SIDEBARS — stack vertically (NOT carousels) ----- */
   .ftr .container { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
   .ftr-social { flex-direction: column; gap: 18px; align-items: flex-start; }
   .ftr-bot { flex-direction: column; gap: 12px; }
-
-  /* Itinerari */
-  .itin-grid { grid-template-columns: 1fr; gap: 16px; }
   .itin-detail-cols { grid-template-columns: 1fr; gap: 32px; }
   .itin-side { position: static; }
   .itin-meta-row { grid-template-columns: 1fr; }
   .itin-practical-grid { grid-template-columns: 1fr; }
-
-  /* Trip types page */
-  .triptype-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px !important; }
-  .triptype-card { min-height: 220px !important; padding: 20px !important; }
-  .triptype-card h3 { font-size: 22px !important; }
-  .triptype-card p { font-size: 12px !important; }
-
-  /* Comparatore → 1 colonna (la card primaria perde il translate) */
   .cmp-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
   .cmp-grid > div { transform: none !important; }
-
-  /* TripDetail / Account / Booking / Bespoke — 2-col layouts collapse */
   .container[style*="1fr 380px"], .container[style*="1fr 360px"],
-  div[style*="gridTemplateColumns: '1fr 380px'"],
-  div[style*="grid-template-columns: 1fr 380px"] { grid-template-columns: 1fr !important; gap: 32px !important; }
-  /* Catch-all per booking/bespoke form rows (1fr 1fr in step 1/2/3) */
+  .container[style*="1fr 420px"], .container[style*="1fr 460px"],
+  div[style*="grid-template-columns: 1fr 380px"],
+  div[style*="grid-template-columns: 1fr 360px"],
+  div[style*="grid-template-columns: 1fr 420px"],
+  div[style*="grid-template-columns: 1fr 460px"],
+  div[style*="grid-template-columns: 220px 1fr 380px"],
+  .mob-1col { grid-template-columns: minmax(0, 1fr) !important; gap: 32px !important; }
+  .mob-1col > *, .container[style*="1fr 380px"] > *, .container[style*="1fr 420px"] > *,
+  .container[style*="1fr 460px"] > *, .container[style*="1fr 360px"] > * { min-width: 0; }
   .booking-grid, .bespoke-grid { grid-template-columns: 1fr !important; }
+  /* "1fr 1fr" used for forms/inclusions/contact/newsletter — stack.
+     Apply broadly (not just inside <section>) so .container/.narrow grids
+     on Contact, Bespoke, Booking etc. also collapse. */
+  [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: minmax(0, 1fr) !important; gap: 28px !important; }
+  [style*="grid-template-columns: 1fr 1fr"] > * { min-width: 0; }
+  /* Small icon+text grids stay 2-col always — explicit override for the 1fr 1fr collapse above */
+  [style*="grid-template-columns: 24px 1fr"],
+  [style*="grid-template-columns: 64px 1fr"],
+  [style*="grid-template-columns: 40px 1fr"],
+  [style*="grid-template-columns: 52px 1fr"],
+  [style*="grid-template-columns: 120px 1fr"] {
+    grid-template-columns: var(--keep, auto 1fr) !important;
+  }
 
-  /* Articoli/diary 3-col */
-  .diary-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  /* ----- CONTENT GRIDS → STACK verticale 1 colonna (default mobile) -----
+     Per liste/feed grids su mobile, stack 1-colonna full-width = UX corretta.
+     Per caroselli orizzontali espliciti (homepage previews), aggiungere .mob-carousel. */
+  [style*="grid-template-columns: repeat(2,"]:not(.search-quick):not(.search-results *):not(.mob-carousel):not(.mob-hide),
+  [style*="grid-template-columns: repeat(3,"]:not(.search-quick):not(.search-results *):not(.mob-carousel):not(.mob-hide),
+  [style*="grid-template-columns: repeat(4,"]:not(.search-quick):not(.search-results *):not(.mob-carousel):not(.mob-hide),
+  [style*="grid-template-columns: 2fr 1fr 1fr"]:not(.mob-carousel):not(.mob-hide),
+  .itin-grid:not(.mob-carousel):not(.mob-hide),
+  .triptype-grid:not(.mob-carousel):not(.mob-hide),
+  .diary-grid:not(.mob-carousel):not(.mob-hide),
+  .mob-2col:not(.mob-carousel):not(.mob-hide) {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 20px !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  [style*="grid-template-columns: repeat(2,"]:not(.search-quick):not(.search-results *):not(.mob-carousel):not(.mob-hide) > *,
+  [style*="grid-template-columns: repeat(3,"]:not(.search-quick):not(.search-results *):not(.mob-carousel):not(.mob-hide) > *,
+  [style*="grid-template-columns: repeat(4,"]:not(.search-quick):not(.search-results *):not(.mob-carousel):not(.mob-hide) > *,
+  [style*="grid-template-columns: 2fr 1fr 1fr"]:not(.mob-carousel):not(.mob-hide) > *,
+  .itin-grid:not(.mob-carousel):not(.mob-hide) > *,
+  .triptype-grid:not(.mob-carousel):not(.mob-hide) > *,
+  .diary-grid:not(.mob-carousel):not(.mob-hide) > *,
+  .mob-2col:not(.mob-carousel):not(.mob-hide) > * {
+    min-width: 0;
+    max-width: 100%;
+    flex: none !important;
+  }
 
-  /* Generic .force-1col helper — universal grid breaker */
-  .mob-1col { grid-template-columns: 1fr !important; gap: 24px !important; }
-  .mob-2col { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+  /* Header rows of sections (title + "vedi tutti" button) — wrap nicely */
+  div[style*="justify-content: space-between"][style*="align-items: flex-end"] {
+    flex-wrap: wrap; gap: 16px;
+  }
+
+  /* Section paddings — pull in vertical rhythm */
+  section[style*="padding: 128px 0"] { padding: 72px 0 !important; }
+  section[style*="padding: 96px 0"]  { padding: 56px 0 !important; }
+  section[style*="padding: 64px 0 96px"] { padding: 32px 0 56px !important; }
 
   /* Modal */
   .modal { padding: 24px; }
   .scrim { padding: 12px; }
 
-  /* Sticky CTA bottom is already mobile-only via existing component */
+  /* Prevent horizontal scroll on body (carousels are isolated) */
+  body, html { overflow-x: hidden; }
+  img, video, iframe { max-width: 100%; }
 }
 
 @media (max-width: 600px) {
-  .triptype-grid { grid-template-columns: 1fr !important; }
-  .triptype-card { min-height: 180px !important; }
-  .mob-2col { grid-template-columns: 1fr !important; }
   .ftr .container { grid-template-columns: 1fr !important; }
   h1 { font-size: clamp(36px, 10vw, 56px) !important; }
+  .container, .narrow { padding: 0 16px; }
+  .btn-lg { padding: 18px 32px; font-size: 18px; }
+  /* Hero buttons stack full-width */
+  .hero .btn { width: 100%; justify-content: center; }
+  .hero [style*="display: flex"][style*="gap: 12"] { flex-direction: column; align-items: stretch !important; }
+  /* Carousel padding adjustments (only for explicit .mob-carousel) */
+  .mob-carousel {
+    padding-left: 16px; padding-right: 16px;
+    margin-left: -16px; margin-right: -16px;
+    scroll-padding-left: 16px;
+  }
 }
 
 /* Leaflet tooltip — on-brand */
@@ -354,3 +505,150 @@ img { display: block; max-width: 100%; }
 }
 .leaflet-tooltip.rmap-tt::before { display: none; }
 .leaflet-container { font-family: var(--font-body); background: var(--cream-100); }
+
+/* ============ SEARCH MODAL ============ */
+.search-scrim {
+  position: fixed; inset: 0; background: rgba(15,26,20,.55); z-index: 200;
+  display: flex; align-items: flex-start; justify-content: center; padding: 80px 24px 24px;
+  animation: fadeIn 180ms var(--ease-out);
+  backdrop-filter: blur(2px);
+}
+.search-modal {
+  background: var(--bg-elevated); border-radius: var(--r-lg);
+  width: 100%; max-width: 720px; max-height: calc(100vh - 120px);
+  display: flex; flex-direction: column; box-shadow: var(--shadow-4);
+  animation: rise 280ms var(--ease-out); overflow: hidden;
+}
+.search-bar {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 22px; border-bottom: 1px solid var(--border-soft);
+}
+.search-bar input {
+  flex: 1; border: none; outline: none; background: transparent;
+  font-family: var(--font-display); font-size: 22px; font-weight: 400;
+  color: var(--fg-1); padding: 4px 0; letter-spacing: -0.01em;
+}
+.search-bar input::placeholder { color: var(--fg-3); font-style: italic; font-weight: 300; }
+.search-close {
+  background: var(--bg-sunken); border: 1px solid var(--border-soft);
+  border-radius: var(--r-sm); padding: 6px 10px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.search-close kbd, .search-foot kbd {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em;
+  color: var(--fg-2); background: var(--bg-base); border: 1px solid var(--border-soft);
+  border-radius: 4px; padding: 2px 6px;
+}
+.search-results { flex: 1; overflow-y: auto; padding: 14px 12px 18px; }
+.search-section { padding: 8px 10px; }
+.search-section + .search-section { border-top: 1px solid var(--border-soft); margin-top: 4px; padding-top: 16px; }
+.search-section-title {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--fg-3); margin-bottom: 10px; padding: 0 4px;
+}
+.search-quick { display: flex; flex-wrap: wrap; gap: 8px; }
+.search-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border: 1px solid var(--border); background: var(--bg-base);
+  border-radius: 999px; font: inherit; font-size: 13px; color: var(--fg-1);
+  cursor: pointer; transition: all 160ms var(--ease-out);
+}
+.search-chip:hover { background: var(--clay-100); border-color: var(--clay-300); color: var(--clay-800); }
+.search-row {
+  display: grid; grid-template-columns: 64px 1fr 20px; gap: 14px; align-items: center;
+  padding: 10px 10px; border: none; background: transparent; cursor: pointer;
+  width: 100%; text-align: left; font: inherit; border-radius: var(--r-sm);
+  transition: background 140ms;
+}
+.search-row + .search-row { margin-top: 2px; }
+.search-row:hover { background: var(--bg-sunken); }
+.search-row img {
+  width: 64px; height: 56px; object-fit: cover; border-radius: var(--r-sm);
+  background: var(--bg-sunken);
+}
+.search-row-icon {
+  width: 64px; height: 56px; border-radius: var(--r-sm);
+  background: var(--cream-100); color: var(--clay-700);
+  display: flex; align-items: center; justify-content: center;
+}
+.search-row-body { min-width: 0; }
+.search-row-eyebrow {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--fg-3); margin-bottom: 2px;
+}
+.search-row-title {
+  font-family: var(--font-display); font-size: 17px; font-weight: 400;
+  color: var(--fg-1); line-height: 1.25; letter-spacing: -0.01em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.search-row-meta { font-size: 12px; color: var(--fg-2); margin-top: 2px; }
+.search-row-compact { grid-template-columns: 40px 1fr 20px; }
+.search-row-compact .search-row-icon { width: 40px; height: 40px; }
+.search-empty { padding: 36px 24px; text-align: center; }
+.search-foot {
+  display: flex; align-items: center; gap: 18px;
+  padding: 12px 22px; border-top: 1px solid var(--border-soft);
+  background: var(--bg-sunken);
+  font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); letter-spacing: 0.04em;
+}
+@media (max-width: 600px) {
+  .search-scrim { padding: 16px; align-items: stretch; }
+  .search-modal { max-height: 100%; }
+  .search-bar input { font-size: 18px; }
+  .search-row { grid-template-columns: 52px 1fr 20px; }
+  .search-row img, .search-row .search-row-icon { width: 52px; height: 48px; }
+}
+
+/* ============ FINAL OVERRIDES (must come last to win cascade) ============ */
+@media (max-width: 900px) {
+  /* mob-hide hides the desktop article-grid below mobile; this rule must come
+     AFTER the carousel-display:flex rules so it wins the cascade. */
+  .mob-hide, section .mob-hide, section [class*="mob-hide"] { display: none !important; }
+
+  /* Margin notes (Caveat handwriting in the right gutter) — no gutter on mobile, hide. */
+  .margin-note { display: none !important; }
+
+  /* PolaroidWall: absolutely-positioned figures don't fit phone width.
+     Switch to a horizontal swipe carousel of static polaroids. */
+  .polaroid-wall {
+    position: static !important;
+    min-height: 0 !important;
+    padding: 8px 0 16px !important;
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 0 -20px;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .polaroid-wall::-webkit-scrollbar { display: none; height: 0; }
+  .polaroid-item {
+    position: static !important;
+    left: auto !important; top: auto !important;
+    flex: 0 0 220px;
+    scroll-snap-align: start;
+    transform: rotate(var(--polaroid-rot, -2deg));
+  }
+  /* Disable hover-translate on touch */
+  .polaroid-item:hover { transform: rotate(var(--polaroid-rot, -2deg)) !important; }
+
+  /* Inclusion-aside style boxes inside articles — drop the negative margins
+     so they fit the narrow column on mobile. */
+  article aside[style*="margin: 40px -20px"] {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 20px !important;
+    grid-template-columns: 64px 1fr !important;
+    gap: 14px !important;
+  }
+  article aside[style*="margin: 40px -20px"] > .btn,
+  article aside[style*="margin: 40px -20px"] > button.btn {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: center;
+  }
+}

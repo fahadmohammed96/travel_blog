@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <title>Destinazioni — Oops I Roamed</title>
+  <template id="__bundler_thumbnail">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+      <rect width="200" height="200" fill="#F8F4EC"/>
+      <circle cx="100" cy="100" r="68" fill="none" stroke="#1F2A22" stroke-width="2"/>
+      <path d="M 60 100 L 140 100 M 100 60 L 100 140" stroke="#1F2A22" stroke-width="1.5"/>
+      <circle cx="100" cy="100" r="8" fill="#E87B5A"/>
+      <text x="100" y="180" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="18" fill="#1F2A22">Destinazioni</text>
+    </svg>
+  </template>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link rel="stylesheet" href="casa-styles.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="hdr">
+    <div class="hdr-in">
+      <a class="brand" href="casa.html" aria-label="Oops I Roamed — casa">
+        <span class="brand-mark">o</span>
+        <span><em>Oops</em> I Roamed</span>
+      </a>
+      <nav class="nav">
+        <div class="nav-item"><a href="casa.html">Home</a></div>
+        <div class="nav-item"><a href="casa-viaggi.html">Viaggi</a></div>
+        <div class="nav-item"><a href="casa-partenze.html">Partenze</a></div>
+        <div class="nav-item on">
+          <a href="casa-destinazioni.html">Destinazioni <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Europa</h4>
+                <a class="mm-link" href="casa-destinazione.html">
+                  <span class="mm-link-label">Portogallo</span>
+                  <span class="mm-link-dek">Atlantico, lento</span>
+                </a>
+                <a class="mm-link"><span class="mm-link-label">Italia</span><span class="mm-link-dek">Sud che non corre</span></a>
+                <a class="mm-link"><span class="mm-link-label">Islanda</span><span class="mm-link-dek">Ring road, controvento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Georgia</span><span class="mm-link-dek">Caucaso minore</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Africa &amp; Med</h4>
+                <a class="mm-link"><span class="mm-link-label">Marocco</span><span class="mm-link-dek">Atlante in marzo</span></a>
+                <a class="mm-link"><span class="mm-link-label">Egitto</span><span class="mm-link-dek">Nilo, da nord</span></a>
+                <a class="mm-link"><span class="mm-link-label">Giordania</span><span class="mm-link-dek">Wadi, deserto</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Far &amp; Wide</h4>
+                <a class="mm-link"><span class="mm-link-label">Giappone</span><span class="mm-link-dek">Hokkaido a febbraio</span></a>
+                <a class="mm-link"><span class="mm-link-label">Messico</span><span class="mm-link-dek">Oaxaca, mole</span></a>
+                <a class="mm-link"><span class="mm-link-label">Argentina</span><span class="mm-link-dek">Patagonia in spalla</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="casa-tipi.html">Tipi di viaggio <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Mood</h4>
+                <a class="mm-link"><span class="mm-link-label">Slow</span><span class="mm-link-dek">Camminare piano</span></a>
+                <a class="mm-link"><span class="mm-link-label">Salt &amp; Sea</span><span class="mm-link-dek">Vita di mare</span></a>
+                <a class="mm-link"><span class="mm-link-label">Cold Quiet</span><span class="mm-link-dek">Inverni nordici</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Formato</h4>
+                <a class="mm-link"><span class="mm-link-label">Weekend</span><span class="mm-link-dek">2–4 giorni</span></a>
+                <a class="mm-link"><span class="mm-link-label">Roadtrip</span><span class="mm-link-dek">In auto, con tappe</span></a>
+                <a class="mm-link"><span class="mm-link-label">Lungo</span><span class="mm-link-dek">10+ giorni</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Ritmo</h4>
+                <a class="mm-link"><span class="mm-link-label">Camminato</span><span class="mm-link-dek">Trekking, sentieri</span></a>
+                <a class="mm-link"><span class="mm-link-label">Tavolato</span><span class="mm-link-dek">Mangiare lento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Letto presto</span><span class="mm-link-dek">Sveglie all'alba</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item"><a href="casa-chi-siamo.html">Chi siamo</a></div>
+        <div class="nav-item"><a href="casa-diario.html">Diario</a></div>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" data-only-desktop aria-label="Cerca">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="icon-btn" data-only-desktop aria-label="Salvati">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <span class="lang-pill">IT · €</span>
+        <a class="btn btn-secondary btn-sm">Parla con noi</a>
+        <button class="drawer-toggle icon-btn" aria-label="Apri menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" aria-hidden="true">
+    <div class="drawer-scrim"></div>
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <span class="brand"><span class="brand-mark">o</span><span><em>Oops</em></span></span>
+        <button class="icon-btn drawer-close" aria-label="Chiudi menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="drawer-list">
+        <a class="drawer-link" href="casa-viaggi.html">Viaggi</a>
+        <a class="drawer-link" href="casa-partenze.html">Partenze</a>
+        <a class="drawer-link" href="casa-destinazioni.html">Destinazioni</a>
+        <a class="drawer-link" href="casa-tipi.html">Tipi di viaggio</a>
+        <a class="drawer-link" href="casa-chi-siamo.html">Chi siamo</a>
+        <a class="drawer-link" href="casa-diario.html">Diario</a>
+        <div class="drawer-section">Profilo</div>
+        <a class="drawer-link">I miei salvati</a>
+        <a class="drawer-link">Le mie prenotazioni</a>
+      </div>
+      <div class="drawer-foot">
+        <a class="btn btn-primary btn-block">Parla con noi</a>
+        <a class="btn btn-secondary btn-block">Accedi</a>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="wrap">
+    <nav class="crumb">
+      <a href="casa.html">Casa</a>
+      <span class="sep">/</span><span class="current">Destinazioni</span>
+    </nav>
+
+    <!-- ============ HERO con marginalia rail ============ -->
+    <div class="marginalia-page" style="padding: 32px 0 16px;">
+      <aside class="marginalia-rail">
+        <span class="vertical"><b>01</b> / Destinazioni</span>
+        <span class="dash"></span>
+        <div class="stamp">
+          <span>Oops</span>
+          <span class="stamp-big">31</span>
+          <span>Paesi</span>
+        </div>
+        <span class="dash"></span>
+        <span class="vertical">2026 · Catalogo</span>
+      </aside>
+      <div>
+        <div class="coord-strip" style="margin-bottom: 24px;">
+          <span class="dot"></span>
+          <span>Vol. <b>IV</b> · <b>31</b> paesi · <b>5</b> continenti · <b>128</b> partenze fatte · agg. <b>14 / 02 / 26</b></span>
+        </div>
+        <h1 class="hero-title" style="color: var(--ink-1000); margin: 0 0 24px; font-size: clamp(48px, 7vw, 96px);">
+          Alcuni cercati,<br/>altri capitati <em>per sbaglio</em>.
+        </h1>
+        <p class="lede" style="max-width: 680px;">
+          Trentun paesi raccontati con calma. Un atlante personale, non geografico — i posti che ci hanno chiamato indietro almeno due volte, e quelli a cui non smettiamo di pensare dopo la prima.
+        </p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px;">
+          <span class="badge badge-soft">5 continenti</span>
+          <span class="badge badge-warm">31 paesi</span>
+          <span class="badge badge-cool">128 partenze</span>
+          <span class="badge badge-sun">12 nuove per 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alphabet jump -->
+  <div class="wrap">
+    <nav class="alpha-jump" aria-label="Indice alfabetico paesi">
+      <span class="alpha-jump-label">A–Z</span>
+      <a href="#a">A</a><a href="#b">B</a><a class="empty">C</a><a class="empty">D</a>
+      <a href="#e">E</a><a class="empty">F</a><a href="#g">G</a><a class="empty">H</a>
+      <a href="#i">I</a><a href="#j">J</a><a class="empty">K</a><a class="empty">L</a>
+      <a href="#m">M</a><a href="#n">N</a><a class="empty">O</a><a href="#p">P</a>
+      <a class="empty">Q</a><a class="empty">R</a><a class="empty">S</a><a class="empty">T</a>
+      <a class="empty">U</a><a class="empty">V</a><a class="empty">W</a><a class="empty">X</a>
+      <a class="empty">Y</a><a class="empty">Z</a>
+    </nav>
+  </div>
+
+  <!-- ============ Magazine spread di apertura ============ -->
+  <div class="wrap">
+    <div class="spread">
+      <div class="spread-photo">
+        <span class="spread-tape">Vol. IV · 2026 · partenza I</span>
+        <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1400&q=85" alt="Porto" />
+      </div>
+      <div class="spread-body">
+        <p class="spread-pretitle">Editoriale d'apertura</p>
+        <h2>Non chiamiamole <em>destinazioni</em>.</h2>
+        <p class="spread-lede">Destinazione è una parola da agenzia. Ci sembra che un posto sia più di una targa con un nome: è una luce, un odore, una velocità con cui le persone camminano per strada.</p>
+        <p style="font-size: 16px; line-height: 1.7; color: var(--fg-2); margin: 0;">
+          Per questo le abbiamo divise per continente — geografia onesta — ma poi ognuna ha la sua frase, la sua stagione preferita, e una <em>cosa per cui andarci</em>. Niente "TOP 10" e niente "imperdibili". Sono solo posti, e questi sono i nostri.
+        </p>
+        <div class="spread-actions">
+          <a class="btn btn-primary">Comincia da Europa <span class="arr">→</span></a>
+          <a class="link-und">Cerca un paese specifico</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ EUROPA ============ -->
+  <section id="e" class="cont-section">
+    <div class="wrap">
+      <div class="big-counter">
+        <span class="bg-num">01</span>
+        <div class="cont-head">
+          <h2 class="cont-name">Europa <em>vicina, piano</em></h2>
+          <p class="cont-counter">13 paesi<small>/ 5 continenti</small></p>
+          <a class="btn btn-ghost cont-cta">Vedi tutta l'Europa <span class="arr">→</span></a>
+        </div>
+        <p class="cont-dek">
+          La parte facile, perché ce l'abbiamo addosso. Eppure le città mediterranee si svuotano in agosto, l'Atlantico ti ricorda di essere oceano in cinque secondi, e in Georgia trovi una sopra l'altra dieci culture che non sapevi esistessero.
+        </p>
+        <div class="dest-grid">
+          <a class="dest-tile span-3 row-2 featured" href="casa-destinazione.html">
+            <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1600&q=85" alt="Portogallo" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Portogallo <em>tre volte</em></h3>
+              <div class="dest-tile-meta">
+                <span>3 viaggi · 12 articoli</span>
+                <span>OPO · LIS · FAO</span>
+              </div>
+            </div>
+          </a>
+          <a class="dest-tile span-3" href="#">
+            <img src="https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=1200&q=85" alt="Italia" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Italia <em>al sud</em></h3>
+              <div class="dest-tile-meta"><span>5 viaggi · 24 articoli</span></div>
+            </div>
+          </a>
+          <a class="dest-tile span-2" href="#">
+            <img src="https://images.unsplash.com/photo-1504829857797-ddff29c27927?w=1000&q=85" alt="Islanda" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Islanda</h3>
+              <div class="dest-tile-meta"><span>2 viaggi · 8 articoli</span></div>
+            </div>
+          </a>
+          <a class="dest-tile" href="#">
+            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=900&q=85" alt="Grecia" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Grecia</h3>
+              <div class="dest-tile-meta"><span>3 viaggi</span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AFRICA & MED ============ -->
+  <section id="a" class="cont-section">
+    <div class="wrap">
+      <div class="big-counter">
+        <span class="bg-num">02</span>
+        <div class="cont-head">
+          <h2 class="cont-name">Africa <em>&amp; mediterraneo</em></h2>
+          <p class="cont-counter">6 paesi<small>/ 28 partenze fatte</small></p>
+          <a class="btn btn-ghost cont-cta">Vedi tutta l'Africa <span class="arr">→</span></a>
+        </div>
+        <p class="cont-dek">
+          Atlante in marzo, sahara in ottobre, Egitto a febbraio. L'Africa che facciamo è quella che si raggiunge in cinque ore di volo e cambia di colpo le proporzioni: il cielo è più grande, le distanze sono più lente, e i ristoranti non hanno un menù.
+        </p>
+        <div class="dest-grid">
+          <a class="dest-tile span-2 row-2" href="#">
+            <img src="https://images.unsplash.com/photo-1539020140153-e479b8c61bf8?w=1200&q=85" alt="Marocco" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Marocco <em>in marzo</em></h3>
+              <div class="dest-tile-meta"><span>4 viaggi · 18 articoli</span></div>
+            </div>
+          </a>
+          <a class="dest-tile span-2" href="#">
+            <img src="https://images.unsplash.com/photo-1568322445389-f64ac2515020?w=1200&q=85" alt="Egitto" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Egitto</h3>
+              <div class="dest-tile-meta"><span>2 viaggi · 6 articoli</span></div>
+            </div>
+          </a>
+          <a class="dest-tile span-2" href="#">
+            <img src="https://images.unsplash.com/photo-1591608971362-f08b2a75731a?w=1200&q=85" alt="Giordania" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Giordania</h3>
+              <div class="dest-tile-meta"><span>2 viaggi · 5 articoli</span></div>
+            </div>
+          </a>
+          <a class="dest-tile span-2" href="#">
+            <img src="https://images.unsplash.com/photo-1554188248-986adbb73be4?w=1200&q=85" alt="Tunisia" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Tunisia</h3>
+              <div class="dest-tile-meta"><span>1 viaggio · 3 articoli</span></div>
+            </div>
+          </a>
+          <a class="dest-tile span-2" href="#">
+            <img src="https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=1200&q=85" alt="Senegal" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Senegal</h3>
+              <div class="dest-tile-meta"><span>1 viaggio · 4 articoli</span></div>
+            </div>
+          </a>
+          <a class="dest-tile span-2 coming-soon">
+            <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=1200&q=85" alt="Etiopia" />
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Etiopia</h3>
+              <div class="dest-tile-meta"><span>In progettazione</span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spread editoriale tra continenti -->
+  <div class="wrap">
+    <div class="spread flip">
+      <div class="spread-photo">
+        <span class="spread-tape">Una cosa che impariamo viaggiando</span>
+        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1400&q=85" alt="" />
+      </div>
+      <div class="spread-body">
+        <p class="spread-pretitle">Tra una pagina e l'altra</p>
+        <h2>Il continente non <em>basta</em> più.</h2>
+        <p class="spread-lede">
+          Da tre anni ci accorgiamo che i nostri viaggi più riusciti sono quelli che attraversano un confine senza farne troppo: Lisbona-Tangeri, Tbilisi-Yerevan, Bali-Lombok. Le cose interessanti sono spesso ai bordi, dove un continente diventa l'altro.
+        </p>
+        <p style="font-size: 16px; line-height: 1.7; color: var(--fg-2); margin: 14px 0 0;">
+          Per il 2027 stiamo preparando una mezza dozzina di itinerari "transfrontiera". Te li raccontiamo nel dispaccio appena prendono forma.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ASIA ============ -->
+  <section id="g" class="cont-section">
+    <div class="wrap">
+      <div class="big-counter">
+        <span class="bg-num">03</span>
+        <div class="cont-head">
+          <h2 class="cont-name">Asia <em>che chiama indietro</em></h2>
+          <p class="cont-counter">7 paesi<small>/ 38 partenze fatte</small></p>
+          <a class="btn btn-ghost cont-cta">Vedi tutta l'Asia <span class="arr">→</span></a>
+        </div>
+        <p class="cont-dek">
+          La parte difficile, perché è grande. La facciamo a fettine: una regione alla volta, mai tutto un paese in una settimana. Hokkaido a febbraio, Kyoto a marzo, Sri Lanka a novembre, Vietnam del nord ad aprile.
+        </p>
+        <div class="dest-grid">
+          <a class="dest-tile span-3 row-2 featured" href="#">
+            <img src="https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=1600&q=85" alt="Giappone" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Giappone <em>in tre stagioni</em></h3>
+              <div class="dest-tile-meta">
+                <span>4 viaggi · 16 articoli</span>
+                <span>HOKKAIDO · KYOTO · NARA</span>
+              </div>
+            </div>
+          </a>
+          <a class="dest-tile span-3" href="#">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1400&q=85" alt="Vietnam" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Vietnam <em>del nord</em></h3>
+              <div class="dest-tile-meta"><span>2 viaggi · 7 articoli</span></div>
+            </div>
+          </a>
+          <a class="dest-tile span-2" href="#">
+            <img src="https://images.unsplash.com/photo-1583407723467-9b2d22504831?w=1200&q=85" alt="Sri Lanka" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Sri Lanka</h3>
+              <div class="dest-tile-meta"><span>2 viaggi · 5 articoli</span></div>
+            </div>
+          </a>
+          <a class="dest-tile" href="#">
+            <img src="https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=900&q=85" alt="Georgia" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Georgia</h3>
+              <div class="dest-tile-meta"><span>1 viaggio</span></div>
+            </div>
+          </a>
+          <a class="dest-tile" href="#">
+            <img src="https://images.unsplash.com/photo-1604999333679-b86d54738315?w=900&q=85" alt="Uzbekistan" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Uzbekistan</h3>
+              <div class="dest-tile-meta"><span>1 viaggio</span></div>
+            </div>
+          </a>
+          <a class="dest-tile" href="#">
+            <img src="https://images.unsplash.com/photo-1597212720128-cf8047a1a4a4?w=900&q=85" alt="Nepal" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Nepal</h3>
+              <div class="dest-tile-meta"><span>1 viaggio</span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AMERICHE ============ -->
+  <section id="m" class="cont-section">
+    <div class="wrap">
+      <div class="big-counter">
+        <span class="bg-num">04</span>
+        <div class="cont-head">
+          <h2 class="cont-name">Americhe <em>lente</em></h2>
+          <p class="cont-counter">4 paesi<small>/ 22 partenze fatte</small></p>
+          <a class="btn btn-ghost cont-cta">Vedi le Americhe <span class="arr">→</span></a>
+        </div>
+        <p class="cont-dek">
+          Il continente che ci ha insegnato che le distanze sono diverse. Si vola per ore, ma poi ci si ferma. Messico per il cibo, Argentina per i paesaggi, Perù per la storia, Cuba perché non c'è ancora il wifi dappertutto e si parla davvero.
+        </p>
+        <div class="dest-grid">
+          <a class="dest-tile span-3 row-2 featured" href="#">
+            <img src="https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1600&q=85" alt="Messico" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Messico <em>al sud</em></h3>
+              <div class="dest-tile-meta">
+                <span>3 viaggi · 14 articoli</span>
+                <span>OAXACA · CHIAPAS · YUC.</span>
+              </div>
+            </div>
+          </a>
+          <a class="dest-tile span-3" href="#">
+            <img src="https://images.unsplash.com/photo-1559717865-a99cac1c95d8?w=1400&q=85" alt="Argentina" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Argentina <em>in spalla</em></h3>
+              <div class="dest-tile-meta"><span>2 viaggi · 9 articoli</span></div>
+            </div>
+          </a>
+          <a class="dest-tile span-2" href="#">
+            <img src="https://images.unsplash.com/photo-1531065208531-4036c0dba3ca?w=1200&q=85" alt="Perù" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Perù</h3>
+              <div class="dest-tile-meta"><span>1 viaggio · 4 articoli</span></div>
+            </div>
+          </a>
+          <a class="dest-tile span-2" href="#">
+            <img src="https://images.unsplash.com/photo-1500039436846-25ae2f11882e?w=1200&q=85" alt="Cuba" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Cuba</h3>
+              <div class="dest-tile-meta"><span>1 viaggio · 5 articoli</span></div>
+            </div>
+          </a>
+          <a class="dest-tile span-2 coming-soon">
+            <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?w=1200&q=85" alt="Colombia" />
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Colombia</h3>
+              <div class="dest-tile-meta"><span>In progettazione</span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OCEANIA ============ -->
+  <section id="n" class="cont-section">
+    <div class="wrap">
+      <div class="big-counter">
+        <span class="bg-num">05</span>
+        <div class="cont-head">
+          <h2 class="cont-name">Oceania <em>quasi</em></h2>
+          <p class="cont-counter">2 paesi<small>/ 4 partenze fatte</small></p>
+          <a class="btn btn-ghost cont-cta">Vedi l'Oceania <span class="arr">→</span></a>
+        </div>
+        <p class="cont-dek">
+          Per ora due paesi soltanto, perché è lontano e non ci piace l'aereo lungo per un breve. Quando andiamo, però, restiamo tre settimane minimo. Le Filippine come arcipelago, l'Indonesia tra Bali e Lombok.
+        </p>
+        <div class="dest-grid">
+          <a class="dest-tile span-3 featured" href="#">
+            <img src="https://images.unsplash.com/photo-1537956965359-7573183d1f57?w=1600&q=85" alt="Filippine" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Filippine <em>tre settimane</em></h3>
+              <div class="dest-tile-meta"><span>1 viaggio · 6 articoli</span></div>
+            </div>
+          </a>
+          <a class="dest-tile span-3" href="#">
+            <img src="https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?w=1600&q=85" alt="Indonesia" />
+            <span class="dest-tile-arrow">↗</span>
+            <div class="dest-tile-body">
+              <h3 class="dest-tile-name">Indonesia <em>tra le isole</em></h3>
+              <div class="dest-tile-meta"><span>2 viaggi · 7 articoli</span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Garanzie ripetute -->
+  <section class="sec-sm" style="background: var(--bg-sunken);">
+    <div class="wrap">
+      <div class="garanzie-grid">
+        <div class="gar-card">
+          <span class="gar-num">i</span>
+          <div class="gar-icon">€0</div>
+          <h3 class="gar-title">Tieni il posto senza anticipo</h3>
+          <p class="gar-dek">Carta solo per garanzia, addebito al saldo.</p>
+        </div>
+        <div class="gar-card">
+          <span class="gar-num">ii</span>
+          <div class="gar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><polyline points="21 3 21 8 16 8"/></svg></div>
+          <h3 class="gar-title">Cambi viaggio gratis</h3>
+          <p class="gar-dek">Fino a 31 giorni dalla partenza.</p>
+        </div>
+        <div class="gar-card">
+          <span class="gar-num">iii</span>
+          <div class="gar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="gar-title">Viaggio protetto</h3>
+          <p class="gar-dek">Assicurazione medica, bagaglio, rimpatrio.</p>
+        </div>
+        <div class="gar-card">
+          <span class="gar-num">iv</span>
+          <div class="gar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="13" rx="2"/></svg></div>
+          <h3 class="gar-title">Paghi a rate</h3>
+          <p class="gar-dek">Stripe e Scalapay, senza interessi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="ftr">
+    <div class="wrap">
+      <div class="ftr-top">
+        <div class="ftr-brand">
+          <a class="brand" href="casa.html"><span class="brand-mark">o</span><span><em>Oops</em> I Roamed</span></a>
+          <p class="ftr-claim">Viaggi in piccolo gruppo per chi preferisce arrivare tardi, mangiare a lungo, e dormire poco.</p>
+        </div>
+        <div class="ftr-col"><h4>Destinazioni</h4><ul><li><a href="casa-destinazione.html">Portogallo</a></li><li><a>Italia</a></li><li><a>Giappone</a></li><li><a>Messico</a></li></ul></div>
+        <div class="ftr-col"><h4>Il mondo Oops</h4><ul><li><a href="casa-tipi.html">Tipi di viaggio</a></li><li><a href="casa-partenze.html">Partenze</a></li><li><a>Garanzie</a></li></ul></div>
+        <div class="ftr-col"><h4>Community</h4><ul><li><a href="casa-diario.html">Diario</a></li></ul></div>
+        <div class="ftr-col"><h4>Info</h4><ul><li><a>Contatti</a></li><li><a>FAQ</a></li><li><a>Termini</a></li></ul></div>
+      </div>
+      <div class="ftr-bot">
+        <span>© 2026 Oops I Roamed S.r.l.</span>
+        <div class="ftr-pays">
+          <span class="pay-chip">Visa</span><span class="pay-chip">Mastercard</span>
+          <span class="pay-chip">Scalapay</span><span class="pay-chip">PayPal</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="casa-app.js"></script>
+</body>
+</html>

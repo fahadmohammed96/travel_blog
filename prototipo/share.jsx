@@ -161,7 +161,7 @@ const Share = ({ params }) => {
         {/* STEP 1 — Intro */}
         {step === 1 && (
           <div className="page-enter">
-            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: 56, lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px 0 16px' }}>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: 'clamp(34px, 7vw, 56px)', lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px 0 16px' }}>
               <em>Mandaci</em> le tue foto.
             </h1>
             <p style={{ fontSize: 19, color: 'var(--fg-2)', lineHeight: 1.6, margin: '0 0 32px', maxWidth: 580 }}>

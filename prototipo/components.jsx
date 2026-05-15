@@ -34,14 +34,19 @@ const Eyebrow = ({ children }) => <div className="eyebrow">{children}</div>;
 const Meta = ({ children, style }) => <div className="meta" style={style}>{children}</div>;
 const Badge = ({ kind = 'b-soft', children }) => <span className={`badge ${kind}`}>{children}</span>;
 
-const Button = ({ variant = 'primary', size, children, onClick, icon, iconPos = 'right', loading, block, type, disabled }) => {
-  const cls = ['btn', `btn-${variant}`, size && `btn-${size}`, block && 'btn-block'].filter(Boolean).join(' ');
+const Button = ({ variant = 'primary', size, children, onClick, icon, iconPos = 'right', loading, block, type, disabled, takeoff }) => {
+  const cls = ['btn', `btn-${variant}`, size && `btn-${size}`, block && 'btn-block', takeoff && 'btn-takeoff'].filter(Boolean).join(' ');
   return (
     <button type={type || 'button'} className={cls} onClick={onClick} disabled={disabled || loading}>
       {loading && <span className="spin" />}
-      {!loading && icon && iconPos === 'left' && <Icon name={icon} size={16} />}
+      {!loading && icon && iconPos === 'left' && !takeoff && <Icon name={icon} size={16} />}
       {children}
-      {!loading && icon && iconPos === 'right' && <Icon name={icon} size={16} />}
+      {!loading && icon && iconPos === 'right' && !takeoff && <Icon name={icon} size={16} />}
+      {takeoff && !loading && (
+        <span className="takeoff-badge" aria-hidden="true">
+          <Icon name="plane" size={size === 'lg' ? 20 : 16} className="takeoff-plane" />
+        </span>
+      )}
     </button>
   );
 };
@@ -68,15 +73,20 @@ const NavMenu = ({ label, active, items, onNav }) => {
   const [open, setOpen] = React.useState(false);
   const [openChild, setOpenChild] = React.useState(null);
   const ref = React.useRef(null);
+  const closeTimer = React.useRef(null);
+  const cancelClose = () => { if (closeTimer.current) { clearTimeout(closeTimer.current); closeTimer.current = null; } };
+  const scheduleClose = () => { cancelClose(); closeTimer.current = setTimeout(() => { setOpen(false); setOpenChild(null); }, 140); };
+  const closeAll = () => { cancelClose(); setOpen(false); setOpenChild(null); };
   React.useEffect(() => {
-    const close = (e) => { if (ref.current && !ref.current.contains(e.target)) { setOpen(false); setOpenChild(null); } };
-    document.addEventListener('mousedown', close);
-    return () => document.removeEventListener('mousedown', close);
+    const onDocDown = (e) => { if (ref.current && !ref.current.contains(e.target)) closeAll(); };
+    const onKey = (e) => { if (e.key === 'Escape') closeAll(); };
+    document.addEventListener('mousedown', onDocDown);
+    document.addEventListener('keydown', onKey);
+    return () => { document.removeEventListener('mousedown', onDocDown); document.removeEventListener('keydown', onKey); cancelClose(); };
   }, []);
-  const closeAll = () => { setOpen(false); setOpenChild(null); };
   return (
-    <div className="nav-menu" ref={ref} onMouseEnter={() => setOpen(true)} onMouseLeave={() => { setOpen(false); setOpenChild(null); }}>
-      <a className={active ? 'on' : ''} onClick={() => setOpen(o => !o)}>
+    <div className="nav-menu" ref={ref} onMouseEnter={() => { cancelClose(); setOpen(true); }} onMouseLeave={scheduleClose}>
+      <a className={active ? 'on' : ''} onClick={() => { cancelClose(); setOpen(true); }}>
         {label}<Icon name="chevron-down" size={14} style={{ marginLeft: 4, transition: 'transform 160ms', transform: open ? 'rotate(180deg)' : 'none' }} />
       </a>
       {open && (
@@ -123,8 +133,15 @@ const NavMenu = ({ label, active, items, onNav }) => {
 const MobileDrawer = ({ open, onClose, onNav, active, user }) => {
   const [section, setSection] = React.useState(null); // null | 'viaggi' | 'diario' | 'chi'
   React.useEffect(() => { if (!open) setSection(null); }, [open]);
+  // Lock body scroll while drawer is open
+  React.useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prev; };
+  }, [open]);
   const go = (route, params) => { onClose(); setTimeout(() => onNav(route, params), 50); };
-  return (
+  const tree = (
     <div className={'mob-drawer' + (open ? ' open' : '')} aria-hidden={!open}>
       <div className="mob-drawer-scrim" onClick={onClose}></div>
       <div className="mob-drawer-panel">
@@ -177,6 +194,194 @@ const MobileDrawer = ({ open, onClose, onNav, active, user }) => {
       </div>
     </div>
   );
+  return ReactDOM.createPortal(tree, document.body);
+};
+
+const SearchModal = ({ open, onClose, onNav }) => {
+  const [q, setQ] = React.useState('');
+  const inputRef = React.useRef(null);
+  React.useEffect(() => {
+    if (open) {
+      setQ('');
+      setTimeout(() => inputRef.current && inputRef.current.focus(), 30);
+    }
+  }, [open]);
+  React.useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
+  }, [open, onClose]);
+  if (!open) return null;
+
+  const norm = (s) => (s || '').toString().toLowerCase();
+  const term = norm(q).trim();
+  const matches = (s) => term === '' || norm(s).includes(term);
+  const TRIPS_ = window.TRIPS || [];
+  const ARTICLES_ = window.ARTICLES || [];
+  const ITINERARIES_ = window.ITINERARIES || [];
+  const tripHits = TRIPS_.filter(t => matches(t.title) || matches(t.country) || matches(t.dek)).slice(0, 5);
+  const articleHits = ARTICLES_.filter(a => matches(a.title) || matches(a.eyebrow) || matches(a.dek)).slice(0, 5);
+  const itinHits = ITINERARIES_.filter(it => matches(it.title) || matches(it.city) || matches(it.country)).slice(0, 5);
+  const COUNTRIES_QUICK = [
+    { name: 'Portogallo' }, { name: 'Giappone' }, { name: 'Messico' }, { name: 'Italia' },
+    { name: 'Islanda' }, { name: 'Marocco' }, { name: 'Vietnam' }, { name: 'Grecia' },
+  ];
+  const countryHits = COUNTRIES_QUICK.filter(c => matches(c.name)).slice(0, 6);
+  const QUICK_PAGES = [
+    { route: 'trips', label: 'Tutti i viaggi', dek: 'Roamed Trips di gruppo', icon: 'compass' },
+    { route: 'bespoke', label: 'Crea il tuo itinerario', dek: 'Roam your way · su misura', icon: 'map' },
+    { route: 'itineraries', label: 'Itinerari gratuiti', dek: 'PDF da scaricare', icon: 'file-text' },
+    { route: 'guide', label: 'Guide pratiche', dek: 'Per chi parte la prima volta', icon: 'book-open' },
+    { route: 'shop', label: 'Lo Shop', dek: 'Cose che usiamo davvero', icon: 'shopping-bag' },
+    { route: 'gift', label: 'Buoni regalo', dek: 'Regala viaggio o itinerario', icon: 'gift' },
+    { route: 'faq', label: 'Domande frequenti', dek: 'Cancellazioni, pagamenti…', icon: 'help-circle' },
+    { route: 'contact', label: 'Contattaci', dek: 'Email, WhatsApp, studio', icon: 'mail' },
+  ];
+  const pageHits = QUICK_PAGES.filter(p => matches(p.label) || matches(p.dek));
+
+  const totalHits = tripHits.length + articleHits.length + itinHits.length + countryHits.length + (term ? pageHits.length : 0);
+
+  return (
+    <div className="search-scrim" onClick={onClose}>
+      <div className="search-modal" onClick={e => e.stopPropagation()}>
+        <div className="search-bar">
+          <Icon name="search" size={20} style={{ color: 'var(--fg-3)' }} />
+          <input
+            ref={inputRef}
+            value={q}
+            onChange={e => setQ(e.target.value)}
+            placeholder="Cerca viaggi, storie, paesi, itinerari…"
+            aria-label="Cerca"
+          />
+          <button className="search-close" onClick={onClose} aria-label="Chiudi"><kbd>esc</kbd></button>
+        </div>
+        <div className="search-results">
+          {!term && (
+            <>
+              <div className="search-section">
+                <div className="search-section-title">Salta a</div>
+                <div className="search-quick">
+                  {QUICK_PAGES.slice(0, 6).map(p => (
+                    <button key={p.route} className="search-chip" onClick={() => onNav(p.route, p.route === 'gift' ? { mode: 'trip' } : {})}>
+                      <Icon name={p.icon} size={14} /> {p.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="search-section">
+                <div className="search-section-title">Paesi nel diario</div>
+                <div className="search-quick">
+                  {COUNTRIES_QUICK.map(c => (
+                    <button key={c.name} className="search-chip" onClick={() => onNav('diary', { country: c.name })}>
+                      {c.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="search-section">
+                <div className="search-section-title">Storie recenti</div>
+                {ARTICLES_.slice(0, 4).map(a => (
+                  <button key={a.id} className="search-row" onClick={() => onNav('article', { id: a.id })}>
+                    <img src={a.image} alt="" />
+                    <div className="search-row-body">
+                      <div className="search-row-eyebrow">{a.eyebrow}</div>
+                      <div className="search-row-title">{a.title}</div>
+                    </div>
+                    <Icon name="arrow-right" size={16} style={{ color: 'var(--fg-3)' }} />
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
+          {term && totalHits === 0 && (
+            <div className="search-empty">
+              <div style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 22, color: 'var(--fg-2)', marginBottom: 8 }}>Nessun risultato per "{q}".</div>
+              <div style={{ fontSize: 13, color: 'var(--fg-3)' }}>Prova con un paese, una città, o "Porto", "Kyoto", "Oaxaca"…</div>
+            </div>
+          )}
+          {term && tripHits.length > 0 && (
+            <div className="search-section">
+              <div className="search-section-title">Viaggi · {tripHits.length}</div>
+              {tripHits.map(t => (
+                <button key={t.id} className="search-row" onClick={() => onNav('trip', { id: t.id })}>
+                  <img src={t.image} alt="" />
+                  <div className="search-row-body">
+                    <div className="search-row-eyebrow">{t.kind} · {t.country}</div>
+                    <div className="search-row-title">{t.title}</div>
+                    <div className="search-row-meta">{t.dates} · €{t.price.toLocaleString('it-IT')}</div>
+                  </div>
+                  <Icon name="arrow-right" size={16} style={{ color: 'var(--fg-3)' }} />
+                </button>
+              ))}
+            </div>
+          )}
+          {term && articleHits.length > 0 && (
+            <div className="search-section">
+              <div className="search-section-title">Storie · {articleHits.length}</div>
+              {articleHits.map(a => (
+                <button key={a.id} className="search-row" onClick={() => onNav('article', { id: a.id })}>
+                  <img src={a.image} alt="" />
+                  <div className="search-row-body">
+                    <div className="search-row-eyebrow">{a.eyebrow}</div>
+                    <div className="search-row-title">{a.title}</div>
+                    <div className="search-row-meta">{a.meta}</div>
+                  </div>
+                  <Icon name="arrow-right" size={16} style={{ color: 'var(--fg-3)' }} />
+                </button>
+              ))}
+            </div>
+          )}
+          {term && itinHits.length > 0 && (
+            <div className="search-section">
+              <div className="search-section-title">Itinerari gratuiti · {itinHits.length}</div>
+              {itinHits.map(it => (
+                <button key={it.id} className="search-row" onClick={() => onNav('itinerary', { id: it.id })}>
+                  <div className="search-row-icon"><Icon name="map" size={22} /></div>
+                  <div className="search-row-body">
+                    <div className="search-row-eyebrow">{it.country} · {it.city} · {it.days}gg</div>
+                    <div className="search-row-title">{it.title}</div>
+                  </div>
+                  <Icon name="arrow-right" size={16} style={{ color: 'var(--fg-3)' }} />
+                </button>
+              ))}
+            </div>
+          )}
+          {term && countryHits.length > 0 && (
+            <div className="search-section">
+              <div className="search-section-title">Paesi · {countryHits.length}</div>
+              <div className="search-quick">
+                {countryHits.map(c => (
+                  <button key={c.name} className="search-chip" onClick={() => onNav('diary', { country: c.name })}>{c.name}</button>
+                ))}
+              </div>
+            </div>
+          )}
+          {term && pageHits.length > 0 && (
+            <div className="search-section">
+              <div className="search-section-title">Pagine</div>
+              {pageHits.map(p => (
+                <button key={p.route} className="search-row search-row-compact" onClick={() => onNav(p.route, p.route === 'gift' ? { mode: 'trip' } : {})}>
+                  <div className="search-row-icon"><Icon name={p.icon} size={18} /></div>
+                  <div className="search-row-body">
+                    <div className="search-row-title" style={{ fontSize: 15 }}>{p.label}</div>
+                    <div className="search-row-meta">{p.dek}</div>
+                  </div>
+                  <Icon name="arrow-right" size={16} style={{ color: 'var(--fg-3)' }} />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+        <div className="search-foot">
+          <span><kbd>↵</kbd> apri</span>
+          <span><kbd>esc</kbd> chiudi</span>
+          <span style={{ marginLeft: 'auto', fontFamily: 'var(--font-display)', fontStyle: 'italic' }}>Cerca dove vorresti perderti.</span>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 const Header = ({ active, onNav, user }) => {
@@ -184,6 +389,7 @@ const Header = ({ active, onNav, user }) => {
   const inDiario = ['diary', 'article', 'countries', 'seasons'].includes(active);
   const inChi = ['story', 'press', 'contact', 'faq'].includes(active);
   const [mobOpen, setMobOpen] = React.useState(false);
+  const [searchOpen, setSearchOpen] = React.useState(false);
   return (
   <header className="hdr">
     <div className="container hdr-in">
@@ -220,7 +426,7 @@ const Header = ({ active, onNav, user }) => {
         ]} />
       </nav>
       <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-        <button className="btn btn-ghost btn-sm"><Icon name="search" size={16} /></button>
+        <button className="btn btn-ghost btn-sm" onClick={() => setSearchOpen(true)} aria-label="Cerca"><Icon name="search" size={16} /></button>
         {user
           ? <div onClick={() => onNav('account')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
               <div style={{ width: 32, height: 32, borderRadius: 999, background: 'linear-gradient(135deg, var(--clay-300), var(--forest-500))', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-display)', fontSize: 14 }}>{user.initials}</div>
@@ -232,6 +438,7 @@ const Header = ({ active, onNav, user }) => {
       </div>
     </div>
     <MobileDrawer open={mobOpen} onClose={() => setMobOpen(false)} onNav={onNav} active={active} user={user} />
+    <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} onNav={(n, p) => { setSearchOpen(false); onNav(n, p); }} />
   </header>
   );
 };
@@ -504,14 +711,14 @@ const Passport = ({ savedCount, bookedCount, bespokeCount }) => {
   );
 };
 
-Object.assign(window, { Icon, Logo, Eyebrow, Meta, Badge, Button, Chip, Field, Toast, Header, Footer, Stamp, TripCard, ArticleCard, TripMap, Passport, MarginNote, PolaroidWall, EmailModal, RealMap });
+Object.assign(window, { Icon, Logo, Eyebrow, Meta, Badge, Button, Chip, Field, Toast, Header, Footer, Stamp, TripCard, ArticleCard, TripMap, Passport, MarginNote, PolaroidWall, EmailModal, RealMap, SearchModal });
 
 /* ============ MarginNote — annotazioni manoscritte ============ */
 function MarginNote({ children, side = 'right', rotate = -2, top = 0, color }) {
   const arrowD = side === 'right' ? 'M 38,10 Q 25,5 10,12 Q 5,14 2,18' : 'M 2,10 Q 15,5 30,12 Q 35,14 38,18';
   const tipD = side === 'right' ? 'M 8,8 L 2,18 L 14,16' : 'M 32,8 L 38,18 L 26,16';
   return (
-    <aside className="rise" style={{
+    <aside className="rise margin-note" style={{
       position: 'absolute',
       [side]: -220, top,
       width: 200,
@@ -536,9 +743,9 @@ function MarginNote({ children, side = 'right', rotate = -2, top = 0, color }) {
 /* ============ PolaroidWall — foto dei viaggiatori ============ */
 function PolaroidWall({ photos }) {
   return (
-    <div style={{ position: 'relative', minHeight: 480, padding: '24px 0' }}>
+    <div className="polaroid-wall" style={{ position: 'relative', minHeight: 480, padding: '24px 0' }}>
       {photos.map((p, i) => (
-        <figure key={i} className="rise" style={{
+        <figure key={i} className="rise polaroid-item" style={{
           position: 'absolute',
           left: p.x + '%', top: p.y,
           transform: `rotate(${p.rotate}deg)`,
@@ -687,7 +894,7 @@ function TestimonialCard({ t, variant = 'default' }) {
       display: 'flex', flexDirection: 'column', gap: 16,
       position: 'relative',
     }}>
-      <div style={{ position: 'absolute', top: 16, right: 20, fontFamily: 'var(--font-display)', fontSize: 64, lineHeight: 0.6, color: 'var(--clay-300)', opacity: 0.4, fontWeight: 300 }}>"</div>
+      <div style={{ position: 'absolute', top: 16, right: 20, fontFamily: 'var(--font-display)', fontSize: 'clamp(40px, 8vw, 64px)', lineHeight: 0.6, color: 'var(--clay-300)', opacity: 0.4, fontWeight: 300 }}>"</div>
       <div style={{ display: 'flex', gap: 4, color: 'var(--clay-500)' }}>
         {Array.from({ length: t.rating }).map((_, i) => <Icon key={i} name="star" size={14} />)}
         {Array.from({ length: 5 - t.rating }).map((_, i) => <Icon key={i} name="star" size={14} style={{ opacity: 0.2 }} />)}
@@ -721,7 +928,7 @@ function TestimonialSection({ tripId, title = 'Cosa dicono i viaggiatori', subti
     <div style={{ marginTop: 72 }}>
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16, marginBottom: 28 }}>
         <div>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 36, margin: '0 0 6px' }}>{title}</h2>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(26px, 4.5vw, 36px)', margin: '0 0 6px' }}>{title}</h2>
           {subtitle && <p style={{ color: 'var(--fg-3)', fontSize: 13, fontFamily: 'var(--font-mono)', letterSpacing: '0.04em', textTransform: 'uppercase', margin: 0 }}>{subtitle}</p>}
         </div>
         {rating && (
@@ -809,7 +1016,7 @@ function IncludedExcluded({ tripId }) {
 }
 
 /* ============ NEW: COMPARATOR Roamed / Bespoke / Solo ============ */
-function ComparatorCard({ onPickRoamed, onPickBespoke }) {
+function ComparatorCard({ onPickRoamed, onPickBespoke, onPickItinerary }) {
   const cols = [
     {
       tag: 'OPZIONE 1', title: 'Roamed Trip', sub: 'Date fisse, max 10',
@@ -844,7 +1051,7 @@ function ComparatorCard({ onPickRoamed, onPickBespoke }) {
         { ok: false, t: 'Niente garanzia, nessuna assistenza' },
       ],
       price: 'GRATIS', pricesub: 'scarica e parti',
-      cta: 'Vedi gli itinerari', action: () => window.dispatchEvent(new CustomEvent('go', { detail: { route: 'itineraries' } })), primary: false,
+      cta: 'Vedi gli itinerari', action: onPickItinerary || (() => {}), primary: false,
       bg: 'var(--bg-elevated)', fg: 'var(--fg-1)', dashed: true,
     },
   ];
@@ -1010,15 +1217,24 @@ function PreBuyFAQ() {
     <div style={{ marginTop: 32 }}>
       <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 24, fontWeight: 400, margin: '0 0 16px' }}>Le domande che ci fate prima di prenotare</h3>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        {list.map((f, i) => (
-          <details key={i} open={open === i} onClick={(e) => { e.preventDefault(); setOpen(open === i ? -1 : i); }} style={{ background: 'var(--cream-50)', border: '1px solid var(--border)', borderRadius: 'var(--r-md)', padding: '14px 18px', cursor: 'pointer' }}>
-            <summary style={{ listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontFamily: 'var(--font-display)', fontSize: 16, color: 'var(--fg-1)' }}>
-              <span>{f.q}</span>
-              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 18, color: 'var(--fg-3)', transform: open === i ? 'rotate(45deg)' : 'rotate(0)', transition: 'transform 200ms', display: 'inline-block' }}>+</span>
-            </summary>
-            {open === i && <p style={{ marginTop: 10, fontSize: 14, lineHeight: 1.55, color: 'var(--fg-2)' }}>{f.a}</p>}
-          </details>
-        ))}
+        {list.map((f, i) => {
+          const isOpen = open === i;
+          return (
+            <div key={i} style={{ background: 'var(--cream-50)', border: '1px solid var(--border)', borderRadius: 'var(--r-md)', overflow: 'hidden' }}>
+              <button
+                type="button"
+                onClick={() => setOpen(isOpen ? -1 : i)}
+                aria-expanded={isOpen}
+                style={{ width: '100%', textAlign: 'left', background: 'transparent', border: 'none', cursor: 'pointer', padding: '14px 18px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, fontFamily: 'var(--font-display)', fontSize: 16, color: 'var(--fg-1)', font: 'inherit' }}>
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: 16, color: 'var(--fg-1)' }}>{f.q}</span>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: 18, color: 'var(--fg-3)', transform: isOpen ? 'rotate(45deg)' : 'rotate(0)', transition: 'transform 200ms', display: 'inline-block', flex: 'none' }}>+</span>
+              </button>
+              {isOpen && (
+                <p style={{ margin: 0, padding: '0 18px 16px', fontSize: 14, lineHeight: 1.55, color: 'var(--fg-2)' }}>{f.a}</p>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

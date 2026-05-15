@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <title>Tre giorni persi a Porto — Oops I Roamed</title>
+  <template id="__bundler_thumbnail">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+      <rect width="200" height="200" fill="#F8F4EC"/>
+      <rect x="20" y="40" width="100" height="60" rx="6" fill="#3F6390" opacity="0.85"/>
+      <rect x="130" y="40" width="50" height="28" rx="4" fill="#E87B5A" opacity="0.85"/>
+      <rect x="130" y="72" width="50" height="28" rx="4" fill="#F5C547" opacity="0.85"/>
+      <rect x="20" y="108" width="160" height="6" rx="3" fill="#1F2A22"/>
+      <rect x="20" y="120" width="120" height="6" rx="3" fill="#1F2A22" opacity="0.55"/>
+      <rect x="20" y="132" width="80" height="6" rx="3" fill="#1F2A22" opacity="0.35"/>
+      <rect x="60" y="160" width="80" height="20" rx="10" fill="#E87B5A"/>
+    </svg>
+  </template>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link rel="stylesheet" href="casa-styles.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="hdr">
+    <div class="hdr-in">
+      <a class="brand" href="casa.html" aria-label="Oops I Roamed — casa">
+        <span class="brand-mark">o</span>
+        <span><em>Oops</em> I Roamed</span>
+      </a>
+      <nav class="nav">
+        <div class="nav-item"><a href="casa.html">Home</a></div>
+        <div class="nav-item on"><a href="casa-viaggi.html">Viaggi</a></div>
+        <div class="nav-item"><a href="casa-partenze.html">Partenze</a></div>
+        <div class="nav-item">
+          <a href="casa-destinazioni.html">Destinazioni <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Europa</h4>
+                <a class="mm-link" href="casa-destinazione.html">
+                  <span class="mm-link-label">Portogallo</span>
+                  <span class="mm-link-dek">Atlantico, lento</span>
+                </a>
+                <a class="mm-link"><span class="mm-link-label">Italia</span><span class="mm-link-dek">Sud che non corre</span></a>
+                <a class="mm-link"><span class="mm-link-label">Islanda</span><span class="mm-link-dek">Ring road, controvento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Georgia</span><span class="mm-link-dek">Caucaso minore</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Africa &amp; Med</h4>
+                <a class="mm-link"><span class="mm-link-label">Marocco</span><span class="mm-link-dek">Atlante in marzo</span></a>
+                <a class="mm-link"><span class="mm-link-label">Egitto</span><span class="mm-link-dek">Nilo, da nord</span></a>
+                <a class="mm-link"><span class="mm-link-label">Giordania</span><span class="mm-link-dek">Wadi, deserto</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Far &amp; Wide</h4>
+                <a class="mm-link"><span class="mm-link-label">Giappone</span><span class="mm-link-dek">Hokkaido a febbraio</span></a>
+                <a class="mm-link"><span class="mm-link-label">Messico</span><span class="mm-link-dek">Oaxaca, mole</span></a>
+                <a class="mm-link"><span class="mm-link-label">Argentina</span><span class="mm-link-dek">Patagonia in spalla</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="casa-tipi.html">Tipi di viaggio <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Mood</h4>
+                <a class="mm-link"><span class="mm-link-label">Slow</span><span class="mm-link-dek">Camminare piano</span></a>
+                <a class="mm-link"><span class="mm-link-label">Salt &amp; Sea</span><span class="mm-link-dek">Vita di mare</span></a>
+                <a class="mm-link"><span class="mm-link-label">Cold Quiet</span><span class="mm-link-dek">Inverni nordici</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Formato</h4>
+                <a class="mm-link"><span class="mm-link-label">Weekend</span><span class="mm-link-dek">2–4 giorni</span></a>
+                <a class="mm-link"><span class="mm-link-label">Roadtrip</span><span class="mm-link-dek">In auto, con tappe</span></a>
+                <a class="mm-link"><span class="mm-link-label">Lungo</span><span class="mm-link-dek">10+ giorni</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Ritmo</h4>
+                <a class="mm-link"><span class="mm-link-label">Camminato</span><span class="mm-link-dek">Trekking, sentieri</span></a>
+                <a class="mm-link"><span class="mm-link-label">Tavolato</span><span class="mm-link-dek">Mangiare lento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Letto presto</span><span class="mm-link-dek">Sveglie all'alba</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item"><a href="casa-chi-siamo.html">Chi siamo</a></div>
+        <div class="nav-item"><a href="casa-diario.html">Diario</a></div>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" data-only-desktop aria-label="Cerca">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="icon-btn" data-only-desktop aria-label="Salvati">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <span class="lang-pill">IT · €</span>
+        <a class="btn btn-secondary btn-sm">Parla con noi</a>
+        <button class="drawer-toggle icon-btn" aria-label="Apri menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" aria-hidden="true">
+    <div class="drawer-scrim"></div>
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <span class="brand"><span class="brand-mark">o</span><span><em>Oops</em></span></span>
+        <button class="icon-btn drawer-close" aria-label="Chiudi menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="drawer-list">
+        <a class="drawer-link" href="casa-viaggi.html">Viaggi</a>
+        <a class="drawer-link" href="casa-partenze.html">Partenze</a>
+        <a class="drawer-link" href="casa-destinazioni.html">Destinazioni</a>
+        <a class="drawer-link" href="casa-tipi.html">Tipi di viaggio</a>
+        <a class="drawer-link" href="casa-chi-siamo.html">Chi siamo</a>
+        <a class="drawer-link" href="casa-diario.html">Diario</a>
+        <div class="drawer-section">Profilo</div>
+        <a class="drawer-link">I miei salvati</a>
+        <a class="drawer-link">Le mie prenotazioni</a>
+      </div>
+      <div class="drawer-foot">
+        <a class="btn btn-primary btn-block">Parla con noi</a>
+        <a class="btn btn-secondary btn-block">Accedi</a>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb">
+      <a href="casa.html">Casa</a>
+      <span class="sep">/</span>
+      <a>Destinazioni</a>
+      <span class="sep">/</span>
+      <a>Europa</a>
+      <span class="sep">/</span>
+      <a href="casa-destinazione.html">Portogallo</a>
+      <span class="sep">/</span>
+      <span class="current">Tre giorni persi a Porto</span>
+    </nav>
+
+    <!-- ============ PDP HEAD ============ -->
+    <div class="pdp-head">
+      <h1 class="hero-title" style="color: var(--ink-1000); margin: 0; font-size: clamp(40px, 5.5vw, 76px);">
+        Tre giorni <em>persi</em> a Porto
+      </h1>
+      <div class="pdp-meta-row">
+        <span>3 giorni · 3 notti</span>
+        <span class="sep">·</span>
+        <span class="pdp-rating"><span class="star">★</span> <b>4.9</b> · 218 recensioni</span>
+        <span class="sep">·</span>
+        <span class="badge badge-warm">A 2 dal via</span>
+        <span class="sep">·</span>
+        <span>Voli inclusi da Milano / Roma</span>
+        <div class="pdp-actions-row">
+          <a class="link-und">Confronta</a>
+          <a class="link-und">Condividi</a>
+        </div>
+      </div>
+
+      <!-- Gallery mosaic -->
+      <div class="pdp-gallery">
+        <a><img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1600&q=85" alt="Porto, fiume Douro" /></a>
+        <a><img src="https://images.unsplash.com/photo-1581873372796-635b67ca2008?w=900&q=85" alt="Vicoli di Porto" /></a>
+        <a><img src="https://images.unsplash.com/photo-1567527555269-7be9a5cdfb84?w=900&q=85" alt="Pastel de nata" /></a>
+        <a><img src="https://images.unsplash.com/photo-1551649001-7a2482d98d05?w=900&q=85" alt="Azulejos" /></a>
+        <a><img src="https://images.unsplash.com/photo-1591388045006-3f9e1f0f60a8?w=900&q=85" alt="Tramonto sul Douro" /></a>
+        <span class="pdp-gallery-more">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Vedi tutte le 23 foto
+        </span>
+      </div>
+    </div>
+
+    <div class="pdp-layout">
+      <!-- ============ MAIN COLUMN ============ -->
+      <main class="pdp-main">
+        <p class="pdp-summary">
+          Un weekend lungo tra vino di Porto, azulejos e le strade più ripide che le tue ginocchia incontreranno. Si arriva il giovedì sera, si riparte la domenica con due chili in più e un'opinione fortissima sui pastéis de nata. <a>Leggi il diario completo →</a>
+        </p>
+
+        <section class="pdp-section">
+          <h2>Questo viaggio <em>fa per te?</em></h2>
+          <div class="fit-grid">
+            <div class="fit-row"><span class="fit-label">Party · sera</span>
+              <div class="fit-dots"><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot"></span><span class="fit-dot"></span><span class="fit-dot"></span></div></div>
+            <div class="fit-row"><span class="fit-label">Relax</span>
+              <div class="fit-dots"><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot"></span><span class="fit-dot"></span></div></div>
+            <div class="fit-row"><span class="fit-label">Natura</span>
+              <div class="fit-dots"><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot"></span><span class="fit-dot"></span><span class="fit-dot"></span></div></div>
+            <div class="fit-row"><span class="fit-label">Città · cultura</span>
+              <div class="fit-dots"><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span></div></div>
+            <div class="fit-row"><span class="fit-label">Mangiare</span>
+              <div class="fit-dots"><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span></div></div>
+            <div class="fit-row"><span class="fit-label">Camminato</span>
+              <div class="fit-dots"><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot"></span></div></div>
+          </div>
+          <div class="pdp-tag-row">
+            <span class="chip on">Weekend</span>
+            <span class="chip">City Escape</span>
+            <span class="chip">Tavolato</span>
+            <span class="chip">Voli inclusi</span>
+            <span class="chip">Camera privata disponibile</span>
+          </div>
+          <p class="mono" style="margin-top: 18px; font-size: 12px; color: var(--fg-3);">SFORZO FISICO: MODERATO — strade in salita, 6–8 km al giorno camminando. Scarpe vecchie, mai nuove.</p>
+        </section>
+
+        <section class="pdp-section">
+          <h2>Itinerario, <em>giorno per giorno</em></h2>
+          <div class="day-list">
+            <details class="day-item" open>
+              <summary class="day-summary">
+                <span class="day-num">Giorno I</span>
+                <div class="day-thumb"><img src="https://images.unsplash.com/photo-1591388045006-3f9e1f0f60a8?w=400&q=80" alt="" /></div>
+                <span class="day-title">Arrivo, fiume, prima cena</span>
+                <span class="day-chev"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+              </summary>
+              <div class="day-body">
+                <p>Volo della mattina, trasferimento collettivo in città. Check-in nel guesthouse a Cedofeita, una zona di artigiani che non è ancora del tutto turistica. Pomeriggio libero per perdersi nei vicoli, salita verso Ribeira al rallentatore.</p>
+                <div class="day-stops">
+                  <div class="day-stop">
+                    <div class="day-stop-pic"><img src="https://images.unsplash.com/photo-1591388045006-3f9e1f0f60a8?w=400&q=80" alt="" /></div>
+                    <div class="day-stop-text">
+                      <strong>17:30 — Drink di benvenuto al Café Majestic</strong>
+                      <p>Caffè storico Art Nouveau. Si chiamano i nomi, si beve un porto bianco, si ride.</p>
+                      <span class="day-stop-map">↳ Vedi sulla mappa</span>
+                    </div>
+                  </div>
+                  <div class="day-stop">
+                    <div class="day-stop-pic"><img src="https://images.unsplash.com/photo-1551649001-7a2482d98d05?w=400&q=80" alt="" /></div>
+                    <div class="day-stop-text">
+                      <strong>20:00 — Cena alla Cantina 32</strong>
+                      <p>Piatti piccoli da condividere. Polipo, sardine, croquetes. Vino della casa. Si esce contenti.</p>
+                      <span class="day-stop-map">↳ Vedi sulla mappa</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="day-cost-row">
+                  <span><span class="dot"></span> Incluso nella quota: cena, drink, transfer</span>
+                  <span><span class="dot common"></span> Cassa comune: caffè, mance</span>
+                  <span><span class="dot none"></span> A parte: pranzo</span>
+                </div>
+              </div>
+            </details>
+
+            <details class="day-item">
+              <summary class="day-summary">
+                <span class="day-num">Giorno II</span>
+                <div class="day-thumb"><img src="https://images.unsplash.com/photo-1567527555269-7be9a5cdfb84?w=400&q=80" alt="" /></div>
+                <span class="day-title">Cantine di Vila Nova de Gaia, libreria Lello, una salita di troppo</span>
+                <span class="day-chev"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+              </summary>
+              <div class="day-body">
+                <p>Tour delle cantine sul lato Gaia con degustazione di tre vini. Nel pomeriggio, libreria Lello (la coda si fa nel modo nostro). Cena libera, ti consigliamo tre posti, scegli tu.</p>
+              </div>
+            </details>
+
+            <details class="day-item">
+              <summary class="day-summary">
+                <span class="day-num">Giorno III</span>
+                <div class="day-thumb"><img src="https://images.unsplash.com/photo-1551649001-7a2482d98d05?w=400&q=80" alt="" /></div>
+                <span class="day-title">Mercato Bolhão, Foz do Douro, mare</span>
+                <span class="day-chev"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+              </summary>
+              <div class="day-body">
+                <p>Mattina al mercato, pranzo lento. Pomeriggio in tram fino a Foz, dove l'Atlantico ricorda perché si chiama così. Si torna a piedi lungo la passeggiata. Aperitivo al tramonto.</p>
+              </div>
+            </details>
+
+            <details class="day-item">
+              <summary class="day-summary">
+                <span class="day-num">Giorno IV</span>
+                <div class="day-thumb"><img src="https://images.unsplash.com/photo-1581873372796-635b67ca2008?w=400&q=80" alt="" /></div>
+                <span class="day-title">Tempo libero, partenza</span>
+                <span class="day-chev"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+              </summary>
+              <div class="day-body">
+                <p>Mattina libera, check-out, transfer in aeroporto per voli pomeridiani.</p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section class="pdp-section">
+          <h2>Cosa è <em>incluso</em></h2>
+          <div class="incl-grid">
+            <div class="incl-row">
+              <div class="incl-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="incl-text">Voli A/R da Milano o Roma<small>Bagaglio da stiva 23kg incluso</small></div>
+            </div>
+            <div class="incl-row">
+              <div class="incl-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="incl-text">3 notti in guesthouse di quartiere<small>Camera doppia o singola con supplemento</small></div>
+            </div>
+            <div class="incl-row">
+              <div class="incl-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="incl-text">Colazione tutti i giorni<small>Locali, non da buffet d'hotel</small></div>
+            </div>
+            <div class="incl-row">
+              <div class="incl-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="incl-text">Cena di benvenuto + cena d'addio</div>
+            </div>
+            <div class="incl-row">
+              <div class="incl-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="incl-text">Walking tour storico (3h)<small>Con guida locale, niente megafono</small></div>
+            </div>
+            <div class="incl-row">
+              <div class="incl-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="incl-text">Degustazione di Port wine (2 cantine, 6 calici)</div>
+            </div>
+            <div class="incl-row">
+              <div class="incl-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="incl-text">Transfer aeroporto–città A/R</div>
+            </div>
+            <div class="incl-row">
+              <div class="incl-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="incl-text">Coordinatore italiano in loco</div>
+            </div>
+            <div class="incl-row">
+              <div class="incl-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="incl-text">Assicurazione medica, bagaglio, rimpatrio</div>
+            </div>
+            <div class="incl-row excl">
+              <div class="incl-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+              <div class="incl-text">Pranzi e cene non menzionate<small>Stimati €15–25 per pasto</small></div>
+            </div>
+            <div class="incl-row excl">
+              <div class="incl-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+              <div class="incl-text">Mance, spese personali, biglietti musei facoltativi</div>
+            </div>
+            <div class="incl-row excl">
+              <div class="incl-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+              <div class="incl-text">Cassa comune (vedi sotto)</div>
+            </div>
+          </div>
+          <a class="link-und" style="margin-top: 22px;">Mostra tutte le 18 inclusioni <span class="arr">→</span></a>
+        </section>
+
+        <section class="pdp-section">
+          <h2>Cassa <em>comune</em></h2>
+          <div class="cassa-box">
+            <div>
+              <h3>€35 a testa, gestiti dal coordinatore.</h3>
+              <p>Una mancia in più al ristorante buono, un Uber notturno per quattro, l'ingresso al museo se piove forte. Si parte con la cassa, si torna con quel che resta — distribuito.</p>
+            </div>
+            <div class="cassa-amount">€35<small>a viaggiatore</small></div>
+          </div>
+        </section>
+
+        <section class="pdp-section">
+          <h2>Cosa <em>dicono</em> quelli che sono partiti</h2>
+          <div class="reviews-box">
+            <div class="reviews-top">
+              <div>
+                <div class="reviews-score">4.9<small>SU 5 — 218 RECENSIONI</small></div>
+              </div>
+              <div class="reviews-stars-row">
+                <div class="stars">★ ★ ★ ★ ★</div>
+                <p class="reviews-count">Recensioni verificate · solo da chi è partito</p>
+              </div>
+              <a class="link-und" style="margin-left: auto;">Vedi tutte <span class="arr">→</span></a>
+            </div>
+            <div class="reviews-quotes">
+              <div class="review-quote">
+                <p class="review-quote-text">"Mi aspettavo un tour, era un viaggio. Niente bandierine, niente fretta. Ricordo gli spritz a Ribeira più dei monumenti."</p>
+                <span class="review-quote-who">Chiara R. · Settembre 2025</span>
+              </div>
+              <div class="review-quote">
+                <p class="review-quote-text">"Il coordinatore conosceva la città come se ci fosse cresciuto. Forse ci era cresciuto. Ottimi tutti."</p>
+                <span class="review-quote-who">Davide M. · Maggio 2025</span>
+              </div>
+              <div class="review-quote">
+                <p class="review-quote-text">"Cinque persone diventate amiche in tre giorni. Ci siamo già detti dove andiamo l'anno prossimo."</p>
+                <span class="review-quote-who">Anna B. · Marzo 2025</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="pdp-section">
+          <h2>Perché <em>Oops I Roamed</em></h2>
+          <div class="why-row">
+            <div class="why-card">
+              <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <h4>Gruppi piccoli</h4>
+              <p>Mai più di 10 persone. Si parla, ci si conosce, niente megafono.</p>
+            </div>
+            <div class="why-card">
+              <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><polyline points="21 3 21 8 16 8"/></svg></div>
+              <h4>Cambi viaggio gratis</h4>
+              <p>Fino a 31 giorni prima, sposti la data o cambi meta senza penali.</p>
+            </div>
+            <div class="why-card">
+              <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="6" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+              <h4>Prenoti con €0</h4>
+              <p>Tieni il posto, paghi alla conferma. Niente anticipo.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="pdp-section">
+          <h2>I tuoi <em>coordinatori</em></h2>
+          <div class="coord-row">
+            <div class="coord-avs">
+              <span style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80');"></span>
+              <span style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80');"></span>
+            </div>
+            <div class="coord-text">
+              <strong>Sofia &amp; Pedro</strong>
+              <p>Sofia è italiana, vive a Lisbona da otto anni. Pedro è di Porto, fa la guida e cucina come si deve. Si conoscono dal 2019, su questa partenza si alternano.</p>
+            </div>
+            <a class="btn btn-secondary btn-sm">Conosci i coordinatori <span class="arr">→</span></a>
+          </div>
+        </section>
+
+        <section class="pdp-section">
+          <h2>Trova il tuo <em>volo</em></h2>
+          <div class="flight-card">
+            <div class="flight-stack">
+              <span class="lbl">Aeroporto di arrivo</span>
+              <span class="val">Porto (OPO)</span>
+            </div>
+            <div class="flight-stack">
+              <span class="lbl">Aeroporto di rientro</span>
+              <span class="val">Porto (OPO)</span>
+            </div>
+            <a class="btn btn-secondary">Controlla i prezzi <span class="arr">→</span></a>
+          </div>
+        </section>
+
+        <section class="pdp-section">
+          <h2>Domande <em>frequenti</em></h2>
+
+          <h3 class="faq-group-title">Sull'itinerario</h3>
+          <div class="faq-list">
+            <details class="faq-item" open>
+              <summary class="faq-q">Posso arrivare il giorno prima? <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+              <div class="faq-a">Sì, ti aiutiamo a prenotare la notte extra (€80–110, dipende dal periodo). Ti suggeriamo lo stesso guesthouse per continuità. Basta scriverlo nel modulo.</div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">Si dorme in stanza condivisa? <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+              <div class="faq-a">Default: camera doppia con un'altra persona dello stesso genere (matching). Singola con supplemento €120 per tutto il soggiorno.</div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">Qual è il programma esatto del giorno 2? <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+              <div class="faq-a">Trovi tutto nell'accordion sopra. Tour cantine al mattino (3h), pomeriggio libero con tre suggerimenti dal coordinatore, cena libera.</div>
+            </details>
+          </div>
+
+          <h3 class="faq-group-title">Sulla destinazione</h3>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary class="faq-q">Serve la carta d'identità o il passaporto? <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+              <div class="faq-a">Per cittadini UE basta la carta d'identità in corso di validità (verifica scadenza). Il passaporto è opzionale ma utile.</div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">Che valuta si usa? Le carte funzionano ovunque? <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+              <div class="faq-a">Euro. Carte accettate quasi ovunque, contanti utili per piccoli posti familiari, mercati, mance.</div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">Quanto si lascia di mancia? <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+              <div class="faq-a">In Portogallo le mance non sono obbligatorie ma apprezzate. 5–10% al ristorante se hai mangiato bene, €1–2 al barista per un buon caffè.</div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">Internet, SIM e roaming? <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+              <div class="faq-a">Roaming UE incluso nella tua tariffa italiana, niente da fare. Wi-Fi in tutti i locali principali.</div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">Che clima è febbraio-marzo a Porto? <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+              <div class="faq-a">Mite ma umido. 10–16°C, può piovere. Giacca antipioggia, maglione, scarpe già rotte in. La luce è bellissima.</div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">Cosa porto in valigia? <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+              <div class="faq-a">Ti mandiamo una packing list dettagliata 14 giorni prima. Versione corta: scarpe comode, qualcosa di elegante per la cena, ombrello pieghevole, adattatore non serve (presa europea).</div>
+            </details>
+            <details class="faq-item">
+              <summary class="faq-q">Lingua: quanto è facile cavarsela? <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+              <div class="faq-a">A Porto l'inglese è diffuso nei locali. Il portoghese è bello da imparare anche solo per dire "obrigada". Il coordinatore parla italiano.</div>
+            </details>
+          </div>
+        </section>
+
+        <div class="footnotes">
+          <p class="footnotes-title">Note a margine</p>
+          <ol>
+            <li>La carta serve solo come garanzia. L'addebito avviene 14 giorni prima della partenza, quando il viaggio è confermato. Cancelli prima? Niente è stato addebitato.</li>
+          </ol>
+        </div>
+      </main>
+
+      <!-- ============ BOOKING CARD STICKY ============ -->
+      <aside class="pdp-side">
+        <div class="book-card">
+          <div style="display: flex; align-items: start; gap: 12px;">
+            <div style="flex: 1; min-width: 0;">
+              <h3>Tre giorni persi a Porto</h3>
+              <p class="book-duration">3 giorni · 3 notti · A 2 dal via</p>
+            </div>
+            <button class="pdp-fav" aria-label="Salva nei preferiti">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <div class="book-price">
+            <span class="book-price-from">Da</span>
+            <span class="book-price-orig">€990</span>
+            <span class="book-price-now">€890</span>
+            <span class="book-pct">−10%</span>
+          </div>
+          <a class="btn btn-primary btn-lg btn-block">Prezzi e partenze <span class="arr" aria-hidden="true">→</span></a>
+          <p class="book-rass">
+            Tieni il posto con €0 <span class="dot">·</span>
+            Cambi viaggio gratis fino a 31 giorni dalla partenza <span class="dot">·</span>
+            Rate senza interessi
+          </p>
+          <div class="book-extras">
+            <a><span>Controlla i prezzi dei voli</span><span class="arr" aria-hidden="true">→</span></a>
+            <a><span>FAQ — Domande frequenti</span><span class="arr" aria-hidden="true">→</span></a>
+            <a><span>Scarica il PDF dell'itinerario</span><span class="arr" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Mobile sticky bottom bar -->
+  <div class="pdp-mobile-bar">
+    <div class="price-stack">
+      <span class="price-from">Da</span>
+      <span class="price-now">€890</span>
+    </div>
+    <a class="btn btn-primary">Prezzi e partenze <span class="arr" aria-hidden="true">→</span></a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="ftr">
+    <div class="wrap">
+      <div class="ftr-top">
+        <div class="ftr-brand">
+          <a class="brand"><span class="brand-mark">o</span><span><em>Oops</em> I Roamed</span></a>
+          <p class="ftr-claim">Viaggi in piccolo gruppo per chi preferisce arrivare tardi, mangiare a lungo, e dormire poco.</p>
+          <form class="ftr-news" onsubmit="event.preventDefault()">
+            <input type="email" placeholder="La tua email" />
+            <button type="submit">Iscrivimi</button>
+          </form>
+          <p class="ftr-newsdisc">Un dispaccio ogni mercoledì. Niente promozioni invasive.</p>
+        </div>
+        <div class="ftr-col">
+          <h4>Destinazioni</h4>
+          <ul>
+            <li><a href="casa-destinazione.html">Europa</a></li>
+            <li><a>Africa &amp; Med</a></li>
+            <li><a>Asia</a></li>
+            <li><a>Americhe</a></li>
+          </ul>
+        </div>
+        <div class="ftr-col">
+          <h4>Il mondo Oops</h4>
+          <ul>
+            <li><a>Come funziona</a></li>
+            <li><a>Tipi di viaggio</a></li>
+            <li><a>Garanzie</a></li>
+            <li><a>Su misura</a></li>
+          </ul>
+        </div>
+        <div class="ftr-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="casa-diario.html">Diario</a></li>
+            <li><a>Programma amici</a></li>
+          </ul>
+        </div>
+        <div class="ftr-col">
+          <h4>Info</h4>
+          <ul>
+            <li><a>Contatti</a></li>
+            <li><a>FAQ</a></li>
+            <li><a>Termini</a></li>
+            <li><a>Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ftr-bot">
+        <span>© 2026 Oops I Roamed S.r.l. · P.IVA 12345678901 · Milano</span>
+        <div class="ftr-pays">
+          <span class="pay-chip">Visa</span><span class="pay-chip">Mastercard</span>
+          <span class="pay-chip">Scalapay</span><span class="pay-chip">PayPal</span>
+          <span class="pay-chip">Apple Pay</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="casa-app.js"></script>
+</body>
+</html>

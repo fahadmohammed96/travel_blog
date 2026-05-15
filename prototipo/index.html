@@ -70,8 +70,8 @@
       const addPhotos = useCallback((p) => { setPhotos(prev => [...prev, p]); showToast('Foto inviate al diario', 'image'); }, [showToast]);
       const signout = useCallback(() => { setUser(null); setBookings([]); setBespokes([]); setPhotos([]); setSaved({ articles: new Set(), trips: new Set() }); go('home'); }, [go]);
 
-      const ctx = useMemo(() => ({ go, user, setUser, bookings, addBooking, bespokes, addBespoke, photos, addPhotos, saved, toggleSave, isSubscribed, subscribe, signout }),
-        [go, user, bookings, bespokes, photos, saved, isSubscribed, addBooking, addBespoke, addPhotos, toggleSave, subscribe, signout]);
+      const ctx = useMemo(() => ({ go, user, setUser, bookings, addBooking, bespokes, addBespoke, photos, addPhotos, saved, toggleSave, isSubscribed, subscribe, signout, showToast }),
+        [go, user, bookings, bespokes, photos, saved, isSubscribed, addBooking, addBespoke, addPhotos, toggleSave, subscribe, signout, showToast]);
 
       // Icon ora renderizza SVG inline — non serve più lucide.createIcons() qui
 

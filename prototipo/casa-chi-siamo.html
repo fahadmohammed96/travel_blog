@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <title>Chi siamo — Oops I Roamed</title>
+  <template id="__bundler_thumbnail">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+      <rect width="200" height="200" fill="#F8F4EC"/>
+      <circle cx="60" cy="80" r="22" fill="#E87B5A"/>
+      <circle cx="100" cy="80" r="22" fill="#3F6390"/>
+      <circle cx="140" cy="80" r="22" fill="#8CC79A"/>
+      <text x="100" y="140" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="22" fill="#1F2A22">La storia</text>
+    </svg>
+  </template>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link rel="stylesheet" href="casa-styles.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="hdr">
+    <div class="hdr-in">
+      <a class="brand" href="casa.html" aria-label="Oops I Roamed — casa">
+        <span class="brand-mark">o</span>
+        <span><em>Oops</em> I Roamed</span>
+      </a>
+      <nav class="nav">
+        <div class="nav-item"><a href="casa.html">Home</a></div>
+        <div class="nav-item"><a href="casa-viaggi.html">Viaggi</a></div>
+        <div class="nav-item"><a href="casa-partenze.html">Partenze</a></div>
+        <div class="nav-item">
+          <a href="casa-destinazioni.html">Destinazioni <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Europa</h4>
+                <a class="mm-link" href="casa-destinazione.html">
+                  <span class="mm-link-label">Portogallo</span>
+                  <span class="mm-link-dek">Atlantico, lento</span>
+                </a>
+                <a class="mm-link"><span class="mm-link-label">Italia</span><span class="mm-link-dek">Sud che non corre</span></a>
+                <a class="mm-link"><span class="mm-link-label">Islanda</span><span class="mm-link-dek">Ring road, controvento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Georgia</span><span class="mm-link-dek">Caucaso minore</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Africa &amp; Med</h4>
+                <a class="mm-link"><span class="mm-link-label">Marocco</span><span class="mm-link-dek">Atlante in marzo</span></a>
+                <a class="mm-link"><span class="mm-link-label">Egitto</span><span class="mm-link-dek">Nilo, da nord</span></a>
+                <a class="mm-link"><span class="mm-link-label">Giordania</span><span class="mm-link-dek">Wadi, deserto</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Far &amp; Wide</h4>
+                <a class="mm-link"><span class="mm-link-label">Giappone</span><span class="mm-link-dek">Hokkaido a febbraio</span></a>
+                <a class="mm-link"><span class="mm-link-label">Messico</span><span class="mm-link-dek">Oaxaca, mole</span></a>
+                <a class="mm-link"><span class="mm-link-label">Argentina</span><span class="mm-link-dek">Patagonia in spalla</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="casa-tipi.html">Tipi di viaggio <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Mood</h4>
+                <a class="mm-link"><span class="mm-link-label">Slow</span><span class="mm-link-dek">Camminare piano</span></a>
+                <a class="mm-link"><span class="mm-link-label">Salt &amp; Sea</span><span class="mm-link-dek">Vita di mare</span></a>
+                <a class="mm-link"><span class="mm-link-label">Cold Quiet</span><span class="mm-link-dek">Inverni nordici</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Formato</h4>
+                <a class="mm-link"><span class="mm-link-label">Weekend</span><span class="mm-link-dek">2–4 giorni</span></a>
+                <a class="mm-link"><span class="mm-link-label">Roadtrip</span><span class="mm-link-dek">In auto, con tappe</span></a>
+                <a class="mm-link"><span class="mm-link-label">Lungo</span><span class="mm-link-dek">10+ giorni</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Ritmo</h4>
+                <a class="mm-link"><span class="mm-link-label">Camminato</span><span class="mm-link-dek">Trekking, sentieri</span></a>
+                <a class="mm-link"><span class="mm-link-label">Tavolato</span><span class="mm-link-dek">Mangiare lento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Letto presto</span><span class="mm-link-dek">Sveglie all'alba</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item on"><a href="casa-chi-siamo.html">Chi siamo</a></div>
+        <div class="nav-item"><a href="casa-diario.html">Diario</a></div>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" data-only-desktop aria-label="Cerca">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="icon-btn" data-only-desktop aria-label="Salvati">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <span class="lang-pill">IT · €</span>
+        <a class="btn btn-secondary btn-sm">Parla con noi</a>
+        <button class="drawer-toggle icon-btn" aria-label="Apri menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" aria-hidden="true">
+    <div class="drawer-scrim"></div>
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <span class="brand"><span class="brand-mark">o</span><span><em>Oops</em></span></span>
+        <button class="icon-btn drawer-close" aria-label="Chiudi menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="drawer-list">
+        <a class="drawer-link" href="casa-viaggi.html">Viaggi</a>
+        <a class="drawer-link" href="casa-partenze.html">Partenze</a>
+        <a class="drawer-link" href="casa-destinazioni.html">Destinazioni</a>
+        <a class="drawer-link" href="casa-tipi.html">Tipi di viaggio</a>
+        <a class="drawer-link" href="casa-chi-siamo.html">Chi siamo</a>
+        <a class="drawer-link" href="casa-diario.html">Diario</a>
+        <div class="drawer-section">Profilo</div>
+        <a class="drawer-link">I miei salvati</a>
+        <a class="drawer-link">Le mie prenotazioni</a>
+      </div>
+      <div class="drawer-foot">
+        <a class="btn btn-primary btn-block">Parla con noi</a>
+        <a class="btn btn-secondary btn-block">Accedi</a>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="wrap">
+    <nav class="crumb">
+      <a href="casa.html">Casa</a>
+      <span class="sep">/</span>
+      <span class="current">Chi siamo</span>
+    </nav>
+
+    <section class="about-hero">
+      <span class="eyebrow-line">La storia (corta)</span>
+      <h1>Tutto è iniziato <em>perché</em><br/>abbiamo perso un treno.</h1>
+    </section>
+
+    <div class="about-photo">
+      <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=2000&q=85" alt="Una stazione vuota al mattino" />
+    </div>
+
+    <div class="narrow">
+      <article class="about-prose">
+        <p style="font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 26px; line-height: 1.45; color: var(--ink-1000);">
+          Era il 2018. Sofia stava andando a Lisbona. Il treno è partito senza di lei. Quattro anni dopo, è diventato un blog. Poi viaggi. Poi questo.
+        </p>
+
+        <p>Il blog è nato come scusa per giustificare i viaggi alla famiglia. <em>Vado a Porto, no, è lavoro, devo scrivere una cosa.</em> Cosa, di preciso, non era chiaro nemmeno a noi. Però abbiamo continuato. Una volta a settimana, un articolo. Una volta al mese, un viaggio. Una volta all'anno, un'idea grossa che non sapevamo come realizzare.</p>
+
+        <p>Ogni storia che leggi qui è il diario di un viaggio vero — fatto, prima ancora che scritto. Non riceviamo prodotti in cambio di recensioni. Non promuoviamo posti in cui non siamo stati. Le foto sono tutte nostre, anche quelle venute male<sup class="fn">1</sup>.</p>
+
+        <h2>Perché i viaggi di gruppo</h2>
+
+        <p>Perché ogni volta che pubblicavamo una storia, qualcuno ci scriveva chiedendoci come ricreare quel viaggio. <em>Dove avete dormito? Chi ha cucinato quella cosa? Quanto avete pagato il taxi da quel paese a quell'altro?</em> Abbiamo provato a rispondere a tutti. Poi abbiamo pensato: e se invece ci andassimo insieme?</p>
+
+        <blockquote>Il primo Roamed Trip era a Porto. Eravamo in sette. Sei sono diventati amici per sempre. La settima è ancora in Portogallo.</blockquote>
+
+        <p>Da lì sono successe due cose. La prima: ci siamo accorti che bastava poco per organizzare un viaggio bene — niente uffici, niente call center, niente cataloghi patinati. Bastava aver fatto il viaggio prima, aver parlato col gestore della cucina, aver dormito una notte nel posto che si consigliava. La seconda: i viaggi di gruppo, fatti così, diventano la cosa migliore che ti capita in un anno.</p>
+
+        <h2>Quanti siamo, dove siamo</h2>
+
+        <p>In tre, più una rete di coordinatori locali in ogni destinazione. Sofia scrive e disegna gli itinerari. Marco fa la logistica e parla con i fornitori (è quello che chiamano "operations", ma noi lo chiamiamo Marco). Aya, fotografa, viene quasi sempre con noi sui viaggi e ti darà sempre una mancia sui ristoranti che il coordinatore ha dimenticato.</p>
+
+        <p>L'ufficio è a Milano ma quasi sempre vuoto. Lavoriamo da bar, treni e case sui viaggi. Quando ti rispondiamo a un'email, c'è una buona probabilità che qualcuno di noi sia in un altro fuso orario.</p>
+      </article>
+
+      <!-- Numeri chiave -->
+      <div class="about-numbers">
+        <div class="about-num">
+          <p class="n">1.247</p>
+          <p class="l">Viaggiatori partiti</p>
+        </div>
+        <div class="about-num">
+          <p class="n">31</p>
+          <p class="l">Paesi raccontati</p>
+        </div>
+        <div class="about-num">
+          <p class="n">128</p>
+          <p class="l">Partenze fatte</p>
+        </div>
+        <div class="about-num">
+          <p class="n">7</p>
+          <p class="l">Anni di attività</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team -->
+    <section class="sec">
+      <div class="sec-head">
+        <div>
+          <span class="sec-eyebrow">Le persone</span>
+          <h2 class="sec-title">Tre, più <em>una rete</em>.</h2>
+        </div>
+        <a class="btn btn-ghost">Vedi tutti i coordinatori <span class="arr">→</span></a>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-pic">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=85" alt="Sofia" />
+          </div>
+          <div class="team-body">
+            <h4>Sofia</h4>
+            <p class="role">Scrittura · Itinerari · Vino</p>
+            <p>Italiana, vive a Lisbona da otto anni. Ha scritto due libri di viaggio e ne sta scrivendo un terzo, secondo lei l'anno prossimo, secondo l'editore mai.</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-pic">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=85" alt="Marco" />
+          </div>
+          <div class="team-body">
+            <h4>Marco</h4>
+            <p class="role">Logistica · Voli · Fornitori</p>
+            <p>L'unico che sa effettivamente come si gestisce una flotta di trasferimenti senza che salti tutto in aria. Beve troppo caffè. È pugliese e si vede.</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-pic">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85" alt="Aya" />
+          </div>
+          <div class="team-body">
+            <h4>Aya</h4>
+            <p class="role">Foto · Viaggi · Ristoranti</p>
+            <p>Mezza giapponese mezza francese, nata a Torino, cresciuta a Tokyo. Ha pubblicato su Internazionale e National Geographic Italia. Conosce ristoranti come altri conoscono treni.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Valori -->
+    <section class="sec" style="background: var(--bg-sunken); margin: 0 -32px; padding-left: 32px; padding-right: 32px;">
+      <div class="sec-head sec-head-center">
+        <span class="sec-eyebrow">Le cose in cui crediamo</span>
+        <h2 class="sec-title">Quattro <em>valori</em>, scritti in fretta.</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div>
+            <h4>Andare <em>piano</em></h4>
+            <p>La fretta in viaggio è la cosa più cara che ti puoi permettere. Ti costa la metà delle cose che vedi e quasi tutte quelle che provi. I nostri viaggi sono fatti per essere lenti, anche quando sono brevi.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+          <div>
+            <h4>Gruppi <em>piccoli</em></h4>
+            <p>Massimo dieci persone, sempre. Non per moda, per matematica: a undici qualcuno resta indietro, a dodici si formano sottogruppi, a quindici è una scolaresca. A dieci ci si conosce davvero.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <div>
+            <h4>Dormire <em>in posti veri</em></h4>
+            <p>Niente catene. Guesthouse di quartiere, B&amp;B di famiglia, agriturismi gestiti da persone con nomi e cognomi. Costa uguale, è meglio.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div>
+            <h4>Dire <em>la verità</em></h4>
+            <p>Se un viaggio è bagnato, lo diciamo. Se un ristorante è caro per quello che vale, lo scriviamo. Se l'autobus arriva in ritardo cinque volte su sei, ti avvisiamo prima. La verità è marketing migliore della pubblicità.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="sec" style="text-align: center;">
+      <div class="narrow">
+        <span class="eyebrow-line" style="margin: 0 auto; justify-content: center;">Vuoi venire dall'altra parte?</span>
+        <h2 class="sec-title" style="margin: 18px auto 24px; max-width: 680px;">Lavora con noi, o <em>diventa coordinatore</em>.</h2>
+        <p class="lede" style="max-width: 580px; margin: 0 auto 28px;">Cerchiamo persone che vivano (o abbiano vissuto) un posto, sappiano scrivere, e abbiano voglia di accompagnare otto sconosciuti per quattro giorni senza perdere la pazienza.</p>
+        <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+          <a class="btn btn-primary btn-lg">Posizioni aperte <span class="arr">→</span></a>
+          <a class="btn btn-secondary btn-lg">Diventa coordinatore</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footnotes">
+      <p class="footnotes-title">Note</p>
+      <ol>
+        <li>Tranne tre o quattro foto degli arrivi (i voli, gli aeroporti) che a volte sono d'archivio Unsplash. Le riconosci perché sono troppo perfette.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="ftr">
+    <div class="wrap">
+      <div class="ftr-top">
+        <div class="ftr-brand">
+          <a class="brand"><span class="brand-mark">o</span><span><em>Oops</em> I Roamed</span></a>
+          <p class="ftr-claim">Viaggi in piccolo gruppo per chi preferisce arrivare tardi, mangiare a lungo, e dormire poco.</p>
+        </div>
+        <div class="ftr-col"><h4>Destinazioni</h4><ul><li><a href="casa-destinazione.html">Europa</a></li><li><a>Africa</a></li><li><a>Asia</a></li><li><a>Americhe</a></li></ul></div>
+        <div class="ftr-col"><h4>Il mondo Oops</h4><ul><li><a>Come funziona</a></li><li><a>Recensioni</a></li><li><a>Garanzie</a></li></ul></div>
+        <div class="ftr-col"><h4>Community</h4><ul><li><a href="casa-diario.html">Diario</a></li></ul></div>
+        <div class="ftr-col"><h4>Info</h4><ul><li><a>Contatti</a></li><li><a>FAQ</a></li><li><a>Termini</a></li></ul></div>
+      </div>
+      <div class="ftr-bot">
+        <span>© 2026 Oops I Roamed S.r.l.</span>
+        <div class="ftr-pays">
+          <span class="pay-chip">Visa</span><span class="pay-chip">Mastercard</span>
+          <span class="pay-chip">Scalapay</span><span class="pay-chip">PayPal</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="casa-app.js"></script>
+</body>
+</html>

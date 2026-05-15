@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <title>Diario — Oops I Roamed</title>
+  <template id="__bundler_thumbnail">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+      <rect width="200" height="200" fill="#F8F4EC"/>
+      <rect x="20" y="40" width="80" height="100" rx="6" fill="#E87B5A" opacity="0.85"/>
+      <rect x="108" y="40" width="72" height="46" rx="6" fill="#3F6390" opacity="0.85"/>
+      <rect x="108" y="94" width="72" height="46" rx="6" fill="#F5C547" opacity="0.85"/>
+      <text x="100" y="170" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="22" fill="#1F2A22">Il Diario</text>
+    </svg>
+  </template>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link rel="stylesheet" href="casa-styles.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="hdr">
+    <div class="hdr-in">
+      <a class="brand" href="casa.html" aria-label="Oops I Roamed — casa">
+        <span class="brand-mark">o</span>
+        <span><em>Oops</em> I Roamed</span>
+      </a>
+      <nav class="nav">
+        <div class="nav-item"><a href="casa.html">Home</a></div>
+        <div class="nav-item"><a href="casa-viaggi.html">Viaggi</a></div>
+        <div class="nav-item"><a href="casa-partenze.html">Partenze</a></div>
+        <div class="nav-item">
+          <a href="casa-destinazioni.html">Destinazioni <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Europa</h4>
+                <a class="mm-link" href="casa-destinazione.html">
+                  <span class="mm-link-label">Portogallo</span>
+                  <span class="mm-link-dek">Atlantico, lento</span>
+                </a>
+                <a class="mm-link"><span class="mm-link-label">Italia</span><span class="mm-link-dek">Sud che non corre</span></a>
+                <a class="mm-link"><span class="mm-link-label">Islanda</span><span class="mm-link-dek">Ring road, controvento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Georgia</span><span class="mm-link-dek">Caucaso minore</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Africa &amp; Med</h4>
+                <a class="mm-link"><span class="mm-link-label">Marocco</span><span class="mm-link-dek">Atlante in marzo</span></a>
+                <a class="mm-link"><span class="mm-link-label">Egitto</span><span class="mm-link-dek">Nilo, da nord</span></a>
+                <a class="mm-link"><span class="mm-link-label">Giordania</span><span class="mm-link-dek">Wadi, deserto</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Far &amp; Wide</h4>
+                <a class="mm-link"><span class="mm-link-label">Giappone</span><span class="mm-link-dek">Hokkaido a febbraio</span></a>
+                <a class="mm-link"><span class="mm-link-label">Messico</span><span class="mm-link-dek">Oaxaca, mole</span></a>
+                <a class="mm-link"><span class="mm-link-label">Argentina</span><span class="mm-link-dek">Patagonia in spalla</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="casa-tipi.html">Tipi di viaggio <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Mood</h4>
+                <a class="mm-link"><span class="mm-link-label">Slow</span><span class="mm-link-dek">Camminare piano</span></a>
+                <a class="mm-link"><span class="mm-link-label">Salt &amp; Sea</span><span class="mm-link-dek">Vita di mare</span></a>
+                <a class="mm-link"><span class="mm-link-label">Cold Quiet</span><span class="mm-link-dek">Inverni nordici</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Formato</h4>
+                <a class="mm-link"><span class="mm-link-label">Weekend</span><span class="mm-link-dek">2–4 giorni</span></a>
+                <a class="mm-link"><span class="mm-link-label">Roadtrip</span><span class="mm-link-dek">In auto, con tappe</span></a>
+                <a class="mm-link"><span class="mm-link-label">Lungo</span><span class="mm-link-dek">10+ giorni</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Ritmo</h4>
+                <a class="mm-link"><span class="mm-link-label">Camminato</span><span class="mm-link-dek">Trekking, sentieri</span></a>
+                <a class="mm-link"><span class="mm-link-label">Tavolato</span><span class="mm-link-dek">Mangiare lento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Letto presto</span><span class="mm-link-dek">Sveglie all'alba</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item"><a href="casa-chi-siamo.html">Chi siamo</a></div>
+        <div class="nav-item on"><a href="casa-diario.html">Diario</a></div>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" data-only-desktop aria-label="Cerca">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="icon-btn" data-only-desktop aria-label="Salvati">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <span class="lang-pill">IT · €</span>
+        <a class="btn btn-secondary btn-sm">Parla con noi</a>
+        <button class="drawer-toggle icon-btn" aria-label="Apri menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" aria-hidden="true">
+    <div class="drawer-scrim"></div>
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <span class="brand"><span class="brand-mark">o</span><span><em>Oops</em></span></span>
+        <button class="icon-btn drawer-close" aria-label="Chiudi menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="drawer-list">
+        <a class="drawer-link" href="casa-viaggi.html">Viaggi</a>
+        <a class="drawer-link" href="casa-partenze.html">Partenze</a>
+        <a class="drawer-link" href="casa-destinazioni.html">Destinazioni</a>
+        <a class="drawer-link" href="casa-tipi.html">Tipi di viaggio</a>
+        <a class="drawer-link" href="casa-chi-siamo.html">Chi siamo</a>
+        <a class="drawer-link" href="casa-diario.html">Diario</a>
+        <div class="drawer-section">Profilo</div>
+        <a class="drawer-link">I miei salvati</a>
+        <a class="drawer-link">Le mie prenotazioni</a>
+      </div>
+      <div class="drawer-foot">
+        <a class="btn btn-primary btn-block">Parla con noi</a>
+        <a class="btn btn-secondary btn-block">Accedi</a>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="wrap">
+    <nav class="crumb">
+      <a href="casa.html">Casa</a>
+      <span class="sep">/</span>
+      <span class="current">Il diario</span>
+    </nav>
+
+    <section class="diario-hero">
+      <span class="eyebrow-line">Dal 2018, ogni settimana</span>
+      <h1>Il <em>diario</em>: posti<br/>scritti con calma.</h1>
+      <p class="lede" style="max-width: 720px; margin: 12px 0 0;">
+        Articoli, guide pratiche, fotografie, mappe a mano. Quasi tutto è gratuito, niente è promosso, e tutto nasce da un viaggio fatto davvero.
+      </p>
+    </section>
+
+    <!-- Featured -->
+    <div class="diario-feat">
+      <div class="diario-feat-body">
+        <span class="eyebrow-line">In evidenza · Settembre 2025</span>
+        <h2>Tre giorni <em>persi</em> a Porto.</h2>
+        <p class="diario-feat-dek">
+          Un primo viaggio senza piani, senza prenotazioni, e con un'opinione molto forte sui pastéis de nata. Sofia racconta come ha capito che era ora di tornarci, e perché tornare in un posto è sempre meglio che andarci la prima volta.
+        </p>
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 24px;">
+          <span class="blog-author-pic">S</span>
+          <div>
+            <p style="margin: 0; font-family: var(--font-display); font-style: italic; font-size: 16px; color: var(--ink-1000);">Sofia Albano</p>
+            <p style="margin: 0; font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); letter-spacing: 0.06em;">5 MIN DI LETTURA · 12 SET 2025</p>
+          </div>
+        </div>
+        <a class="btn btn-primary">Leggi l'articolo <span class="arr">→</span></a>
+      </div>
+      <div class="diario-feat-pic">
+        <img src="https://images.unsplash.com/photo-1581873372796-635b67ca2008?w=1600&q=85" alt="" />
+      </div>
+    </div>
+
+    <!-- Filtri categoria -->
+    <div class="diario-filter">
+      <span class="chip on">Tutti</span>
+      <span class="chip">Diario</span>
+      <span class="chip">Guide pratiche</span>
+      <span class="chip">Fotoreportage</span>
+      <span class="chip">Tip &amp; mestiere</span>
+      <span class="chip">Europa</span>
+      <span class="chip">Africa</span>
+      <span class="chip">Asia</span>
+      <span class="chip">Americhe</span>
+      <span class="chip">Cibo</span>
+      <span class="chip">Trekking</span>
+      <span class="chip">Città</span>
+      <span class="filter-results"><b>47</b> articoli</span>
+    </div>
+
+    <!-- Articles grid -->
+    <div class="blog-grid" style="margin-bottom: 56px;">
+      <a class="blog-card">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1585208798174-6cedd86e019a?w=1200&q=85" alt="" /></div>
+        <span class="blog-cat">Diario · Lisbona</span>
+        <h3 class="blog-title">Perché torniamo sempre a Lisbona</h3>
+        <div class="blog-meta"><span class="blog-author-pic">M</span><span>Marco · 7 min · Ago 2025</span></div>
+      </a>
+      <a class="blog-card">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1493997181344-712f2f19d87a?w=1200&q=85" alt="" /></div>
+        <span class="blog-cat">Diario · Giappone</span>
+        <h3 class="blog-title">Una passeggiata mattutina a Kyoto</h3>
+        <div class="blog-meta"><span class="blog-author-pic">A</span><span>Aya · 4 min · Giu 2025</span></div>
+      </a>
+      <a class="blog-card">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1200&q=85" alt="" /></div>
+        <span class="blog-cat">Guida · Messico</span>
+        <h3 class="blog-title">Sette mole, una classifica ingiusta</h3>
+        <div class="blog-meta"><span class="blog-author-pic">S</span><span>Sofia · 6 min · Mag 2025</span></div>
+      </a>
+      <a class="blog-card">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1504829857797-ddff29c27927?w=1200&q=85" alt="" /></div>
+        <span class="blog-cat">Diario · Islanda</span>
+        <h3 class="blog-title">La ring road, ma al contrario</h3>
+        <div class="blog-meta"><span class="blog-author-pic">M</span><span>Marco · 9 min · Apr 2025</span></div>
+      </a>
+      <a class="blog-card">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1539020140153-e479b8c61bf8?w=1200&q=85" alt="" /></div>
+        <span class="blog-cat">Diario · Marocco</span>
+        <h3 class="blog-title">Tre notti sull'Atlante</h3>
+        <div class="blog-meta"><span class="blog-author-pic">A</span><span>Aya · 5 min · Mar 2025</span></div>
+      </a>
+      <a class="blog-card">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=1200&q=85" alt="" /></div>
+        <span class="blog-cat">Tip · Pratica</span>
+        <h3 class="blog-title">Affittare l'auto in Portogallo (e dove non parcheggiare)</h3>
+        <div class="blog-meta"><span class="blog-author-pic">M</span><span>Marco · 4 min · Feb 2025</span></div>
+      </a>
+      <a class="blog-card">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1200&q=85" alt="" /></div>
+        <span class="blog-cat">Fotoreportage · Italia</span>
+        <h3 class="blog-title">Salento, novembre: la luce buona</h3>
+        <div class="blog-meta"><span class="blog-author-pic">A</span><span>Aya · 3 min · Gen 2025</span></div>
+      </a>
+      <a class="blog-card">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1481070555726-e2fe8357725c?w=1200&q=85" alt="" /></div>
+        <span class="blog-cat">Diario · Puglia</span>
+        <h3 class="blog-title">Mangiare lento a Lecce, regole per principianti</h3>
+        <div class="blog-meta"><span class="blog-author-pic">S</span><span>Sofia · 6 min · Dic 2024</span></div>
+      </a>
+      <a class="blog-card">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=1200&q=85" alt="" /></div>
+        <span class="blog-cat">Diario · Giappone</span>
+        <h3 class="blog-title">Onsen a Hokkaido: regolamento, etichetta, gambe rosse</h3>
+        <div class="blog-meta"><span class="blog-author-pic">M</span><span>Marco · 8 min · Nov 2024</span></div>
+      </a>
+    </div>
+
+    <!-- Paginazione -->
+    <div style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 32px 0 64px;">
+      <button class="btn btn-secondary btn-sm" disabled>← Precedente</button>
+      <span class="chip on">1</span>
+      <span class="chip">2</span>
+      <span class="chip">3</span>
+      <span class="chip">4</span>
+      <span class="chip">5</span>
+      <span style="font-family: var(--font-mono); font-size: 12px; color: var(--fg-3); padding: 0 8px;">…</span>
+      <span class="chip">9</span>
+      <button class="btn btn-secondary btn-sm">Successiva →</button>
+    </div>
+  </div>
+
+  <!-- Newsletter inset -->
+  <section class="sec" style="background: var(--bg-sunken);">
+    <div class="wrap" style="max-width: 760px; text-align: center;">
+      <span class="sere-eyebrow" style="color: var(--clay-600);">Il dispaccio</span>
+      <h2 class="sec-title" style="margin: 14px auto 18px;">Una <em>mail</em> ogni mercoledì.</h2>
+      <p class="lede" style="max-width: 560px; margin: 0 auto 32px;">
+        Una storia nuova, due posti vecchi rivisitati, un consiglio pratico, e un link a una cosa letta in giro. Sette minuti di lettura, niente promozioni.
+      </p>
+      <form class="ftr-news" style="background: var(--cream-50); border-color: var(--border-strong); margin: 0 auto;" onsubmit="event.preventDefault()">
+        <input type="email" placeholder="la-tua-email@esempio.it" style="color: var(--ink-1000);" />
+        <button type="submit">Iscrivimi</button>
+      </form>
+      <p class="ftr-newsdisc" style="color: var(--fg-3); margin: 16px auto 0;">8.421 iscritti, di cui sospettiamo 7.800 ci leggano davvero.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="ftr">
+    <div class="wrap">
+      <div class="ftr-top">
+        <div class="ftr-brand">
+          <a class="brand"><span class="brand-mark">o</span><span><em>Oops</em> I Roamed</span></a>
+          <p class="ftr-claim">Viaggi in piccolo gruppo per chi preferisce arrivare tardi, mangiare a lungo, e dormire poco.</p>
+        </div>
+        <div class="ftr-col"><h4>Destinazioni</h4><ul><li><a href="casa-destinazione.html">Europa</a></li><li><a>Africa</a></li><li><a>Asia</a></li><li><a>Americhe</a></li></ul></div>
+        <div class="ftr-col"><h4>Il mondo Oops</h4><ul><li><a>Come funziona</a></li><li><a>Recensioni</a></li><li><a>Garanzie</a></li></ul></div>
+        <div class="ftr-col"><h4>Community</h4><ul><li><a>Diario</a></li></ul></div>
+        <div class="ftr-col"><h4>Info</h4><ul><li><a>Contatti</a></li><li><a>FAQ</a></li><li><a>Termini</a></li></ul></div>
+      </div>
+      <div class="ftr-bot">
+        <span>© 2026 Oops I Roamed S.r.l.</span>
+        <div class="ftr-pays">
+          <span class="pay-chip">Visa</span><span class="pay-chip">Mastercard</span>
+          <span class="pay-chip">Scalapay</span><span class="pay-chip">PayPal</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="casa-app.js"></script>
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <title>Portogallo — Oops I Roamed</title>
+  <template id="__bundler_thumbnail">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+      <rect width="200" height="200" fill="#F8F4EC"/>
+      <rect x="20" y="30" width="160" height="20" rx="4" fill="#1F2A22"/>
+      <rect x="20" y="60" width="40" height="80" rx="6" fill="#3F6390" opacity="0.85"/>
+      <rect x="64" y="60" width="40" height="80" rx="6" fill="#E87B5A" opacity="0.85"/>
+      <rect x="108" y="60" width="40" height="80" rx="6" fill="#F5C547" opacity="0.85"/>
+      <rect x="152" y="60" width="28" height="80" rx="6" fill="#8CC79A" opacity="0.85"/>
+      <text x="100" y="170" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="16" fill="#1F2A22">Portogallo</text>
+    </svg>
+  </template>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link rel="stylesheet" href="casa-styles.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="hdr">
+    <div class="hdr-in">
+      <a class="brand" href="casa.html" aria-label="Oops I Roamed — casa">
+        <span class="brand-mark">o</span>
+        <span><em>Oops</em> I Roamed</span>
+      </a>
+      <nav class="nav">
+        <div class="nav-item"><a href="casa.html">Home</a></div>
+        <div class="nav-item"><a href="casa-viaggi.html">Viaggi</a></div>
+        <div class="nav-item"><a href="casa-partenze.html">Partenze</a></div>
+        <div class="nav-item on">
+          <a href="casa-destinazioni.html">Destinazioni <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Europa</h4>
+                <a class="mm-link" href="casa-destinazione.html">
+                  <span class="mm-link-label">Portogallo</span>
+                  <span class="mm-link-dek">Atlantico, lento</span>
+                </a>
+                <a class="mm-link"><span class="mm-link-label">Italia</span><span class="mm-link-dek">Sud che non corre</span></a>
+                <a class="mm-link"><span class="mm-link-label">Islanda</span><span class="mm-link-dek">Ring road, controvento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Georgia</span><span class="mm-link-dek">Caucaso minore</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Africa &amp; Med</h4>
+                <a class="mm-link"><span class="mm-link-label">Marocco</span><span class="mm-link-dek">Atlante in marzo</span></a>
+                <a class="mm-link"><span class="mm-link-label">Egitto</span><span class="mm-link-dek">Nilo, da nord</span></a>
+                <a class="mm-link"><span class="mm-link-label">Giordania</span><span class="mm-link-dek">Wadi, deserto</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Far &amp; Wide</h4>
+                <a class="mm-link"><span class="mm-link-label">Giappone</span><span class="mm-link-dek">Hokkaido a febbraio</span></a>
+                <a class="mm-link"><span class="mm-link-label">Messico</span><span class="mm-link-dek">Oaxaca, mole</span></a>
+                <a class="mm-link"><span class="mm-link-label">Argentina</span><span class="mm-link-dek">Patagonia in spalla</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="casa-tipi.html">Tipi di viaggio <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Mood</h4>
+                <a class="mm-link"><span class="mm-link-label">Slow</span><span class="mm-link-dek">Camminare piano</span></a>
+                <a class="mm-link"><span class="mm-link-label">Salt &amp; Sea</span><span class="mm-link-dek">Vita di mare</span></a>
+                <a class="mm-link"><span class="mm-link-label">Cold Quiet</span><span class="mm-link-dek">Inverni nordici</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Formato</h4>
+                <a class="mm-link"><span class="mm-link-label">Weekend</span><span class="mm-link-dek">2–4 giorni</span></a>
+                <a class="mm-link"><span class="mm-link-label">Roadtrip</span><span class="mm-link-dek">In auto, con tappe</span></a>
+                <a class="mm-link"><span class="mm-link-label">Lungo</span><span class="mm-link-dek">10+ giorni</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Ritmo</h4>
+                <a class="mm-link"><span class="mm-link-label">Camminato</span><span class="mm-link-dek">Trekking, sentieri</span></a>
+                <a class="mm-link"><span class="mm-link-label">Tavolato</span><span class="mm-link-dek">Mangiare lento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Letto presto</span><span class="mm-link-dek">Sveglie all'alba</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item"><a href="casa-chi-siamo.html">Chi siamo</a></div>
+        <div class="nav-item"><a href="casa-diario.html">Diario</a></div>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" data-only-desktop aria-label="Cerca">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="icon-btn" data-only-desktop aria-label="Salvati">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <span class="lang-pill">IT · €</span>
+        <a class="btn btn-secondary btn-sm">Parla con noi</a>
+        <button class="drawer-toggle icon-btn" aria-label="Apri menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" aria-hidden="true">
+    <div class="drawer-scrim"></div>
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <span class="brand"><span class="brand-mark">o</span><span><em>Oops</em></span></span>
+        <button class="icon-btn drawer-close" aria-label="Chiudi menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="drawer-list">
+        <a class="drawer-link" href="casa-viaggi.html">Viaggi</a>
+        <a class="drawer-link" href="casa-partenze.html">Partenze</a>
+        <a class="drawer-link" href="casa-destinazioni.html">Destinazioni</a>
+        <a class="drawer-link" href="casa-tipi.html">Tipi di viaggio</a>
+        <a class="drawer-link" href="casa-chi-siamo.html">Chi siamo</a>
+        <a class="drawer-link" href="casa-diario.html">Diario</a>
+        <div class="drawer-section">Profilo</div>
+        <a class="drawer-link">I miei salvati</a>
+        <a class="drawer-link">Le mie prenotazioni</a>
+      </div>
+      <div class="drawer-foot">
+        <a class="btn btn-primary btn-block">Parla con noi</a>
+        <a class="btn btn-secondary btn-block">Accedi</a>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="wrap">
+    <nav class="crumb">
+      <a href="casa.html">Casa</a>
+      <span class="sep">/</span><a>Destinazioni</a>
+      <span class="sep">/</span><a>Europa</a>
+      <span class="sep">/</span><span class="current">Portogallo</span>
+    </nav>
+
+    <div class="dest-hero">
+      <span class="eyebrow-line">Destinazione</span>
+      <div class="dest-title-row">
+        <div>
+          <h1 class="dest-h1">Portogallo, <em>tre volte</em><br/>se non basta una.</h1>
+        </div>
+        <div style="display: flex; gap: 18px; align-items: center;">
+          <span class="badge badge-warm">3 viaggi attivi</span>
+          <span class="badge badge-soft">12 articoli nel diario</span>
+        </div>
+      </div>
+      <p class="dest-lede">
+        L'Atlantico ti arriva addosso prima ancora che lo vedi: lo senti nell'aria, lo senti nel sale, lo senti nelle camicie un po' umide la mattina. Poi cammini, e capisci perché in portoghese hanno una parola — <em>saudade</em> — che vuol dire mancare di una cosa che hai sotto gli occhi.
+      </p>
+    </div>
+  </div>
+
+  <!-- Filter bar -->
+  <div class="filter-bar">
+    <div class="wrap">
+      <div class="filter-bar-row">
+        <span class="chip on">Tutti i viaggi</span>
+        <span class="chip">Weekend</span>
+        <span class="chip">Lungo</span>
+        <span class="chip">Confermato</span>
+        <span class="chip">Da Milano</span>
+        <span class="chip">Da Roma</span>
+        <span class="chip">€0–1.500</span>
+        <span class="chip">€1.500–2.500</span>
+        <span class="chip">Camera privata</span>
+        <span class="filter-results"><b>3</b> partenze trovate</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="sec-sm">
+    <div class="wrap">
+      <div class="trip-rail">
+        <article class="trip-card">
+          <a href="casa-viaggio.html" class="trip-img">
+            <span class="trip-status filling">A 2 dal via</span>
+            <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1200&q=85" alt="" />
+            <button class="trip-fav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <div class="trip-badges">
+              <span class="trip-badge">3 giorni · 3 notti</span>
+              <span class="trip-badge rating"><span class="star">★</span> 4.9</span>
+            </div>
+          </a>
+          <a href="casa-viaggio.html" class="trip-body">
+            <span class="trip-eyebrow">Roamed Trip · Porto</span>
+            <h3 class="trip-title">Tre giorni persi a Porto</h3>
+            <p class="trip-meta-row">22–25 SET 2025 · Voli da MXP/FCO</p>
+            <div class="trip-price">
+              <span class="trip-price-from">Da</span>
+              <span class="trip-price-orig">€990</span>
+              <span class="trip-price-now">€890</span>
+              <span class="trip-pct">−10%</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="trip-card">
+          <a class="trip-img">
+            <span class="trip-status confirmed">Confermato</span>
+            <img src="https://images.unsplash.com/photo-1585208798174-6cedd86e019a?w=1200&q=85" alt="" />
+            <button class="trip-fav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <div class="trip-badges">
+              <span class="trip-badge">5 giorni · 4 notti</span>
+              <span class="trip-badge rating"><span class="star">★</span> 4.8</span>
+            </div>
+          </a>
+          <a class="trip-body">
+            <span class="trip-eyebrow">Roamed Trip · Lisbona</span>
+            <h3 class="trip-title">Perché torniamo sempre a Lisbona</h3>
+            <p class="trip-meta-row">12–16 OTT 2025 · Voli inclusi</p>
+            <div class="trip-price">
+              <span class="trip-price-from">Da</span>
+              <span class="trip-price-now">€1.190</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="trip-card">
+          <a class="trip-img">
+            <span class="trip-status">Nuovo</span>
+            <img src="https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1200&q=85" alt="" />
+            <button class="trip-fav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <div class="trip-badges">
+              <span class="trip-badge">8 giorni · 7 notti</span>
+              <span class="trip-badge rating"><span class="star">★</span> 4.7</span>
+            </div>
+          </a>
+          <a class="trip-body">
+            <span class="trip-eyebrow">Roamed Trip · Alentejo</span>
+            <h3 class="trip-title">Alentejo a passo lento, da sud</h3>
+            <p class="trip-meta-row">04–11 MAG 2026 · Voli su Lisbona</p>
+            <div class="trip-price">
+              <span class="trip-price-from">Da</span>
+              <span class="trip-price-orig">€1.890</span>
+              <span class="trip-price-now">€1.690</span>
+              <span class="trip-pct">−10%</span>
+            </div>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Garanzie ripetute -->
+  <section class="sec-sm" style="background: var(--bg-sunken);">
+    <div class="wrap">
+      <div class="garanzie-grid">
+        <div class="gar-card">
+          <div class="gar-icon">€0</div>
+          <h3 class="gar-title">Tieni il posto senza anticipo</h3>
+          <p class="gar-dek">Carta solo per garanzia, addebito al saldo.</p>
+        </div>
+        <div class="gar-card">
+          <div class="gar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><polyline points="21 3 21 8 16 8"/></svg></div>
+          <h3 class="gar-title">Cambi viaggio gratis</h3>
+          <p class="gar-dek">Fino a 31 giorni dalla partenza.</p>
+        </div>
+        <div class="gar-card">
+          <div class="gar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="gar-title">Viaggio protetto</h3>
+          <p class="gar-dek">Assicurazione medica, bagaglio, rimpatrio.</p>
+        </div>
+        <div class="gar-card">
+          <div class="gar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="13" rx="2"/><line x1="2" y1="11" x2="22" y2="11"/></svg></div>
+          <h3 class="gar-title">Paghi a rate</h3>
+          <p class="gar-dek">Stripe e Scalapay, senza interessi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 luoghi da non perdere -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head sec-head-center">
+        <span class="sec-eyebrow">Lascia stare la guida turistica</span>
+        <h2 class="sec-title">Cinque <em>posti veri</em> per cui andare in Portogallo.</h2>
+      </div>
+
+      <div class="spot-row">
+        <div class="spot-photo"><img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1400&q=85" alt="" /></div>
+        <div class="spot-body">
+          <p class="spot-num">I.</p>
+          <h3>Ribeira, <em>al tramonto</em></h3>
+          <p>Il sole cade dietro il fiume e per cinque minuti tutta Porto diventa color albicocca. Le case scrostate sembrano dipinte ieri, le rondini fanno un giro stretto sopra il Douro, e c'è sempre qualcuno che canta dal terrazzo senza saperlo. Non è una cosa che organizzi: o sei lì alle 18:30 di un giovedì di maggio, o ti tocca aspettare un'altra volta.</p>
+          <p>Tutto cambia se invece di guardarlo da sopra — dal Ponte Luís I, dove vanno tutti — scendi giù alle banchine e cammini in direzione del mare. Cento metri e il rumore si abbassa. Duecento e cominci a vedere le barche da pesca, ancora vere. Trecento e c'è un bar dove un vecchio versa il porto bianco a peso, come fosse un panino.</p>
+          <p class="spot-tip">↳ Consiglio: arriva un'ora prima del tramonto, ordina un porto tonic al Wine Quay Bar, e non guardare il telefono per mezz'ora.</p>
+        </div>
+      </div>
+
+      <div class="spot-row flip">
+        <div class="spot-photo"><img src="https://images.unsplash.com/photo-1585208798174-6cedd86e019a?w=1400&q=85" alt="" /></div>
+        <div class="spot-body">
+          <p class="spot-num">II.</p>
+          <h3>Alfama a piedi <em>scalzi</em>, quasi</h3>
+          <p>L'unico modo di entrare ad Alfama è perderti. Le mappe non aiutano, le indicazioni nemmeno: ti accorgi di stare camminando in cerchio quando passi tre volte davanti alla stessa porta blu con la signora che annaffia i gerani. Non è un problema. È esattamente il punto.</p>
+          <p>I tetti ondulati si vedono dall'alto se sali al Miradouro de Santa Luzia, ma li senti dal basso: piastrelle che si toccano, balconi che gocciano, gatti che si svegliano e si riaddormentano sotto le scale. C'è una scuola di fado in una stanza dove ci stanno quattro persone, e ci si va alle 22.</p>
+          <p class="spot-tip">↳ Consiglio: vai martedì o mercoledì sera. Sabato e domenica c'è troppa gente, e il fado vero non si sente.</p>
+        </div>
+      </div>
+
+      <div class="spot-row">
+        <div class="spot-photo"><img src="https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1400&q=85" alt="" /></div>
+        <div class="spot-body">
+          <p class="spot-num">III.</p>
+          <h3>Sintra <em>fuori orario</em></h3>
+          <p>Sintra di giorno è impossibile. Pullman, code di un'ora per entrare al Palácio da Pena, gelato troppo caro, gente che si fotografa senza guardare. Sintra alle 18 — quando i pullman partono — diventa un'altra città: i giardini si svuotano, le foreste si chiudono come tende, e cominci a sentire un suono che pensavi ti fossi inventato (è la nebbia che arriva dal mare).</p>
+          <p>La Quinta da Regaleira ufficialmente chiude alle 18:30, ma il sentiero che la circonda no. Una passeggiata di un'ora lungo il muro nord ti porta a una vista che è la cartolina e basta. Cena in paese in un posto piccolo, taxi di ritorno a Lisbona.</p>
+          <p class="spot-tip">↳ Consiglio: prendi il treno delle 14, non quello delle 10. Pranza in città, vedi solo una cosa, torna stanco ma non rotto.</p>
+        </div>
+      </div>
+
+      <div class="spot-row flip">
+        <div class="spot-photo"><img src="https://images.unsplash.com/photo-1481450808078-eda6d70a7c12?w=1400&q=85" alt="" /></div>
+        <div class="spot-body">
+          <p class="spot-num">IV.</p>
+          <h3>Comporta, prima che <em>diventi Saint-Tropez</em></h3>
+          <p>Un'ora e mezza a sud di Lisbona c'è una striscia di sabbia bianca lunga venticinque chilometri dove fino a dieci anni fa non c'era praticamente niente. Adesso ci sono cinque ristoranti buoni, tre hotel di design che fingono di essere capanne, e una folla di lisboeti chic che ci viene il weekend. Vai prima che ci venga anche il resto d'Europa.</p>
+          <p>Le risaie sembrano vietnamite, le pinete sembrano siciliane, e il mare è quello di sempre: freddo, forte, onesto. Pranza al Sal, cena al Cavalariça. Dormi una notte sola, te ne basta.</p>
+          <p class="spot-tip">↳ Consiglio: maggio o settembre. Luglio-agosto è troppo, e i prezzi raddoppiano.</p>
+        </div>
+      </div>
+
+      <div class="spot-row">
+        <div class="spot-photo"><img src="https://images.unsplash.com/photo-1597212720128-cf8047a1a4a4?w=1400&q=85" alt="" /></div>
+        <div class="spot-body">
+          <p class="spot-num">V.</p>
+          <h3>Le Azzorre, <em>l'altra Europa</em></h3>
+          <p>Sono dell'Europa solo per ragioni burocratiche. Geograficamente, climaticamente, geologicamente sono altro: vulcani che sbuffano vapore, mucche che pascolano dentro crateri, laghi blu uno accanto a un lago verde dentro la stessa caldera. È il posto più strano del Portogallo e quasi nessuno ci va.</p>
+          <p>São Miguel è l'isola più facile per cominciare. Quattro giorni bastano. Si nuota nelle pozze termali, si mangia il cozido das furnas (cucinato sottoterra dal vulcano, niente meno), si fa kayak in mezzo alle balene. Si torna con la pelle che sa di zolfo e la sensazione di aver barato.</p>
+          <p class="spot-tip">↳ Consiglio: voli diretti da Lisbona, due ore. Macchina a noleggio obbligatoria, l'isola si gira solo così.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 articoli blog correlati -->
+  <section class="sec" style="background: var(--bg-sunken);">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="sec-eyebrow">Diario di Portogallo</span>
+          <h2 class="sec-title">È la tua <em>prima volta?</em></h2>
+        </div>
+        <a class="btn btn-ghost" href="casa-diario.html">Tutte le storie <span class="arr">→</span></a>
+      </div>
+      <div class="blog-grid">
+        <a class="blog-card">
+          <div class="blog-img"><img src="https://images.unsplash.com/photo-1581873372796-635b67ca2008?w=1200&q=85" alt="" /></div>
+          <span class="blog-cat">Diario · Porto</span>
+          <h3 class="blog-title">Tre giorni persi a Porto</h3>
+          <div class="blog-meta"><span class="blog-author-pic">S</span><span>Sofia · 5 min</span></div>
+        </a>
+        <a class="blog-card">
+          <div class="blog-img"><img src="https://images.unsplash.com/photo-1585208798174-6cedd86e019a?w=1200&q=85" alt="" /></div>
+          <span class="blog-cat">Guida · Lisbona</span>
+          <h3 class="blog-title">Perché torniamo sempre a Lisbona</h3>
+          <div class="blog-meta"><span class="blog-author-pic">M</span><span>Marco · 7 min</span></div>
+        </a>
+        <a class="blog-card">
+          <div class="blog-img"><img src="https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1200&q=85" alt="" /></div>
+          <span class="blog-cat">Tip · Pratica</span>
+          <h3 class="blog-title">Affittare l'auto in Portogallo (e dove non parcheggiare)</h3>
+          <div class="blog-meta"><span class="blog-author-pic">A</span><span>Aya · 4 min</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ destinazione -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="narrow" style="padding: 0;">
+        <div class="sec-head sec-head-center">
+          <span class="sec-eyebrow">Domande pratiche</span>
+          <h2 class="sec-title">Le cose <em>noiose</em>, scritte chiare.</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary class="faq-q">Documenti: serve il passaporto?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+            <div class="faq-a">Per cittadini UE è sufficiente la carta d'identità valida per l'espatrio. Verifica che la scadenza sia almeno 3 mesi dopo il rientro. Il passaporto è opzionale.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">Che fuso orario c'è?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+            <div class="faq-a">Un'ora indietro rispetto all'Italia. Quando in Italia sono le 14, in Portogallo sono le 13. Le Azzorre sono due ore indietro.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">Che valuta si usa? Le carte funzionano?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+            <div class="faq-a">Euro. Carte accettate praticamente ovunque (anche per €1 di caffè). Avere €50–100 in contanti per mercati e mance è comodo.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">Mance: quanto si lascia?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+            <div class="faq-a">Non obbligatorie ma apprezzate. 5–10% al ristorante se ti è piaciuto, €1–2 al barista per un buon caffè, €2–3 al portiere dell'hotel per facchinaggio.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">Internet, SIM, roaming?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+            <div class="faq-a">Roaming UE incluso nella tariffa italiana, niente da fare. Wi-Fi gratuito in tutti i locali principali, hotel, aeroporti.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">Quale lingua si parla? Mi capiranno?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+            <div class="faq-a">Portoghese. Nelle città l'inglese è diffuso, lo spagnolo si capisce ma loro odiano sentirselo parlare. Tre parole portoghesi imparate ti renderanno simpatica: <em>obrigada</em> (grazie), <em>se faz favor</em> (per favore), <em>bom dia</em> (buongiorno).</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">Prese elettriche: serve un adattatore?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+            <div class="faq-a">No. Stessa presa europea italiana (tipo F, due spinotti tondi). Tensione 230V come da noi.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">Religione: c'è qualcosa da sapere?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+            <div class="faq-a">Cattolico maggioritario, ma laico nella pratica. Niente codici d'abbigliamento speciali tranne nelle chiese (spalle coperte, ginocchia coperte).</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">Packing list: cosa serve davvero?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+            <div class="faq-a">Scarpe comode già rotte in (Porto è ripida), giacca antipioggia leggera, una maglia in più per la sera (anche in estate il vento dell'Atlantico raffredda), qualcosa di un pelo elegante per una cena. Lista completa nel modulo.</div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">Clima: quando andare?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+            <div class="faq-a">Primavera (apr–giu) e autunno (set–ott) sono le stagioni perfette: tempera mite, meno turisti, prezzi più bassi. Estate calda ma sopportabile (mare freddo). Inverno mite ma piovoso, atmosfera bellissima.</div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Altre destinazioni in Europa -->
+  <section class="sec-sm" style="background: var(--bg-sunken);">
+    <div class="wrap">
+      <p class="eyebrow-line">Altre destinazioni in Europa</p>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 18px;">
+        <a class="chip">Italia · 5 viaggi</a>
+        <a class="chip">Islanda · 2 viaggi</a>
+        <a class="chip">Georgia · 1 viaggio</a>
+        <a class="chip">Grecia · 3 viaggi</a>
+        <a class="chip">Croazia · 2 viaggi</a>
+        <a class="chip">Norvegia · 1 viaggio</a>
+        <a class="chip">Albania · 2 viaggi</a>
+        <a class="chip">Romania · 1 viaggio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (compatto) -->
+  <footer class="ftr">
+    <div class="wrap">
+      <div class="ftr-top">
+        <div class="ftr-brand">
+          <a class="brand" href="casa.html"><span class="brand-mark">o</span><span><em>Oops</em> I Roamed</span></a>
+          <p class="ftr-claim">Viaggi in piccolo gruppo per chi preferisce arrivare tardi, mangiare a lungo, e dormire poco.</p>
+        </div>
+        <div class="ftr-col"><h4>Destinazioni</h4><ul><li><a>Europa</a></li><li><a>Africa</a></li><li><a>Asia</a></li><li><a>Americhe</a></li></ul></div>
+        <div class="ftr-col"><h4>Il mondo Oops</h4><ul><li><a>Come funziona</a></li><li><a>Recensioni</a></li><li><a>Garanzie</a></li><li><a>Su misura</a></li></ul></div>
+        <div class="ftr-col"><h4>Community</h4><ul><li><a href="casa-diario.html">Diario</a></li><li><a>Programma amici</a></li></ul></div>
+        <div class="ftr-col"><h4>Info</h4><ul><li><a>Contatti</a></li><li><a>FAQ</a></li><li><a>Termini</a></li><li><a>Privacy</a></li></ul></div>
+      </div>
+      <div class="ftr-bot">
+        <span>© 2026 Oops I Roamed S.r.l.</span>
+        <div class="ftr-pays">
+          <span class="pay-chip">Visa</span><span class="pay-chip">Mastercard</span>
+          <span class="pay-chip">Scalapay</span><span class="pay-chip">PayPal</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="casa-app.js"></script>
+</body>
+</html>

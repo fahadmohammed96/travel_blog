@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <title>Partenze 2026 — Oops I Roamed</title>
+  <template id="__bundler_thumbnail">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+      <rect width="200" height="200" fill="#F8F4EC"/>
+      <line x1="60" y1="40" x2="60" y2="160" stroke="#1F2A22" stroke-width="1.5"/>
+      <circle cx="60" cy="60" r="6" fill="#E87B5A"/>
+      <circle cx="60" cy="100" r="6" fill="#F5C547"/>
+      <circle cx="60" cy="140" r="6" fill="#3F6390"/>
+      <rect x="80" y="50" width="100" height="20" rx="4" fill="#1F2A22" opacity="0.85"/>
+      <rect x="80" y="90" width="80" height="20" rx="4" fill="#1F2A22" opacity="0.55"/>
+      <rect x="80" y="130" width="90" height="20" rx="4" fill="#1F2A22" opacity="0.7"/>
+      <text x="100" y="185" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="14" fill="#1F2A22">Partenze</text>
+    </svg>
+  </template>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link rel="stylesheet" href="casa-styles.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="hdr">
+    <div class="hdr-in">
+      <a class="brand" href="casa.html" aria-label="Oops I Roamed — casa">
+        <span class="brand-mark">o</span>
+        <span><em>Oops</em> I Roamed</span>
+      </a>
+      <nav class="nav">
+        <div class="nav-item"><a href="casa.html">Home</a></div>
+        <div class="nav-item"><a href="casa-viaggi.html">Viaggi</a></div>
+        <div class="nav-item on"><a href="casa-partenze.html">Partenze</a></div>
+        <div class="nav-item">
+          <a href="casa-destinazioni.html">Destinazioni <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Europa</h4>
+                <a class="mm-link" href="casa-destinazione.html">
+                  <span class="mm-link-label">Portogallo</span>
+                  <span class="mm-link-dek">Atlantico, lento</span>
+                </a>
+                <a class="mm-link"><span class="mm-link-label">Italia</span><span class="mm-link-dek">Sud che non corre</span></a>
+                <a class="mm-link"><span class="mm-link-label">Islanda</span><span class="mm-link-dek">Ring road, controvento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Georgia</span><span class="mm-link-dek">Caucaso minore</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Africa &amp; Med</h4>
+                <a class="mm-link"><span class="mm-link-label">Marocco</span><span class="mm-link-dek">Atlante in marzo</span></a>
+                <a class="mm-link"><span class="mm-link-label">Egitto</span><span class="mm-link-dek">Nilo, da nord</span></a>
+                <a class="mm-link"><span class="mm-link-label">Giordania</span><span class="mm-link-dek">Wadi, deserto</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Far &amp; Wide</h4>
+                <a class="mm-link"><span class="mm-link-label">Giappone</span><span class="mm-link-dek">Hokkaido a febbraio</span></a>
+                <a class="mm-link"><span class="mm-link-label">Messico</span><span class="mm-link-dek">Oaxaca, mole</span></a>
+                <a class="mm-link"><span class="mm-link-label">Argentina</span><span class="mm-link-dek">Patagonia in spalla</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="casa-tipi.html">Tipi di viaggio <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Mood</h4>
+                <a class="mm-link"><span class="mm-link-label">Slow</span><span class="mm-link-dek">Camminare piano</span></a>
+                <a class="mm-link"><span class="mm-link-label">Salt &amp; Sea</span><span class="mm-link-dek">Vita di mare</span></a>
+                <a class="mm-link"><span class="mm-link-label">Cold Quiet</span><span class="mm-link-dek">Inverni nordici</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Formato</h4>
+                <a class="mm-link"><span class="mm-link-label">Weekend</span><span class="mm-link-dek">2–4 giorni</span></a>
+                <a class="mm-link"><span class="mm-link-label">Roadtrip</span><span class="mm-link-dek">In auto, con tappe</span></a>
+                <a class="mm-link"><span class="mm-link-label">Lungo</span><span class="mm-link-dek">10+ giorni</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Ritmo</h4>
+                <a class="mm-link"><span class="mm-link-label">Camminato</span><span class="mm-link-dek">Trekking, sentieri</span></a>
+                <a class="mm-link"><span class="mm-link-label">Tavolato</span><span class="mm-link-dek">Mangiare lento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Letto presto</span><span class="mm-link-dek">Sveglie all'alba</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item"><a href="casa-chi-siamo.html">Chi siamo</a></div>
+        <div class="nav-item"><a href="casa-diario.html">Diario</a></div>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" data-only-desktop aria-label="Cerca">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="icon-btn" data-only-desktop aria-label="Salvati">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <span class="lang-pill">IT · €</span>
+        <a class="btn btn-secondary btn-sm">Parla con noi</a>
+        <button class="drawer-toggle icon-btn" aria-label="Apri menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" aria-hidden="true">
+    <div class="drawer-scrim"></div>
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <span class="brand"><span class="brand-mark">o</span><span><em>Oops</em></span></span>
+        <button class="icon-btn drawer-close" aria-label="Chiudi menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="drawer-list">
+        <a class="drawer-link" href="casa-viaggi.html">Viaggi</a>
+        <a class="drawer-link" href="casa-partenze.html">Partenze</a>
+        <a class="drawer-link" href="casa-destinazioni.html">Destinazioni</a>
+        <a class="drawer-link" href="casa-tipi.html">Tipi di viaggio</a>
+        <a class="drawer-link" href="casa-chi-siamo.html">Chi siamo</a>
+        <a class="drawer-link" href="casa-diario.html">Diario</a>
+        <div class="drawer-section">Profilo</div>
+        <a class="drawer-link">I miei salvati</a>
+        <a class="drawer-link">Le mie prenotazioni</a>
+      </div>
+      <div class="drawer-foot">
+        <a class="btn btn-primary btn-block">Parla con noi</a>
+        <a class="btn btn-secondary btn-block">Accedi</a>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="wrap">
+    <nav class="crumb">
+      <a href="casa.html">Casa</a>
+      <span class="sep">/</span><span class="current">Partenze 2026</span>
+    </nav>
+
+    <section class="sec-sm">
+      <div class="coord-strip" style="margin-bottom: 24px;">
+        <span class="dot"></span>
+        <span>Calendario <b>2026</b> · <b>28</b> partenze attive · <b>9</b> già confermate · agg. <b>14 / 02 / 26</b></span>
+      </div>
+      <h1 class="hero-title" style="color: var(--ink-1000); margin: 0 0 24px; font-size: clamp(48px, 7vw, 96px);">
+        Cosa succede,<br/><em>mese per mese</em>.
+      </h1>
+      <p class="lede" style="max-width: 720px;">
+        Tutte le partenze 2026 in ordine cronologico. Quelle confermate hanno una pallina verde, quelle che si stanno riempendo lampeggiano arancio, quelle in lista d'attesa sono nere — chiede l'iscrizione e siamo i primi a chiamarti quando si apre un posto.
+      </p>
+    </section>
+
+    <!-- Legenda -->
+    <div style="display: flex; gap: 18px; flex-wrap: wrap; padding: 18px 0 32px; border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); margin-bottom: 0;">
+      <span class="mono" style="font-size: 11px; letter-spacing: 0.1em; color: var(--fg-3); text-transform: uppercase;">Legenda:</span>
+      <span style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; color: var(--fg-2); letter-spacing: 0.04em;"><span style="width: 9px; height: 9px; border-radius: 999px; background: var(--success);"></span>Confermato</span>
+      <span style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; color: var(--fg-2); letter-spacing: 0.04em;"><span style="width: 9px; height: 9px; border-radius: 999px; background: var(--clay-600);"></span>Si riempie</span>
+      <span style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; color: var(--fg-2); letter-spacing: 0.04em;"><span style="width: 9px; height: 9px; border-radius: 999px; background: var(--ink-1000);"></span>Lista d'attesa</span>
+      <span style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; color: var(--fg-2); letter-spacing: 0.04em; margin-left: auto;">
+        <button class="chip btn-sm" style="font-family: var(--font-mono); font-size: 11px;">Tutti</button>
+        <button class="chip btn-sm">Europa</button>
+        <button class="chip btn-sm">Africa</button>
+        <button class="chip btn-sm">Asia</button>
+        <button class="chip btn-sm">Americhe</button>
+      </span>
+    </div>
+
+    <!-- ============ FEBBRAIO ============ -->
+    <section class="cal-month">
+      <div class="cal-month-head">
+        <p class="cal-month-num">II.</p>
+        <h2 class="cal-month-name">Febbraio</h2>
+        <p class="cal-month-meta">3 partenze · 1 confermata</p>
+      </div>
+      <div class="cal-month-list">
+        <a href="casa-viaggio.html" class="cal-trip soldout">
+          <div class="cal-trip-date">08–16 FEB<small>9 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Giappone · Hokkaido</span>
+            <h3 class="cal-trip-title">Hokkaido a febbraio (sì, davvero)</h3>
+            <div class="cal-trip-status">
+              <span>Lista d'attesa · 2 posti rimasti</span>
+              <span>Cold Quiet</span>
+            </div>
+          </div>
+          <div class="cal-trip-price">
+            <span class="price-from">Da</span>
+            <span class="price-now">€2.890</span>
+          </div>
+        </a>
+        <a class="cal-trip confirmed">
+          <div class="cal-trip-date">14–18 FEB<small>5 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Marocco · Marrakesh</span>
+            <h3 class="cal-trip-title">Marrakesh tre giorni e mezzo</h3>
+            <div class="cal-trip-status">
+              <span>Confermato · 4 posti</span>
+              <span>Weekend</span>
+            </div>
+          </div>
+          <div class="cal-trip-price">
+            <span class="price-from">Da</span>
+            <span class="price-now">€890</span>
+            <span class="price-orig">€990</span>
+          </div>
+        </a>
+        <a class="cal-trip filling">
+          <div class="cal-trip-date">22–26 FEB<small>5 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Egitto · Luxor</span>
+            <h3 class="cal-trip-title">Luxor da nord, in feluca</h3>
+            <div class="cal-trip-status">
+              <span>Si riempie · 3 posti</span>
+              <span>Slow · Tavolato</span>
+            </div>
+          </div>
+          <div class="cal-trip-price">
+            <span class="price-from">Da</span>
+            <span class="price-now">€1.490</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ MARZO ============ -->
+    <section class="cal-month">
+      <div class="cal-month-head">
+        <p class="cal-month-num">III.</p>
+        <h2 class="cal-month-name">Marzo</h2>
+        <p class="cal-month-meta">4 partenze · 2 confermate</p>
+      </div>
+      <div class="cal-month-list">
+        <a class="cal-trip confirmed">
+          <div class="cal-trip-date">06–13 MAR<small>8 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Marocco · Atlante</span>
+            <h3 class="cal-trip-title">Tre notti sull'Atlante</h3>
+            <div class="cal-trip-status"><span>Confermato</span><span>Camminato</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€1.290</span></div>
+        </a>
+        <a class="cal-trip filling">
+          <div class="cal-trip-date">14–21 MAR<small>8 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Giappone · Kyoto</span>
+            <h3 class="cal-trip-title">Kyoto in fioritura, ma non in centro</h3>
+            <div class="cal-trip-status"><span>Si riempie · 4 posti</span><span>Slow · City Escape</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€2.690</span></div>
+        </a>
+        <a class="cal-trip">
+          <div class="cal-trip-date">19–22 MAR<small>4 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Portogallo · Sintra</span>
+            <h3 class="cal-trip-title">Sintra fuori orario, weekend lungo</h3>
+            <div class="cal-trip-status"><span>Aperto · 8 posti</span><span>Weekend · Slow</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€790</span></div>
+        </a>
+        <a class="cal-trip confirmed">
+          <div class="cal-trip-date">26 MAR – 02 APR<small>8 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Giordania · Wadi Rum</span>
+            <h3 class="cal-trip-title">Wadi Rum, deserto in jeep e a piedi</h3>
+            <div class="cal-trip-status"><span>Confermato</span><span>Camminato</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€1.890</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ APRILE ============ -->
+    <section class="cal-month">
+      <div class="cal-month-head">
+        <p class="cal-month-num">IV.</p>
+        <h2 class="cal-month-name">Aprile</h2>
+        <p class="cal-month-meta">3 partenze · 1 nuova</p>
+      </div>
+      <div class="cal-month-list">
+        <a class="cal-trip">
+          <div class="cal-trip-date">04–11 APR<small>8 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Vietnam · Hanoi</span>
+            <h3 class="cal-trip-title">Hanoi, dieci piatti che non scordi</h3>
+            <div class="cal-trip-status"><span>Aperto · 7 posti</span><span>Tavolato</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€2.190</span></div>
+        </a>
+        <a class="cal-trip filling">
+          <div class="cal-trip-date">15–22 APR<small>8 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Islanda · Ring Road</span>
+            <h3 class="cal-trip-title">La ring road, ma al contrario</h3>
+            <div class="cal-trip-status"><span>Si riempie · 5 posti</span><span>Roadtrip · Cold Quiet</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€2.690</span></div>
+        </a>
+        <a class="cal-trip">
+          <div class="cal-trip-date">25–29 APR<small>5 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Italia · Salento</span>
+            <h3 class="cal-trip-title">Salento fuori stagione</h3>
+            <div class="cal-trip-status"><span>Nuovo · 9 posti</span><span>Slow · Tavolato</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€990</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ MAGGIO ============ -->
+    <section class="cal-month">
+      <div class="cal-month-head">
+        <p class="cal-month-num">V.</p>
+        <h2 class="cal-month-name">Maggio</h2>
+        <p class="cal-month-meta">3 partenze · una settimana lunga</p>
+      </div>
+      <div class="cal-month-list">
+        <a class="cal-trip confirmed">
+          <div class="cal-trip-date">04–11 MAG<small>8 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Portogallo · Alentejo</span>
+            <h3 class="cal-trip-title">Alentejo a passo lento, da sud</h3>
+            <div class="cal-trip-status"><span>Confermato</span><span>Slow</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€1.690</span><span class="price-orig">€1.890</span></div>
+        </a>
+        <a class="cal-trip">
+          <div class="cal-trip-date">11–16 MAG<small>6 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Grecia · Folegandros</span>
+            <h3 class="cal-trip-title">Folegandros prima del traffico</h3>
+            <div class="cal-trip-status"><span>Aperto · 6 posti</span><span>Salt &amp; Sea</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€1.290</span></div>
+        </a>
+        <a class="cal-trip filling">
+          <div class="cal-trip-date">22–29 MAG<small>8 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Georgia · Tbilisi e oltre</span>
+            <h3 class="cal-trip-title">Tbilisi e i monti del Caucaso minore</h3>
+            <div class="cal-trip-status"><span>Si riempie · 4 posti</span><span>Tavolato · Camminato</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€1.890</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ SETTEMBRE ============ -->
+    <section class="cal-month">
+      <div class="cal-month-head">
+        <p class="cal-month-num">IX.</p>
+        <h2 class="cal-month-name">Settembre</h2>
+        <p class="cal-month-meta">5 partenze · stagione piena</p>
+      </div>
+      <div class="cal-month-list">
+        <a href="casa-viaggio.html" class="cal-trip filling">
+          <div class="cal-trip-date">02–08 SET<small>7 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Italia · Cilento</span>
+            <h3 class="cal-trip-title">Cilento, sotto agosto</h3>
+            <div class="cal-trip-status"><span>Si riempie</span><span>Slow · Salt &amp; Sea</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€1.490</span></div>
+        </a>
+        <a href="casa-viaggio.html" class="cal-trip filling">
+          <div class="cal-trip-date">22–25 SET<small>4 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Portogallo · Porto</span>
+            <h3 class="cal-trip-title">Tre giorni persi a Porto</h3>
+            <div class="cal-trip-status"><span>A 2 dal via</span><span>Slow · City Escape</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€890</span><span class="price-orig">€990</span></div>
+        </a>
+        <a class="cal-trip confirmed">
+          <div class="cal-trip-date">14–22 SET<small>9 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Croazia · Dalmazia</span>
+            <h3 class="cal-trip-title">Dalmazia in barca, isola dopo isola</h3>
+            <div class="cal-trip-status"><span>Confermato</span><span>Salt &amp; Sea</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€2.290</span></div>
+        </a>
+        <a class="cal-trip">
+          <div class="cal-trip-date">26 SET – 04 OTT<small>9 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Argentina · Patagonia</span>
+            <h3 class="cal-trip-title">Patagonia in spalla, primavera australe</h3>
+            <div class="cal-trip-status"><span>Aperto · 6 posti</span><span>Camminato</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€3.490</span></div>
+        </a>
+        <a class="cal-trip">
+          <div class="cal-trip-date">10–15 SET<small>6 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Albania · Riviera</span>
+            <h3 class="cal-trip-title">Riviera albanese, ultimo anno calmo</h3>
+            <div class="cal-trip-status"><span>Aperto · 8 posti</span><span>Salt &amp; Sea</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€1.190</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ OTTOBRE-NOVEMBRE compressi ============ -->
+    <section class="cal-month">
+      <div class="cal-month-head">
+        <p class="cal-month-num">X.</p>
+        <h2 class="cal-month-name">Ottobre</h2>
+        <p class="cal-month-meta">4 partenze · luce buona</p>
+      </div>
+      <div class="cal-month-list">
+        <a class="cal-trip filling">
+          <div class="cal-trip-date">14–20 OTT<small>7 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Italia · Puglia</span>
+            <h3 class="cal-trip-title">La strada lenta in Puglia</h3>
+            <div class="cal-trip-status"><span>4 posti rimasti</span><span>Slow · Tavolato</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€1.890</span></div>
+        </a>
+        <a class="cal-trip">
+          <div class="cal-trip-date">02–08 OTT<small>7 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Marocco · Sahara</span>
+            <h3 class="cal-trip-title">Sahara in piedi, due notti sotto le stelle</h3>
+            <div class="cal-trip-status"><span>Aperto · 8 posti</span><span>Expedition</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€1.790</span></div>
+        </a>
+        <a class="cal-trip">
+          <div class="cal-trip-date">12–16 OTT<small>5 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Portogallo · Lisbona</span>
+            <h3 class="cal-trip-title">Perché torniamo sempre a Lisbona</h3>
+            <div class="cal-trip-status"><span>Aperto · 7 posti</span><span>City Escape</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€1.190</span></div>
+        </a>
+        <a class="cal-trip confirmed">
+          <div class="cal-trip-date">21–27 OTT<small>7 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Messico · Oaxaca</span>
+            <h3 class="cal-trip-title">Una settimana di mole a Oaxaca</h3>
+            <div class="cal-trip-status"><span>Confermato</span><span>Tavolato</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€1.980</span><span class="price-orig">€2.190</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="cal-month">
+      <div class="cal-month-head">
+        <p class="cal-month-num">XI.</p>
+        <h2 class="cal-month-name">Novembre</h2>
+        <p class="cal-month-meta">3 partenze · stagione lunga</p>
+      </div>
+      <div class="cal-month-list">
+        <a class="cal-trip">
+          <div class="cal-trip-date">04–11 NOV<small>8 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Italia · Lecce</span>
+            <h3 class="cal-trip-title">Lecce a piccoli morsi, otto giorni</h3>
+            <div class="cal-trip-status"><span>Aperto · 8 posti</span><span>Tavolato</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€1.190</span></div>
+        </a>
+        <a class="cal-trip">
+          <div class="cal-trip-date">12–22 NOV<small>11 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Sri Lanka · Sud</span>
+            <h3 class="cal-trip-title">Sri Lanka del sud, prima della pioggia</h3>
+            <div class="cal-trip-status"><span>Aperto · 6 posti</span><span>Salt &amp; Sea</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€2.390</span></div>
+        </a>
+        <a class="cal-trip">
+          <div class="cal-trip-date">27 NOV – 04 DIC<small>8 giorni</small></div>
+          <div class="cal-trip-body">
+            <span class="cal-trip-eyebrow">Vietnam · Hoi An</span>
+            <h3 class="cal-trip-title">Otto giorni a Hoi An senza moto</h3>
+            <div class="cal-trip-status"><span>Aperto · 7 posti</span><span>Slow</span></div>
+          </div>
+          <div class="cal-trip-price"><span class="price-from">Da</span><span class="price-now">€2.190</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- CTA finale -->
+    <section class="sec" style="text-align: center;">
+      <span class="eyebrow-line" style="justify-content: center; margin: 0 auto;">Non vedi quello che cerchi?</span>
+      <h2 class="sec-title" style="margin: 18px auto; max-width: 720px;">Aggiungiamo <em>nuove partenze</em> tutti i mesi.</h2>
+      <p class="lede" style="max-width: 540px; margin: 0 auto 32px;">
+        Se hai una data o una meta in mente che non vedi nel calendario, scrivici. Spesso possiamo aggiungere una partenza su misura, se siamo già otto persone interessate.
+      </p>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <a class="btn btn-primary btn-lg">Iscrivimi al dispaccio <span class="arr">→</span></a>
+        <a class="btn btn-secondary btn-lg">Su misura, fammi sapere</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="ftr">
+    <div class="wrap">
+      <div class="ftr-top">
+        <div class="ftr-brand">
+          <a class="brand" href="casa.html"><span class="brand-mark">o</span><span><em>Oops</em> I Roamed</span></a>
+          <p class="ftr-claim">Viaggi in piccolo gruppo per chi preferisce arrivare tardi, mangiare a lungo, e dormire poco.</p>
+        </div>
+        <div class="ftr-col"><h4>Destinazioni</h4><ul><li><a href="casa-destinazioni.html">Tutte</a></li></ul></div>
+        <div class="ftr-col"><h4>Tipi di viaggio</h4><ul><li><a href="casa-tipi.html">Tutti i mood</a></li></ul></div>
+        <div class="ftr-col"><h4>Community</h4><ul><li><a href="casa-diario.html">Diario</a></li></ul></div>
+        <div class="ftr-col"><h4>Info</h4><ul><li><a>Contatti</a></li><li><a>FAQ</a></li></ul></div>
+      </div>
+      <div class="ftr-bot">
+        <span>© 2026 Oops I Roamed S.r.l.</span>
+        <div class="ftr-pays"><span class="pay-chip">Visa</span><span class="pay-chip">Mastercard</span><span class="pay-chip">Scalapay</span><span class="pay-chip">PayPal</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="casa-app.js"></script>
+</body>
+</html>

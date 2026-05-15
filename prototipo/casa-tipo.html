@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <title>Slow — Oops I Roamed</title>
+  <template id="__bundler_thumbnail">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+      <rect width="200" height="200" fill="#F8F4EC"/>
+      <text x="100" y="115" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="56" fill="#1F2A22">Slow.</text>
+      <line x1="40" y1="140" x2="160" y2="140" stroke="#E87B5A" stroke-width="2"/>
+      <text x="100" y="170" text-anchor="middle" font-family="monospace" font-size="10" fill="#1F2A22" letter-spacing="3">MOOD · I</text>
+    </svg>
+  </template>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link rel="stylesheet" href="casa-styles.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="hdr">
+    <div class="hdr-in">
+      <a class="brand" href="casa.html" aria-label="Oops I Roamed — casa">
+        <span class="brand-mark">o</span>
+        <span><em>Oops</em> I Roamed</span>
+      </a>
+      <nav class="nav">
+        <div class="nav-item"><a href="casa.html">Home</a></div>
+        <div class="nav-item"><a href="casa-viaggi.html">Viaggi</a></div>
+        <div class="nav-item"><a href="casa-partenze.html">Partenze</a></div>
+        <div class="nav-item">
+          <a href="casa-destinazioni.html">Destinazioni <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Europa</h4>
+                <a class="mm-link" href="casa-destinazione.html">
+                  <span class="mm-link-label">Portogallo</span>
+                  <span class="mm-link-dek">Atlantico, lento</span>
+                </a>
+                <a class="mm-link"><span class="mm-link-label">Italia</span><span class="mm-link-dek">Sud che non corre</span></a>
+                <a class="mm-link"><span class="mm-link-label">Islanda</span><span class="mm-link-dek">Ring road, controvento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Georgia</span><span class="mm-link-dek">Caucaso minore</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Africa &amp; Med</h4>
+                <a class="mm-link"><span class="mm-link-label">Marocco</span><span class="mm-link-dek">Atlante in marzo</span></a>
+                <a class="mm-link"><span class="mm-link-label">Egitto</span><span class="mm-link-dek">Nilo, da nord</span></a>
+                <a class="mm-link"><span class="mm-link-label">Giordania</span><span class="mm-link-dek">Wadi, deserto</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Far &amp; Wide</h4>
+                <a class="mm-link"><span class="mm-link-label">Giappone</span><span class="mm-link-dek">Hokkaido a febbraio</span></a>
+                <a class="mm-link"><span class="mm-link-label">Messico</span><span class="mm-link-dek">Oaxaca, mole</span></a>
+                <a class="mm-link"><span class="mm-link-label">Argentina</span><span class="mm-link-dek">Patagonia in spalla</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item on">
+          <a href="casa-tipi.html">Tipi di viaggio <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Mood</h4>
+                <a class="mm-link"><span class="mm-link-label">Slow</span><span class="mm-link-dek">Camminare piano</span></a>
+                <a class="mm-link"><span class="mm-link-label">Salt &amp; Sea</span><span class="mm-link-dek">Vita di mare</span></a>
+                <a class="mm-link"><span class="mm-link-label">Cold Quiet</span><span class="mm-link-dek">Inverni nordici</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Formato</h4>
+                <a class="mm-link"><span class="mm-link-label">Weekend</span><span class="mm-link-dek">2–4 giorni</span></a>
+                <a class="mm-link"><span class="mm-link-label">Roadtrip</span><span class="mm-link-dek">In auto, con tappe</span></a>
+                <a class="mm-link"><span class="mm-link-label">Lungo</span><span class="mm-link-dek">10+ giorni</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Ritmo</h4>
+                <a class="mm-link"><span class="mm-link-label">Camminato</span><span class="mm-link-dek">Trekking, sentieri</span></a>
+                <a class="mm-link"><span class="mm-link-label">Tavolato</span><span class="mm-link-dek">Mangiare lento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Letto presto</span><span class="mm-link-dek">Sveglie all'alba</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item"><a href="casa-chi-siamo.html">Chi siamo</a></div>
+        <div class="nav-item"><a href="casa-diario.html">Diario</a></div>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" data-only-desktop aria-label="Cerca">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="icon-btn" data-only-desktop aria-label="Salvati">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <span class="lang-pill">IT · €</span>
+        <a class="btn btn-secondary btn-sm">Parla con noi</a>
+        <button class="drawer-toggle icon-btn" aria-label="Apri menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" aria-hidden="true">
+    <div class="drawer-scrim"></div>
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <span class="brand"><span class="brand-mark">o</span><span><em>Oops</em></span></span>
+        <button class="icon-btn drawer-close" aria-label="Chiudi menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="drawer-list">
+        <a class="drawer-link" href="casa-viaggi.html">Viaggi</a>
+        <a class="drawer-link" href="casa-partenze.html">Partenze</a>
+        <a class="drawer-link" href="casa-destinazioni.html">Destinazioni</a>
+        <a class="drawer-link" href="casa-tipi.html">Tipi di viaggio</a>
+        <a class="drawer-link" href="casa-chi-siamo.html">Chi siamo</a>
+        <a class="drawer-link" href="casa-diario.html">Diario</a>
+        <div class="drawer-section">Profilo</div>
+        <a class="drawer-link">I miei salvati</a>
+        <a class="drawer-link">Le mie prenotazioni</a>
+      </div>
+      <div class="drawer-foot">
+        <a class="btn btn-primary btn-block">Parla con noi</a>
+        <a class="btn btn-secondary btn-block">Accedi</a>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="wrap">
+    <nav class="crumb">
+      <a href="casa.html">Casa</a><span class="sep">/</span>
+      <a href="casa-tipi.html">Tipi di viaggio</a><span class="sep">/</span>
+      <span class="current">Slow</span>
+    </nav>
+
+    <!-- ============ HERO MARGINALIA ============ -->
+    <div class="marginalia-page" style="padding: 32px 0 24px;">
+      <aside class="marginalia-rail">
+        <span class="vertical"><b>Mood I</b> / Slow</span>
+        <span class="dash"></span>
+        <div class="stamp">
+          <span>Vol IV</span>
+          <span class="stamp-big">11</span>
+          <span>viaggi</span>
+        </div>
+        <span class="dash"></span>
+        <span class="vertical">Camminare piano · 2026</span>
+      </aside>
+      <div>
+        <div class="coord-strip" style="margin-bottom: 24px;">
+          <span class="dot"></span>
+          <span>Mood <b>I</b> · <b>11</b> viaggi · <b>3</b> continenti · sforzo <b>basso</b> · giorni medi <b>5,4</b></span>
+        </div>
+        <h1 class="hero-title" style="color: var(--ink-1000); margin: 0 0 24px; font-size: clamp(56px, 9vw, 132px); line-height: 0.92;">
+          <em>Slow</em>.<br/>Cioè <em>piano</em>.
+        </h1>
+        <p class="lede" style="max-width: 680px;">
+          Per chi pensa che la fretta sia la cosa più cara che si paghi in vacanza. Niente da prendere all'ora x. Niente da timbrare. Si parte tardi, si torna stanchi ma non rotti.
+        </p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px;">
+          <a class="btn btn-primary btn-lg">Vedi le 11 partenze Slow <span class="arr">→</span></a>
+          <a class="btn btn-secondary btn-lg" href="casa-tipi.html">← Tutti i mood</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FOTO-ESSAY: cosa significa "Slow" ============ -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head sec-head-center">
+        <span class="sec-eyebrow">Una giornata Slow tipica</span>
+        <h2 class="sec-title">Quattro <em>fotografie</em>,<br/>nessuna sveglia.</h2>
+      </div>
+
+      <div class="photo-essay-row with-caption">
+        <div class="photo-essay-pic">
+          <img src="https://images.unsplash.com/photo-1481070555726-e2fe8357725c?w=1600&q=85" alt="" />
+        </div>
+        <div class="photo-essay-caption">
+          <strong>I — Tra le 9 e le 10:30</strong>
+          La colazione non è dove dormi, mai. Si esce camminando, ci si ferma quando si trova il posto giusto. Un cornetto, un caffè, ascoltare la lingua intorno per un'ora.
+        </div>
+      </div>
+
+      <div class="photo-essay-row with-caption flip">
+        <div class="photo-essay-caption">
+          <strong>II — Il pranzo, mai prima delle 14</strong>
+          Si mangia con gli abitanti di lì, non con gli altri turisti. Due piatti, vino di brocca, niente fretta. A tavola si decide il pomeriggio guardando quanto si è stanchi. Il pomeriggio si modifica.
+        </div>
+        <div class="photo-essay-pic">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=85" alt="" />
+        </div>
+      </div>
+
+      <div class="photo-essay-row with-caption">
+        <div class="photo-essay-pic">
+          <img src="https://images.unsplash.com/photo-1505739679850-7adfb2c1e1e7?w=1600&q=85" alt="" />
+        </div>
+        <div class="photo-essay-caption">
+          <strong>III — Il "tempo morto", verso le 17</strong>
+          Un'ora a sedersi su una panchina, in giardino pubblico o davanti al mare. È il momento in cui i viaggi cominciano a entrare. Niente da fare, niente da fotografare. Ci si ricorda della propria vita.
+        </div>
+      </div>
+
+      <div class="photo-essay-row with-caption flip">
+        <div class="photo-essay-caption">
+          <strong>IV — La sera, lunga</strong>
+          La cena è la cosa più importante del giorno. Ci si arriva alle 21, ci si alza alle 23 e mezza. Un drink dopo, da qualche parte vicino. Si torna a piedi anche se ci sono i taxi.
+        </div>
+        <div class="photo-essay-pic">
+          <img src="https://images.unsplash.com/photo-1591388045006-3f9e1f0f60a8?w=1600&q=85" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROFILO DEL MOOD (statistiche oneste) ============ -->
+  <section class="sec" style="background: var(--bg-sunken);">
+    <div class="wrap">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;">
+        <div>
+          <span class="eyebrow-line">Profilo onesto del mood</span>
+          <h2 class="sec-title" style="margin-top: 14px;">Cosa <em>aspettarsi</em> da Slow.</h2>
+          <p class="lede" style="max-width: 480px; margin-top: 18px;">
+            Stiamo dicendoti i numeri veri, non quelli del catalogo. Tieni a mente che ogni partenza è leggermente diversa, ma la media è questa.
+          </p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+          <div class="fit-row" style="grid-template-columns: 200px 1fr;">
+            <span class="fit-label">Sforzo fisico</span>
+            <div class="fit-dots"><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot"></span><span class="fit-dot"></span><span class="fit-dot"></span></div>
+          </div>
+          <div class="fit-row" style="grid-template-columns: 200px 1fr;">
+            <span class="fit-label">Densità di programma</span>
+            <div class="fit-dots"><span class="fit-dot on"></span><span class="fit-dot"></span><span class="fit-dot"></span><span class="fit-dot"></span><span class="fit-dot"></span></div>
+          </div>
+          <div class="fit-row" style="grid-template-columns: 200px 1fr;">
+            <span class="fit-label">Tempo libero</span>
+            <div class="fit-dots"><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span></div>
+          </div>
+          <div class="fit-row" style="grid-template-columns: 200px 1fr;">
+            <span class="fit-label">Mangiare bene</span>
+            <div class="fit-dots"><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span></div>
+          </div>
+          <div class="fit-row" style="grid-template-columns: 200px 1fr;">
+            <span class="fit-label">Conoscere altri viaggiatori</span>
+            <div class="fit-dots"><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot"></span></div>
+          </div>
+          <div class="fit-row" style="grid-template-columns: 200px 1fr;">
+            <span class="fit-label">Adatto a chi è solo</span>
+            <div class="fit-dots"><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span><span class="fit-dot on"></span></div>
+          </div>
+          <p class="mono" style="font-size: 11px; color: var(--fg-3); margin-top: 16px;">Misurazioni medie su 11 partenze fatte 2023–2025. Aggiornato 14 / 02 / 26.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tutti gli Slow disponibili -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="sec-eyebrow">Tutti gli Slow attivi</span>
+          <h2 class="sec-title">11 <em>partenze</em>, da febbraio a novembre 2026.</h2>
+        </div>
+        <a class="btn btn-secondary">Filtra per data <span class="arr">→</span></a>
+      </div>
+
+      <div class="trip-rail">
+        <article class="trip-card">
+          <a href="casa-viaggio.html" class="trip-img">
+            <span class="trip-status filling">A 2 dal via</span>
+            <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1200&q=85" alt="" />
+            <button class="trip-fav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <div class="trip-badges"><span class="trip-badge">3g · 3n</span><span class="trip-badge rating"><span class="star">★</span> 4.9</span></div>
+          </a>
+          <a class="trip-body">
+            <span class="trip-eyebrow">Portogallo · Porto</span>
+            <h3 class="trip-title">Tre giorni persi a Porto</h3>
+            <p class="trip-meta-row">22–25 SET 2026</p>
+            <div class="trip-price"><span class="trip-price-from">Da</span><span class="trip-price-orig">€990</span><span class="trip-price-now">€890</span><span class="trip-pct">−10%</span></div>
+          </a>
+        </article>
+        <article class="trip-card">
+          <a class="trip-img">
+            <img src="https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=1200&q=85" alt="" />
+            <button class="trip-fav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <div class="trip-badges"><span class="trip-badge">6g · 5n</span><span class="trip-badge rating"><span class="star">★</span> 4.8</span></div>
+          </a>
+          <a class="trip-body">
+            <span class="trip-eyebrow">Italia · Puglia</span>
+            <h3 class="trip-title">La strada lenta in Puglia</h3>
+            <p class="trip-meta-row">14–20 OTT 2026</p>
+            <div class="trip-price"><span class="trip-price-from">Da</span><span class="trip-price-now">€1.890</span></div>
+          </a>
+        </article>
+        <article class="trip-card">
+          <a class="trip-img">
+            <span class="trip-status">Nuovo</span>
+            <img src="https://images.unsplash.com/photo-1485956203946-bca0c44b0d4b?w=1200&q=85" alt="" />
+            <button class="trip-fav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <div class="trip-badges"><span class="trip-badge">7g · 6n</span><span class="trip-badge rating"><span class="star">★</span> 4.7</span></div>
+          </a>
+          <a class="trip-body">
+            <span class="trip-eyebrow">Italia · Cilento</span>
+            <h3 class="trip-title">Cilento, sotto agosto</h3>
+            <p class="trip-meta-row">02–08 SET 2026</p>
+            <div class="trip-price"><span class="trip-price-from">Da</span><span class="trip-price-now">€1.490</span></div>
+          </a>
+        </article>
+        <article class="trip-card">
+          <a class="trip-img">
+            <img src="https://images.unsplash.com/photo-1591388045006-3f9e1f0f60a8?w=1200&q=85" alt="" />
+            <button class="trip-fav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <div class="trip-badges"><span class="trip-badge">5g · 4n</span><span class="trip-badge rating"><span class="star">★</span> 4.8</span></div>
+          </a>
+          <a class="trip-body">
+            <span class="trip-eyebrow">Portogallo · Lisbona</span>
+            <h3 class="trip-title">Cinque alfame, una città sola</h3>
+            <p class="trip-meta-row">12–16 OTT 2026</p>
+            <div class="trip-price"><span class="trip-price-from">Da</span><span class="trip-price-now">€1.190</span></div>
+          </a>
+        </article>
+        <article class="trip-card">
+          <a class="trip-img">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=85" alt="" />
+            <button class="trip-fav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <div class="trip-badges"><span class="trip-badge">8g · 7n</span><span class="trip-badge rating"><span class="star">★</span> 4.7</span></div>
+          </a>
+          <a class="trip-body">
+            <span class="trip-eyebrow">Vietnam · Hoi An</span>
+            <h3 class="trip-title">Otto giorni a Hoi An senza moto</h3>
+            <p class="trip-meta-row">03–10 NOV 2026</p>
+            <div class="trip-price"><span class="trip-price-from">Da</span><span class="trip-price-now">€2.190</span></div>
+          </a>
+        </article>
+        <article class="trip-card">
+          <a class="trip-img">
+            <span class="trip-status confirmed">Confermato</span>
+            <img src="https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=1200&q=85" alt="" />
+            <button class="trip-fav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <div class="trip-badges"><span class="trip-badge">6g · 5n</span><span class="trip-badge rating"><span class="star">★</span> 4.9</span></div>
+          </a>
+          <a class="trip-body">
+            <span class="trip-eyebrow">Grecia · Folegandros</span>
+            <h3 class="trip-title">Folegandros a maggio, prima del traffico</h3>
+            <p class="trip-meta-row">11–16 MAG 2026</p>
+            <div class="trip-price"><span class="trip-price-from">Da</span><span class="trip-price-now">€1.290</span></div>
+          </a>
+        </article>
+      </div>
+
+      <div style="text-align: center; margin-top: 48px;">
+        <a class="btn btn-secondary btn-lg">Vedi tutte le 11 partenze <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pull quote da chi è partito -->
+  <section class="sec" style="background: var(--ink-1000); color: var(--cream-50); text-align: center;">
+    <div class="wrap" style="max-width: 880px;">
+      <span class="sec-eyebrow" style="color: var(--sun-300);">Da chi ha provato</span>
+      <p style="font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: clamp(28px, 4vw, 44px); line-height: 1.25; color: var(--cream-50); margin: 24px 0; letter-spacing: -0.01em;">
+        "Mi hanno detto due volte 'oggi non programmiamo niente'. Pensavo fosse pigrizia. Erano le due giornate più belle del viaggio."
+      </p>
+      <p class="mono" style="color: var(--cream-300); font-size: 11px; letter-spacing: 0.1em;">
+        — CHIARA R. · PARTITA PER PORTO · SETTEMBRE 2025
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="ftr">
+    <div class="wrap">
+      <div class="ftr-top">
+        <div class="ftr-brand">
+          <a class="brand" href="casa.html"><span class="brand-mark">o</span><span><em>Oops</em> I Roamed</span></a>
+          <p class="ftr-claim">Viaggi in piccolo gruppo per chi preferisce arrivare tardi, mangiare a lungo, e dormire poco.</p>
+        </div>
+        <div class="ftr-col"><h4>Mood</h4><ul><li><a>Slow</a></li><li><a>Salt &amp; Sea</a></li><li><a>Cold Quiet</a></li><li><a href="casa-tipi.html">Tutti i mood</a></li></ul></div>
+        <div class="ftr-col"><h4>Destinazioni</h4><ul><li><a href="casa-destinazioni.html">Tutte</a></li></ul></div>
+        <div class="ftr-col"><h4>Community</h4><ul><li><a href="casa-diario.html">Diario</a></li></ul></div>
+        <div class="ftr-col"><h4>Info</h4><ul><li><a>Contatti</a></li><li><a>FAQ</a></li></ul></div>
+      </div>
+      <div class="ftr-bot">
+        <span>© 2026 Oops I Roamed S.r.l.</span>
+        <div class="ftr-pays"><span class="pay-chip">Visa</span><span class="pay-chip">Mastercard</span><span class="pay-chip">Scalapay</span><span class="pay-chip">PayPal</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="casa-app.js"></script>
+</body>
+</html>

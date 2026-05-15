@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <title>Contatti — Oops I Roamed</title>
+  <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#F8F4EC"/><rect x="20" y="50" width="160" height="100" rx="8" fill="#3F6390" opacity="0.85"/><path d="M 20 50 L 100 110 L 180 50" stroke="#F8F4EC" stroke-width="3" fill="none"/><text x="100" y="180" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="18" fill="#1F2A22">Contatti</text></svg></template>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link rel="stylesheet" href="casa-styles.css" />
+  
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="hdr">
+    <div class="hdr-in">
+      <a class="brand" href="casa.html" aria-label="Oops I Roamed — casa">
+        <span class="brand-mark">o</span>
+        <span><em>Oops</em> I Roamed</span>
+      </a>
+      <nav class="nav">
+        <div class="nav-item"><a href="casa.html">Home</a></div>
+        <div class="nav-item"><a href="casa-viaggi.html">Viaggi</a></div>
+        <div class="nav-item"><a href="casa-partenze.html">Partenze</a></div>
+        <div class="nav-item">
+          <a href="casa-destinazioni.html">Destinazioni <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Europa</h4>
+                <a class="mm-link" href="casa-destinazione.html">
+                  <span class="mm-link-label">Portogallo</span>
+                  <span class="mm-link-dek">Atlantico, lento</span>
+                </a>
+                <a class="mm-link"><span class="mm-link-label">Italia</span><span class="mm-link-dek">Sud che non corre</span></a>
+                <a class="mm-link"><span class="mm-link-label">Islanda</span><span class="mm-link-dek">Ring road, controvento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Georgia</span><span class="mm-link-dek">Caucaso minore</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Africa &amp; Med</h4>
+                <a class="mm-link"><span class="mm-link-label">Marocco</span><span class="mm-link-dek">Atlante in marzo</span></a>
+                <a class="mm-link"><span class="mm-link-label">Egitto</span><span class="mm-link-dek">Nilo, da nord</span></a>
+                <a class="mm-link"><span class="mm-link-label">Giordania</span><span class="mm-link-dek">Wadi, deserto</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Far &amp; Wide</h4>
+                <a class="mm-link"><span class="mm-link-label">Giappone</span><span class="mm-link-dek">Hokkaido a febbraio</span></a>
+                <a class="mm-link"><span class="mm-link-label">Messico</span><span class="mm-link-dek">Oaxaca, mole</span></a>
+                <a class="mm-link"><span class="mm-link-label">Argentina</span><span class="mm-link-dek">Patagonia in spalla</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="casa-tipi.html">Tipi di viaggio <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Mood</h4>
+                <a class="mm-link"><span class="mm-link-label">Slow</span><span class="mm-link-dek">Camminare piano</span></a>
+                <a class="mm-link"><span class="mm-link-label">Salt &amp; Sea</span><span class="mm-link-dek">Vita di mare</span></a>
+                <a class="mm-link"><span class="mm-link-label">Cold Quiet</span><span class="mm-link-dek">Inverni nordici</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Formato</h4>
+                <a class="mm-link"><span class="mm-link-label">Weekend</span><span class="mm-link-dek">2–4 giorni</span></a>
+                <a class="mm-link"><span class="mm-link-label">Roadtrip</span><span class="mm-link-dek">In auto, con tappe</span></a>
+                <a class="mm-link"><span class="mm-link-label">Lungo</span><span class="mm-link-dek">10+ giorni</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Ritmo</h4>
+                <a class="mm-link"><span class="mm-link-label">Camminato</span><span class="mm-link-dek">Trekking, sentieri</span></a>
+                <a class="mm-link"><span class="mm-link-label">Tavolato</span><span class="mm-link-dek">Mangiare lento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Letto presto</span><span class="mm-link-dek">Sveglie all'alba</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item"><a href="casa-chi-siamo.html">Chi siamo</a></div>
+        <div class="nav-item"><a href="casa-diario.html">Diario</a></div>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" data-only-desktop aria-label="Cerca">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="icon-btn" data-only-desktop aria-label="Salvati">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <span class="lang-pill">IT · €</span>
+        <a class="btn btn-secondary btn-sm">Parla con noi</a>
+        <button class="drawer-toggle icon-btn" aria-label="Apri menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" aria-hidden="true">
+    <div class="drawer-scrim"></div>
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <span class="brand"><span class="brand-mark">o</span><span><em>Oops</em></span></span>
+        <button class="icon-btn drawer-close" aria-label="Chiudi menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="drawer-list">
+        <a class="drawer-link" href="casa-viaggi.html">Viaggi</a>
+        <a class="drawer-link" href="casa-partenze.html">Partenze</a>
+        <a class="drawer-link" href="casa-destinazioni.html">Destinazioni</a>
+        <a class="drawer-link" href="casa-tipi.html">Tipi di viaggio</a>
+        <a class="drawer-link" href="casa-chi-siamo.html">Chi siamo</a>
+        <a class="drawer-link" href="casa-diario.html">Diario</a>
+        <div class="drawer-section">Profilo</div>
+        <a class="drawer-link">I miei salvati</a>
+        <a class="drawer-link">Le mie prenotazioni</a>
+      </div>
+      <div class="drawer-foot">
+        <a class="btn btn-primary btn-block">Parla con noi</a>
+        <a class="btn btn-secondary btn-block">Accedi</a>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb">
+      <a href="casa.html">Casa</a><span class="sep">/</span><span class="current">Contatti</span>
+    </nav>
+  </div>
+
+  
+  <div class="wrap">
+    <section class="sec-sm">
+      <span class="eyebrow-line">Tre canali · una persona</span>
+      <h1 class="hero-title" style="color: var(--ink-1000); margin: 14px 0 22px; font-size: clamp(48px, 6vw, 80px);">
+        Ci scrivi <em>qui sotto</em>,<br/>ti risponde <em>una persona vera</em>.
+      </h1>
+      <p class="lede" style="max-width: 720px;">
+        Niente bot, niente form-to-ticket-to-nobody. Le mail arrivano a Sofia o Marco — uno dei due ti risponde entro 48 ore, di solito molto prima.
+      </p>
+    </section>
+
+    <div class="two-col" style="padding: 0 0 96px;">
+      <form data-form="contact">
+        <div class="form-grid-2">
+          <div class="fld">
+            <label class="fld-label" for="c-name">Come ti chiami</label>
+            <input id="c-name" type="text" placeholder="Anna Rossi" required />
+          </div>
+          <div class="fld">
+            <label class="fld-label" for="c-email">La tua email</label>
+            <input id="c-email" type="email" placeholder="anna@esempio.it" required />
+          </div>
+          <div class="fld fld-select fld-full">
+            <label class="fld-label" for="c-topic">Di cosa parliamo</label>
+            <select id="c-topic">
+              <option>Una domanda generale</option>
+              <option>Informazioni su un viaggio specifico</option>
+              <option>Su misura — itinerario personalizzato</option>
+              <option>Gruppi privati o aziendali</option>
+              <option>Press &amp; rassegna</option>
+              <option>Lavora con noi</option>
+              <option>Altro (lo dici dopo)</option>
+            </select>
+          </div>
+          <div class="fld fld-full">
+            <label class="fld-label" for="c-msg">Cosa ci vuoi dire</label>
+            <textarea id="c-msg" rows="6" placeholder="Niente formalità. Più sei specifica, prima ti rispondiamo." required></textarea>
+          </div>
+          <div class="fld-full" style="display: flex; gap: 14px; align-items: center;">
+            <label class="chk"><input type="checkbox" required /> <span class="chk-label">Ho letto la <a style="color: var(--accent); border-bottom: 1px solid currentColor;">privacy policy</a>.</span></label>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-lg">Invia <span class="arr">→</span></button>
+          <span class="filler"></span>
+          <p class="mono" style="font-size: 11px; color: var(--fg-3); letter-spacing: 0.06em;">RISPONDIAMO IN 48 ORE · DI SOLITO MOLTO PRIMA</p>
+        </div>
+        <div class="form-success">
+          <div class="form-success-mark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h3>Ricevuto, <em>grazie</em>.</h3>
+          <p>Ti rispondiamo entro 48 ore. Di solito molto prima — soprattutto se ci scrivi prima delle 18.</p>
+          <a class="btn btn-secondary" href="casa.html">Torna a casa</a>
+        </div>
+      </form>
+
+      <aside class="side-card">
+        <h4>Anche per <em>cose pratiche</em>.</h4>
+        <p>Se hai già una prenotazione attiva e ti serve modificare qualcosa, scrivici direttamente all'indirizzo che trovi nella mail di conferma. È più rapido.</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span><b>ciao@oopsiroamed.com</b><br/><small style="color: var(--fg-3);">Per tutto il resto, scrivici qui</small></span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.37 1.87.7 2.76a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.32-1.32a2 2 0 0 1 2.11-.45c.89.33 1.81.57 2.76.7A2 2 0 0 1 22 16.92z"/></svg><span><b>+39 02 1234 5678</b><br/><small style="color: var(--fg-3);">Lun-ven 10-18, ma le mail sono meglio</small></span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span><b>WhatsApp · +39 333 1234567</b><br/><small style="color: var(--fg-3);">Per cose urgenti durante un viaggio</small></span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span><b>Via dei Viaggi, 7</b><br/><small style="color: var(--fg-3);">20121 Milano · su appuntamento</small></span></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="ftr">
+    <div class="wrap">
+      <div class="ftr-top">
+        <div class="ftr-brand">
+          <a class="brand" href="casa.html"><span class="brand-mark">o</span><span><em>Oops</em> I Roamed</span></a>
+          <p class="ftr-claim">Viaggi in piccolo gruppo per chi preferisce arrivare tardi, mangiare a lungo, e dormire poco.</p>
+          <form class="ftr-news" data-form="newsletter">
+            <input type="email" placeholder="La tua email" aria-label="Iscriviti al dispaccio" />
+            <button type="submit">Iscrivimi</button>
+          </form>
+          <p class="ftr-newsdisc">Un dispaccio ogni mercoledì. Disiscrizione con un click.</p>
+          <div class="ftr-social">
+            <a aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+            <a aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-2C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.41 19c1.71.46 8.59.46 8.59.46s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg></a>
+            <a aria-label="Spotify"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></a>
+          </div>
+        </div>
+        <div class="ftr-col"><h4>Destinazioni</h4><ul><li><a href="casa-destinazioni.html">Tutte</a></li><li><a href="casa-destinazione.html">Portogallo</a></li></ul></div>
+        <div class="ftr-col"><h4>Il mondo Oops</h4><ul><li><a href="casa-tipi.html">Tipi di viaggio</a></li><li><a href="casa-partenze.html">Partenze</a></li><li><a href="casa-itinerari.html">Itinerari gratuiti</a></li><li><a href="casa-shop.html">Shop</a></li></ul></div>
+        <div class="ftr-col"><h4>Community</h4><ul><li><a href="casa-diario.html">Diario</a></li><li><a href="casa-coordinatori.html">Coordinatori</a></li></ul></div>
+        <div class="ftr-col"><h4>Info</h4><ul><li><a href="casa-contatti.html">Contatti</a></li><li><a href="casa-faq.html">FAQ</a></li><li><a href="casa-guida.html">Guide pratiche</a></li><li><a href="casa-press.html">Press</a></li></ul></div>
+      </div>
+      <div class="ftr-mid">
+        <div class="ftr-col"><h4>Servizi</h4><ul><li><a href="casa-bespoke.html">Su misura</a></li><li><a href="casa-regala.html">Gift card</a></li><li><a href="casa-gruppi.html">Gruppi privati</a></li><li><a href="casa-condivisione.html">Condividi le foto</a></li></ul></div>
+        <div class="ftr-col"><h4>Azienda</h4><ul><li><a>Lavora con noi</a></li><li><a href="casa-press.html">Press &amp; rassegna</a></li></ul></div>
+        <div class="ftr-col"><h4>Legale</h4><ul><li><a href="casa-legale.html?p=privacy">Privacy</a></li><li><a href="casa-legale.html?p=cookie">Cookie</a></li><li><a href="casa-legale.html?p=termini">Termini</a></li></ul></div>
+        <div class="ftr-col"><h4>Recensioni</h4><ul><li><a>4.9 / 5 · 1.247 recensioni</a></li><li><a>Lascia una recensione</a></li></ul></div>
+      </div>
+      <div class="ftr-bot">
+        <span>© 2026 Oops I Roamed S.r.l. · P.IVA 12345678901 · Milano</span>
+        <div class="ftr-pays">
+          <span class="pay-chip">Visa</span><span class="pay-chip">Mastercard</span>
+          <span class="pay-chip">Amex</span><span class="pay-chip">Scalapay</span>
+          <span class="pay-chip">PayPal</span><span class="pay-chip">Apple Pay</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="casa-app.js"></script>
+</body>
+</html>

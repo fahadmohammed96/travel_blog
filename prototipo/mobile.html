@@ -8,15 +8,12 @@
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; min-height: 100vh; background: #1F2A22; font-family: -apple-system, system-ui, sans-serif; }
     body {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 24px; padding: 32px 16px;
-      background:
-        radial-gradient(ellipse at top, #2a3a30 0%, #1F2A22 60%);
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+      gap: 24px; padding: 32px 16px 48px;
+      background: radial-gradient(ellipse at top, #2a3a30 0%, #1F2A22 60%);
       color: #F8F4EC;
     }
-    .header {
-      text-align: center; max-width: 480px;
-    }
+    .header { text-align: center; max-width: 520px; }
     .header h1 {
       font-family: Georgia, "Times New Roman", serif;
       font-style: italic; font-weight: 400;
@@ -24,22 +21,40 @@
       color: #F8F4EC;
     }
     .header p {
-      font-size: 14px; color: rgba(248,244,236,0.7); margin: 0;
-      line-height: 1.5;
+      font-size: 14px; color: rgba(248,244,236,0.75); margin: 0;
+      line-height: 1.55;
     }
     .header strong { color: #F5C547; font-weight: 600; }
 
+    /* Toolbar — switch tra device */
+    .toolbar {
+      display: inline-flex; gap: 4px; padding: 4px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+    }
+    .toolbar button {
+      background: transparent; border: 0; color: rgba(248,244,236,0.7);
+      font: inherit; font-size: 12px; letter-spacing: 0.04em;
+      padding: 8px 16px; border-radius: 999px; cursor: pointer;
+      transition: all 160ms ease;
+    }
+    .toolbar button:hover { color: #F8F4EC; }
+    .toolbar button.active { background: #F5C547; color: #1F2A22; font-weight: 600; }
+
     .frame-wrap {
       position: relative;
-      transform-origin: center center;
+      transform-origin: top center;
+      transition: transform 240ms ease;
     }
 
     /* iPhone bezel */
     .iphone {
-      width: 390px; height: 844px;
-      border-radius: 54px;
+      width: 414px;
+      height: 896px;
+      border-radius: 56px;
       background: #0a0a0a;
-      padding: 12px;
+      padding: 14px;
       box-shadow:
         0 0 0 2px #2a2a2a,
         0 0 0 3px #0a0a0a,
@@ -49,23 +64,23 @@
     }
     .iphone-screen {
       width: 100%; height: 100%;
-      border-radius: 42px;
+      border-radius: 44px;
       overflow: hidden;
       background: #F8F4EC;
       position: relative;
     }
     .dynamic-island {
       position: absolute;
-      top: 22px; left: 50%; transform: translateX(-50%);
-      width: 120px; height: 35px;
+      top: 12px; left: 50%; transform: translateX(-50%);
+      width: 120px; height: 34px;
       background: #000; border-radius: 20px;
       z-index: 100;
     }
     .home-indicator {
       position: absolute;
-      bottom: 20px; left: 50%; transform: translateX(-50%);
+      bottom: 8px; left: 50%; transform: translateX(-50%);
       width: 134px; height: 5px;
-      background: rgba(0,0,0,0.4); border-radius: 100px;
+      background: rgba(0,0,0,0.35); border-radius: 100px;
       z-index: 100;
       pointer-events: none;
     }
@@ -88,19 +103,26 @@
       border-radius: 0 2px 2px 0;
     }
 
-    /* The iframe — scaled so 1280px desktop fits in 390px wide screen */
+    /* The iframe — TRUE mobile width so the site's @media queries fire */
     iframe {
       border: 0;
-      width: 1280px;
-      height: 2770px; /* 1280 / 390 * 844 ≈ 2770 */
-      transform: scale(0.305); /* 390 / 1280 = 0.305 */
-      transform-origin: top left;
+      width: 100%;
+      height: 100%;
       display: block;
+      background: #F8F4EC;
     }
 
+    /* Tablet variant (ipad-ish) */
+    .frame-wrap.tablet .iphone { width: 768px; height: 1024px; border-radius: 36px; padding: 16px; }
+    .frame-wrap.tablet .iphone-screen { border-radius: 22px; }
+    .frame-wrap.tablet .dynamic-island { display: none; }
+    .frame-wrap.tablet .home-indicator { display: none; }
+    .frame-wrap.tablet .iphone::before,
+    .frame-wrap.tablet .iphone::after { display: none; }
+
     .footer {
-      text-align: center; max-width: 480px;
-      font-size: 13px; color: rgba(248,244,236,0.5);
+      text-align: center; max-width: 520px;
+      font-size: 13px; color: rgba(248,244,236,0.55);
       line-height: 1.6;
     }
     .footer code {
@@ -110,22 +132,24 @@
       font-size: 12px;
     }
 
-    /* Mobile-friendly: scale down whole device on small screens */
-    @media (max-width: 460px) {
-      .frame-wrap { transform: scale(0.85); }
-    }
-    @media (max-width: 400px) {
-      .frame-wrap { transform: scale(0.75); }
-    }
+    /* Auto-scale device on small viewports */
+    @media (max-width: 480px) { .frame-wrap { transform: scale(0.85); } }
+    @media (max-width: 420px) { .frame-wrap { transform: scale(0.75); } }
+    @media (max-width: 360px) { .frame-wrap { transform: scale(0.65); } }
   </style>
 </head>
 <body>
   <div class="header">
-    <h1>Vista mobile — <strong>caveat</strong></h1>
-    <p>Il prototipo è progettato per <strong>desktop a 1280px</strong>. Qui lo vedi <em>scalato</em> dentro un iPhone — utile per giudicare la composizione, ma il design <strong>non è ottimizzato per mobile</strong>. Per una vera versione mobile servirebbe un layout dedicato.</p>
+    <h1>Vista mobile</h1>
+    <p>Il prototipo è renderizzato a <strong>414px</strong> di larghezza reale, quindi le viste mobile del sito (hamburger, hero a colonna singola, griglie collassate) sono <strong>attive</strong>.</p>
   </div>
 
-  <div class="frame-wrap">
+  <div class="toolbar" role="tablist">
+    <button type="button" class="active" data-device="phone">📱 iPhone 414</button>
+    <button type="button" data-device="tablet">▭ Tablet 768</button>
+  </div>
+
+  <div class="frame-wrap" id="frame">
     <div class="iphone">
       <div class="iphone-screen">
         <div class="dynamic-island"></div>
@@ -136,7 +160,17 @@
   </div>
 
   <div class="footer">
-    Per costruire una versione mobile dedicata (header collapsato, hero a colonna singola, navigazione a tab in basso, card stack…) chiedimi di farla.
+    Apri <code>index.html</code> a tutto schermo per la versione desktop.
   </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.toolbar button');
+    const frame = document.getElementById('frame');
+    buttons.forEach(btn => btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      frame.classList.toggle('tablet', btn.dataset.device === 'tablet');
+    }));
+  </script>
 </body>
 </html>

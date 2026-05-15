@@ -81,7 +81,7 @@ const SeasonsPage = () => {
                 <Icon name={s.icon} size={56} />
               </div>
               <Meta style={{ color: s.color, opacity: 0.9 }}>{s.months}</Meta>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 56, lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px 0 16px', color: s.color }}>{s.name}</h2>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(34px, 7vw, 56px)', lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px 0 16px', color: s.color }}>{s.name}</h2>
               <p style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 22, color: s.color, opacity: 0.85, maxWidth: 320, margin: 0 }}>{s.dek}</p>
               <div style={{ position: 'absolute', bottom: 24, left: 36, fontFamily: 'var(--font-mono)', fontSize: 11, color: s.color, opacity: 0.7, letterSpacing: '0.1em' }}>VEDI LE STORIE →</div>
             </article>
@@ -117,7 +117,7 @@ const GroupsPage = () => {
         ].map((s, i) => (
           <div key={i} className="card rise" style={{ animationDelay: `${i * 80}ms`, padding: '36px 28px', textAlign: 'center' }}>
             <div style={{ width: 52, height: 52, borderRadius: 999, background: 'var(--forest-100)', color: 'var(--forest-700)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}><Icon name={s.icon} size={24} /></div>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: 56, fontWeight: 400 }}>{s.n}</div>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(34px, 7vw, 56px)', fontWeight: 400 }}>{s.n}</div>
             <Meta>{s.label}</Meta>
           </div>
         ))}
@@ -128,7 +128,7 @@ const GroupsPage = () => {
 
 /* ============ Regala (viaggio o itinerario) ============ */
 const GiftPage = ({ params = {} }) => {
-  const { go } = useApp();
+  const { go, showToast } = useApp();
   const initialMode = params.mode === 'itinerary' ? 'itinerary' : 'trip';
   const [mode, setMode] = React.useState(initialMode);
   const isItin = mode === 'itinerary';
@@ -159,7 +159,7 @@ const GiftPage = ({ params = {} }) => {
           </div>
           <Field type="number" min="50" value={amount} onChange={e => setAmount(+e.target.value)} placeholder="Importo personalizzato" />
           <div style={{ marginTop: 28, display: 'flex', gap: 8 }}>
-            <Button variant="primary" size="lg" icon="arrow-right">Compra €{amount.toLocaleString('it-IT')}</Button>
+            <Button variant="primary" size="lg" icon="arrow-right" onClick={() => showToast && showToast(`Buono €${amount.toLocaleString('it-IT')} pronto per il checkout`, 'gift')}>Compra €{amount.toLocaleString('it-IT')}</Button>
             <Button variant="ghost" size="lg" onClick={() => go('home')}>Annulla</Button>
           </div>
         </div>
@@ -217,11 +217,12 @@ const StoryPage = () => {
 
 /* ============ Stampa ============ */
 const PressPage = () => {
+  const { go } = useApp();
   const press = [
-    { src: 'Vogue Italia', date: 'NOV 2024', quote: 'Il travel blog che ha capito davvero la lentezza.' },
-    { src: 'Il Post', date: 'SET 2024', quote: 'Sembra una persona reale che ti racconta un viaggio. Perché lo è.' },
-    { src: 'Domus', date: 'MAR 2024', quote: 'Una nuova generazione di travel writing italiano.' },
-    { src: 'Linkiesta', date: 'OTT 2023', quote: 'Pochi viaggi, scelti bene, raccontati meglio.' },
+    { src: 'Vogue Italia', date: 'NOV 2024', quote: 'Il travel blog che ha capito davvero la lentezza.', url: 'https://www.vogue.it' },
+    { src: 'Il Post', date: 'SET 2024', quote: 'Sembra una persona reale che ti racconta un viaggio. Perché lo è.', url: 'https://www.ilpost.it' },
+    { src: 'Domus', date: 'MAR 2024', quote: 'Una nuova generazione di travel writing italiano.', url: 'https://www.domusweb.it' },
+    { src: 'Linkiesta', date: 'OTT 2023', quote: 'Pochi viaggi, scelti bene, raccontati meglio.', url: 'https://www.linkiesta.it' },
   ];
   return (
     <div className="page-enter" style={{ padding: '64px 0 96px' }}>
@@ -235,17 +236,17 @@ const PressPage = () => {
             <div key={i} className="card rise" style={{ animationDelay: `${i * 80}ms`, padding: '36px 32px' }}>
               <Meta>{p.src} · {p.date}</Meta>
               <p style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontWeight: 300, fontSize: 26, lineHeight: 1.4, margin: '16px 0 24px', color: 'var(--fg-1)' }}>"{p.quote}"</p>
-              <Button variant="ghost" size="sm" icon="external-link">Leggi l'articolo</Button>
+              <a href={p.url} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm" style={{ textDecoration: 'none' }}>Leggi l'articolo <Icon name="external-link" size={14} /></a>
             </div>
           ))}
         </div>
-        <div style={{ marginTop: 64, padding: 36, background: 'var(--bg-sunken)', borderRadius: 'var(--r-lg)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 24 }}>
+        <div style={{ marginTop: 64, padding: 36, background: 'var(--bg-sunken)', borderRadius: 'var(--r-lg)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
           <div>
             <Eyebrow>KIT STAMPA</Eyebrow>
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 400, margin: '8px 0 4px' }}>Logo, foto e bio in alta risoluzione.</h3>
             <p style={{ color: 'var(--fg-2)', margin: 0 }}>Per giornalisti, podcast, eventi. Risposta in 48h.</p>
           </div>
-          <Button variant="primary" icon="download">Scarica kit</Button>
+          <Button variant="primary" icon="mail" onClick={() => go('contact')}>Richiedi kit</Button>
         </div>
       </div>
     </div>
@@ -266,7 +267,7 @@ const ContactPage = () => {
     <div className="page-enter" style={{ padding: '128px 0', textAlign: 'center' }}>
       <div className="narrow">
         <div className="rise"><Stamp size={100} rotate={-8} /></div>
-        <h1 className="rise rise-1" style={{ fontFamily: 'var(--font-display)', fontWeight: 300, fontStyle: 'italic', fontSize: 64, margin: '24px 0 16px' }}>Ricevuta.</h1>
+        <h1 className="rise rise-1" style={{ fontFamily: 'var(--font-display)', fontWeight: 300, fontStyle: 'italic', fontSize: 'clamp(40px, 8vw, 64px)', margin: '24px 0 16px' }}>Ricevuta.</h1>
         <p className="rise rise-2" style={{ fontSize: 18, color: 'var(--fg-2)', maxWidth: 440, margin: '0 auto' }}>Ti rispondiamo entro 48 ore. A volte prima — dipende dal fuso in cui ci troviamo.</p>
       </div>
     </div>
@@ -423,7 +424,7 @@ const TripTypesPage = () => {
       <div className="triptype-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }}>
         {TRIP_TYPES.map((t, i) => (
           <article key={t.id} className="triptype-card rise" style={{ background: t.bg, borderRadius: 'var(--r-lg)', padding: 28, cursor: 'pointer', minHeight: 280, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', color: 'white', position: 'relative', overflow: 'hidden', animationDelay: `${i * 50}ms`, transition: 'transform 240ms var(--ease-out)' }}
-            onClick={() => go('diary', { tab: 'recent', tripType: t.id })}
+            onClick={() => go('diary', { tab: 'recent' })}
             onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-4px)'}
             onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}>
             <div style={{ width: 56, height: 56, borderRadius: 16, background: 'rgba(255,255,255,.22)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

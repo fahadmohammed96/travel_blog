@@ -1,0 +1,2424 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <title>Oops I Roamed — Casa</title>
+  <template id="__bundler_thumbnail">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+      <rect width="200" height="200" fill="#F8F4EC"/>
+      <rect x="20" y="40" width="74" height="56" rx="6" fill="#E87B5A" opacity="0.85"/>
+      <rect x="106" y="40" width="74" height="56" rx="6" fill="#3F6390" opacity="0.85"/>
+      <rect x="20" y="104" width="160" height="36" rx="6" fill="#1F2A22"/>
+      <text x="100" y="174" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="16" fill="#1F2A22">Casa · Catalogo</text>
+    </svg>
+  </template>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link rel="stylesheet" href="casa-styles.css" />
+  <style>
+    /* =========================================================================
+       Estensioni "editorial-cover" — solo per la home.
+       Tutto qui sotto non vive nello stylesheet condiviso.
+       ========================================================================= */
+
+    /* ----- MASTHEAD (sostituisce promo-bar) ----- */
+    .masthead {
+      background: var(--ink-1000);
+      color: var(--cream-100);
+      border-bottom: 1px solid rgba(248,244,236,0.08);
+    }
+    .masthead-in {
+      max-width: 1400px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr repeat(4, 1fr) 1.2fr;
+      align-items: stretch;
+      font-family: var(--font-mono);
+      font-size: 10px; letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .masthead-cell {
+      padding: 10px 16px;
+      border-right: 1px dashed rgba(248,244,236,0.16);
+      display: flex; flex-direction: column; gap: 4px;
+      min-height: 56px; justify-content: center;
+    }
+    .masthead-cell:last-child { border-right: 0; }
+    .masthead-cell .mc-k {
+      font-size: 9px; opacity: 0.55; letter-spacing: 0.2em;
+    }
+    .masthead-cell .mc-v {
+      font-family: var(--font-display);
+      font-style: italic; font-weight: 400; font-size: 16px;
+      letter-spacing: -0.005em; color: var(--cream-50);
+      text-transform: none;
+    }
+    .masthead-cell .mc-v b { color: var(--sun-300); font-weight: 600; font-style: normal;
+      font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.04em; }
+    .masthead-cell.lede {
+      background: rgba(248,244,236,0.04);
+    }
+    @media (max-width: 900px) {
+      .masthead-in { grid-template-columns: 1fr 1fr; }
+      .masthead-cell { min-height: 48px; padding: 8px 14px; }
+      .masthead-cell:nth-child(n+5) { display: none; }
+    }
+
+    /* ----- HERO MAGAZINE COVER ----- */
+    .hero-cover {
+      position: relative;
+      background: var(--ink-1000);
+      color: var(--cream-50);
+      overflow: hidden;
+    }
+    .hero-cover .hero-bg {
+      position: absolute; inset: 0;
+    }
+    .hero-cover .hero-bg img {
+      width: 100%; height: 100%; object-fit: cover;
+      animation: heroZoom 18s var(--ease-out) forwards;
+    }
+    .hero-cover .hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(15,26,20,0.45) 0%, rgba(15,26,20,0.15) 30%, rgba(15,26,20,0.85) 100%),
+        linear-gradient(90deg, rgba(15,26,20,0.55) 0%, rgba(15,26,20,0) 55%);
+    }
+    .hero-cover-in {
+      position: relative;
+      max-width: 1400px; margin: 0 auto;
+      padding: 56px 28px 64px;
+      min-height: 86vh;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 56px;
+      align-items: stretch;
+    }
+    .hero-edge {
+      position: absolute; left: 14px; top: 56px; bottom: 64px;
+      width: 24px;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+    }
+    .hero-edge .vbar {
+      writing-mode: vertical-rl; transform: rotate(180deg);
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(248,244,236,0.7);
+    }
+    .hero-edge .vbar b { color: var(--sun-300); font-weight: 600; }
+    .hero-cover .hero-main {
+      align-self: end;
+      max-width: 880px;
+      padding-left: 32px;
+    }
+    .hero-prelude {
+      display: flex; gap: 18px; align-items: baseline; flex-wrap: wrap;
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sun-300);
+      margin-bottom: 28px;
+    }
+    .hero-prelude .vol {
+      padding: 4px 10px;
+      border: 1px solid rgba(251,219,133,0.4);
+      border-radius: 2px;
+      color: var(--sun-300);
+    }
+    .hero-prelude .sep { color: rgba(248,244,236,0.3); }
+    .hero-prelude .crumb-i {
+      color: rgba(248,244,236,0.78);
+    }
+    .hero-cover h1 {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(56px, 9vw, 132px);
+      line-height: 0.92; letter-spacing: -0.03em;
+      margin: 0 0 24px;
+      font-variation-settings: 'opsz' 144;
+      text-wrap: pretty;
+    }
+    .hero-cover h1 em { font-style: italic; font-weight: 300; color: var(--clay-300); }
+    .hero-cover h1 .u {
+      display: inline-block;
+      border-bottom: 2px solid var(--sun-300);
+      padding-bottom: 4px;
+    }
+    .hero-cover .hero-sub {
+      font-family: var(--font-display); font-style: italic; font-weight: 300;
+      font-size: clamp(20px, 2vw, 26px);
+      line-height: 1.4; color: var(--cream-200);
+      max-width: 600px; margin: 0 0 32px;
+    }
+    .hero-cover .hero-actions {
+      display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+    }
+    .hero-cover .hero-margin {
+      font-family: 'Caveat', cursive; font-weight: 500;
+      color: var(--sun-300); font-size: 22px; line-height: 1.15;
+      transform: rotate(-3deg);
+      margin-top: 18px;
+      max-width: 240px;
+      display: inline-flex; align-items: flex-start; gap: 8px;
+    }
+    .hero-cover .hero-margin .squig {
+      width: 30px; height: 18px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 18'%3E%3Cpath d='M2 9 Q 6 1 12 9 Q 18 17 24 9' fill='none' stroke='%23FBDB85' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-size: contain; background-repeat: no-repeat;
+      flex-shrink: 0; margin-top: 6px;
+    }
+
+    /* Edition panel (right column) */
+    .hero-edition {
+      align-self: end;
+      padding: 24px 22px 26px;
+      background: rgba(248,244,236,0.06);
+      border: 1px solid rgba(248,244,236,0.15);
+      border-radius: 4px;
+      backdrop-filter: blur(8px);
+      display: flex; flex-direction: column; gap: 18px;
+      position: relative;
+    }
+    .hero-edition::before {
+      content: ''; position: absolute;
+      top: -10px; left: 22px; right: 22px; height: 1px;
+      background: repeating-linear-gradient(90deg,
+        rgba(251,219,133,0.7) 0 6px, transparent 6px 12px);
+    }
+    .hero-edition-h {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 12px; padding-bottom: 14px;
+      border-bottom: 1px solid rgba(248,244,236,0.14);
+    }
+    .hero-edition-h .label {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(248,244,236,0.6);
+    }
+    .hero-edition-h .vol-n {
+      font-family: var(--font-display); font-style: italic;
+      font-weight: 400; font-size: 32px; line-height: 1;
+      color: var(--sun-300); letter-spacing: -0.02em;
+    }
+    .hero-edition-list {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .hero-edition-row {
+      display: grid; grid-template-columns: 22px 1fr auto;
+      gap: 12px; align-items: baseline;
+      padding: 4px 0;
+    }
+    .hero-edition-row .rn {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.12em;
+      color: rgba(251,219,133,0.85);
+    }
+    .hero-edition-row .lbl {
+      font-family: var(--font-display); font-style: italic;
+      font-weight: 400; font-size: 17px;
+      color: var(--cream-50); line-height: 1.2;
+    }
+    .hero-edition-row .pg {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.06em;
+      color: rgba(248,244,236,0.5);
+    }
+    .hero-edition-foot {
+      padding-top: 14px;
+      border-top: 1px dashed rgba(248,244,236,0.16);
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.08em;
+      color: rgba(248,244,236,0.55);
+      display: flex; justify-content: space-between; gap: 10px;
+    }
+    .hero-edition-foot .stars {
+      color: var(--sun-500); letter-spacing: 1px; font-size: 11px;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-cover-in { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px 56px; }
+      .hero-edge { display: none; }
+      .hero-cover .hero-main { padding-left: 0; }
+      .hero-edition { max-width: 360px; }
+    }
+
+    /* ----- SOMMARIO numerato (sostituisce reassure semplice) ----- */
+    .sommario {
+      background: var(--cream-200);
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .sommario-in {
+      max-width: 1400px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 36px; align-items: center;
+      padding: 26px 28px;
+    }
+    .sommario-title {
+      font-family: var(--font-display); font-weight: 400;
+      font-style: italic; font-size: 30px;
+      line-height: 1; letter-spacing: -0.015em;
+      color: var(--ink-1000); margin: 0;
+    }
+    .sommario-title small {
+      display: block; font-family: var(--font-mono);
+      font-style: normal; font-size: 10px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--clay-700); margin-bottom: 4px;
+    }
+    .sommario-list {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 0;
+    }
+    .sommario-item {
+      display: flex; flex-direction: column; gap: 6px;
+      padding: 4px 14px;
+      border-left: 1px solid var(--border);
+      cursor: pointer;
+      transition: color 160ms;
+    }
+    .sommario-item:hover { color: var(--accent); }
+    .sommario-item:hover .si-n { color: var(--accent); }
+    .sommario-item .si-n {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.18em; color: var(--clay-700);
+      transition: color 160ms;
+    }
+    .sommario-item .si-l {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: 17px; line-height: 1.15; letter-spacing: -0.005em;
+      color: var(--ink-1000);
+    }
+    .sommario-item .si-l em { font-style: italic; font-weight: 300; }
+    @media (max-width: 1100px) {
+      .sommario-in { grid-template-columns: 1fr; gap: 20px; padding: 22px 20px; }
+      .sommario-list { grid-template-columns: 1fr 1fr 1fr; row-gap: 18px; }
+      .sommario-item { border-left: 0; padding-left: 0; }
+    }
+    @media (max-width: 540px) {
+      .sommario-list { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ----- SEARCH SLIP — index card stile macchina da scrivere ----- */
+    .search-slip-wrap {
+      position: relative; z-index: 5;
+      margin: -64px auto 0;
+      max-width: 1080px;
+      padding: 0 28px;
+    }
+    .search-slip {
+      background: var(--cream-50);
+      border: 1px solid var(--border-strong);
+      border-radius: 2px;
+      box-shadow: 0 24px 60px -20px rgba(15,26,20,0.35);
+      padding: 28px 32px 26px;
+      position: relative;
+      transform: rotate(-0.4deg);
+    }
+    .search-slip::before {
+      content: ''; position: absolute;
+      top: -12px; left: 32px;
+      width: 90px; height: 22px;
+      background: rgba(245,197,71,0.86);
+      transform: rotate(-3deg);
+      box-shadow: 0 2px 6px rgba(15,26,20,0.12);
+    }
+    .search-slip-head {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      gap: 18px; flex-wrap: wrap;
+      padding-bottom: 16px; margin-bottom: 18px;
+      border-bottom: 1px dashed var(--border-strong);
+    }
+    .search-slip-head h3 {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: 24px; letter-spacing: -0.01em;
+      margin: 0; color: var(--ink-1000);
+    }
+    .search-slip-head h3 em { font-style: italic; font-weight: 300; }
+    .search-slip-head .slip-code {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--clay-700);
+    }
+    .search-slip .search-row {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr auto;
+      gap: 20px; align-items: end;
+    }
+    .search-slip .search-row .fld {
+      padding-top: 4px; padding-bottom: 6px;
+      border-bottom: 1px solid var(--ink-1000);
+    }
+    .search-slip-aside {
+      display: flex; gap: 22px; align-items: center; flex-wrap: wrap;
+      margin-top: 18px;
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.06em; color: var(--fg-3);
+    }
+    .search-slip-aside a {
+      color: var(--accent); border-bottom: 1px solid currentColor;
+      padding-bottom: 1px; cursor: pointer;
+    }
+    .search-slip-margin {
+      position: absolute; right: -28px; bottom: 18px;
+      transform: rotate(6deg);
+      font-family: 'Caveat', cursive; font-weight: 500;
+      color: var(--clay-700); font-size: 22px; line-height: 1.05;
+      max-width: 130px; text-align: left;
+      display: none;
+    }
+    @media (min-width: 1180px) {
+      .search-slip-margin { display: block; }
+    }
+    @media (max-width: 900px) {
+      .search-slip-wrap { margin-top: -36px; padding: 0 16px; }
+      .search-slip { padding: 22px 20px; transform: none; }
+      .search-slip .search-row { grid-template-columns: 1fr; gap: 16px; }
+      .search-slip .search-row .btn { width: 100%; justify-content: center; }
+    }
+
+    /* ----- BESPOKE (Su misura) — sezione home dedicata ----- */
+    .bespoke-zone {
+      background: var(--ink-1000);
+      color: var(--cream-50);
+      position: relative;
+      overflow: hidden;
+    }
+    .bespoke-zone .bz-grid {
+      position: relative;
+      max-width: 1400px; margin: 0 auto;
+      padding: 96px 28px;
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 72px;
+      align-items: stretch;
+    }
+    .bespoke-zone .bz-bg {
+      position: absolute;
+      bottom: -120px; right: -80px;
+      font-family: var(--font-display); font-style: italic; font-weight: 300;
+      font-size: clamp(280px, 36vw, 540px); line-height: 0.8;
+      color: rgba(248,244,236,0.04);
+      letter-spacing: -0.05em;
+      pointer-events: none;
+      font-variation-settings: 'opsz' 72;
+    }
+    .bespoke-zone .bz-left { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 22px; }
+    .bespoke-zone .bz-eyebrow {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--sun-300);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .bespoke-zone .bz-eyebrow::before {
+      content: ''; display: block;
+      width: 36px; height: 1px; background: var(--sun-300);
+    }
+    .bespoke-zone .bz-title {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(48px, 5.6vw, 88px); line-height: 0.98;
+      letter-spacing: -0.022em;
+      color: var(--cream-50); margin: 0;
+      font-variation-settings: 'opsz' 72;
+    }
+    .bespoke-zone .bz-title em { font-style: italic; font-weight: 300; color: var(--clay-300); }
+    .bespoke-zone .bz-title .u {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 8px;
+      text-decoration-color: var(--sun-300);
+    }
+    .bespoke-zone .bz-lede {
+      font-family: var(--font-serif, 'PP Editorial New', Georgia, serif);
+      font-size: 19px; line-height: 1.5;
+      color: rgba(248,244,236,0.78);
+      max-width: 46ch; margin: 0;
+    }
+    .bespoke-zone .bz-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(248,244,236,0.14);
+      border-bottom: 1px solid rgba(248,244,236,0.14);
+      margin-top: 8px;
+    }
+    .bespoke-zone .bz-step {
+      padding: 18px 16px 18px 0;
+      display: flex; flex-direction: column; gap: 4px;
+      border-right: 1px solid rgba(248,244,236,0.14);
+    }
+    .bespoke-zone .bz-step:last-child { border-right: 0; padding-right: 0; }
+    .bespoke-zone .bz-step + .bz-step { padding-left: 18px; }
+    .bespoke-zone .bz-step .n {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.18em; color: var(--sun-300);
+    }
+    .bespoke-zone .bz-step .l {
+      font-family: var(--font-display); font-style: italic; font-weight: 400;
+      font-size: 19px; line-height: 1.15; color: var(--cream-50);
+      letter-spacing: -0.005em;
+    }
+    .bespoke-zone .bz-step .d {
+      font-family: var(--font-mono); font-size: 10.5px;
+      letter-spacing: 0.06em; color: rgba(248,244,236,0.6);
+      line-height: 1.4; margin-top: 4px;
+    }
+    .bespoke-zone .bz-cta-row {
+      display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+      margin-top: 6px;
+    }
+    .bespoke-zone .bz-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono); font-size: 10.5px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(248,244,236,0.7);
+    }
+    .bespoke-zone .bz-pill .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--mint-500);
+      box-shadow: 0 0 0 3px rgba(140,199,154,0.18);
+    }
+
+    /* RIGHT — modulo "brief lampo" */
+    .bespoke-zone .bz-card {
+      position: relative; z-index: 1;
+      background: var(--cream-50);
+      color: var(--ink-1000);
+      padding: 32px 32px 28px;
+      display: flex; flex-direction: column; gap: 18px;
+      box-shadow: 0 32px 60px -30px rgba(0,0,0,0.5), 0 2px 0 0 rgba(248,244,236,0.08);
+      border: 1px solid rgba(248,244,236,0.1);
+      transform: rotate(-0.6deg);
+      transition: transform 320ms var(--ease-out);
+    }
+    .bespoke-zone .bz-card:hover { transform: rotate(0deg) translateY(-2px); }
+    .bespoke-zone .bz-card-head {
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px dashed var(--border-soft);
+    }
+    .bespoke-zone .bz-card-h {
+      font-family: var(--font-display); font-style: italic; font-weight: 400;
+      font-size: 22px; color: var(--ink-1000); margin: 0;
+      letter-spacing: -0.005em;
+    }
+    .bespoke-zone .bz-card-h small {
+      display: block;
+      font-family: var(--font-mono); font-style: normal;
+      font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--clay-700);
+      margin-bottom: 2px;
+    }
+    .bespoke-zone .bz-stamp {
+      font-family: var(--font-mono); font-size: 9px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      padding: 5px 10px;
+      border: 1px solid var(--clay-600); color: var(--clay-700);
+      border-radius: 2px;
+      transform: rotate(3deg);
+      white-space: nowrap;
+    }
+    .bespoke-zone .bz-fld {
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .bespoke-zone .bz-fld-label {
+      font-family: var(--font-mono); font-size: 9.5px;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--clay-700);
+    }
+    .bespoke-zone .bz-fld-input {
+      font-family: var(--font-display); font-style: italic; font-weight: 400;
+      font-size: 22px; color: var(--ink-1000);
+      padding: 6px 0;
+      border: 0; border-bottom: 1px solid var(--border-soft);
+      background: transparent; outline: none;
+      letter-spacing: -0.005em;
+    }
+    .bespoke-zone .bz-fld-input::placeholder { color: var(--fg-3); opacity: 0.65; }
+    .bespoke-zone .bz-fld-input:focus { border-bottom-color: var(--clay-600); }
+    .bespoke-zone .bz-fld-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .bespoke-zone .bz-card-foot {
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--border-soft);
+    }
+    .bespoke-zone .bz-card-meta {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.06em; color: var(--fg-3);
+      line-height: 1.45;
+    }
+
+    @media (max-width: 1000px) {
+      .bespoke-zone .bz-grid { grid-template-columns: 1fr; gap: 40px; padding: 64px 22px; }
+      .bespoke-zone .bz-steps { grid-template-columns: 1fr 1fr; }
+      .bespoke-zone .bz-step:nth-child(2) { border-right: 0; }
+      .bespoke-zone .bz-step:nth-child(3) { padding-left: 0; border-top: 1px solid rgba(248,244,236,0.14); padding-top: 18px; }
+      .bespoke-zone .bz-step:nth-child(4) { border-top: 1px solid rgba(248,244,236,0.14); padding-top: 18px; }
+    }
+    @media (max-width: 540px) {
+      .bespoke-zone .bz-fld-row { grid-template-columns: 1fr; }
+      .bespoke-zone .bz-card { transform: rotate(0deg); padding: 24px 22px 22px; }
+    }
+
+    /* ----- VETRINA NUMERATA — versione kiosk editoriale ----- */
+    .kiosk {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 28px;
+    }
+    .kiosk .k-feature { grid-column: 1 / -1; }
+    .kiosk .k-strip   { grid-column: 1 / -1; }
+
+    /* card di base */
+    .kcard {
+      position: relative;
+      display: flex; flex-direction: column;
+      text-decoration: none; color: inherit;
+      background: var(--cream-50);
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
+      transition: transform 260ms var(--ease-out), box-shadow 260ms var(--ease-out);
+    }
+    .kcard:hover { transform: translateY(-3px); box-shadow: 0 28px 48px -32px rgba(15,26,20,0.28); }
+    .kcard .k-pic { position: relative; overflow: hidden; background: var(--ink-1000); }
+    .kcard .k-pic img { width: 100%; height: 100%; object-fit: cover; transition: transform 700ms var(--ease-out); }
+    .kcard:hover .k-pic img { transform: scale(1.05); }
+    .kcard .k-num {
+      font-family: var(--font-display); font-style: italic; font-weight: 300;
+      font-size: 108px; line-height: 0.8; color: var(--clay-300);
+      letter-spacing: -0.02em;
+      font-variation-settings: 'opsz' 72;
+    }
+    .kcard .k-eyebrow {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent);
+    }
+    .kcard .k-title {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: 36px; line-height: 1.04; letter-spacing: -0.015em;
+      color: var(--ink-1000); margin: 0;
+      font-variation-settings: 'opsz' 72;
+    }
+    .kcard .k-title em { font-style: italic; font-weight: 300; }
+    .kcard .k-meta {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.06em; color: var(--fg-3);
+    }
+    .kcard .k-meta .star { color: var(--sun-500); }
+    .kcard .k-meta .sep { color: var(--fg-4); }
+    .kcard .k-price-row {
+      display: flex; align-items: baseline; gap: 12px;
+      padding-top: 14px; margin-top: auto;
+      border-top: 1px solid var(--border-soft);
+    }
+    .kcard .k-from {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--fg-3);
+    }
+    .kcard .k-price {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: 32px; line-height: 1;
+      color: var(--ink-1000);
+      font-variation-settings: 'opsz' 72;
+    }
+    .kcard .k-dates {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.05em; color: var(--fg-2);
+      margin-left: auto;
+    }
+    .kcard .k-tag {
+      position: absolute; top: 14px; left: 14px; z-index: 2;
+      padding: 5px 11px; border-radius: 2px;
+      font-family: var(--font-mono); font-size: 9.5px;
+      letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600;
+    }
+    .kcard .k-tag.soldout { background: var(--ink-1000); color: var(--cream-50); }
+    .kcard .k-tag.filling { background: var(--clay-600); color: var(--cream-50); }
+    .kcard .k-tag.new { background: var(--mint-500); color: var(--ink-1000); }
+    .kcard .k-stamp {
+      position: absolute; top: 14px; right: 14px; z-index: 2;
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--cream-50);
+      mix-blend-mode: difference;
+      opacity: 0.92;
+    }
+
+    /* I — feature spread: foto enorme a sinistra, indice a destra */
+    .k-feature {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border-soft);
+      background: var(--cream-50);
+      min-height: 520px;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 260ms var(--ease-out);
+    }
+    .k-feature:hover { box-shadow: 0 28px 56px -28px rgba(15,26,20,0.32); }
+    .k-feature .k-pic {
+      position: relative; overflow: hidden; background: var(--ink-1000);
+      min-height: 100%;
+    }
+    .k-feature .k-pic img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 800ms var(--ease-out);
+    }
+    .k-feature:hover .k-pic img { transform: scale(1.04); }
+    .k-feature .k-pic::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(15,26,20,0.0) 50%, rgba(15,26,20,0.55) 100%);
+      pointer-events: none;
+    }
+    .k-feature .k-foot {
+      position: absolute; left: 22px; bottom: 18px; z-index: 2;
+      color: var(--cream-50);
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      display: flex; gap: 12px; align-items: center;
+    }
+    .k-feature .k-body {
+      padding: 36px 38px 32px;
+      display: flex; flex-direction: column; gap: 18px;
+      position: relative;
+    }
+    .k-feature .k-num-big {
+      position: absolute; top: 18px; right: 22px;
+      font-family: var(--font-display); font-style: italic; font-weight: 300;
+      font-size: 200px; line-height: 0.78; color: var(--clay-200);
+      letter-spacing: -0.04em; pointer-events: none;
+      font-variation-settings: 'opsz' 72;
+    }
+    .k-feature .k-eyebrow { position: relative; z-index: 1; }
+    .k-feature .k-title {
+      font-size: clamp(38px, 3.6vw, 56px); line-height: 1.0;
+      position: relative; z-index: 1;
+      color: var(--ink-1000);
+      margin: 0;
+      font-family: var(--font-display); font-weight: 400;
+      letter-spacing: -0.02em;
+      font-variation-settings: 'opsz' 72;
+    }
+    .k-feature .k-title em { font-style: italic; font-weight: 300; }
+    .k-feature .k-lede {
+      font-family: var(--font-serif, 'PP Editorial New', Georgia, serif);
+      font-size: 17px; line-height: 1.5;
+      color: var(--fg-2); max-width: 38ch;
+      position: relative; z-index: 1;
+    }
+    .k-feature .k-rows {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+      border-top: 1px solid var(--border-soft);
+      margin-top: 6px;
+    }
+    .k-feature .k-rows .k-cell {
+      padding: 14px 0 0;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .k-feature .k-rows .k-cell + .k-cell { padding-left: 18px; border-left: 1px solid var(--border-soft); }
+    .k-feature .k-rows .k-k {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-3);
+    }
+    .k-feature .k-rows .k-v {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: 22px; color: var(--ink-1000);
+      font-variation-settings: 'opsz' 72;
+    }
+    .k-feature .k-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+      color: var(--ink-1000);
+      border-bottom: 1px solid var(--ink-1000); padding-bottom: 2px;
+      align-self: flex-start;
+      margin-top: 4px;
+      transition: gap 240ms var(--ease-out);
+    }
+    .k-feature:hover .k-cta { gap: 14px; }
+
+    /* II, III, V, VI — card verticali medie */
+    .k-card-v { display: flex; flex-direction: column; min-height: 100%; }
+    .k-card-v .k-pic { aspect-ratio: 4/3; }
+    .k-card-v .k-body {
+      padding: 22px 24px 22px;
+      display: flex; flex-direction: column; gap: 12px;
+      flex: 1;
+    }
+    .k-card-v .k-head-row {
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 14px;
+    }
+    .k-card-v .k-num { font-size: 78px; margin-top: -8px; }
+
+    /* IV — strip orizzontale (immagine a destra, testo a sinistra) */
+    .k-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      min-height: 320px;
+      border: 1px solid var(--border-soft);
+      background: var(--ink-1000); color: var(--cream-50);
+      overflow: hidden;
+      text-decoration: none;
+      position: relative;
+      transition: box-shadow 260ms var(--ease-out);
+    }
+    .k-strip:hover { box-shadow: 0 24px 50px -28px rgba(15,26,20,0.4); }
+    .k-strip .k-pic {
+      position: relative; overflow: hidden;
+      min-height: 100%;
+    }
+    .k-strip .k-pic img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 800ms var(--ease-out);
+    }
+    .k-strip:hover .k-pic img { transform: scale(1.05); }
+    .k-strip .k-body {
+      padding: 36px 40px;
+      display: flex; flex-direction: column; gap: 16px;
+      position: relative;
+    }
+    .k-strip .k-num-side {
+      font-family: var(--font-display); font-style: italic; font-weight: 300;
+      font-size: 220px; line-height: 0.78;
+      letter-spacing: -0.04em;
+      color: rgba(248,244,236,0.06);
+      position: absolute; bottom: -20px; right: -16px;
+      pointer-events: none;
+      font-variation-settings: 'opsz' 72;
+    }
+    .k-strip .k-eyebrow { color: var(--sun-300); position: relative; z-index: 1; }
+    .k-strip .k-title {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(34px, 3vw, 48px); line-height: 1.02;
+      letter-spacing: -0.018em; color: var(--cream-50);
+      margin: 0; position: relative; z-index: 1;
+      font-variation-settings: 'opsz' 72;
+    }
+    .k-strip .k-title em { font-style: italic; font-weight: 300; color: var(--clay-300); }
+    .k-strip .k-meta {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.06em; color: rgba(248,244,236,0.6);
+      position: relative; z-index: 1;
+    }
+    .k-strip .k-meta .star { color: var(--sun-300); }
+    .k-strip .k-row-bot {
+      display: flex; align-items: baseline; gap: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(248,244,236,0.12);
+      margin-top: auto;
+      position: relative; z-index: 1;
+    }
+    .k-strip .k-from { color: rgba(248,244,236,0.6); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
+    .k-strip .k-price { font-family: var(--font-display); font-weight: 500; font-size: 34px; color: var(--cream-50); font-variation-settings: 'opsz' 72; }
+    .k-strip .k-dates { margin-left: auto; font-family: var(--font-mono); font-size: 11px; color: rgba(248,244,236,0.8); }
+
+    @media (max-width: 1000px) {
+      .kiosk { grid-template-columns: 1fr; gap: 22px; }
+      .k-feature { grid-template-columns: 1fr; }
+      .k-feature .k-pic { aspect-ratio: 16/10; min-height: 0; }
+      .k-feature .k-num-big { font-size: 140px; }
+      .k-strip { grid-template-columns: 1fr; }
+      .k-strip .k-pic { aspect-ratio: 16/10; min-height: 0; }
+    }
+
+    /* legacy — placeholder per non rompere stili obsoleti */
+    .vetrina-idx { display: none; }
+    .vix-row {
+      display: grid;
+      grid-template-columns: 96px 1.1fr 1.2fr 200px;
+      gap: 36px; align-items: stretch;
+      padding: 28px 0;
+      border-top: 1px solid var(--border-soft);
+      counter-increment: trip-counter;
+      cursor: pointer;
+      position: relative;
+      transition: background 200ms;
+    }
+    .vix-row:last-child { border-bottom: 1px solid var(--border-soft); }
+    .vix-row:hover { background: var(--cream-200); }
+    .vix-num {
+      font-family: var(--font-display); font-style: italic; font-weight: 300;
+      font-size: 84px; line-height: 0.85;
+      color: var(--clay-300);
+      letter-spacing: -0.03em;
+      font-variation-settings: 'opsz' 144;
+      align-self: center;
+      transition: color 200ms;
+    }
+    .vix-row::before {
+      content: counter(trip-counter, decimal-leading-zero);
+      display: none;
+    }
+    .vix-row:hover .vix-num { color: var(--accent); }
+    .vix-pic {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      border-radius: 2px;
+      position: relative;
+      align-self: center;
+      max-height: 200px;
+    }
+    .vix-pic img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 700ms var(--ease-out);
+    }
+    .vix-row:hover .vix-pic img { transform: scale(1.05); }
+    .vix-tag {
+      position: absolute; top: 10px; left: 10px;
+      padding: 4px 10px; border-radius: 2px;
+      background: var(--sun-500); color: var(--ink-1000);
+      font-family: var(--font-mono); font-size: 9px;
+      letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600;
+    }
+    .vix-tag.soldout { background: var(--ink-1000); color: var(--cream-50); }
+    .vix-tag.filling { background: var(--clay-600); color: var(--cream-50); }
+    .vix-tag.new { background: var(--mint-500); color: var(--ink-1000); }
+    .vix-body {
+      align-self: center;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .vix-eyebrow {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent);
+    }
+    .vix-title {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: 32px; line-height: 1.05; letter-spacing: -0.015em;
+      color: var(--ink-1000); margin: 0;
+      font-variation-settings: 'opsz' 72;
+    }
+    .vix-title em { font-style: italic; font-weight: 300; }
+    .vix-meta {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.06em; color: var(--fg-3);
+    }
+    .vix-meta .star { color: var(--sun-500); }
+    .vix-meta .sep { color: var(--fg-4); }
+    .vix-side {
+      align-self: center;
+      display: flex; flex-direction: column; gap: 10px;
+      text-align: right;
+      padding-left: 24px;
+      border-left: 1px solid var(--border-soft);
+    }
+    .vix-from {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--fg-3);
+    }
+    .vix-price {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: 36px; line-height: 1;
+      color: var(--ink-1000); letter-spacing: -0.02em;
+      font-variation-settings: 'opsz' 72;
+    }
+    .vix-dates {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.05em; color: var(--fg-2);
+      margin-top: 4px;
+    }
+    .vix-arrow {
+      display: inline-flex; align-self: flex-end;
+      align-items: center; gap: 6px;
+      margin-top: 10px;
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent);
+      transition: transform 220ms var(--ease-out);
+    }
+    .vix-row:hover .vix-arrow { transform: translateX(4px); }
+    .vetrina-foot {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 18px; flex-wrap: wrap;
+      padding: 32px 0 0;
+    }
+    .vetrina-foot-note {
+      font-family: 'Caveat', cursive; font-weight: 500;
+      color: var(--clay-700); font-size: 24px; line-height: 1.1;
+      transform: rotate(-2deg);
+      max-width: 280px;
+    }
+
+    @media (max-width: 1100px) {
+      .vix-row { grid-template-columns: 64px 1fr 1fr; gap: 22px; }
+      .vix-num { font-size: 64px; }
+      .vix-side {
+        grid-column: 1 / -1;
+        flex-direction: row; justify-content: space-between;
+        text-align: left; padding: 16px 0 0; padding-left: 0;
+        border-left: 0; border-top: 1px dashed var(--border-soft);
+        align-items: center;
+      }
+      .vix-arrow { margin-top: 0; }
+    }
+    @media (max-width: 700px) {
+      .vix-row { grid-template-columns: 48px 1fr; }
+      .vix-pic { grid-column: 1 / -1; max-height: 220px; }
+      .vix-num { font-size: 48px; }
+      .vix-title { font-size: 24px; }
+      .vix-price { font-size: 28px; }
+    }
+
+    /* ----- BIG COUNTER WRAPPER (sezione narrativa intro) ----- */
+    .intro-edit {
+      padding: 48px 0 36px;
+      position: relative; overflow: hidden;
+    }
+    .intro-edit-in {
+      max-width: 1280px; margin: 0 auto; padding: 0 28px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+      align-items: end;
+      position: relative;
+    }
+    .intro-edit-bg {
+      position: absolute; top: -22vw; right: -2vw;
+      font-family: var(--font-display); font-style: italic; font-weight: 300;
+      font-size: clamp(180px, 26vw, 380px);
+      line-height: 0.82; color: var(--cream-200);
+      letter-spacing: -0.04em;
+      font-variation-settings: 'opsz' 144;
+      pointer-events: none; user-select: none; z-index: 0;
+    }
+    .intro-edit > *:not(.intro-edit-bg) { position: relative; z-index: 1; }
+    .intro-edit-l h2 {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(40px, 5.5vw, 72px);
+      line-height: 1; letter-spacing: -0.025em;
+      margin: 0; color: var(--ink-1000);
+      font-variation-settings: 'opsz' 96;
+    }
+    .intro-edit-l h2 em { font-style: italic; font-weight: 300; color: var(--accent); }
+    .intro-edit-l .eyebrow-line { margin-bottom: 18px; }
+    .intro-edit-r {
+      font-family: var(--font-display); font-style: italic; font-weight: 300;
+      font-size: clamp(18px, 1.6vw, 22px);
+      line-height: 1.55; color: var(--fg-2);
+      max-width: 480px;
+    }
+    .intro-edit-r p { margin: 0 0 16px; }
+    .intro-edit-r .signature {
+      font-family: 'Caveat', cursive;
+      font-style: normal; font-weight: 500;
+      color: var(--clay-700);
+      font-size: 32px; line-height: 1;
+      margin-top: 20px; display: inline-block;
+      transform: rotate(-2deg);
+    }
+    @media (max-width: 900px) {
+      .intro-edit { padding: 64px 0 24px; }
+      .intro-edit-in { grid-template-columns: 1fr; gap: 28px; padding: 0 20px; }
+      .intro-edit-bg { font-size: clamp(160px, 40vw, 240px); top: -6vw; right: -4vw; }
+    }
+
+    /* ----- MOOD CLOUD (sostituisce mood-grid) ----- */
+    .mood-zone {
+      padding: 24px 0 96px;
+      position: relative;
+    }
+    .mood-zone-in {
+      max-width: 1280px; margin: 0 auto; padding: 0 28px;
+    }
+    .mood-zone-head {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 24px; align-items: end;
+      margin-bottom: 36px;
+    }
+    .mood-zone-head h3 {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.05; letter-spacing: -0.015em;
+      margin: 8px 0 0;
+      font-variation-settings: 'opsz' 72;
+    }
+    .mood-zone-head h3 em { font-style: italic; font-weight: 300; color: var(--accent); }
+    .mood-cloud-wrap {
+      position: relative;
+      padding: 12px 0;
+    }
+    .mood-strip {
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline;
+      padding: 18px 0;
+    }
+    .mood-strip + .mood-strip { border-top: 1px dashed var(--border); }
+    .mood-strip-label {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--clay-700);
+      flex-basis: 96px; flex-shrink: 0;
+      align-self: center; padding: 8px 0;
+    }
+    @media (max-width: 700px) {
+      .mood-strip-label { flex-basis: auto; padding-bottom: 0; }
+    }
+
+    /* ----- RASSEGNA STAMPA (sostituisce partner row) ----- */
+    .rassegna {
+      padding: 80px 0;
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+      background: var(--bg-sunken);
+    }
+    .rassegna-in {
+      max-width: 1280px; margin: 0 auto; padding: 0 28px;
+    }
+    .rassegna-head {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 24px; align-items: baseline;
+      margin-bottom: 36px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .rassegna-head h3 {
+      font-family: var(--font-display); font-weight: 400;
+      font-style: italic;
+      font-size: clamp(28px, 3vw, 40px);
+      letter-spacing: -0.01em; line-height: 1; margin: 6px 0 0;
+    }
+    .rassegna-head .lbl {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--clay-700);
+    }
+    .rassegna-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .rassegna-q {
+      padding: 28px 28px 28px 0;
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .rassegna-q:nth-child(3n) { border-right: 0; padding-right: 0; }
+    .rassegna-q:nth-child(n+4) { padding-left: 28px; border-top: 1px solid var(--border); padding-top: 28px; }
+    .rassegna-q:nth-child(3n+1) { padding-left: 0; }
+    .rassegna-q p {
+      font-family: var(--font-display); font-style: italic; font-weight: 300;
+      font-size: 19px; line-height: 1.4;
+      color: var(--ink-1000); margin: 0;
+    }
+    .rassegna-q p::before { content: '« '; color: var(--clay-700); }
+    .rassegna-q p::after { content: ' »'; color: var(--clay-700); }
+    .rassegna-q .src {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--fg-3); margin-top: auto;
+    }
+    .rassegna-q .src b {
+      color: var(--ink-1000); font-family: var(--font-display);
+      font-style: italic; font-weight: 400; font-size: 16px;
+      letter-spacing: 0; display: block; margin-bottom: 2px;
+      text-transform: none;
+    }
+    @media (max-width: 900px) {
+      .rassegna-grid { grid-template-columns: 1fr; }
+      .rassegna-q { border-right: 0; padding: 22px 0; border-bottom: 1px solid var(--border); }
+      .rassegna-q:nth-child(n+4) { padding-left: 0; border-top: 0; padding-top: 22px; }
+      .rassegna-q:last-child { border-bottom: 0; }
+    }
+
+    /* ----- MOOD ZONE — riscritta pulita (sostituisce .mood-strip caotico) ----- */
+    .mood-rows {
+      list-style: none; padding: 0; margin: 8px 0 0;
+      display: grid; gap: 0;
+    }
+    .mood-row {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 40px;
+      align-items: start;
+      padding: 32px 0;
+      border-top: 1px solid rgba(248,244,236,0.14);
+    }
+    .mood-row:first-child { border-top: 0; padding-top: 8px; }
+    .mood-row:last-child { padding-bottom: 0; }
+    .mood-row-head {
+      display: flex; flex-direction: column; gap: 6px;
+      padding-top: 4px;
+    }
+    .mood-row-num {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--sun-300);
+    }
+    .mood-row-title {
+      font-family: var(--font-display); font-weight: 400;
+      font-style: italic;
+      font-size: 36px; line-height: 1;
+      letter-spacing: -0.01em;
+      color: var(--cream-50);
+      margin: 0;
+      font-variation-settings: 'opsz' 72;
+    }
+    .mood-row-dek {
+      font-family: var(--font-mono); font-size: 10.5px;
+      letter-spacing: 0.08em;
+      color: rgba(248,244,236,0.55);
+      margin: 0;
+    }
+    .mood-row-pills {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      align-items: center;
+    }
+    /* Pill UNIFORMI su sfondo scuro — niente .size-lg/.featured */
+    .mood-row-pills .mp {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: transparent;
+      border: 1px solid rgba(248,244,236,0.22);
+      font-family: var(--font-display);
+      font-weight: 400; font-style: italic;
+      font-size: 20px; letter-spacing: -0.005em;
+      color: var(--cream-50);
+      cursor: pointer;
+      transition: background 220ms var(--ease-out), color 220ms var(--ease-out),
+                  border-color 220ms var(--ease-out), transform 220ms var(--ease-out);
+      font-variation-settings: 'opsz' 48;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .mood-row-pills .mp:hover {
+      background: var(--cream-50);
+      color: var(--ink-1000);
+      border-color: var(--cream-50);
+      transform: translateY(-2px);
+    }
+    .mood-row-pills .mp small {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.1em;
+      opacity: 0.55; font-style: normal;
+      padding-left: 10px;
+      border-left: 1px solid rgba(248,244,236,0.22);
+      line-height: 1;
+    }
+    .mood-row-pills .mp:hover small {
+      border-left-color: rgba(15,26,20,0.18);
+      opacity: 0.7;
+    }
+    @media (max-width: 800px) {
+      .mood-row { grid-template-columns: 1fr; gap: 16px; padding: 26px 0; }
+      .mood-row-title { font-size: 28px; }
+      .mood-row-pills .mp { font-size: 17px; padding: 8px 14px; }
+      .mood-row-pills .mp small { padding-left: 8px; }
+    }
+
+    /* ----- ITINERARI GRATUITI — terzo pilastro (Capitolo V) ----- */
+    .itin-zone { background: var(--bg-sunken); padding: 96px 0; }
+    .itin-zone .sec-head {
+      display: grid; grid-template-columns: 1.6fr auto;
+      gap: 40px; align-items: end;
+      margin-bottom: 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .itin-zone .sec-head .itin-head-l { max-width: 640px; }
+    .itin-zone .sec-title { margin: 14px 0 16px; }
+    .itin-lede {
+      font-family: var(--font-serif, 'PP Editorial New', Georgia, serif);
+      font-size: 17px; line-height: 1.55;
+      color: var(--fg-2); max-width: 56ch; margin: 0;
+    }
+    .itin-zone .sec-head-side {
+      display: flex; flex-direction: column; align-items: flex-end;
+      gap: 12px; align-self: end;
+      text-align: right;
+    }
+    .itin-zone .sec-head-side .itin-count {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--clay-700);
+    }
+    .itin-rail {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .itincard {
+      display: flex; flex-direction: column;
+      text-decoration: none; color: inherit;
+      background: var(--cream-50);
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
+      transition: transform 260ms var(--ease-out), box-shadow 260ms var(--ease-out);
+    }
+    .itincard:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 28px 48px -32px rgba(15,26,20,0.28);
+    }
+    .itincard-pic {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--ink-1000);
+    }
+    .itincard-pic img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 700ms var(--ease-out);
+    }
+    .itincard:hover .itincard-pic img { transform: scale(1.05); }
+    .itincard-badge {
+      position: absolute; top: 14px; left: 14px;
+      background: rgba(15,26,20,0.82); color: var(--cream-50);
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 6px 12px; border-radius: 999px;
+      backdrop-filter: blur(8px);
+    }
+    .itincard-days {
+      position: absolute; top: 14px; right: 14px;
+      background: var(--cream-50); color: var(--ink-1000);
+      font-family: var(--font-display); font-style: italic; font-weight: 500;
+      font-size: 14px; line-height: 1;
+      padding: 6px 12px; border-radius: 999px;
+    }
+    .itincard-body {
+      padding: 22px 24px 22px;
+      display: flex; flex-direction: column; gap: 10px;
+      flex: 1;
+    }
+    .itincard-eyebrow {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent);
+    }
+    .itincard-title {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: 26px; line-height: 1.1; letter-spacing: -0.015em;
+      color: var(--ink-1000); margin: 0;
+      font-variation-settings: 'opsz' 72;
+    }
+    .itincard-title em { font-style: italic; font-weight: 300; }
+    .itincard-dek {
+      font-size: 14.5px; line-height: 1.55;
+      color: var(--fg-2); margin: 0;
+      flex: 1;
+    }
+    .itincard-foot {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 14px; margin-top: 4px;
+      border-top: 1px solid var(--border-soft);
+      font-family: var(--font-mono); font-size: 10.5px;
+      letter-spacing: 0.06em; color: var(--fg-3);
+    }
+    .itincard-cta {
+      color: var(--ink-1000); font-weight: 600;
+      letter-spacing: 0.12em;
+      transition: transform 200ms var(--ease-out);
+    }
+    .itincard:hover .itincard-cta { transform: translateX(3px); }
+    .itin-footer {
+      display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+      margin-top: 36px; padding-top: 26px;
+      border-top: 1px dashed var(--border);
+    }
+    .itin-footer-stamp {
+      font-family: var(--font-mono); font-size: 9.5px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--clay-700);
+      padding: 5px 10px;
+      border: 1px solid var(--clay-600); border-radius: 2px;
+      transform: rotate(-2deg);
+      white-space: nowrap;
+    }
+    .itin-footer-note {
+      font-family: var(--font-display); font-style: italic; font-weight: 300;
+      font-size: 17px; line-height: 1.4;
+      color: var(--fg-2); margin: 0; flex: 1;
+      min-width: 240px;
+    }
+    @media (max-width: 1000px) {
+      .itin-rail { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .itin-zone .sec-head { grid-template-columns: 1fr; gap: 18px; }
+      .itin-zone .sec-head-side { align-items: flex-start; text-align: left; }
+    }
+    @media (max-width: 640px) {
+      .itin-rail { grid-template-columns: 1fr; }
+      .itin-zone { padding: 64px 0; }
+    }
+
+    /* Hide sezione reassure originale e tuning piccoli */
+    .sec-head-noborder { margin-bottom: 36px; }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="hdr">
+    <div class="hdr-in">
+      <a class="brand" href="casa.html" aria-label="Oops I Roamed — casa">
+        <span class="brand-mark">o</span>
+        <span><em>Oops</em> I Roamed</span>
+      </a>
+      <nav class="nav">
+        <div class="nav-item on"><a href="casa.html">Home</a></div>
+        <div class="nav-item"><a href="casa-viaggi.html">Viaggi</a></div>
+        <div class="nav-item"><a href="casa-partenze.html">Partenze</a></div>
+        <div class="nav-item">
+          <a href="casa-destinazioni.html">Destinazioni <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Europa</h4>
+                <a class="mm-link" href="casa-destinazione.html">
+                  <span class="mm-link-label">Portogallo</span>
+                  <span class="mm-link-dek">Atlantico, lento</span>
+                </a>
+                <a class="mm-link"><span class="mm-link-label">Italia</span><span class="mm-link-dek">Sud che non corre</span></a>
+                <a class="mm-link"><span class="mm-link-label">Islanda</span><span class="mm-link-dek">Ring road, controvento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Georgia</span><span class="mm-link-dek">Caucaso minore</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Africa &amp; Med</h4>
+                <a class="mm-link"><span class="mm-link-label">Marocco</span><span class="mm-link-dek">Atlante in marzo</span></a>
+                <a class="mm-link"><span class="mm-link-label">Egitto</span><span class="mm-link-dek">Nilo, da nord</span></a>
+                <a class="mm-link"><span class="mm-link-label">Giordania</span><span class="mm-link-dek">Wadi, deserto</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Far &amp; Wide</h4>
+                <a class="mm-link"><span class="mm-link-label">Giappone</span><span class="mm-link-dek">Hokkaido a febbraio</span></a>
+                <a class="mm-link"><span class="mm-link-label">Messico</span><span class="mm-link-dek">Oaxaca, mole</span></a>
+                <a class="mm-link"><span class="mm-link-label">Argentina</span><span class="mm-link-dek">Patagonia in spalla</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="casa-tipi.html">Tipi di viaggio <span class="chev" aria-hidden="true">▾</span></a>
+          <div class="megamenu">
+            <div class="mm-cols">
+              <div>
+                <h4 class="mm-col-title">Mood</h4>
+                <a class="mm-link"><span class="mm-link-label">Slow</span><span class="mm-link-dek">Camminare piano</span></a>
+                <a class="mm-link"><span class="mm-link-label">Salt &amp; Sea</span><span class="mm-link-dek">Vita di mare</span></a>
+                <a class="mm-link"><span class="mm-link-label">Cold Quiet</span><span class="mm-link-dek">Inverni nordici</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Formato</h4>
+                <a class="mm-link"><span class="mm-link-label">Weekend</span><span class="mm-link-dek">2–4 giorni</span></a>
+                <a class="mm-link"><span class="mm-link-label">Roadtrip</span><span class="mm-link-dek">In auto, con tappe</span></a>
+                <a class="mm-link"><span class="mm-link-label">Lungo</span><span class="mm-link-dek">10+ giorni</span></a>
+              </div>
+              <div>
+                <h4 class="mm-col-title">Ritmo</h4>
+                <a class="mm-link"><span class="mm-link-label">Camminato</span><span class="mm-link-dek">Trekking, sentieri</span></a>
+                <a class="mm-link"><span class="mm-link-label">Tavolato</span><span class="mm-link-dek">Mangiare lento</span></a>
+                <a class="mm-link"><span class="mm-link-label">Letto presto</span><span class="mm-link-dek">Sveglie all'alba</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item"><a href="casa-chi-siamo.html">Chi siamo</a></div>
+        <div class="nav-item"><a href="casa-diario.html">Diario</a></div>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" data-only-desktop aria-label="Cerca">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="icon-btn" data-only-desktop aria-label="Salvati">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <span class="lang-pill">IT · €</span>
+        <a class="btn btn-secondary btn-sm">Parla con noi</a>
+        <button class="drawer-toggle icon-btn" aria-label="Apri menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" aria-hidden="true">
+    <div class="drawer-scrim"></div>
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <span class="brand"><span class="brand-mark">o</span><span><em>Oops</em></span></span>
+        <button class="icon-btn drawer-close" aria-label="Chiudi menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="drawer-list">
+        <a class="drawer-link" href="casa-viaggi.html">Viaggi</a>
+        <a class="drawer-link" href="casa-partenze.html">Partenze</a>
+        <a class="drawer-link" href="casa-destinazioni.html">Destinazioni</a>
+        <a class="drawer-link" href="casa-tipi.html">Tipi di viaggio</a>
+        <a class="drawer-link" href="casa-chi-siamo.html">Chi siamo</a>
+        <a class="drawer-link" href="casa-diario.html">Diario</a>
+        <div class="drawer-section">Profilo</div>
+        <a class="drawer-link">I miei salvati</a>
+        <a class="drawer-link">Le mie prenotazioni</a>
+      </div>
+      <div class="drawer-foot">
+        <a class="btn btn-primary btn-block">Parla con noi</a>
+        <a class="btn btn-secondary btn-block">Accedi</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. HERO MAGAZINE COVER -->
+  <section class="hero-cover" data-screen-label="01 Hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=2400&q=85" alt="Una valle al tramonto" />
+    </div>
+    <div class="hero-edge" aria-hidden="true">
+      <span class="vbar">Catalogo <b>2026</b> · Vol. IV · Aggiornato 14 / 02 · Stagione di primavera · Tiratura: tutti</span>
+    </div>
+    <div class="hero-cover-in">
+      <div class="hero-main">
+        <div class="hero-prelude">
+          <span class="vol">Vol. IV · 2026</span>
+          <span class="sep">·</span>
+          <span class="crumb-i">Dispaccio dalla redazione</span>
+        </div>
+        <h1>
+          Posti veri,<br/>
+          raggiunti <em>senza fretta</em>,<br/>
+          <span class="u">e con calma vera</span>.
+        </h1>
+        <p class="hero-sub">Viaggi in piccolo gruppo per chi preferisce arrivare tardi, mangiare a lungo, e dormire poco.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="casa-partenze.html">Calendario 2026 <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-outline-light btn-lg" href="casa-diario.html">Sfoglia il diario</a>
+        </div>
+        <span class="hero-margin">
+          <span class="squig" aria-hidden="true"></span>
+          dài un'occhiata al <b>sommario</b> qui sotto
+        </span>
+      </div>
+
+      <aside class="hero-edition" aria-label="Pannello edizione">
+        <div class="hero-edition-h">
+          <div>
+            <span class="label">In questa edizione</span>
+          </div>
+          <span class="vol-n">IV</span>
+        </div>
+        <div class="hero-edition-list">
+          <a class="hero-edition-row" href="#sommario-vetrina">
+            <span class="rn">I</span>
+            <span class="lbl">Sei <em>partenze</em> nuove</span>
+            <span class="pg">p. 02</span>
+          </a>
+          <a class="hero-edition-row" href="#sommario-mood">
+            <span class="rn">II</span>
+            <span class="lbl">Mood, <em>non filtri</em></span>
+            <span class="pg">p. 04</span>
+          </a>
+          <a class="hero-edition-row" href="#sommario-cosa">
+            <span class="rn">III</span>
+            <span class="lbl">Cos'è un <em>viaggio</em></span>
+            <span class="pg">p. 06</span>
+          </a>
+          <a class="hero-edition-row" href="#sommario-letter">
+            <span class="rn">IV</span>
+            <span class="lbl">Lettera dal <em>dispaccio</em></span>
+            <span class="pg">p. 08</span>
+          </a>
+          <a class="hero-edition-row" href="#sommario-diario">
+            <span class="rn">V</span>
+            <span class="lbl">Storie dal <em>diario</em></span>
+            <span class="pg">p. 12</span>
+          </a>
+        </div>
+        <div class="hero-edition-foot">
+          <span><span class="stars">★★★★★</span> 4.9 / 5</span>
+          <span>1.247 lettori</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 4. SOMMARIO numerato — sostituisce reassure semplice -->
+  <div class="sommario" id="sommario">
+    <div class="sommario-in">
+      <h2 class="sommario-title">
+        <small>Sommario · in questa pagina</small>
+        Otto <em>cose</em><br/>
+        da leggere oggi.
+      </h2>
+      <div class="sommario-list">
+        <a class="sommario-item" href="#sommario-garanzie">
+          <span class="si-n">I</span>
+          <span class="si-l">Quattro <em>garanzie</em></span>
+        </a>
+        <a class="sommario-item" href="#sommario-vetrina">
+          <span class="si-n">II</span>
+          <span class="si-l">Sei partenze <em>scelte</em></span>
+        </a>
+        <a class="sommario-item" href="#sommario-mood">
+          <span class="si-n">III</span>
+          <span class="si-l">Mood, non <em>filtri</em></span>
+        </a>
+        <a class="sommario-item" href="#sommario-cosa">
+          <span class="si-n">IV</span>
+          <span class="si-l">Cos'è un <em>viaggio</em></span>
+        </a>
+        <a class="sommario-item" href="#sommario-bespoke">
+          <span class="si-n">V</span>
+          <span class="si-l">Su <em>misura</em></span>
+        </a>
+        <a class="sommario-item" href="#sommario-itinerari">
+          <span class="si-n">VI</span>
+          <span class="si-l">Itinerari <em>gratis</em></span>
+        </a>
+        <a class="sommario-item" href="#sommario-narr">
+          <span class="si-n">VII</span>
+          <span class="si-l">Più o <em>meno questo</em></span>
+        </a>
+        <a class="sommario-item" href="#sommario-diario">
+          <span class="si-n">VIII</span>
+          <span class="si-l">Dal <em>diario</em></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. SEARCH SLIP -->
+  <div class="search-slip-wrap" id="search">
+    <div class="search-slip">
+      <div class="search-slip-head">
+        <h3>Tessera di <em>ricerca</em></h3>
+        <span class="slip-code">Modulo F-1 · OIR-26</span>
+      </div>
+      <div class="search-row">
+        <div class="fld fld-select">
+          <label class="fld-label" for="search-where">Dove vuoi andare</label>
+          <select id="search-where">
+            <option>Ovunque ci porti</option>
+            <option>Europa</option>
+            <option>Asia</option>
+            <option>Africa</option>
+            <option>Americhe</option>
+            <option>Oceania</option>
+          </select>
+        </div>
+        <div class="fld fld-select">
+          <label class="fld-label" for="search-when">Quando</label>
+          <select id="search-when">
+            <option>Tutto l'anno</option>
+            <option>Prossimi 30 giorni</option>
+            <option>Primavera 2026</option>
+            <option>Estate 2026</option>
+            <option>Autunno 2026</option>
+            <option>Inverno 2026/27</option>
+          </select>
+        </div>
+        <a class="btn btn-primary btn-lg">Cerca <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+      <div class="search-slip-aside">
+        <span>Hai poco tempo? <a href="casa-partenze.html">Weekend nei prossimi 30 giorni →</a></span>
+        <span style="opacity:0.6;">·</span>
+        <span>O <a href="casa-bespoke.html">facciamo un viaggio su misura →</a></span>
+      </div>
+      <span class="search-slip-margin" aria-hidden="true">
+        compila <br/>oppure scrivici!
+      </span>
+    </div>
+  </div>
+
+  <!-- 6. INTRO EDITORIAL -->
+  <section class="intro-edit" id="sommario-garanzie">
+    <span class="intro-edit-bg" aria-hidden="true">·i·</span>
+    <div class="intro-edit-in">
+      <div class="intro-edit-l">
+        <span class="eyebrow-line">Capitolo I · Quattro garanzie</span>
+        <h2>Non te le diciamo<br/>per <em>marketing</em>.</h2>
+      </div>
+      <div class="intro-edit-r">
+        <p>Quattro cose semplici, scritte una volta sola, valide per ogni partenza. Niente asterischi minuscoli, niente cose scritte in fondo che non leggerai mai.</p>
+        <p>Tutto qui — il resto sono righe da contratto.</p>
+        <span class="signature">— la redazione</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. QUATTRO GARANZIE — riutilizzo cards -->
+  <section class="sec" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="garanzie-grid">
+        <div class="gar-card">
+          <span class="gar-num">i</span>
+          <div class="gar-icon">€0</div>
+          <h3 class="gar-title">Tieni il posto senza anticipo</h3>
+          <p class="gar-dek">Confermi il viaggio quando sei pronta. Carta richiesta solo per garanzia: addebito al saldo, niente prima<sup class="fn">1</sup>.</p>
+        </div>
+        <div class="gar-card">
+          <span class="gar-num">ii</span>
+          <div class="gar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><polyline points="21 3 21 8 16 8"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><polyline points="3 21 3 16 8 16"/></svg>
+          </div>
+          <h3 class="gar-title">Cambi viaggio gratis</h3>
+          <p class="gar-dek">Fino a 31 giorni dalla partenza puoi spostarti su un'altra data o un'altra meta. Zero costi, zero domande.</p>
+        </div>
+        <div class="gar-card">
+          <span class="gar-num">iii</span>
+          <div class="gar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="gar-title">Viaggio protetto</h3>
+          <p class="gar-dek">Assicurazione medica, bagaglio e rimpatrio incluse. Se ti capita qualcosa, prima ti curiamo, poi parliamo del resto.</p>
+        </div>
+        <div class="gar-card">
+          <span class="gar-num">iv</span>
+          <div class="gar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="13" rx="2"/><line x1="2" y1="11" x2="22" y2="11"/></svg>
+          </div>
+          <h3 class="gar-title">Paghi a rate, senza interessi</h3>
+          <p class="gar-dek">Tre o sei rate, scelte da te. Stripe e Scalapay. Saldo finale 14 giorni prima della partenza, non un minuto dopo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. VETRINA NUMERATA — sostituisce trip rail -->
+  <section class="sec" id="sommario-vetrina" style="padding-top: 32px;">
+    <div class="wrap">
+      <div class="sec-head sec-head-noborder">
+        <div>
+          <span class="eyebrow-line">Capitolo II · scelti per te</span>
+          <h2 class="sec-title" style="margin-top: 14px;">Sei partenze,<br/>sei <em>posti veri</em>.</h2>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <span class="hand" style="font-size: 22px; transform: rotate(-2deg);">guarda anche queste →</span>
+          <a class="btn btn-secondary" href="casa-viaggi.html">Tutti i viaggi <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <div class="kiosk">
+        <!-- I — feature spread -->
+        <a class="k-feature" href="casa-viaggio.html" aria-label="Tre giorni persi a Porto">
+          <div class="k-pic">
+            <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1600&q=85" alt="Porto" />
+            <span class="k-tag filling">a 2 dal via</span>
+            <div class="k-foot">
+              <span>Catalogo · I</span>
+              <span>·</span>
+              <span>Roamed Trip 2026</span>
+            </div>
+          </div>
+          <div class="k-body">
+            <span class="k-num-big" aria-hidden="true">I</span>
+            <span class="k-eyebrow">Roamed Trip · Portogallo</span>
+            <h3 class="k-title">Tre giorni persi <em>a Porto</em></h3>
+            <p class="k-lede">Tre giorni a Porto in cui non corre nessuno, mangiando bacalhau a pranzo e bevendo bianchi che non hanno traduzione.</p>
+            <div class="k-rows">
+              <div class="k-cell">
+                <span class="k-k">A partire da</span>
+                <span class="k-v">€890</span>
+              </div>
+              <div class="k-cell">
+                <span class="k-k">Prossime date</span>
+                <span class="k-v" style="font-size: 18px;">12–14 apr · 17–19 mag</span>
+              </div>
+            </div>
+            <div class="k-meta" style="padding-top: 6px;">
+              <span>3 giorni · 3 notti</span>
+              <span class="sep">·</span>
+              <span><span class="star">★</span> 4.9 · 128 rec.</span>
+              <span class="sep">·</span>
+              <span>Voli inclusi</span>
+            </div>
+            <span class="k-cta">Apri il viaggio <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <!-- II — verticale -->
+        <a class="kcard k-card-v" href="casa-viaggio.html">
+          <div class="k-pic">
+            <img src="https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=1200&q=85" alt="Puglia" />
+          </div>
+          <div class="k-body">
+            <div class="k-head-row">
+              <div>
+                <span class="k-eyebrow">Roamed Trip · Italia</span>
+                <h3 class="k-title" style="margin-top:8px;">La strada lenta <em>in Puglia</em></h3>
+              </div>
+              <span class="k-num" aria-hidden="true">II</span>
+            </div>
+            <div class="k-meta">
+              <span>6 giorni · 5 notti</span>
+              <span class="sep">·</span>
+              <span><span class="star">★</span> 4.8 · 92 rec.</span>
+              <span class="sep">·</span>
+              <span>Auto inclusa</span>
+            </div>
+            <div class="k-price-row">
+              <span class="k-from">Da</span>
+              <span class="k-price">€1.890</span>
+              <span class="k-dates">04–09 mag · 22–27 set</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- III — verticale -->
+        <a class="kcard k-card-v" href="casa-viaggio.html">
+          <div class="k-pic">
+            <img src="https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=1200&q=85" alt="Hokkaido" />
+            <span class="k-tag soldout">lista d'attesa</span>
+          </div>
+          <div class="k-body">
+            <div class="k-head-row">
+              <div>
+                <span class="k-eyebrow">Roamed Trip · Giappone</span>
+                <h3 class="k-title" style="margin-top:8px;">Hokkaido a <em>febbraio</em></h3>
+              </div>
+              <span class="k-num" aria-hidden="true">III</span>
+            </div>
+            <div class="k-meta">
+              <span>8 giorni · 7 notti</span>
+              <span class="sep">·</span>
+              <span><span class="star">★</span> 5.0 · 41 rec.</span>
+              <span class="sep">·</span>
+              <span>Voli inclusi</span>
+            </div>
+            <div class="k-price-row">
+              <span class="k-from">Da</span>
+              <span class="k-price">€2.890</span>
+              <span class="k-dates">07–14 feb 2027</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- IV — strip orizzontale scuro -->
+        <a class="k-strip" href="casa-viaggio.html">
+          <div class="k-body">
+            <span class="k-num-side" aria-hidden="true">IV</span>
+            <span class="k-eyebrow">Roamed Trip · Messico · Nuovo</span>
+            <h3 class="k-title">Una settimana di mole <em>a Oaxaca</em>.</h3>
+            <div class="k-meta">
+              <span>7 giorni · 6 notti</span>
+              <span class="sep">·</span>
+              <span><span class="star">★</span> 4.9 · 23 rec.</span>
+              <span class="sep">·</span>
+              <span>Voli inclusi</span>
+              <span class="sep">·</span>
+              <span style="color: var(--mint-500);">Nuovo</span>
+            </div>
+            <div class="k-row-bot">
+              <span class="k-from">A partire da</span>
+              <span class="k-price">€1.980</span>
+              <span class="k-dates">14–20 nov · 04–10 dic</span>
+            </div>
+          </div>
+          <div class="k-pic">
+            <img src="https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1600&q=85" alt="Oaxaca" />
+          </div>
+        </a>
+
+        <!-- V — verticale -->
+        <a class="kcard k-card-v" href="casa-viaggio.html">
+          <div class="k-pic">
+            <img src="https://images.unsplash.com/photo-1504829857797-ddff29c27927?w=1200&q=85" alt="Islanda" />
+          </div>
+          <div class="k-body">
+            <div class="k-head-row">
+              <div>
+                <span class="k-eyebrow">Roamed Trip · Islanda</span>
+                <h3 class="k-title" style="margin-top:8px;">La ring road, <em>al contrario</em></h3>
+              </div>
+              <span class="k-num" aria-hidden="true">V</span>
+            </div>
+            <div class="k-meta">
+              <span>10 giorni · 9 notti</span>
+              <span class="sep">·</span>
+              <span><span class="star">★</span> 4.9 · 56 rec.</span>
+              <span class="sep">·</span>
+              <span>Auto inclusa</span>
+            </div>
+            <div class="k-price-row">
+              <span class="k-from">Da</span>
+              <span class="k-price">€2.690</span>
+              <span class="k-dates">06–15 lug · 18–27 ago</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- VI — verticale -->
+        <a class="kcard k-card-v" href="casa-viaggio.html">
+          <div class="k-pic">
+            <img src="https://images.unsplash.com/photo-1539020140153-e479b8c61bf8?w=1200&q=85" alt="Atlante" />
+          </div>
+          <div class="k-body">
+            <div class="k-head-row">
+              <div>
+                <span class="k-eyebrow">Roamed Trip · Marocco</span>
+                <h3 class="k-title" style="margin-top:8px;">Tre notti <em>sull'Atlante</em></h3>
+              </div>
+              <span class="k-num" aria-hidden="true">VI</span>
+            </div>
+            <div class="k-meta">
+              <span>5 giorni · 4 notti</span>
+              <span class="sep">·</span>
+              <span><span class="star">★</span> 4.7 · 87 rec.</span>
+              <span class="sep">·</span>
+              <span>Voli inclusi</span>
+            </div>
+            <div class="k-price-row">
+              <span class="k-from">Da</span>
+              <span class="k-price">€1.290</span>
+              <span class="k-dates">20–24 mar · 09–13 apr</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="vetrina-foot">
+        <span class="vetrina-foot-note">↗ scorri tutte le 28 partenze 2026</span>
+        <a class="btn btn-primary" href="casa-partenze.html">Calendario completo <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. MOOD ZONE — riscritta pulita -->
+  <section style="background: var(--ink-1000); color: var(--cream-50); padding: 96px 0;" id="sommario-mood" data-screen-label="09 Mood">
+    <div class="mood-zone-in">
+      <div class="mood-zone-head">
+        <div>
+          <span class="eyebrow-line" style="color: var(--sun-300);">Capitolo III · come ti va di partire</span>
+          <h3 style="color: var(--cream-50); font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 5vw, 64px); line-height: 1; letter-spacing: -0.02em; margin: 14px 0 14px;">Mood, <em style="color: var(--clay-300); font-style: italic; font-weight: 300;">non filtri</em>.</h3>
+          <p style="font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 18px; line-height: 1.4; color: rgba(248,244,236,0.62); max-width: 52ch; margin: 0;">Niente checkbox infinite. Scegli un'idea di ritmo, formato o regione — ti mostriamo cos'abbiamo nel cassetto.</p>
+        </div>
+        <a href="casa-tipi.html" style="color: var(--sun-300); border-bottom: 1px solid currentColor; padding-bottom: 1px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; align-self: end;">Tutti i tipi →</a>
+      </div>
+
+      <ul class="mood-rows">
+        <li class="mood-row">
+          <header class="mood-row-head">
+            <span class="mood-row-num">— 01 —</span>
+            <h4 class="mood-row-title">Mood</h4>
+            <p class="mood-row-dek">Il ritmo che cerchi</p>
+          </header>
+          <div class="mood-row-pills">
+            <a class="mp" href="casa-tipo.html">Slow <small>14</small></a>
+            <a class="mp" href="casa-tipo.html">Salt &amp; Sea <small>6</small></a>
+            <a class="mp" href="casa-tipo.html">Cold Quiet <small>4</small></a>
+            <a class="mp" href="casa-tipo.html">Cammino <small>9</small></a>
+            <a class="mp" href="casa-tipo.html">Tavolato <small>7</small></a>
+            <a class="mp" href="casa-tipo.html">Letto presto <small>5</small></a>
+          </div>
+        </li>
+        <li class="mood-row">
+          <header class="mood-row-head">
+            <span class="mood-row-num">— 02 —</span>
+            <h4 class="mood-row-title">Formato</h4>
+            <p class="mood-row-dek">Quanto dura, come si muove</p>
+          </header>
+          <div class="mood-row-pills">
+            <a class="mp" href="casa-tipo.html">Weekend <small>12</small></a>
+            <a class="mp" href="casa-tipo.html">Roadtrip <small>8</small></a>
+            <a class="mp" href="casa-tipo.html">Lungo, 10+ giorni <small>6</small></a>
+            <a class="mp" href="casa-tipo.html">Solo donne <small>3</small></a>
+          </div>
+        </li>
+        <li class="mood-row">
+          <header class="mood-row-head">
+            <span class="mood-row-num">— 03 —</span>
+            <h4 class="mood-row-title">Continente</h4>
+            <p class="mood-row-dek">Dove ci porta</p>
+          </header>
+          <div class="mood-row-pills">
+            <a class="mp" href="casa-destinazioni.html">Europa <small>11</small></a>
+            <a class="mp" href="casa-destinazioni.html">Africa &amp; Med <small>6</small></a>
+            <a class="mp" href="casa-destinazioni.html">Asia <small>5</small></a>
+            <a class="mp" href="casa-destinazioni.html">Americhe <small>4</small></a>
+            <a class="mp" href="casa-destinazioni.html">Far &amp; Wide <small>2</small></a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 10. TRIPLO BLOCCO — Cos'è un viaggio -->
+  <section class="sec" style="background: var(--bg-sunken);" id="sommario-cosa">
+    <div class="wrap">
+      <div class="sec-head sec-head-center">
+        <span class="eyebrow-line">Capitolo IV · in tre quadrati</span>
+        <h2 class="sec-title" style="margin-top: 14px;">Cos'è un viaggio <em>Oops I Roamed</em>.</h2>
+      </div>
+      <div class="triplo-grid">
+        <div class="triplo-card">
+          <span class="triplo-num">i · chi</span>
+          <h3 class="triplo-h">Massimo dieci persone, <em>guida vera</em>.</h3>
+          <p class="triplo-p">Gruppi piccoli per stare in pace, non grandi per fare cassa. Ogni viaggio ha un coordinatore che vive (o ha vissuto) quel posto. Niente megafono, niente bandiera, niente.</p>
+          <a class="triplo-link">Conosci i coordinatori <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+        <div class="triplo-card">
+          <span class="triplo-num">ii · cosa</span>
+          <h3 class="triplo-h">Itinerari <em>già fatti</em>, non improvvisati.</h3>
+          <p class="triplo-p">Ogni viaggio nasce da un viaggio. Lo abbiamo fatto noi prima, l'abbiamo scritto, ci siamo tornati. Sai cosa porti in valigia, sai dove dormi, sai cosa mangerai (quasi).</p>
+          <a class="triplo-link">Come scegliamo le mete <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+        <div class="triplo-card">
+          <span class="triplo-num">iii · come</span>
+          <h3 class="triplo-h">Niente fretta, <em>niente programma</em> da pensionato.</h3>
+          <p class="triplo-p">Ogni giornata ha due-tre cose fisse e una pausa lunga. Il resto è tuo. Vuoi un'altra ora a pranzo? La prendi. Vuoi saltare il museo? Lo salti. Nessuno tiene il conto.</p>
+          <a class="triplo-link">Una giornata tipica <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. MAGAZINE SPREAD — editorial break, senza promo -->
+  <section style="padding: 24px 0;" id="sommario-letter">
+    <div class="wrap">
+      <div class="spread flip">
+        <div class="spread-photo">
+          <span class="spread-tape">Vol. IV · primavera 2026</span>
+          <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1400&q=85" alt="" />
+        </div>
+        <div class="spread-body">
+          <p class="spread-pretitle">Capitolo V · lettera dal dispaccio</p>
+          <h2>Le prime <em>partenze</em><br/>2026 si chiudono in fretta.</h2>
+          <p class="spread-lede">
+            Aprile-maggio si confermano per primi, settembre-ottobre vanno in lista d'attesa entro l'estate. Se hai una data in testa, vale la pena segnarla prima.
+          </p>
+          <p style="font-size: 16px; line-height: 1.7; color: var(--fg-2); margin: 0;">
+            Tieni il posto con €0, salda 14 giorni prima della partenza. Se nel frattempo cambi idea, sposti la data senza penali.
+          </p>
+          <div class="spread-actions">
+            <a class="btn btn-primary" href="casa-partenze.html">Calendario 2026 <span class="arr">→</span></a>
+            <a class="link-und" href="casa-tipi.html">Per mood, invece <span class="arr">→</span></a>
+          </div>
+          <div class="spread-meta">
+            <span>28 partenze attive</span>
+            <span>·</span>
+            <span>9 già confermate</span>
+            <span>·</span>
+            <span>4 in lista d'attesa</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11.b SU MISURA — Roam your way -->
+  <section class="bespoke-zone" id="sommario-bespoke" data-screen-label="11b Su misura">
+    <span class="bz-bg" aria-hidden="true">su misura</span>
+    <div class="bz-grid">
+      <div class="bz-left">
+        <span class="bz-eyebrow">Capitolo VI · Roam your way</span>
+        <h2 class="bz-title">Non parti in <em>gruppo</em>?<br/>Te lo <span class="u">cuciamo</span> addosso.</h2>
+        <p class="bz-lede">
+          Dimmi <em>dove</em>, <em>quando</em>, <em>con chi</em>. Entro tre giorni ricevi
+          un itinerario completo, prezzi reali e zero impegno — anche solo
+          “Giappone, primavera” basta per cominciare.
+        </p>
+
+        <div class="bz-steps">
+          <div class="bz-step">
+            <span class="n">I</span>
+            <span class="l">Brief in cinque minuti</span>
+            <span class="d">Dove, quando, con chi, che stile.</span>
+          </div>
+          <div class="bz-step">
+            <span class="n">II</span>
+            <span class="l">Una mail entro tre giorni</span>
+            <span class="d">Itinerario tappa-per-tappa, prezzi reali.</span>
+          </div>
+          <div class="bz-step">
+            <span class="n">III</span>
+            <span class="l">Aggiusti finché va</span>
+            <span class="d">Cambi date, dormi diverso, sposti una tappa.</span>
+          </div>
+          <div class="bz-step">
+            <span class="n">IV</span>
+            <span class="l">Decidi tu, poi</span>
+            <span class="d">Conferma scritta + acconto, niente prima.</span>
+          </div>
+        </div>
+
+        <div class="bz-cta-row">
+          <a class="btn btn-primary btn-lg" href="casa-bespoke.html">Apri una richiesta <span class="arr" aria-hidden="true">→</span></a>
+          <span class="bz-pill"><span class="dot"></span>Risposta in 3 giorni lavorativi · gratis</span>
+        </div>
+      </div>
+
+      <a class="bz-card" href="casa-bespoke.html" aria-label="Comincia il tuo brief su misura">
+        <div class="bz-card-head">
+          <h3 class="bz-card-h">
+            <small>Field Note · brief lampo</small>
+            Un viaggio, <em>più o meno</em>.
+          </h3>
+          <span class="bz-stamp">su misura</span>
+        </div>
+
+        <div class="bz-fld">
+          <span class="bz-fld-label">Dove ti piacerebbe andare</span>
+          <input class="bz-fld-input" type="text" value="Giappone, ovunque ci siano montagne…" readonly tabindex="-1" />
+        </div>
+
+        <div class="bz-fld-row">
+          <div class="bz-fld">
+            <span class="bz-fld-label">Più o meno quando</span>
+            <input class="bz-fld-input" type="text" value="Primavera 2026" readonly tabindex="-1" />
+          </div>
+          <div class="bz-fld">
+            <span class="bz-fld-label">Con chi</span>
+            <input class="bz-fld-input" type="text" value="Coppia" readonly tabindex="-1" />
+          </div>
+        </div>
+
+        <div class="bz-fld-row">
+          <div class="bz-fld">
+            <span class="bz-fld-label">Quanti giorni</span>
+            <input class="bz-fld-input" type="text" value="10–14" readonly tabindex="-1" />
+          </div>
+          <div class="bz-fld">
+            <span class="bz-fld-label">Budget per persona</span>
+            <input class="bz-fld-input" type="text" value="€ 2.000" readonly tabindex="-1" />
+          </div>
+        </div>
+
+        <div class="bz-card-foot">
+          <span class="bz-card-meta">
+            Brief lampo · <b>4 step</b><br/>
+            Compili tu, in cinque minuti.
+          </span>
+          <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--ink-1000); border-bottom: 1px solid var(--ink-1000); padding-bottom: 2px;">Comincia <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 11.c ITINERARI GRATUITI — terzo pilastro (self-guided, PDF) -->
+  <section class="itin-zone" id="sommario-itinerari" data-screen-label="11c Itinerari">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="itin-head-l">
+          <span class="eyebrow-line">Capitolo V · quindici PDF, gratis</span>
+          <h2 class="sec-title">Parti da soli,<br/>ma <em>non da zero</em>.</h2>
+          <p class="itin-lede">Quindici viaggi che abbiamo fatto e scritto bene. Indirizzi veri, prezzi reali, mappe e tappe — pronti da scaricare. Niente email obbligatoria, niente upselling.</p>
+        </div>
+        <div class="sec-head-side">
+          <span class="itin-count">15 itinerari · agg. apr 2026</span>
+          <a class="btn btn-secondary btn-sm" href="casa-itinerari.html">Vedi tutti i 15 →</a>
+        </div>
+      </div>
+
+      <div class="itin-rail">
+        <a class="itincard" href="casa-itinerario.html">
+          <div class="itincard-pic">
+            <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1200&q=85" alt="Porto, Portogallo" loading="lazy" />
+            <span class="itincard-badge">Gratis · PDF</span>
+            <span class="itincard-days">3 giorni</span>
+          </div>
+          <div class="itincard-body">
+            <span class="itincard-eyebrow">Portogallo · Porto</span>
+            <h3 class="itincard-title">Porto in <em>3 giorni</em>, senza correre.</h3>
+            <p class="itincard-dek">Ribeira, cantine di Gaia e una giornata nel Douro. Tutto a piedi e in treno.</p>
+            <div class="itincard-foot">
+              <span>€€ · 1.840 download</span>
+              <span class="itincard-cta">Apri →</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="itincard" href="casa-itinerario.html">
+          <div class="itincard-pic">
+            <img src="https://images.unsplash.com/photo-1585208798174-6cedd86e019a?w=1200&q=85" alt="Lisbona, Portogallo" loading="lazy" />
+            <span class="itincard-badge">Gratis · PDF</span>
+            <span class="itincard-days">5 giorni</span>
+          </div>
+          <div class="itincard-body">
+            <span class="itincard-eyebrow">Portogallo · Lisbona</span>
+            <h3 class="itincard-title">Lisbona <em>lenta</em>, cinque giorni.</h3>
+            <p class="itincard-dek">Alfama all'alba, Belém senza fila, Sintra in giornata. Più le tasche giuste.</p>
+            <div class="itincard-foot">
+              <span>€€ · 2.960 download</span>
+              <span class="itincard-cta">Apri →</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="itincard" href="casa-itinerario.html">
+          <div class="itincard-pic">
+            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&q=85" alt="Tokyo, Giappone" loading="lazy" />
+            <span class="itincard-badge">Gratis · PDF</span>
+            <span class="itincard-days">7 giorni</span>
+          </div>
+          <div class="itincard-body">
+            <span class="itincard-eyebrow">Giappone · Tokyo</span>
+            <h3 class="itincard-title">Tokyo, una <em>settimana</em> per orientarsi.</h3>
+            <p class="itincard-dek">Sette quartieri, un onsen, ramen tutti i giorni. Niente Disneyland.</p>
+            <div class="itincard-foot">
+              <span>€€€ · 3.210 download</span>
+              <span class="itincard-cta">Apri →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="itin-footer">
+        <span class="itin-footer-stamp">★ aggiornati ad ogni stagione</span>
+        <p class="itin-footer-note">Se trovi qualcosa di vecchio — un locale chiuso, un prezzo cambiato — <a href="casa-contatti.html" style="color: var(--accent); border-bottom: 1px solid currentColor;">scrivici</a>. Lo correggiamo entro la settimana.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. NARRATIVA -->
+  <section class="narrativa" id="sommario-narr">
+    <div class="wrap">
+      <div class="narrativa-head">
+        <span class="eyebrow-line" style="color: var(--sun-300);">Capitolo VI · cosa succede davvero</span>
+        <h2 class="sec-title" style="margin-top: 14px;">Più o meno, <em>questo</em>.</h2>
+      </div>
+      <div class="narrativa-grid">
+        <div class="narr-item tall">
+          <img src="https://images.unsplash.com/photo-1493997181344-712f2f19d87a?w=1400&q=85" alt="" />
+          <span class="narr-caption"><b>Si cammina presto</b> — Kyoto, marzo</span>
+        </div>
+        <div class="narr-item">
+          <img src="https://images.unsplash.com/photo-1481070555726-e2fe8357725c?w=1200&q=85" alt="" />
+          <span class="narr-caption"><b>Si mangia lento</b> — Lecce</span>
+        </div>
+        <div class="narr-item">
+          <img src="https://images.unsplash.com/photo-1581873372796-635b67ca2008?w=1200&q=85" alt="" />
+          <span class="narr-caption"><b>Si guarda il porto</b> — Porto</span>
+        </div>
+        <div class="narr-item tall">
+          <img src="https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=1400&q=85" alt="" />
+          <span class="narr-caption"><b>Si entra in onsen</b> — Hokkaido, febbraio</span>
+        </div>
+        <div class="narr-item">
+          <img src="https://images.unsplash.com/photo-1505739679850-7adfb2c1e1e7?w=1200&q=85" alt="" />
+          <span class="narr-caption"><b>Si prende l'autobus sbagliato</b> — Oaxaca</span>
+        </div>
+        <div class="narr-item">
+          <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=85" alt="" />
+          <span class="narr-caption"><b>Si guarda la luce</b> — Atlante</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. REFERRAL -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="ref-card">
+        <div class="ref-body">
+          <span class="eyebrow-line" style="color: rgba(248,244,236,0.78);">Programma amici</span>
+          <h2 class="ref-h" style="margin-top: 14px;">Porta chi vuoi, <em>partiamo tutti</em> con meno.</h2>
+          <p class="ref-p">Inviti una persona, lei prenota: tu hai €60 di buono, lei ha €40. Senza tetti, senza date di scadenza, senza cose scritte piccolo che ti pentirai di non aver letto.</p>
+          <a class="btn btn-outline-light">Come funziona il programma <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+        <div class="ref-stats">
+          <div class="ref-stat"><p class="ref-stat-n">€60</p><p class="ref-stat-l">Per te</p></div>
+          <div class="ref-stat"><p class="ref-stat-n">€40</p><p class="ref-stat-l">Per chi inviti</p></div>
+          <div class="ref-stat"><p class="ref-stat-n">∞</p><p class="ref-stat-l">Quante volte</p></div>
+          <div class="ref-stat"><p class="ref-stat-n">0</p><p class="ref-stat-l">Trucchi</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14. RASSEGNA STAMPA — sostituisce partner row -->
+  <section class="rassegna">
+    <div class="rassegna-in">
+      <div class="rassegna-head">
+        <div>
+          <span class="lbl">Rassegna stampa · 2024–25</span>
+          <h3>Ne hanno <em>scritto</em>.</h3>
+        </div>
+        <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--fg-3);">14 testate · 2 anni</span>
+      </div>
+      <div class="rassegna-grid">
+        <div class="rassegna-q">
+          <p>Un modo nuovo di intendere il viaggio organizzato, senza farlo sembrare tale.</p>
+          <span class="src"><b>Vogue Italia</b>Reportage · ago 2024</span>
+        </div>
+        <div class="rassegna-q">
+          <p>Itinerari brevi e densi, scritti con cura quasi maniacale per il dettaglio.</p>
+          <span class="src"><b>Il Post</b>Idee · mar 2025</span>
+        </div>
+        <div class="rassegna-q">
+          <p>Una startup del turismo che ha capito che la nicchia è il nuovo mainstream.</p>
+          <span class="src"><b>Linkiesta</b>Business · giu 2024</span>
+        </div>
+        <div class="rassegna-q">
+          <p>Estetica editoriale, atmosfera da piccola redazione: funziona, e parecchio.</p>
+          <span class="src"><b>Domus</b>Brand · gen 2025</span>
+        </div>
+        <div class="rassegna-q">
+          <p>Si parte con sette sconosciuti e si torna con un gruppo che ti scrive ancora.</p>
+          <span class="src"><b>Internazionale</b>Viaggi · nov 2024</span>
+        </div>
+        <div class="rassegna-q">
+          <p>Il contrario del pacchetto: programmi che lasciano spazio al pomeriggio libero.</p>
+          <span class="src"><b>Repubblica · D</b>Tendenze · mag 2025</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15. BLOG -->
+  <section class="sec" id="sommario-diario">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow-line">Capitolo VII · dal diario</span>
+          <h2 class="sec-title" style="margin-top: 14px;">Tre <em>letture</em><br/>di questa settimana.</h2>
+        </div>
+        <a class="btn btn-ghost" href="casa-diario.html">Tutte le storie <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+      <div class="blog-grid">
+        <a class="blog-card">
+          <div class="blog-img"><img src="https://images.unsplash.com/photo-1581873372796-635b67ca2008?w=1200&q=85" alt="" /></div>
+          <span class="blog-cat">Diario · Portogallo</span>
+          <h3 class="blog-title">Tre giorni persi a Porto</h3>
+          <div class="blog-meta">
+            <span class="blog-author-pic">S</span>
+            <span>Sofia · 5 min · Set 2025</span>
+          </div>
+        </a>
+        <a class="blog-card">
+          <div class="blog-img"><img src="https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1200&q=85" alt="" /></div>
+          <span class="blog-cat">Guida · Messico</span>
+          <h3 class="blog-title">Sette mole, una classifica ingiusta</h3>
+          <div class="blog-meta">
+            <span class="blog-author-pic">M</span>
+            <span>Marco · 6 min · Mag 2025</span>
+          </div>
+        </a>
+        <a class="blog-card">
+          <div class="blog-img"><img src="https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=1200&q=85" alt="" /></div>
+          <span class="blog-cat">Diario · Giappone</span>
+          <h3 class="blog-title">Una passeggiata mattutina a Kyoto</h3>
+          <div class="blog-meta">
+            <span class="blog-author-pic">A</span>
+            <span>Aya · 4 min · Giu 2025</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16. FOOTER -->
+  <footer class="ftr">
+    <div class="wrap">
+      <div class="ftr-top">
+        <div class="ftr-brand">
+          <a class="brand" href="casa.html"><span class="brand-mark">o</span><span><em>Oops</em> I Roamed</span></a>
+          <p class="ftr-claim">Viaggi in piccolo gruppo per chi preferisce arrivare tardi, mangiare a lungo, e dormire poco.</p>
+          <form class="ftr-news" onsubmit="event.preventDefault()">
+            <input type="email" placeholder="La tua email" aria-label="Iscriviti al dispaccio" />
+            <button type="submit">Iscrivimi</button>
+          </form>
+          <p class="ftr-newsdisc">Un dispaccio ogni mercoledì. Niente promozioni invasive. Disiscrizione con un click.</p>
+          <div class="ftr-social">
+            <a aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+            <a aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-2C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.41 19c1.71.46 8.59.46 8.59.46s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg></a>
+            <a aria-label="Spotify"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M7 11.5c2.5-1 6.5-1 9.5.5M7.5 14.5c2-1 5-1 7 .5M8 9c3-1 7-1 9 1"/></svg></a>
+            <a aria-label="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V9.41a8.16 8.16 0 0 0 4.77 1.52V7.5a4.85 4.85 0 0 1-1.84-.81z"/></svg></a>
+          </div>
+        </div>
+        <div class="ftr-col">
+          <h4>Destinazioni</h4>
+          <ul>
+            <li><a href="casa-destinazione.html">Europa</a></li>
+            <li><a>Africa &amp; Med</a></li>
+            <li><a>Asia</a></li>
+            <li><a>Americhe</a></li>
+            <li><a>Oceania</a></li>
+            <li><a>Tutte le mete</a></li>
+          </ul>
+        </div>
+        <div class="ftr-col">
+          <h4>Il mondo Oops</h4>
+          <ul>
+            <li><a>Come funziona</a></li>
+            <li><a>Tipi di viaggio</a></li>
+            <li><a>Recensioni</a></li>
+            <li><a>Garanzie</a></li>
+            <li><a>Su misura</a></li>
+            <li><a>Itinerari gratuiti</a></li>
+          </ul>
+        </div>
+        <div class="ftr-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="casa-diario.html">Diario</a></li>
+            <li><a href="casa-sere.html">Sere — eventi locali</a></li>
+            <li><a>Gruppo Telegram</a></li>
+            <li><a>Le foto dei viaggi</a></li>
+            <li><a>Programma amici</a></li>
+            <li><a>Gift card</a></li>
+          </ul>
+        </div>
+        <div class="ftr-col">
+          <h4>Coordinatori</h4>
+          <ul>
+            <li><a>Chi sono</a></li>
+            <li><a>Diventa coordinatore</a></li>
+            <li><a>Area riservata</a></li>
+            <li><a>Storie dal campo</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ftr-mid">
+        <div class="ftr-col">
+          <h4>Info utili</h4>
+          <ul>
+            <li><a>Contatti</a></li>
+            <li><a>Domande frequenti</a></li>
+            <li><a>Condizioni generali</a></li>
+            <li><a>Policy annullamento</a></li>
+            <li><a>Modulo informativo</a></li>
+          </ul>
+        </div>
+        <div class="ftr-col">
+          <h4>Azienda</h4>
+          <ul>
+            <li><a>Lavora con noi</a></li>
+            <li><a>Press &amp; rassegna</a></li>
+            <li><a>Affiliate &amp; partner</a></li>
+            <li><a>Welfare &amp; convenzioni</a></li>
+          </ul>
+        </div>
+        <div class="ftr-col">
+          <h4>Legale</h4>
+          <ul>
+            <li><a>Privacy</a></li>
+            <li><a>Cookie</a></li>
+            <li><a>Termini</a></li>
+            <li><a>Whistleblowing</a></li>
+            <li><a>Aggiorna tracciamento</a></li>
+          </ul>
+        </div>
+        <div class="ftr-col">
+          <h4>Recensioni</h4>
+          <ul>
+            <li><a>4.9 / 5 · 1.247 recensioni</a></li>
+            <li><a>Vedi su Trustpilot</a></li>
+            <li><a>Lascia una recensione</a></li>
+            <li><a>Storie complete</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ftr-bot">
+        <span>© 2026 Oops I Roamed S.r.l. · P.IVA 12345678901 · Via dei Viaggi 7, Milano · REA MI-1234567</span>
+        <div class="ftr-pays">
+          <span class="pay-chip">Visa</span>
+          <span class="pay-chip">Mastercard</span>
+          <span class="pay-chip">Amex</span>
+          <span class="pay-chip">Scalapay</span>
+          <span class="pay-chip">PayPal</span>
+          <span class="pay-chip">Apple Pay</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="casa-app.js"></script>
+</body>
+</html>

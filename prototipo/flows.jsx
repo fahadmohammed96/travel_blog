@@ -19,8 +19,8 @@ const Home = () => {
             Un diario di viaggio che ogni tanto ti vende un biglietto aereo. Storie lunghe, viaggi in piccoli gruppi, e itinerari costruiti uno alla volta.
           </p>
           <div className="rise rise-4" style={{ display: 'flex', gap: 12, marginTop: 36, flexWrap: 'wrap' }}>
-            <Button variant="accent" size="lg" onClick={() => go('trips')} icon="arrow-right">Prenota un viaggio</Button>
-            <button className="btn btn-lg" style={{ background: 'transparent', borderColor: 'rgba(250,246,236,0.4)', color: 'var(--cream-50)', border: '1px solid' }} onClick={() => go('bespoke')}>Costruiscine uno tuo</button>
+            <Button variant="accent" size="lg" onClick={() => go('trips')} takeoff>Prenota un viaggio</Button>
+            <button className="btn btn-lg btn-outline-light" onClick={() => go('bespoke')}>Costruiscine uno tuo</button>
             <button onClick={() => go('diary')} style={{ background: 'transparent', border: 'none', color: 'var(--cream-100)', fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 17, cursor: 'pointer', textDecoration: 'underline', textDecorationStyle: 'dotted', textUnderlineOffset: '6px', padding: '0 12px' }}>o leggi prima il diario →</button>
           </div>
           <div className="rise rise-4" style={{ display: 'flex', gap: 24, marginTop: 36, alignItems: 'center', fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--cream-200)', letterSpacing: '0.06em', textTransform: 'uppercase', flexWrap: 'wrap' }}>
@@ -38,11 +38,11 @@ const Home = () => {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 48 }}>
             <div>
               <Eyebrow>DAL DIARIO</Eyebrow>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 56, lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px 0 0' }}>Viaggi recenti, raccontati con calma.</h2>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(34px, 7vw, 56px)', lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px 0 0' }}>Viaggi recenti, raccontati con calma.</h2>
             </div>
             <Button variant="ghost" onClick={() => go('diary')} icon="arrow-right">Tutte le storie</Button>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: 24 }}>
+          <div className="mob-hide" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: 24 }}>
             <ArticleCard article={ARTICLES[0]} size="lg" onOpen={() => go('article', { id: 'porto-d' })} saved={saved.articles.has('porto-d')} onSave={() => toggleSave('articles', 'porto-d')} />
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
               <ArticleCard article={ARTICLES[1]} onOpen={() => go('article', { id: 'lisbon' })} saved={saved.articles.has('lisbon')} onSave={() => toggleSave('articles', 'lisbon')} />
@@ -53,6 +53,14 @@ const Home = () => {
               <ArticleCard article={ARTICLES[4]} onOpen={() => go('article', { id: 'iceland' })} saved={saved.articles.has('iceland')} onSave={() => toggleSave('articles', 'iceland')} />
             </div>
           </div>
+          {/* Mobile: flat carousel — uniform cards */}
+          <div className="mob-carousel" style={{ gap: 16 }}>
+            <ArticleCard article={ARTICLES[0]} onOpen={() => go('article', { id: 'porto-d' })} saved={saved.articles.has('porto-d')} onSave={() => toggleSave('articles', 'porto-d')} />
+            <ArticleCard article={ARTICLES[1]} onOpen={() => go('article', { id: 'lisbon' })} saved={saved.articles.has('lisbon')} onSave={() => toggleSave('articles', 'lisbon')} />
+            <ArticleCard article={ARTICLES[2]} onOpen={() => go('article', { id: 'kyoto' })} saved={saved.articles.has('kyoto')} onSave={() => toggleSave('articles', 'kyoto')} />
+            <ArticleCard article={ARTICLES[3]} onOpen={() => go('article', { id: 'oaxaca-d' })} saved={saved.articles.has('oaxaca-d')} onSave={() => toggleSave('articles', 'oaxaca-d')} />
+            <ArticleCard article={ARTICLES[4]} onOpen={() => go('article', { id: 'iceland' })} saved={saved.articles.has('iceland')} onSave={() => toggleSave('articles', 'iceland')} />
+          </div>
         </div>
       </section>
 
@@ -61,7 +69,7 @@ const Home = () => {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 48 }}>
             <div>
               <Eyebrow>ROAMED TRIPS</Eyebrow>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 56, lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px 0 0' }}>Vieni con noi.</h2>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(34px, 7vw, 56px)', lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px 0 0' }}>Vieni con noi.</h2>
               <p style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontWeight: 300, fontSize: 20, color: 'var(--fg-2)', maxWidth: 540, marginTop: 14 }}>
                 Viaggi in piccoli gruppi basati su storie già nel diario. Massimo dieci persone. Le parti difficili le abbiamo già fatte noi.
               </p>
@@ -79,14 +87,14 @@ const Home = () => {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 56 }}>
             <Eyebrow>TRE MODI DI VIAGGIARE CON NOI</Eyebrow>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 56, lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px auto 14px', maxWidth: 720 }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(34px, 7vw, 56px)', lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px auto 14px', maxWidth: 720 }}>
               Quanto vuoi che decidiamo per te?
             </h2>
             <p style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontWeight: 300, fontSize: 20, color: 'var(--fg-2)', maxWidth: 540, margin: '0 auto' }}>
               Niente è giusto o sbagliato. Dipende dal viaggio che hai in testa.
             </p>
           </div>
-          <ComparatorCard onPickRoamed={() => go('trips')} onPickBespoke={() => go('bespoke')} />
+          <ComparatorCard onPickRoamed={() => go('trips')} onPickBespoke={() => go('bespoke')} onPickItinerary={() => go('itineraries')} />
         </div>
       </section>
 
@@ -117,7 +125,7 @@ const Home = () => {
         <div style={{ position: 'absolute', top: 60, right: 80, opacity: 0.5 }}><Stamp size={140} rotate={12} /></div>
         <div className="container" style={{ maxWidth: 880, textAlign: 'center', position: 'relative' }}>
           <Eyebrow>ROAM YOUR WAY</Eyebrow>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 300, fontStyle: 'italic', fontSize: 64, lineHeight: 1.1, letterSpacing: '-0.02em', margin: '20px 0 28px' }}>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 300, fontStyle: 'italic', fontSize: 'clamp(40px, 8vw, 64px)', lineHeight: 1.1, letterSpacing: '-0.02em', margin: '20px 0 28px' }}>
             Oppure costruisci qualcosa che nessun altro ha.
           </h2>
           <p style={{ fontSize: 18, lineHeight: 1.7, color: 'var(--cream-200)', maxWidth: 620, margin: '0 auto 36px' }}>
@@ -149,7 +157,7 @@ const NewsletterSection = () => {
       <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
         <div>
           <Eyebrow>IL DISPACCIO · OGNI MERCOLEDÌ</Eyebrow>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 56, lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px 0 18px' }}>Una mail a settimana. Niente offerte, niente urgenza.</h2>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(34px, 7vw, 56px)', lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px 0 18px' }}>Una mail a settimana. Niente offerte, niente urgenza.</h2>
           <p style={{ fontSize: 17, lineHeight: 1.7, color: 'var(--fg-2)', maxWidth: 480, marginBottom: 24 }}>
             Una nuova storia dal diario, un viaggio appena aperto, e l'unica panetteria per cui vale la pena fare una deviazione. Tutto qui. — la fondatrice
           </p>
@@ -242,7 +250,7 @@ const TripDetail = ({ params }) => {
             <p style={{ fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: 26, color: 'var(--fg-1)', lineHeight: 1.4, marginTop: 0 }}>{trip.dek}</p>
             <hr className="divider" />
 
-            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 36, margin: '0 0 8px' }}>La rotta</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(26px, 4.5vw, 36px)', margin: '0 0 8px' }}>La rotta</h2>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
               <p style={{ color: 'var(--fg-3)', fontSize: 13, fontFamily: 'var(--font-mono)', letterSpacing: '0.04em', textTransform: 'uppercase', margin: 0 }}>
                 {mapMode === 'hand' ? 'Disegnata a mano. Ogni linea è una giornata.' : 'Mappa reale. Ingrandisci, esplora.'}
@@ -264,7 +272,7 @@ const TripDetail = ({ params }) => {
               {mapMode === 'hand' ? <TripMap tripId={trip.id} /> : <RealMap tripId={trip.id} height={420} />}
             </div>
 
-            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 36, margin: '56px 0 28px' }}>L'itinerario, giorno per giorno</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(26px, 4.5vw, 36px)', margin: '56px 0 28px' }}>L'itinerario, giorno per giorno</h2>
             <div style={{ display: 'flex', gap: 8, marginBottom: 28, flexWrap: 'wrap' }}>
               {itin.map(d => (
                 <Chip key={d.day} active={day === d.day} onClick={() => setDay(d.day)}>Giorno {d.day}</Chip>
@@ -286,21 +294,21 @@ const TripDetail = ({ params }) => {
 
             {/* Cosa è incluso / escluso */}
             <div style={{ marginTop: 72 }}>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 36, margin: '0 0 20px' }}>Cosa c'è dentro il prezzo (e cosa no).</h2>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(26px, 4.5vw, 36px)', margin: '0 0 20px' }}>Cosa c'è dentro il prezzo (e cosa no).</h2>
               <IncludedExcluded tripId={trip.id} />
             </div>
 
             {/* La tua guida */}
             {trip.guideId && (
               <div style={{ marginTop: 72 }}>
-                <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 36, margin: '0 0 20px' }}>Chi vi accompagna.</h2>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(26px, 4.5vw, 36px)', margin: '0 0 20px' }}>Chi vi accompagna.</h2>
                 <GuideCard guideId={trip.guideId} />
               </div>
             )}
 
             {/* Polaroid wall — foto dei viaggiatori */}
             <div style={{ marginTop: 72 }}>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 36, margin: '0 0 6px' }}>Chi c'è già stato.</h2>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(26px, 4.5vw, 36px)', margin: '0 0 6px' }}>Chi c'è già stato.</h2>
               <p style={{ color: 'var(--fg-3)', fontSize: 13, fontFamily: 'var(--font-mono)', letterSpacing: '0.04em', textTransform: 'uppercase', margin: '0 0 20px' }}>
                 {polaroids.length} foto dai viaggiatori delle edizioni precedenti
               </p>
@@ -320,7 +328,7 @@ const TripDetail = ({ params }) => {
             <div className="card" style={{ padding: 28 }}>
               {trip.status && <Badge kind={trip.status.kind}>{trip.status.label}</Badge>}
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginTop: 16 }}>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: 44, lineHeight: 1 }}>€{trip.price.toLocaleString('it-IT')}</div>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(30px, 5.5vw, 44px)', lineHeight: 1 }}>€{trip.price.toLocaleString('it-IT')}</div>
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--fg-3)', letterSpacing: '0.04em' }}>/ persona</span>
               </div>
               <Meta style={{ marginTop: 4 }}>{trip.dates} · {trip.nights} NOTTI</Meta>
@@ -462,7 +470,7 @@ const Booking = ({ params }) => {
             <Icon name="arrow-left" size={14} /> Torna al viaggio
           </button>
           <Eyebrow>ROAMED TRIP · PRENOTAZIONE</Eyebrow>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 48, lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px 0 32px' }}>{trip.title}</h1>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(32px, 6vw, 48px)', lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px 0 32px' }}>{trip.title}</h1>
 
           <div className="stepper" style={{ marginBottom: 36 }}>
             <span className={`s ${step >= 2 ? 'done' : 'cur'}`}>{step >= 2 ? '✓' : '01'} DETTAGLI</span><span>—</span>
@@ -656,7 +664,7 @@ const DiaryList = ({ params = {} }) => {
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 24, paddingBottom: 14, borderBottom: '1px solid var(--border-soft)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                       <Icon name={r.icon} size={22} style={{ color: 'var(--clay-700)' }} />
-                      <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 36, letterSpacing: '-0.015em', margin: 0 }}>{r.name}</h2>
+                      <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(26px, 4.5vw, 36px)', letterSpacing: '-0.015em', margin: 0 }}>{r.name}</h2>
                     </div>
                     <span style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 18, color: 'var(--fg-2)' }}>{r.dek}</span>
                     <span style={{ marginLeft: 'auto', fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--fg-3)', letterSpacing: '.1em' }}>{arts.length} STORIE · {countries.length} PAESI</span>
@@ -743,7 +751,7 @@ const Article = ({ params }) => {
         <div className="container" style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto' }}>
           <Stamp size={80} rotate={-6} />
           <Eyebrow>VIAGGIO DISPONIBILE</Eyebrow>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 44, fontWeight: 400, margin: '12px 0 16px' }}>Vuoi vivere questa storia di persona?</h2>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(30px, 5.5vw, 44px)', fontWeight: 400, margin: '12px 0 16px' }}>Vuoi vivere questa storia di persona?</h2>
           <p style={{ color: 'var(--fg-2)', fontSize: 17, marginBottom: 24 }}>Abbiamo aperto un viaggio basato proprio su questo diario.</p>
           <Button variant="primary" size="lg" onClick={() => go('trip', { id: 'porto' })} icon="arrow-right">Vedi il viaggio</Button>
         </div>
@@ -833,7 +841,7 @@ const Bespoke = () => {
 
         {step === 1 && (
           <div className="page-enter">
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 44, fontWeight: 400, margin: '0 0 8px', letterSpacing: '-0.02em' }}>Dove e quando?</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(30px, 5.5vw, 44px)', fontWeight: 400, margin: '0 0 8px', letterSpacing: '-0.02em' }}>Dove e quando?</h2>
             <p style={{ color: 'var(--fg-2)', marginBottom: 24 }}>Anche solo "Giappone in primavera" va bene. Si raffina insieme.</p>
             <div style={{ background: 'var(--forest-100)', border: '1px solid var(--forest-300, #c7d4cb)', borderRadius: 'var(--r-md)', padding: '16px 18px', marginBottom: 28 }}>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--forest-700)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 10 }}>★ PRIMA DI INIZIARE — SAPPI CHE</div>
@@ -859,7 +867,7 @@ const Bespoke = () => {
 
         {step === 2 && (
           <div className="page-enter">
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 44, fontWeight: 400, margin: '0 0 8px', letterSpacing: '-0.02em' }}>Che vibe?</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(30px, 5.5vw, 44px)', fontWeight: 400, margin: '0 0 8px', letterSpacing: '-0.02em' }}>Che vibe?</h2>
             <p style={{ color: 'var(--fg-2)', marginBottom: 28 }}>Scegline quanti vuoi, anche zero.</p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
               {vibeOptions.map(v => <Chip key={v} active={data.vibes.has(v)} onClick={() => toggleVibe(v)}>{v}</Chip>)}
@@ -869,7 +877,7 @@ const Bespoke = () => {
 
         {step === 3 && (
           <div className="page-enter">
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 44, fontWeight: 400, margin: '0 0 8px', letterSpacing: '-0.02em' }}>Cosa ti interessa davvero?</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(30px, 5.5vw, 44px)', fontWeight: 400, margin: '0 0 8px', letterSpacing: '-0.02em' }}>Cosa ti interessa davvero?</h2>
             <p style={{ color: 'var(--fg-2)', marginBottom: 28 }}>Su cosa concentriamo l'itinerario? Scegli quanti vuoi — non è una lista della spesa.</p>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
               {interestOptions.map(opt => {
@@ -905,7 +913,7 @@ const Bespoke = () => {
 
         {step === 4 && (
           <div className="page-enter">
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 44, fontWeight: 400, margin: '0 0 8px', letterSpacing: '-0.02em' }}>Budget?</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(30px, 5.5vw, 44px)', fontWeight: 400, margin: '0 0 8px', letterSpacing: '-0.02em' }}>Budget?</h2>
             <p style={{ color: 'var(--fg-2)', marginBottom: 28 }}>Prezzi indicativi a persona, voli esclusi.</p>
             <div style={{ display: 'grid', gap: 10 }}>
               {budgets.map(([k, v]) => (
@@ -929,7 +937,7 @@ const Bespoke = () => {
 
         {step === 5 && (
           <div className="page-enter">
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 44, fontWeight: 400, margin: '0 0 8px', letterSpacing: '-0.02em' }}>Dove ti scriviamo?</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(30px, 5.5vw, 44px)', fontWeight: 400, margin: '0 0 8px', letterSpacing: '-0.02em' }}>Dove ti scriviamo?</h2>
             <p style={{ color: 'var(--fg-2)', marginBottom: 28 }}>Ti rispondiamo entro tre giorni lavorativi. Da una persona vera.</p>
             <div style={{ display: 'grid', gap: 16 }}>
               <Field label="Nome" placeholder="Anna Rossi" value={data.name} onChange={e => setData({ ...data, name: e.target.value })} error={errors.name} />
@@ -1025,7 +1033,7 @@ const Signup = () => {
 
         {step === 1 && (
           <div className="page-enter">
-            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 56, lineHeight: 1.05, letterSpacing: '-0.02em', margin: '0 0 8px' }}>Crea il tuo account</h1>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(34px, 7vw, 56px)', lineHeight: 1.05, letterSpacing: '-0.02em', margin: '0 0 8px' }}>Crea il tuo account</h1>
             <p style={{ color: 'var(--fg-2)', marginBottom: 28 }}>Salva i diari, prenota i viaggi, ricevi il dispaccio mensile.</p>
             <div style={{ display: 'grid', gap: 16 }}>
               <Field label="Nome e cognome" placeholder="Anna Rossi" value={data.name} onChange={e => setData({ ...data, name: e.target.value })} error={errors.name} />
@@ -1037,7 +1045,7 @@ const Signup = () => {
 
         {step === 2 && (
           <div className="page-enter">
-            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 48, lineHeight: 1.05, letterSpacing: '-0.02em', margin: '0 0 8px' }}>Cosa ti fa partire?</h1>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(32px, 6vw, 48px)', lineHeight: 1.05, letterSpacing: '-0.02em', margin: '0 0 8px' }}>Cosa ti fa partire?</h1>
             <p style={{ color: 'var(--fg-2)', marginBottom: 28 }}>Per consigliarti le storie giuste. Niente è definitivo.</p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
               {interests.map(v => <Chip key={v} active={data.interests.has(v)} onClick={() => toggle('interests', v)}>{v}</Chip>)}
@@ -1047,7 +1055,7 @@ const Signup = () => {
 
         {step === 3 && (
           <div className="page-enter">
-            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 48, lineHeight: 1.05, letterSpacing: '-0.02em', margin: '0 0 8px' }}>Dove sogni di andare?</h1>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(32px, 6vw, 48px)', lineHeight: 1.05, letterSpacing: '-0.02em', margin: '0 0 8px' }}>Dove sogni di andare?</h1>
             <p style={{ color: 'var(--fg-2)', marginBottom: 28 }}>Quando apriamo un viaggio in uno di questi paesi, ti scriviamo per primi.</p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
               {countries.map(c => <Chip key={c} active={data.countries.has(c)} onClick={() => toggle('countries', c)}>{c}</Chip>)}
@@ -1067,13 +1075,13 @@ const Signup = () => {
 
 /* ============ ACCOUNT ============ */
 const Account = () => {
-  const { user, go, bookings, bespokes, photos, saved, signout } = useApp();
+  const { user, go, bookings, bespokes, photos, saved, signout, showToast } = useApp();
   const [tab, setTab] = React.useState('upcoming');
   if (!user) {
     return (
       <div className="page-enter" style={{ padding: '128px 0', textAlign: 'center' }}>
         <div className="narrow">
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 56, fontWeight: 400, margin: '0 0 16px' }}>Accedi al tuo diario</h1>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(34px, 7vw, 56px)', fontWeight: 400, margin: '0 0 16px' }}>Accedi al tuo diario</h1>
           <p style={{ color: 'var(--fg-2)', marginBottom: 24 }}>Crea un account per salvare le storie e prenotare i viaggi.</p>
           <Button variant="primary" size="lg" onClick={() => go('signup')}>Crea account</Button>
         </div>
@@ -1086,10 +1094,10 @@ const Account = () => {
       <div className="container">
         <div className="mob-1col" style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 32, paddingBottom: 32, borderBottom: '1px solid var(--border)', alignItems: 'flex-start' }}>
           <div style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
-            <div style={{ width: 96, height: 96, borderRadius: 999, background: 'linear-gradient(135deg, var(--clay-300), var(--forest-500))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-display)', fontSize: 36, color: 'var(--cream-50)' }}>{user.initials}</div>
+            <div style={{ width: 96, height: 96, borderRadius: 999, background: 'linear-gradient(135deg, var(--clay-300), var(--forest-500))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-display)', fontSize: 'clamp(26px, 4.5vw, 36px)', color: 'var(--cream-50)' }}>{user.initials}</div>
             <div style={{ flex: 1 }}>
               <Eyebrow>FELLOW ROAMER</Eyebrow>
-              <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 48, margin: '8px 0 6px', letterSpacing: '-0.02em' }}>{user.name}</h1>
+              <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(32px, 6vw, 48px)', margin: '8px 0 6px', letterSpacing: '-0.02em' }}>{user.name}</h1>
               <Meta>{user.email}</Meta>
               <div style={{ marginTop: 16 }}>
                 <Button variant="secondary" size="sm" onClick={signout}>Esci</Button>
@@ -1127,7 +1135,7 @@ const Account = () => {
                           <div style={{ marginTop: 14, fontSize: 13, color: 'var(--fg-2)', lineHeight: 1.6 }}>{t.dek}</div>
                           <div style={{ marginTop: 18, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                             <Button variant="primary" size="sm" icon="arrow-right" onClick={() => go('trip', { id: t.id })}>Vedi itinerario</Button>
-                            <Button variant="ghost" size="sm" icon="download">Voucher</Button>
+                            <Button variant="ghost" size="sm" icon="download" onClick={() => showToast && showToast('Voucher PDF inviato alla tua email.', 'mail')}>Voucher</Button>
                             <Button variant="ghost" size="sm" icon="image" onClick={() => go('share', { tripId: t.id })}>Condividi le tue foto</Button>
                           </div>
                         </div>
